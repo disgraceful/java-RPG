@@ -13,7 +13,6 @@ public class Trinket extends Item {
 	public boolean tryEquip(Hero hero){
 		//if(hero.class!=restriction||restriction != all)
 		//return false;
-		
 		for(Stat c :affectedstats.getStats()){
 			if(hero.getStatWrapper().checkIfStatExist(c.getName())){
 				int i=hero.getStatWrapper().getStatbyName(c.getName()).getValue();
@@ -23,6 +22,20 @@ public class Trinket extends Item {
 		return true; 
 	}
 	
-	
+	public boolean tryUnEquip(Hero hero){
+		try{
+			
+			for(Stat c :affectedstats.getStats()){
+				if(hero.getStatWrapper().checkIfStatExist(c.getName())){
+					int i=hero.getStatWrapper().getStatbyName(c.getName()).getValue();
+					hero.getStatWrapper().getStatbyName(c.getName()).setValue(i-c.getValue());
+				}
+			}
+			return true;
+		}
+		catch(Exception e){
+			return false;
+		}
+	}
 	
 }

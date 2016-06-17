@@ -13,12 +13,20 @@ public class Hero extends Character {
 			}});
 	}
 	
-	
 	private ArrayList<Trinket> inventory = new ArrayList<Trinket>();
 	
 	public void equip(Trinket trinket){
 		if(trinket.tryEquip(this)){
 			inventory.add(trinket);
+		}
+	}
+	public boolean ifTrinketEquiped(Trinket trinket){
+		return inventory.contains(trinket);
+	}
+	
+	public void unequip(Trinket trinket){
+		if(ifTrinketEquiped(trinket)&&trinket.tryUnEquip(this)){
+			inventory.remove(trinket);
 		}
 	}
 	

@@ -17,12 +17,14 @@ public class Game {
 		}});
 		hero1.equip(item1);
 		printHeroInfo(hero1);
+		hero1.unequip(item1);
+		printHeroInfo(hero1);
 	}
 	
 	private static void printHeroInfo(Hero hero){
-		System.out.println(hero.getStatWrapper().getValueByName("Health"));
-		System.out.println(hero.getStatWrapper().getValueByName("Armor"));
-		System.out.println(hero.getStatWrapper().getValueByName("Damage"));
+		System.out.println(hero.getStatWrapper().getStatbyName("Health").getValue());
+		System.out.println(hero.getStatWrapper().getStatbyName("Armor").getValue());
+		System.out.println(hero.getStatWrapper().getStatbyName("Damage").getValue());
 		
 	}
 }
