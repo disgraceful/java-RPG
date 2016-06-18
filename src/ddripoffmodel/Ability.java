@@ -2,10 +2,11 @@ package ddripoffmodel;
 
 import java.util.ArrayList;
 
-public class Ability {
+public abstract class Ability {
 
 	private String name;
-	private StatWrapper affectedstats;
+	protected StatWrapper affectedstats;
+	protected String description;
 	public String getName(){
 		return name;
 	}
@@ -18,6 +19,16 @@ public class Ability {
 		this.name = name;
 		this.affectedstats = new StatWrapper(stat);
 		
+	}
+	
+	public void useAbility(StatWrapper[] targets,StatWrapper user){}
+
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDecsription(String description){
+		this.description = description;
 	}
 	
 }

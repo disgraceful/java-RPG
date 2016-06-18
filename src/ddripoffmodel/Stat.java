@@ -2,19 +2,35 @@ package ddripoffmodel;
 
 public class Stat {
 	private String name;
-	private int value;
-	
-	public String getName(){
+	private int curValue;
+	private int maxValue;
+
+	public String getName() {
 		return name;
 	}
-	public Stat(String name,int value){
+
+	public Stat(String name, int curvalue, int maxValue) {
 		this.name = name;
-		this.value = value;
+		this.curValue = curvalue;
+		this.maxValue = maxValue;
 	}
-	public int getValue() {
-		return value;
+
+	public Stat(String name, int value) {
+		this.name = name;
+		this.curValue = value;
 	}
-	public void setValue(int value){
-		this.value = value;
+
+	public int getCurValue() {
+		return curValue;
+	}
+
+	public void setValue(int value) {
+		if (value > maxValue) {
+			curValue = this.maxValue;
+		} else if (value < 0) {
+			curValue = 0;
+		} else {
+			curValue = value;
+		}
 	}
 }

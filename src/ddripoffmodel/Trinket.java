@@ -9,28 +9,24 @@ public class Trinket extends Item {
 		setName(name);
 		this.affectedstats =new StatWrapper(affectedstats);
 	}
+	
+	public StatWrapper getStatWrapper(){
+		return affectedstats;
+	}
 	 
-	public boolean tryEquip(Hero hero){
+	public boolean tryEquip(StatWrapper herostat){
 		//if(hero.class!=restriction||restriction != all)
 		//return false;
-		for(Stat c :affectedstats.getStats()){
-			if(hero.getStatWrapper().checkIfStatExist(c.getName())){
-				int i=hero.getStatWrapper().getStatbyName(c.getName()).getValue();
-				hero.getStatWrapper().getStatbyName(c.getName()).setValue(i+c.getValue());
-			}
-		}
+		affectedstats.updateStats(herostat);
+		System.out.println(herostat.getOwner().getName()+" has equipped "+this.getName());
 		return true; 
 	}
 	
-	public boolean tryUnEquip(Hero hero){
+	public boolean tryUnEquip(StatWrapper herostat){
 		try{
-			
-			for(Stat c :affectedstats.getStats()){
-				if(hero.getStatWrapper().checkIfStatExist(c.getName())){
-					int i=hero.getStatWrapper().getStatbyName(c.getName()).getValue();
-					hero.getStatWrapper().getStatbyName(c.getName()).setValue(i-c.getValue());
-				}
-			}
+			StatWrapper.reverseStatsValue(affectedstats);
+			affectedstats.updateStats(herostat);
+			System.out.println(herostat.getOwner().getName()+" has unequipped "+this.getName());
 			return true;
 		}
 		catch(Exception e){
