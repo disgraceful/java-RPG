@@ -30,5 +30,4 @@ public abstract class Ability {
 	public void setDecsription(String description){
 		this.description = description;
 	}
-	
 }

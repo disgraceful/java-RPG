@@ -12,10 +12,10 @@ public class DamageAbility extends Ability {
 			int dmg = calculateDmg(t, user);
 			StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
 				{
-					add(new Stat("Health", -dmg));
+					add(new Stat("Health", -dmg,false));
 				}
 			});
-			s.updateStats(t);
+			t.updateStats(s);
 			if (dmg > 0) {
 				System.out.println(user.getOwner().getName() + " used " + this.getName() + " and dealed " + dmg
 						+ " damage to " + t.getOwner().getName());
