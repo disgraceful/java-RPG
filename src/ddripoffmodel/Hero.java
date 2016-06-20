@@ -15,7 +15,7 @@ public class Hero extends Character {
 		if (trinket.tryEquip(this.getStatWrapper())) {
 			inventory.add(trinket);
 		}
-	}
+ 	}
 
 	public boolean ifTrinketEquiped(Trinket trinket) {
 		return inventory.contains(trinket);
@@ -51,7 +51,5 @@ public class Hero extends Character {
 		return abilities;
 	}
 
-	public StatWrapper getStatWrapper() {
-		return stats;
-	}
+	
 }

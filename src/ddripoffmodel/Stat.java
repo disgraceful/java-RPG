@@ -5,6 +5,7 @@ public class Stat {
 	private int curValue;
 	private int maxValue;
 	private boolean isAffectingMaxValue;
+	private boolean isPrimordial;
 
 	public String getName() {
 		return name;
@@ -12,14 +13,16 @@ public class Stat {
 
 	public Stat(String name, int curvalue, int maxvalue) {
 		this.name = name;
-		this.curValue = curvalue;
-		this.maxValue = maxvalue;
+		curValue = curvalue;
+		maxValue = maxvalue;
+		isPrimordial = true;
 	}
 
 	public Stat(String name, int value, boolean istempstat) {
 		this.name = name;
-		this.curValue = value;
-		this.isAffectingMaxValue = istempstat;
+		curValue = value;
+		isAffectingMaxValue = istempstat;
+		istempstat = false;
 	}
 
 	public int getCurValue() {
@@ -42,17 +45,16 @@ public class Stat {
 		return isAffectingMaxValue;
 	}
 
-	public int getHpDifference(){
+	public int getHpDifference() {
 		return maxValue - curValue;
 	}
-	
+
 	private int countValue(int value) {
 		int setValue = 0;
-		if (value > maxValue && !isAffectingMaxValue) {
+		if (value > maxValue && maxValue != 0) {
 			setValue = maxValue;
 			return setValue;
-
-		} else if (value < 0 && !isAffectingMaxValue) {
+		} else if (value < 0 && isPrimordial) {
 			if (name == "Health") {
 				// hero rip;
 			}
