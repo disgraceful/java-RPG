@@ -45,7 +45,7 @@ public class Stat {
 		return isAffectingMaxValue;
 	}
 
-	public int getHpDifference() {
+	public int getValueDifference() {
 		return maxValue - curValue;
 	}
 

@@ -21,6 +21,12 @@ public class Party {
 		partyMembers.add(c);
 	}
 
+	public void addMember(Character c,int position){
+		partyMembers.add(position,c);
+	}
+	
+	
+	 
 	private boolean checkIfCharExists(Character c) {
 		return partyMembers.contains(c);
 	}

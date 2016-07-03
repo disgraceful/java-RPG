@@ -1,12 +1,15 @@
 package ddripoffmodel;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
+
 
 public class Character implements Comparable<Character>{
-	protected String name;
-	protected StatWrapper stats;
-	protected ArrayList<ITemporaryEffect> tempEffects = new ArrayList<ITemporaryEffect>();
-	protected Party party;
+	private String name;
+	private StatWrapper stats;
+	private ArrayList<ITemporaryEffect>tempEffects= new ArrayList<ITemporaryEffect>();
+	private Party party;
 	
 	public String getName(){
 		return name;
@@ -27,6 +30,11 @@ public class Character implements Comparable<Character>{
 	
 	public void setParty(Party party){
 		this.party = party;
+	}
+	
+	public ArrayList<ITemporaryEffect> getEffectsList(){
+		
+		return tempEffects;
 	}
 	
 	protected void Move(int newposition){

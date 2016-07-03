@@ -2,7 +2,8 @@ package ddripoffmodel;
 
 import java.util.ArrayList;
 
-public class BuffAbility extends Ability implements ITemporaryEffect {
+public class BuffAbility extends Ability implements ITemporaryEffect,Cloneable {
+	
 	private int abilityDuration;
 	private TemporaryEffect effectType = TemporaryEffect.Buff;
 
@@ -10,15 +11,22 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 		super(name, stat);
 		this.abilityDuration = duration;
 	}
+
+	public BuffAbility(BuffAbility a){
+		this(a.getName(),a.getStats().getStatsasArrayList(),a.getEffectDuration());
+	}
+	
 	@Override
 	public void useAbility(StatWrapper[] targets, StatWrapper user) {
 		for (StatWrapper t : targets) {
 			t.updateStats(affectedstats);
+			t.getOwner().getEffectsList().add(new BuffAbility(this));
 			System.out.println(t.getOwner().getName() + " has been buffed");
 		}
 	}
-
-	public void endDuration(StatWrapper[] targets) {
+	
+	@Override
+	public void expireEffect(StatWrapper[] targets) {
 		StatWrapper.reverseStatsValue(affectedstats);
 		for (StatWrapper t : targets) {
 			t.updateStats(affectedstats);
@@ -41,10 +49,21 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 	}
 
 	@Override
-	public TemporaryEffect getEffect() {
+	public TemporaryEffect getEffectType() {
 		return effectType;
+	}
+
+	@Override
+	public void tickEffect() {
+		if (abilityDuration >= 0) {
+			this.abilityDuration--; 
+		}
+		
 	}
 	
 	@Override
-	public void applyEffect() {}
+	protected BuffAbility clone()throws CloneNotSupportedException{
+		return (BuffAbility) super.clone();
+	}
 }
+ 
