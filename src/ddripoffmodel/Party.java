@@ -25,8 +25,6 @@ public class Party {
 		partyMembers.add(position,c);
 	}
 	
-	
-	 
 	private boolean checkIfCharExists(Character c) {
 		return partyMembers.contains(c);
 	}

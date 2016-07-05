@@ -12,7 +12,7 @@ public class DamageAbility extends Ability {
 			int dmg = calculateDmg(t, user);
 			StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
 				{
-					add(new Stat("Health", -dmg,false));
+					add(new Stat(StatEnumeration.Health, -dmg,false));
 				}
 			});
 			t.updateStats(s);
@@ -29,14 +29,14 @@ public class DamageAbility extends Ability {
 	private int calculateDmg(StatWrapper target, StatWrapper user) {
 		// int potdmg = user.getStatbyName("Damage").getValue()*
 		// affectedstats.getStatbyName("Damage").getValue();
-		int potdmg = user.getStatbyName("Damage").getCurValue();
+		int potdmg = user.getStatbyName(StatEnumeration.Damage).getCurValue();
 		int realdmg;
-		if (affectedstats.getStatbyName("Damage").getCurValue() > 0) {
-			potdmg += affectedstats.getStatbyName("Damage").getCurValue();
-			int targetdef = target.getStatbyName("Armor").getCurValue();
+		if (affectedStats.getStatbyName(StatEnumeration.Damage).getCurValue() > 0) {
+			potdmg += affectedStats.getStatbyName(StatEnumeration.Damage).getCurValue();
+			int targetdef = target.getStatbyName(StatEnumeration.Armor).getCurValue();
 			realdmg = potdmg - targetdef;// potdmg*(100-targetdef);
 		} else {
-			potdmg = affectedstats.getStatbyName("Damage").getCurValue();
+			potdmg = affectedStats.getStatbyName(StatEnumeration.Damage).getCurValue();
 			realdmg = potdmg;
 		}
 		return realdmg;

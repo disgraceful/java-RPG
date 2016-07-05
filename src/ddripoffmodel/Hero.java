@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Hero extends Character {
 
+	//private final HeroClass heroClass;
 	public Hero(String name, ArrayList<Stat> stat) {
 		super(name, stat);
 	}

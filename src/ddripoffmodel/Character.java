@@ -43,7 +43,7 @@ public class Character implements Comparable<Character>{
 	
 	@Override
 	public int compareTo(Character c1) {
-		int comparespeed = ((Character)c1).getStatWrapper().getStatbyName("Speed").getCurValue();
-		return comparespeed-this.stats.getStatbyName("Speed").getCurValue();
+		int comparespeed = ((Character)c1).getStatWrapper().getStatbyName(StatEnumeration.Speed).getCurValue();
+		return comparespeed-this.stats.getStatbyName(StatEnumeration.Speed).getCurValue();
 	}
 }

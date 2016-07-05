@@ -2,5 +2,5 @@ package ddripoffmodel;
 
 public enum TemporaryEffect {
 	
-	Buff,Debuff,Stun,Blight,Bleed,MindLeak,Mark;
+	Buff,Debuff,Stun,Blight,Bleed,MindLeak,Mark,Curse;
 }

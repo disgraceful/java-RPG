@@ -1,25 +1,25 @@
 package ddripoffmodel;
 
 public class Stat {
-	private String name;
+	private StatEnumeration type;
 	private int curValue;
 	private int maxValue;
 	private boolean isAffectingMaxValue;
 	private boolean isPrimordial;
 
-	public String getName() {
-		return name;
+	public StatEnumeration getType() {
+		return type;
 	}
 
-	public Stat(String name, int curvalue, int maxvalue) {
-		this.name = name;
+	public Stat(StatEnumeration type, int curvalue, int maxvalue) {
+		this.type = type;
 		curValue = curvalue;
 		maxValue = maxvalue;
 		isPrimordial = true;
 	}
 
-	public Stat(String name, int value, boolean istempstat) {
-		this.name = name;
+	public Stat(StatEnumeration type, int value, boolean istempstat) {
+		this.type = type;
 		curValue = value;
 		isAffectingMaxValue = istempstat;
 		istempstat = false;
@@ -55,7 +55,7 @@ public class Stat {
 			setValue = maxValue;
 			return setValue;
 		} else if (value < 0 && isPrimordial) {
-			if (name == "Health") {
+			if (type == StatEnumeration.Health) {
 				// hero rip;
 			}
 			return setValue;

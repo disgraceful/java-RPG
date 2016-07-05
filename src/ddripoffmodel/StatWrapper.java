@@ -10,20 +10,23 @@ public class StatWrapper {
 		this.stats = stats;
 	}
 
-	private boolean checkIfStatExist(String name) {
+	private boolean checkIfStatExist(StatEnumeration type) {
 		for (Stat s : stats) {
-			if (s.getName() == name) {
+			if (s.getType() == type) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public Stat getStatbyName(String name) {
-		for (Stat s : stats) {
-			if (s.getName() == name) {
-				return s;
+	public Stat getStatbyName(StatEnumeration type) {
+		if (checkIfStatExist(type)) {
+			for (Stat s : stats) {
+				if (s.getType() == type) {
+					return s;
+				}
 			}
+			return null;
 		}
 		return null;
 	}
@@ -42,8 +45,8 @@ public class StatWrapper {
 
 	public void updateStats(StatWrapper affectedstats) {
 		for (Stat c : affectedstats.getStatsasArrayList()) {
-			if (this.checkIfStatExist(c.getName())) {
-				Stat curStat = this.getStatbyName((c.getName()));
+			if (this.checkIfStatExist(c.getType())) {
+				Stat curStat = this.getStatbyName((c.getType()));
 				int i = curStat.getCurValue();
 				if (c.getIsAffectingMaxValue()) {
 					curStat.setMaxValue(curStat.getMaxValue() + c.getCurValue());
@@ -55,9 +58,9 @@ public class StatWrapper {
 
 	public static void reverseStatsValue(StatWrapper stat) {
 		for (Stat c : stat.getStatsasArrayList()) {
-			if(c.getCurValue()<0){
+			if (c.getCurValue() < 0) {
 				c.setValue(Math.abs(c.getCurValue()));
-			}else{
+			} else {
 				c.setValue(-c.getCurValue());
 			}
 		}
