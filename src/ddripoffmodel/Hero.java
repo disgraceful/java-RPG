@@ -2,6 +2,8 @@ package ddripoffmodel;
 
 import java.util.ArrayList;
 
+import ddripoffmodel.abilities.Ability;
+
 public class Hero extends Character {
 
 	//private final HeroClass heroClass;

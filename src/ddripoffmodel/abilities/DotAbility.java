@@ -1,29 +1,21 @@
-package ddripoffmodel;
+package ddripoffmodel.abilities;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import ddripoffmodel.Stat;
+import ddripoffmodel.StatEnumeration;
+import ddripoffmodel.StatWrapper;
 
 public class DotAbility extends Ability implements ITemporaryEffect {
 
 	private int abilityDuration;
 	private final TemporaryEffect effectType;
-	private int tickDamage;
 
 	public DotAbility(String name, ArrayList<Stat> stat, int duration, TemporaryEffect effecttype) {
 		super(name, stat);
 		effectType = effecttype;
 		abilityDuration = duration;
-	}
-
-	public void setTickDamage(int value) {
-		if (value < 0) {
-			tickDamage = 0;
-		}
-		tickDamage = value;
-	}
-
-	public int getTickDamage() {
-		return tickDamage;
 	}
 
 	public DotAbility(DotAbility a) {
@@ -44,8 +36,7 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 	public int getEffectDuration() {
 		return abilityDuration;
 	}
-
-	@Override
+@Override
 	public void setEffectDuration(int duration) {
 		abilityDuration = duration;
 	}
@@ -57,8 +48,11 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 
 	@Override
 	public void tickEffect(StatWrapper t) {
-		int curValue = t.getStatbyName(StatEnumeration.Health).getCurValue();
-		t.getStatbyName(StatEnumeration.Health).setValue(curValue - tickDamage);
+		if (abilityDuration >= 0) {
+			this.abilityDuration--;
+		} else {
+			t.updateStats(affectedStats);
+		}
 	}
 
 	@Override
@@ -73,12 +67,10 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 		int chance = rand.nextInt(100);
 		if (effectType == TemporaryEffect.Bleed) {
 			return chance > user.getStatbyName(StatEnumeration.BleedResist).getCurValue();
-		}
-		else if(effectType == TemporaryEffect.Blight){
-			return chance> user.getStatbyName(StatEnumeration.BlightResist).getCurValue();
-		}
-		else{
-			 return chance>user.getStatbyName(StatEnumeration.StressResist).getCurValue();
+		} else if (effectType == TemporaryEffect.Blight) {
+			return chance > user.getStatbyName(StatEnumeration.BlightResist).getCurValue();
+		} else {
+			return chance > user.getStatbyName(StatEnumeration.StressResist).getCurValue();
 		}
 	}
 }

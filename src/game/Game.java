@@ -3,16 +3,18 @@ package game;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import ddripoffmodel.Ability;
-import ddripoffmodel.BuffAbility;
 import ddripoffmodel.Character;
 import ddripoffmodel.Hero;
-import ddripoffmodel.ITemporaryEffect;
 import ddripoffmodel.Party;
 import ddripoffmodel.Stat;
 import ddripoffmodel.StatEnumeration;
 import ddripoffmodel.StatWrapper;
 import ddripoffmodel.Trinket;
+import ddripoffmodel.abilities.Ability;
+import ddripoffmodel.abilities.Curse;
+import ddripoffmodel.abilities.DotAbility;
+import ddripoffmodel.abilities.ITemporaryEffect;
+import ddripoffmodel.abilities.TemporaryEffect;
 
 public class Game {
 
@@ -60,28 +62,37 @@ public class Game {
 				add(new Stat(StatEnumeration.Armor, 5, 10));
 				add(new Stat(StatEnumeration.Damage, 1, 100));
 				add(new Stat(StatEnumeration.Speed, 1, 100));
+				add(new Stat(StatEnumeration.BleedResist, 0, 100));
 			}
 		});
 		hero2.getStatWrapper().setOwner(hero2);
 
-		// printHeroInfo(hero1);
-		// printHeroInfo(hero2);
+		printHeroInfo(hero1);
+		printHeroInfo(hero2);
+		DotAbility dot1 = new DotAbility("Bleeding ass", new ArrayList<Stat>() {
+			{
+				add(new Stat(StatEnumeration.Health, -1, false));
+			}
+		}, 3, TemporaryEffect.Bleed);
 
+		hero2.learnAbility(dot1);
+		hero2.useAbility(dot1, new StatWrapper[] { hero1.getStatWrapper() });
+		Curse curse1 = new Curse();
+		curse1.affectCurse(new StatWrapper[]{hero1.getStatWrapper()});
 		currentParty = new Party();
-		currentParty.addMember(hero2, 0);
-		currentParty.addMember(hero1, 1);
-		currentParty.reposition(hero1, 0);
+		currentParty.addMember(hero1);
+		newTurn();
+		newTurn();
+		newTurn();
+		printHeroInfo(hero1);
+
 	}
 
 	private static void printHeroInfo(Hero hero) {
 		System.out.println(hero.getName());
-		System.out.println(hero.getName() + "'s health: "
-				+ hero.getStatWrapper().getStatbyName(StatEnumeration.Health).getCurValue() + " / "
-				+ hero.getStatWrapper().getStatbyName(StatEnumeration.Health).getMaxValue());
-		System.out.println(hero.getName() + "'s armor: "
-				+ hero.getStatWrapper().getStatbyName(StatEnumeration.Armor).getCurValue());
-		System.out.println(hero.getName() + "'s damage: "
-				+ hero.getStatWrapper().getStatbyName(StatEnumeration.Damage).getCurValue());
+		for (Stat s : hero.getStatWrapper().getStatsasArrayList()) {
+			System.out.println(hero.getName() + "'s " + s.getType().toString() +": "+ s.getCurValue()); //+ "/"+s.getMaxValue());
+		}
 	}
 
 	private static void printTrinketInfo(Trinket trinket) {

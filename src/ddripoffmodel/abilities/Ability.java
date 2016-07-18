@@ -1,6 +1,9 @@
-package ddripoffmodel;
+package ddripoffmodel.abilities;
 
 import java.util.ArrayList;
+
+import ddripoffmodel.Stat;
+import ddripoffmodel.StatWrapper;
 
 /**
  * Model for Characters' Abilities
@@ -24,6 +27,7 @@ public abstract class Ability {
 		this.name = name;
 		this.affectedStats = new StatWrapper(stat);
 	}
+	
 
 	/** basic fields */
 	private String name;

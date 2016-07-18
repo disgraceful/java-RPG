@@ -3,12 +3,14 @@ package ddripoffmodel;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import ddripoffmodel.abilities.ITemporaryEffect;
+
 
 
 public class Character implements Comparable<Character>{
 	private String name;
 	private StatWrapper stats;
-	private ArrayList<ITemporaryEffect>tempEffects= new ArrayList<ITemporaryEffect>();
+	private ArrayList<ITemporaryEffect>tempEffects= new ArrayList<ITemporaryEffect>(); 
 	private Party party;
 	
 	public String getName(){

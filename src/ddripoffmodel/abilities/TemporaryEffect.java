@@ -1,4 +1,4 @@
-package ddripoffmodel;
+package ddripoffmodel.abilities;
 
 public enum TemporaryEffect {
 	

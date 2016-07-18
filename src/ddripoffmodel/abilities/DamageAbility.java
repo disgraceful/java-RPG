@@ -1,6 +1,10 @@
-package ddripoffmodel;
+package ddripoffmodel.abilities;
 
 import java.util.ArrayList;
+
+import ddripoffmodel.Stat;
+import ddripoffmodel.StatEnumeration;
+import ddripoffmodel.StatWrapper;
 
 public class DamageAbility extends Ability {
 	public DamageAbility(String name, ArrayList<Stat> stat) {

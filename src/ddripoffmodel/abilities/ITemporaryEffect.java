@@ -1,4 +1,6 @@
-package ddripoffmodel;
+package ddripoffmodel.abilities;
+
+import ddripoffmodel.StatWrapper;
 
 public interface ITemporaryEffect{
 	
@@ -7,6 +9,4 @@ public interface ITemporaryEffect{
 	public TemporaryEffect getEffectType();
 	public void tickEffect(StatWrapper t);
 	public void expireEffect(StatWrapper[] targets);
-	//public Object clone();
-	
 }

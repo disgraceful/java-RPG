@@ -1,6 +1,9 @@
-package ddripoffmodel;
+package ddripoffmodel.abilities;
 
 import java.util.ArrayList;
+
+import ddripoffmodel.Stat;
+import ddripoffmodel.StatWrapper;
 
 /**
  * Covers temporary buff and debuff abilities
@@ -14,33 +17,36 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 	 * 
 	 * Calls base class constructor with name and stat
 	 * 
- 	 * @param name(required) name of ability
-	 * @param stat(required) stats affected by ability
-	 * @param duration(required) duration of ability(turns)
+	 * @param name(required)
+	 *            name of ability
+	 * @param stat(required)
+	 *            stats affected by ability
+	 * @param duration(required)
+	 *            duration of ability(turns)
 	 * @param effecttype(required)buff/debuff
 	 */
-	public BuffAbility(String name, ArrayList<Stat> stat, int duration,TemporaryEffect effecttype) {
+	public BuffAbility(String name, ArrayList<Stat> stat, int duration, TemporaryEffect effecttype) {
 		super(name, stat);
 		abilityDuration = duration;
 		effectType = effecttype;
 	}
-	
+
 	/** duration of buff/debuff */
 	private int abilityDuration;
-	/** effect type: buff or debuff*/
+	/** effect type: buff or debuff */
 	private final TemporaryEffect effectType;
 
 	/**
 	 * Clone constructor
 	 * 
 	 * makes a copy of object a
-	 * @param a 
+	 * 
+	 * @param a
 	 */
-	public BuffAbility(BuffAbility a){
-		this(a.getName(),a.getStats().getStatsasArrayList(),a.getEffectDuration(),a.getEffectType());
+	public BuffAbility(BuffAbility a) {
+		this(a.getName(), a.getStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
 	}
-	
-	
+
 	@Override
 	public void useAbility(StatWrapper[] targets, StatWrapper user) {
 		for (StatWrapper t : targets) {
@@ -49,7 +55,7 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 			System.out.println(t.getOwner().getName() + " has been buffed");
 		}
 	}
-	
+
 	@Override
 	public void expireEffect(StatWrapper[] targets) {
 		StatWrapper.reverseStatsValue(affectedStats);
@@ -58,12 +64,10 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 			System.out.println(getName() + " duration has been expired on " + t.getOwner().getName());
 		}
 	}
-
 	@Override
 	public int getEffectDuration() {
 		return abilityDuration;
 	}
-
 	@Override
 	public void setEffectDuration(int duration) {
 		if (duration < 1) {
@@ -81,9 +85,8 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 	@Override
 	public void tickEffect(StatWrapper t) {
 		if (abilityDuration >= 0) {
-			this.abilityDuration--; 
-		}	
+			this.abilityDuration--;
+		}
 	}
-	
+
 }
- 
