@@ -3,7 +3,7 @@ package ddripoffmodel;
 import java.util.ArrayList;
 
 public class StatWrapper {
-	private Character owner;
+	private Hero owner;
 	private ArrayList<Stat> stats = new ArrayList<Stat>();
 
 	public StatWrapper(ArrayList<Stat> stats) {
@@ -35,11 +35,11 @@ public class StatWrapper {
 		return stats;
 	}
 
-	public Character getOwner() {
+	public Hero getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Character owner) {
+	public void setOwner(Hero owner) {
 		this.owner = owner;
 	}
 

@@ -36,7 +36,8 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 	public int getEffectDuration() {
 		return abilityDuration;
 	}
-@Override
+
+	@Override
 	public void setEffectDuration(int duration) {
 		abilityDuration = duration;
 	}
@@ -51,6 +52,11 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 		if (abilityDuration >= 0) {
 			this.abilityDuration--;
 		} else {
+			if(effectType == TemporaryEffect.Stun){
+				int curValue = t.getStatbyName(StatEnumeration.StressResist).getCurValue();
+				t.getStatbyName(StatEnumeration.StressResist).setValue(curValue+60);
+				abilityDuration=0;
+			}
 			t.updateStats(affectedStats);
 		}
 	}
@@ -58,19 +64,33 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 	@Override
 	public void expireEffect(StatWrapper[] targets) {
 		for (StatWrapper t : targets) {
-			System.out.println("dot has been expired on " + t.getOwner().getName());
+			if(effectType == TemporaryEffect.Stun){
+				BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance",new ArrayList<Stat>(){
+					{
+						add(new Stat(StatEnumeration.StunResist,60,false));
+					}
+				},1,TemporaryEffect.Buff);
+				t.getOwner().learnAbility(stunLockAbuse);
+				t.getOwner().useAbility(stunLockAbuse, new StatWrapper[] {t});
+			}
+			System.out.println(this.getName()+ "has been expired on " + t.getOwner().getName());
 		}
 	}
 
 	private boolean ifDotApplies(StatWrapper target, StatWrapper user) {
 		Random rand = new Random();
 		int chance = rand.nextInt(100);
-		if (effectType == TemporaryEffect.Bleed) {
-			return chance > user.getStatbyName(StatEnumeration.BleedResist).getCurValue();
-		} else if (effectType == TemporaryEffect.Blight) {
-			return chance > user.getStatbyName(StatEnumeration.BlightResist).getCurValue();
-		} else {
-			return chance > user.getStatbyName(StatEnumeration.StressResist).getCurValue();
+		switch (effectType) {
+		case Bleed:
+			return chance> user.getStatbyName(StatEnumeration.BleedResist).getCurValue();
+		case Blight:
+			return chance> user.getStatbyName(StatEnumeration.BlightResist).getCurValue();
+		case MindLeak:
+			return chance> user.getStatbyName(StatEnumeration.StressResist).getCurValue();
+		case Stun:
+			return chance> user.getStatbyName(StatEnumeration.StunResist).getCurValue();
+		default:
+			return false;
 		}
-	}
+	}		
 }
