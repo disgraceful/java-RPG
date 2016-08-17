@@ -7,13 +7,13 @@ public enum StatEnumeration {
 	//dmg stats:
 	Damage,
 	//utility stats:
-	Speed,
+	Speed, Position,
 	//resist stats:
-	BleedResist, BlightResist, StressResist, StunResist, CurseResist,
+	BleedResist, BlightResist, StressResist, StunResist, CurseResist, MoveResist,
 	//protection stats:
 	PhysicalProtection, MagicalProtection;
 	/*Others(considerable):
-	 Resists: , MoveResist, CurseResist, DiseaseResist, DebuffResist, DeathblowResist, TrapDisarm, VirtueChance 
+	 Resists: DiseaseResist, DebuffResist, DeathblowResist, TrapDisarm, VirtueChance 
 	 AccuracyModifier, CriticalChance, Dodge, 
 	  
 	*/

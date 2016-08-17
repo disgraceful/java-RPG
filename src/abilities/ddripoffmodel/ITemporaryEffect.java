@@ -1,7 +1,12 @@
-package ddripoffmodel.abilities;
+package abilities.ddripoffmodel;
 
 import ddripoffmodel.StatWrapper;
-
+/**
+ * 
+ * @author Kashapov
+ *
+ * describes abilities which works through time 
+ */
 public interface ITemporaryEffect{
 	
 	public int getEffectDuration();

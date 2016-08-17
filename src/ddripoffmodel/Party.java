@@ -19,24 +19,27 @@ public class Party {
 
 	public void addMember(Character c) {
 		partyMembers.add(c);
+		c.setParty(this);
 	}
 
 	public void addMember(Character c,int position){
 		partyMembers.add(position,c);
+		c.setParty(this);
 	}
 	
-	private boolean checkIfCharExists(Character c) {
+	private boolean ifCharExists(Character c) {
 		return partyMembers.contains(c);
 	}
 	
 	public int getPosition(Character c){
+		
 		return partyMembers.indexOf(c);
 	}
 	public void reposition(Character c, int newposition) {
-		if (checkIfCharExists(c)) {
+		if (ifCharExists(c)) {
 			if (partyMembers.size() >= 1&&newposition <= partyMembers.size()) {
 				partyMembers.remove(partyMembers.get(partyMembers.indexOf(c)));
-				partyMembers.add(newposition, c);
+				addMember(c, newposition);
 			} else {
 				addMember(c);
 			}

@@ -2,7 +2,7 @@ package ddripoffmodel;
 
 import java.util.ArrayList;
 
-import ddripoffmodel.abilities.Ability;
+import abilities.ddripoffmodel.Ability;
 
 public class Hero extends Character {
 

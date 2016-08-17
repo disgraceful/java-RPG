@@ -1,4 +1,4 @@
-package ddripoffmodel.abilities;
+package abilities.ddripoffmodel;
 
 import java.util.ArrayList;
 

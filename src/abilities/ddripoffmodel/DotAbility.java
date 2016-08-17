@@ -1,4 +1,4 @@
-package ddripoffmodel.abilities;
+package abilities.ddripoffmodel;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,9 +7,18 @@ import ddripoffmodel.Stat;
 import ddripoffmodel.StatEnumeration;
 import ddripoffmodel.StatWrapper;
 
+/**
+ * 
+ * @author Kashapov
+ *
+ *         describes temporary abilities such as bleed, blight, stun, mindleak
+ */
 public class DotAbility extends Ability implements ITemporaryEffect {
-
+	
+	// duration of ability effect
 	private int abilityDuration;
+	
+	// defines ability type: bleed, blight, etc
 	private final TemporaryEffect effectType;
 
 	public DotAbility(String name, ArrayList<Stat> stat, int duration, TemporaryEffect effecttype) {
@@ -18,14 +27,24 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 		abilityDuration = duration;
 	}
 
+	/**
+	 * copies object a
+	 * 
+	 * @param a
+	 *            copied object
+	 */
 	public DotAbility(DotAbility a) {
 		this(a.getName(), a.getStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
 	}
 
 	@Override
+	/**
+	 * applies when character uses ability
+	 */
 	public void useAbility(StatWrapper[] targets, StatWrapper user) {
 		for (StatWrapper t : targets) {
 			if (ifDotApplies(t, user)) {
+				// add effect to characters' effect list
 				t.getOwner().getEffectsList().add(new DotAbility(this));
 				System.out.println(t.getOwner().getName() + " has been dotted");
 			}
@@ -48,49 +67,61 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 	}
 
 	@Override
+	/**
+	 * @param t target stats which change every turn, while ability is active
+	 */
 	public void tickEffect(StatWrapper t) {
 		if (abilityDuration >= 0) {
 			this.abilityDuration--;
 		} else {
-			if(effectType == TemporaryEffect.Stun){
-				int curValue = t.getStatbyName(StatEnumeration.StressResist).getCurValue();
-				t.getStatbyName(StatEnumeration.StressResist).setValue(curValue+60);
-				abilityDuration=0;
-			}
 			t.updateStats(affectedStats);
 		}
 	}
 
 	@Override
+	/**
+	 * works when ability duration ends
+	 */
 	public void expireEffect(StatWrapper[] targets) {
 		for (StatWrapper t : targets) {
-			if(effectType == TemporaryEffect.Stun){
-				BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance",new ArrayList<Stat>(){
+			if (effectType == TemporaryEffect.Stun) {
+				//boss stunlock protection
+				BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance", new ArrayList<Stat>() {
 					{
-						add(new Stat(StatEnumeration.StunResist,60,false));
+						add(new Stat(StatEnumeration.StunResist, 60, true));
 					}
-				},1,TemporaryEffect.Buff);
+				}, 1, TemporaryEffect.Buff);
 				t.getOwner().learnAbility(stunLockAbuse);
-				t.getOwner().useAbility(stunLockAbuse, new StatWrapper[] {t});
+				t.getOwner().useAbility(stunLockAbuse, new StatWrapper[] { t });
 			}
-			System.out.println(this.getName()+ "has been expired on " + t.getOwner().getName());
+			System.out.println(this.getName() + "has been expired on " + t.getOwner().getName());
 		}
 	}
 
+	/**
+	 * check if dot resistance>dot chance
+	 * 
+	 * @param target
+	 *            target of ability(def stats)
+	 * @param user
+	 *            caster of ability(attack stats)
+	 * @return true if target is dotted
+	 */
 	private boolean ifDotApplies(StatWrapper target, StatWrapper user) {
 		Random rand = new Random();
-		int chance = rand.nextInt(100);
+		//int chance = rand.nextInt(100);
+		int chance = 100;
 		switch (effectType) {
 		case Bleed:
-			return chance> user.getStatbyName(StatEnumeration.BleedResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.BleedResist).getCurValue();
 		case Blight:
-			return chance> user.getStatbyName(StatEnumeration.BlightResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.BlightResist).getCurValue();
 		case MindLeak:
-			return chance> user.getStatbyName(StatEnumeration.StressResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.StressResist).getCurValue();
 		case Stun:
-			return chance> user.getStatbyName(StatEnumeration.StunResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.StunResist).getCurValue();
 		default:
 			return false;
 		}
-	}		
+	}
 }

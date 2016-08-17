@@ -3,6 +3,9 @@ package game;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import abilities.ddripoffmodel.Ability;
+import abilities.ddripoffmodel.ITemporaryEffect;
+import abilities.ddripoffmodel.MoveAbility;
 import ddripoffmodel.Character;
 import ddripoffmodel.Hero;
 import ddripoffmodel.Party;
@@ -10,11 +13,6 @@ import ddripoffmodel.Stat;
 import ddripoffmodel.StatEnumeration;
 import ddripoffmodel.StatWrapper;
 import ddripoffmodel.Trinket;
-import ddripoffmodel.abilities.Ability;
-import ddripoffmodel.abilities.Curse;
-import ddripoffmodel.abilities.DotAbility;
-import ddripoffmodel.abilities.ITemporaryEffect;
-import ddripoffmodel.abilities.TemporaryEffect;
 
 public class Game {
 
@@ -27,7 +25,6 @@ public class Game {
 	public static void main(String[] args) {
 		// MainMenu.launchMenu(null);
 		test();
-		printPartyInfo(currentParty);
 	}
 
 	private static void newTurn() {
@@ -63,36 +60,51 @@ public class Game {
 				add(new Stat(StatEnumeration.Damage, 1, 100));
 				add(new Stat(StatEnumeration.Speed, 1, 100));
 				add(new Stat(StatEnumeration.BleedResist, 0, 100));
+				add(new Stat(StatEnumeration.StunResist, 20, 100));
 			}
 		});
 		hero2.getStatWrapper().setOwner(hero2);
 
-		printHeroInfo(hero1);
-		printHeroInfo(hero2);
-		DotAbility dot1 = new DotAbility("Bleeding ass", new ArrayList<Stat>() {
-			{
-				add(new Stat(StatEnumeration.Health, -1, false));
-			}
-		}, 3, TemporaryEffect.Bleed);
-
-		hero2.learnAbility(dot1);
-		hero2.useAbility(dot1, new StatWrapper[] { hero1.getStatWrapper() });
-		Curse curse1 = new Curse();
-		curse1.affectCurse(new StatWrapper[]{hero1.getStatWrapper()});
 		currentParty = new Party();
 		currentParty.addMember(hero1);
-		newTurn();
-		newTurn();
-		newTurn();
-		printHeroInfo(hero1);
+		currentParty.addMember(hero2, 0);
+		printPartyInfo(currentParty);
+
+		/*DotAbility dot = new DotAbility("stun", new ArrayList<Stat>() {
+			{
+				add(new Stat(StatEnumeration.Health, 0, false));
+			}
+		}, 1, TemporaryEffect.Stun);
+		 		
+		hero1.learnAbility(dot);
+		hero1.useAbility(dot, new StatWrapper[] { hero2.getStatWrapper() });
+*/
+		
+		MoveAbility move = new MoveAbility("Move shit", new ArrayList<Stat>(){
+			{
+				add(new Stat(StatEnumeration.Position,-1,4));
+			}
+		});
+		
+		hero1.learnAbility(move);
+		hero1.useAbility(move, new StatWrapper[]{hero1.getStatWrapper()});
+		
+		printPartyInfo(currentParty);
+//		newTurn();
+//		newTurn();
+//		printHeroInfo(hero2);
+//		newTurn();
+//		printHeroInfo(hero2);
 
 	}
 
 	private static void printHeroInfo(Hero hero) {
 		System.out.println(hero.getName());
 		for (Stat s : hero.getStatWrapper().getStatsasArrayList()) {
-			System.out.println(hero.getName() + "'s " + s.getType().toString() +": "+ s.getCurValue()); //+ "/"+s.getMaxValue());
+			System.out.println(hero.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
+																											// "/"+s.getMaxValue());
 		}
+		System.out.println(hero.getName()+ "'s position: "+ hero.getPosition());
 	}
 
 	private static void printTrinketInfo(Trinket trinket) {

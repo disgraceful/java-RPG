@@ -1,4 +1,4 @@
-package ddripoffmodel.abilities;
+package abilities.ddripoffmodel;
 
 import java.util.ArrayList;
 
@@ -81,7 +81,8 @@ public class DamageAbility extends Ability {
 	/**
 	 * transfer damage number into health/stress loss/gain
 	 * 
-	 * @param damage number of real damage ready to be applied
+	 * @param damage
+	 *            number of real damage ready to be applied
 	 * @return
 	 */
 	private StatWrapper calculateAbilityResult(int damage) {
@@ -92,13 +93,12 @@ public class DamageAbility extends Ability {
 				}
 			});
 			return s;
-		}
-		else{
+		} else {
 			StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
 				{
 					add(new Stat(StatEnumeration.Health, -damage, false));
 				}
-			});	
+			});
 			return s;
 		}
 	}
