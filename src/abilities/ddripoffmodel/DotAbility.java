@@ -108,8 +108,7 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 	 * @return true if target is dotted
 	 */
 	private boolean ifDotApplies(StatWrapper target, StatWrapper user) {
-		Random rand = new Random();
-		//int chance = rand.nextInt(100);
+		//int chance = (int)(Math.random()*100);
 		int chance = 100;
 		switch (effectType) {
 		case Bleed:

@@ -1,10 +1,15 @@
 package ddripoffmodel;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.awt.*;
+import abilities.ddripoffmodel.*;
 
-import abilities.ddripoffmodel.ITemporaryEffect;
-
+/**
+ * 
+ * @author Kashapov
+ *
+ *describes basics of any game character
+ */
 public class Character implements Comparable<Character>{
 	private String name;
 	private StatWrapper stats;
