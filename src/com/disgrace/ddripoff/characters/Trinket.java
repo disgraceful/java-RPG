@@ -1,4 +1,4 @@
-package ddripoffmodel;
+package com.disgrace.ddripoff.characters;
 
 import java.util.ArrayList;
 

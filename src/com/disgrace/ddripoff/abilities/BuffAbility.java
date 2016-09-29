@@ -1,9 +1,9 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 
 import java.util.ArrayList;
 
-import ddripoffmodel.Stat;
-import ddripoffmodel.StatWrapper;
+import com.disgrace.ddripoff.characters.Stat;
+import com.disgrace.ddripoff.characters.StatWrapper;
 
 /**
  * Covers temporary buff and debuff abilities
@@ -26,8 +26,7 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 	 * @param effecttype(required)buff/debuff
 	 */
 	public BuffAbility(String name, ArrayList<Stat> stat, int duration, TemporaryEffect effecttype) {
-		super(name, stat);
-		abilityDuration = duration;
+			abilityDuration = duration;
 		effectType = effecttype;
 	}
 

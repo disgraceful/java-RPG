@@ -1,6 +1,6 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 
-import ddripoffmodel.StatWrapper;
+import com.disgrace.ddripoff.characters.StatWrapper;
 /**
  * 
  * @author Kashapov

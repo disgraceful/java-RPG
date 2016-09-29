@@ -1,10 +1,10 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 
 import java.util.ArrayList;
 
-import ddripoffmodel.Stat;
-import ddripoffmodel.StatEnumeration;
-import ddripoffmodel.StatWrapper;
+import com.disgrace.ddripoff.characters.Stat;
+import com.disgrace.ddripoff.characters.StatEnumeration;
+import com.disgrace.ddripoff.characters.StatWrapper;
 
 /**
  * 
@@ -14,21 +14,7 @@ import ddripoffmodel.StatWrapper;
  */
 public class DamageAbility extends Ability {
 
-	StatEnumeration defType;// protection type
-
-	/**
-	 * 
-	 * @param name
-	 *            used as name of ability
-	 * @param stat
-	 *            damage caused by ability
-	 * @param deftype
-	 *            stat used to defy protection type from ability damage
-	 */
-	public DamageAbility(String name, ArrayList<Stat> stat, StatEnumeration deftype) {
-		super(name, stat);
-		defType = deftype;
-	}
+	protected StatEnumeration defType;// protection type
 
 	/**
 	 * Function called when ability is used
@@ -56,47 +42,44 @@ public class DamageAbility extends Ability {
 	/**
 	 * Calculates ability damage
 	 * 
-	 * @param target
-	 *            ability target(for defence stats)
-	 * @param user
-	 *            ability user(for offence stats)
+	 * @param target ability target(for defence stats)
+	 * @param user ability user(for offence stats)
 	 * @return damage dealed to target
 	 */
 	private int calculateDmg(StatWrapper target, StatWrapper user) {
-		int potdmg = user.getStatbyName(StatEnumeration.Damage).getCurValue();
+		int potdmg = user.getStatbyName(StatEnumeration.DAMAGE).getCurValue();
 		int realdmg;
 		// check heal or dmg
-		if (affectedStats.getStatbyName(StatEnumeration.Damage).getCurValue() > 0) {
+		if (affectedStats.getStatbyName(StatEnumeration.DAMAGE).getCurValue() > 0) {
 			// dmg
-			potdmg += affectedStats.getStatbyName(StatEnumeration.Damage).getCurValue();
+			potdmg += affectedStats.getStatbyName(StatEnumeration.DAMAGE).getCurValue();
 			int targetdef = target.getStatbyName(defType).getCurValue();
 			realdmg = potdmg - targetdef;// potdmg*(100-targetdef);
 		} else {
 			// heal for amount stated in ability description
-			realdmg = affectedStats.getStatbyName(StatEnumeration.Damage).getCurValue();
+			realdmg = affectedStats.getStatbyName(StatEnumeration.DAMAGE).getCurValue();
 		}
 		return realdmg;
 	}
 
 	/**
-	 * transfer damage number into health/stress loss/gain
+	 * transfer damage number into StatWrapper health/stress mask
 	 * 
-	 * @param damage
-	 *            number of real damage ready to be applied
-	 * @return
+	 * @param damage number of real damage ready to be applied
+	 * @return StatWrapper mask to apply on target's StatWrapper
 	 */
 	private StatWrapper calculateAbilityResult(int damage) {
-		if (defType == StatEnumeration.StressResist) {
+		if (defType == StatEnumeration.STRESSRES) {
 			StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
 				{
-					add(new Stat(StatEnumeration.Stress, damage, false));
+					add(new Stat(StatEnumeration.STRESS, damage, false));
 				}
 			});
 			return s;
 		} else {
 			StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
 				{
-					add(new Stat(StatEnumeration.Health, -damage, false));
+					add(new Stat(StatEnumeration.HEALTH, -damage, false));
 				}
 			});
 			return s;

@@ -1,4 +1,4 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 /**
  * 
  * @author Kashapov

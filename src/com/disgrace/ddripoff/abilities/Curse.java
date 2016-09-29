@@ -1,7 +1,7 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 
-import ddripoffmodel.Stat;
-import ddripoffmodel.StatWrapper;
+import com.disgrace.ddripoff.characters.Stat;
+import com.disgrace.ddripoff.characters.StatWrapper;
 
 public class Curse implements ITemporaryEffect {
 

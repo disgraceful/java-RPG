@@ -1,4 +1,4 @@
-package ddripoffmodel;
+package com.disgrace.ddripoff.characters;
 
 public class Stat {
 	private StatEnumeration type;
@@ -62,7 +62,7 @@ public class Stat {
 			setValue = maxValue;
 			return setValue;
 		} else if (value < 0 && isPrimordial) {
-			if (type == StatEnumeration.Health) {
+			if (type == StatEnumeration.HEALTH) {
 				// hero rip;
 			}
 			return setValue;

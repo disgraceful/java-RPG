@@ -1,11 +1,11 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import ddripoffmodel.Stat;
-import ddripoffmodel.StatEnumeration;
-import ddripoffmodel.StatWrapper;
+import com.disgrace.ddripoff.characters.Stat;
+import com.disgrace.ddripoff.characters.StatEnumeration;
+import com.disgrace.ddripoff.characters.StatWrapper;
 
 /**
  * 
@@ -22,7 +22,7 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 	private final TemporaryEffect effectType;
 
 	public DotAbility(String name, ArrayList<Stat> stat, int duration, TemporaryEffect effecttype) {
-		super(name, stat);
+		//super(name, stat);
 		effectType = effecttype;
 		abilityDuration = duration;
 	}
@@ -88,7 +88,7 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 				//boss stunlock protection
 				BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance", new ArrayList<Stat>() {
 					{
-						add(new Stat(StatEnumeration.StunResist, 60, true));
+						add(new Stat(StatEnumeration.STUNRES, 60, true));
 					}
 				}, 1, TemporaryEffect.Buff);
 				t.getOwner().learnAbility(stunLockAbuse);
@@ -112,13 +112,13 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 		int chance = 100;
 		switch (effectType) {
 		case Bleed:
-			return chance > target.getStatbyName(StatEnumeration.BleedResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.BLEEDRES).getCurValue();
 		case Blight:
-			return chance > target.getStatbyName(StatEnumeration.BlightResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.BLIGHTRES).getCurValue();
 		case MindLeak:
-			return chance > target.getStatbyName(StatEnumeration.StressResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.STRESSRES).getCurValue();
 		case Stun:
-			return chance > target.getStatbyName(StatEnumeration.StunResist).getCurValue();
+			return chance > target.getStatbyName(StatEnumeration.STUNRES).getCurValue();
 		default:
 			return false;
 		}

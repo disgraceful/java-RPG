@@ -1,17 +1,17 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import ddripoffmodel.Stat;
-import ddripoffmodel.StatEnumeration;
-import ddripoffmodel.StatWrapper;
+import com.disgrace.ddripoff.characters.Stat;
+import com.disgrace.ddripoff.characters.StatEnumeration;
+import com.disgrace.ddripoff.characters.StatWrapper;
 
 public class MoveAbility extends Ability {
 
 	public MoveAbility(String name, ArrayList<Stat> stat) {
-		super(name, stat);
-		newPos = affectedStats.getStatbyName(StatEnumeration.Position).getCurValue(); 
+		//super(name, stat);
+		newPos = affectedStats.getStatbyName(StatEnumeration.POSITION).getCurValue(); 
 	}
 	
 	private final int newPos;

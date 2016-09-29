@@ -1,14 +1,12 @@
-package abilities.ddripoffmodel;
+package com.disgrace.ddripoff.abilities;
 
 import java.util.ArrayList;
 
-import ddripoffmodel.Stat;
-import ddripoffmodel.StatWrapper;
+import com.disgrace.ddripoff.characters.Stat;
+import com.disgrace.ddripoff.characters.StatWrapper;
 
 /**
  * Model for Characters' Abilities
- * 
- * <P>
  * Basic variables and description
  * 
  * @author Kashapov Nail
@@ -23,17 +21,13 @@ public abstract class Ability {
 	 * @param stat(required)/(didn't
 	 *            decide yet) stats affected by ability
 	 */
-	public Ability(String name, ArrayList<Stat> stat) {
-		this.name = name;
-		this.affectedStats = new StatWrapper(stat);
-	}
 	
-
+	
 	/** basic fields */
-	private String name;
-	protected StatWrapper affectedStats;
+	protected String name;
 	protected String description;
-
+	protected StatWrapper affectedStats;
+	
 	/** Return name of ability passed to constructor */
 	public String getName() {
 		return name;
@@ -50,15 +44,6 @@ public abstract class Ability {
 	}
 
 	/**
-	 * Set ability description
-	 * 
-	 * Moved from constructor because it is supposed to be wall of text
-	 */
-	public void setDecsription(String description) {
-		this.description = description;
-	}
-
-	/**
 	 * Method which called by Character whenever ability is used
 	 * 
 	 * @param targets(required)
@@ -69,3 +54,4 @@ public abstract class Ability {
 	public abstract void useAbility(StatWrapper[] targets, StatWrapper user);
 
 }
+ 
