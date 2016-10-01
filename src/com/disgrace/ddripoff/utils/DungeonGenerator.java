@@ -12,8 +12,7 @@ public class DungeonGenerator {
 
 	private static Random rand = new Random();
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {	
 		Dungeon.rooms.add(new Room());
 		Dungeon.rooms.add(new Room());
 		Dungeon.rooms.add(new Room());
