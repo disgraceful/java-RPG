@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.characters;
+package com.disgrace.ddripoff.items;
 
 public abstract class Item {
 	private String name;

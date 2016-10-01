@@ -1,12 +1,8 @@
-package com.disgrace.ddripoff.utils;
+package com.disgrace.ddripoff.locations.dungeons;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-
-import com.disgrace.ddripoff.locations.Dungeon;
-import com.disgrace.ddripoff.locations.Room;
-import com.disgrace.ddripoff.locations.RoomSide;
 
 public class DungeonGenerator {
 

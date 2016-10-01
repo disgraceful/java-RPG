@@ -1,6 +1,8 @@
-package com.disgrace.ddripoff.characters;
+package com.disgrace.ddripoff.characters.stats;
 
 import java.util.ArrayList;
+
+import com.disgrace.ddripoff.characters.Hero;
 
 public class StatWrapper {
 	private Hero owner;

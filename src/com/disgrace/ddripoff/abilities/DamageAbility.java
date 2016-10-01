@@ -2,9 +2,9 @@ package com.disgrace.ddripoff.abilities;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.characters.Stat;
-import com.disgrace.ddripoff.characters.StatEnumeration;
-import com.disgrace.ddripoff.characters.StatWrapper;
+import com.disgrace.ddripoff.characters.stats.Stat;
+import com.disgrace.ddripoff.characters.stats.StatEnumeration;
+import com.disgrace.ddripoff.characters.stats.StatWrapper;
 
 /**
  * 

@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 import com.disgrace.ddripoff.characters.Hero;
 import com.disgrace.ddripoff.characters.HeroClass;
-import com.disgrace.ddripoff.characters.Stat;
-import com.disgrace.ddripoff.characters.StatEnumeration;
-import com.disgrace.ddripoff.characters.StatWrapper;
-import com.disgrace.ddripoff.characters.centurion.abilities.SwordSwing;
+import com.disgrace.ddripoff.characters.stats.Stat;
+import com.disgrace.ddripoff.characters.stats.StatEnumeration;
+import com.disgrace.ddripoff.characters.stats.StatWrapper;
 
 public class Centurion extends Hero {
 
-	public Centurion(String name) {
-		super(name);
+	public Centurion() {
+		name = "Default";
 		initHero();
 	}
 	

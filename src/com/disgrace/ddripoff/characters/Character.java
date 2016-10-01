@@ -2,9 +2,10 @@ package com.disgrace.ddripoff.characters;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.abilities.*;
-
-import java.awt.*;
+import com.disgrace.ddripoff.abilities.Ability;
+import com.disgrace.ddripoff.abilities.ITemporaryEffect;
+import com.disgrace.ddripoff.characters.stats.StatEnumeration;
+import com.disgrace.ddripoff.characters.stats.StatWrapper;
 
 public class Character implements Comparable<Character>{
 	protected String name;
@@ -17,10 +18,6 @@ public class Character implements Comparable<Character>{
 		return name;
 	}
 	
-	public Character(String name) {
-		this.name = name;
-	}
-		
 	public StatWrapper getStatWrapper() {
 		return stats;
 	}

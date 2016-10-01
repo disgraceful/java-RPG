@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.characters;
+package com.disgrace.ddripoff.characters.stats;
 
 public enum StatEnumeration {
 

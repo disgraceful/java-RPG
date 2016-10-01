@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.locations;
+package com.disgrace.ddripoff.locations.dungeons;
 
 import java.util.Arrays;
 import java.util.Collections;

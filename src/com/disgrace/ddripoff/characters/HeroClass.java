@@ -1,12 +1,17 @@
 package com.disgrace.ddripoff.characters;
 
 public enum HeroClass {
-	CENTURION,
-	DISHONORED,
-	PRIEST,
-	PURFIER;
-	
-	@Override public String toString(){
-		return this.getClass().toString();
+	CENTURION("Centurion"), DISHONORED("Dishonored"), PRIEST("Priest"), PURFIER("Purifier");
+
+	private String name;
+
+	private HeroClass(String name) {
+		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+
 }

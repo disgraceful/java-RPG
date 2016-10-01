@@ -3,9 +3,9 @@ package com.disgrace.ddripoff.characters.centurion.abilities;
 import java.util.ArrayList;
 
 import com.disgrace.ddripoff.abilities.DamageAbility;
-import com.disgrace.ddripoff.characters.Stat;
-import com.disgrace.ddripoff.characters.StatEnumeration;
-import com.disgrace.ddripoff.characters.StatWrapper;
+import com.disgrace.ddripoff.characters.stats.Stat;
+import com.disgrace.ddripoff.characters.stats.StatEnumeration;
+import com.disgrace.ddripoff.characters.stats.StatWrapper;
 
 public class SwordSwing extends DamageAbility {
 
@@ -14,7 +14,7 @@ public class SwordSwing extends DamageAbility {
 	}
 	
 	public void useAbility(StatWrapper[] targets, StatWrapper user) {
-		super.useAbility(targets, user);
+		//super.useAbility(targets, user);
 	}
 	
 	private void initAbility(){
