@@ -2,6 +2,8 @@ package com.disgrace.ddripoff.characters;
 
 import java.util.ArrayList;
 
+import com.disgrace.ddripoff.locations.dungeons.components.Enterable;
+
 
 public class Party {
 	private ArrayList<Character> partyMembers = new ArrayList<Character>();
@@ -44,5 +46,9 @@ public class Party {
 				addMember(c);
 			}
 		}
+	}
+	
+	public void enter(Enterable e){
+		
 	}
 }

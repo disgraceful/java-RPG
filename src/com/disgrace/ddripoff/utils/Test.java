@@ -20,9 +20,11 @@ public class Test {
 	// private Battle battle;
 	private static Party currentParty;
 	private ArrayList<Room> roomlist;
+	
 
 	public static void main(String[] args) {
 		//TestTown.testCoach();
+		TestDungeon.testDung();
 	}
 
 	private static void newTurn() {

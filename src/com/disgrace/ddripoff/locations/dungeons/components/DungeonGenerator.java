@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class DungeonGenerator {
-
 	private static Random rand = new Random();
 
 	public static void buildLevel(Dungeon dungeon) {
