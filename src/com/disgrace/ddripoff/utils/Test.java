@@ -11,7 +11,7 @@ import com.disgrace.ddripoff.characters.Party;
 import com.disgrace.ddripoff.characters.stats.Stat;
 import com.disgrace.ddripoff.characters.stats.StatWrapper;
 import com.disgrace.ddripoff.items.Trinket;
-import com.disgrace.ddripoff.locations.dungeons.Room;
+import com.disgrace.ddripoff.locations.dungeons.components.Room;
 
 public class Test {
 
@@ -22,7 +22,7 @@ public class Test {
 	private ArrayList<Room> roomlist;
 
 	public static void main(String[] args) {
-		TestTown.testCoach();
+		//TestTown.testCoach();
 	}
 
 	private static void newTurn() {

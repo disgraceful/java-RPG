@@ -24,7 +24,7 @@ public class VenturerCoach implements Location  {
 	
 	public void spawnVenturers(){
 		for (int i = 0; i < ROSTER_CAP; i++) {
-			HeroClass s = Hero.ALL_HERO_TYPES.get(new Random().nextInt(Hero.ALL_HERO_TYPES.size()));
+			HeroClass s = HeroClass.getRandomValue();
 			Hero.generateHero(s);
 		}
 	}

@@ -8,14 +8,7 @@ import com.disgrace.ddripoff.items.Trinket;
 
 public class Hero extends Character {
 
-	public static final ArrayList<HeroClass> ALL_HERO_TYPES = new ArrayList<HeroClass>() {
-		{
-			add(HeroClass.CENTURION);
-			add(HeroClass.DISHONORED);
-			add(HeroClass.PRIEST);
-			add(HeroClass.PURFIER);
-		}
-	};
+	
 	protected HeroClass heroClass;
 	private ArrayList<Trinket> inventory = new ArrayList<Trinket>();
 	private ArrayList<Ability> learnedAbilities = new ArrayList<Ability>();
