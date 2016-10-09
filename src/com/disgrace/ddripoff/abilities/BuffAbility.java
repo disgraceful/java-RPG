@@ -11,7 +11,7 @@ import com.disgrace.ddripoff.characters.stats.StatWrapper;
  * @author Kashapov
  *
  */
-public class BuffAbility extends Ability implements ITemporaryEffect {
+public abstract class BuffAbility extends Ability implements ITemporaryEffect {
 	/**
 	 * Constructor
 	 * 
@@ -50,7 +50,7 @@ public class BuffAbility extends Ability implements ITemporaryEffect {
 	public void useAbility(StatWrapper[] targets, StatWrapper user) {
 		for (StatWrapper t : targets) {
 			t.updateStats(affectedStats);
-			t.getOwner().getEffectsList().add(new BuffAbility(this));
+			//t.getOwner().getEffectsList().add(new BuffAbility(this));
 			System.out.println(t.getOwner().getName() + " has been buffed");
 		}
 	}

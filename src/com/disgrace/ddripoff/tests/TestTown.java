@@ -1,20 +1,19 @@
-package com.disgrace.ddripoff.utils;
+package com.disgrace.ddripoff.tests;
 
-import com.disgrace.ddripoff.characters.Hero;
+import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.locations.hub.VenturerCoach;
 
 public class TestTown {
-	
-	public static void testCoach(){
+
+	public static void testCoach() {
 		VenturerCoach s = new VenturerCoach();
 		s.spawnVenturers();
-		for(Hero h :s.getVenturers()){
+		for (Hero h : s.getVenturers()) {
 			System.out.println(h.hashCode());
-			
+
 		}
-		
-		
-		
-		
 	}
+	
+	
+	
 }

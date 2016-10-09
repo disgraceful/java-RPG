@@ -12,7 +12,7 @@ import com.disgrace.ddripoff.characters.stats.StatWrapper;
  *
  *         describes temporary abilities such as bleed, blight, stun, mindleak
  */
-public class DotAbility extends Ability implements ITemporaryEffect {
+public abstract class DotAbility extends Ability implements ITemporaryEffect {
 	
 	// duration of ability effect
 	private int abilityDuration;
@@ -44,7 +44,7 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 		for (StatWrapper t : targets) {
 			if (ifDotApplies(t, user)) {
 				// add effect to characters' effect list
-				t.getOwner().getEffectsList().add(new DotAbility(this));
+				//t.getOwner().getEffectsList().add(new DotAbility(this));
 				System.out.println(t.getOwner().getName() + " has been dotted");
 			}
 		}
@@ -85,13 +85,13 @@ public class DotAbility extends Ability implements ITemporaryEffect {
 		for (StatWrapper t : targets) {
 			if (effectType == TemporaryEffect.Stun) {
 				//boss stunlock protection
-				BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance", new ArrayList<Stat>() {
-					{
-						add(new Stat(StatEnumeration.STUNRES, 60, true));
-					}
-				}, 1, TemporaryEffect.Buff);
-				t.getOwner().learnAbility(stunLockAbuse);
-				t.getOwner().useAbility(stunLockAbuse, new StatWrapper[] { t });
+//				BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance", new ArrayList<Stat>() {
+//					{
+//						add(new Stat(StatEnumeration.STUNRES, 60, true));
+//					}
+//				}, 1, TemporaryEffect.Buff);
+//				t.getOwner().learnAbility(stunLockAbuse);
+//				t.getOwner().useAbility(stunLockAbuse, new StatWrapper[] { t });
 			}
 			System.out.println(this.getName() + "has been expired on " + t.getOwner().getName());
 		}

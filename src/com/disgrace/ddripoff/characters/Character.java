@@ -7,7 +7,7 @@ import com.disgrace.ddripoff.abilities.ITemporaryEffect;
 import com.disgrace.ddripoff.characters.stats.StatEnumeration;
 import com.disgrace.ddripoff.characters.stats.StatWrapper;
 
-public class Character implements Comparable<Character>{
+public abstract class Character implements Comparable<Character>{
 	protected String name;
 	protected StatWrapper stats;
 	protected ArrayList<ITemporaryEffect>tempEffects= new ArrayList<ITemporaryEffect>(); 
@@ -47,7 +47,9 @@ public class Character implements Comparable<Character>{
 	}
 	
 	@Override public int compareTo(Character c1) {
-		int comparespeed = ((Character)c1).getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
+		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
 		return comparespeed-this.stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
 	}
+	
+	protected abstract void init();
 }

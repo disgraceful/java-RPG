@@ -8,7 +8,7 @@ public class Curse implements ITemporaryEffect {
 	public void affectCurse(StatWrapper[] targets){
 		for(StatWrapper t : targets){
 			for(Stat s :t.getStatsasArrayList()){
-				s.setValue((int)s.getCurValue()/2);
+				s.setValue(s.getCurValue()/2);
 			}
 		}
 	}

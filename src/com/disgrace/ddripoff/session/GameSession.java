@@ -2,7 +2,7 @@ package com.disgrace.ddripoff.session;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.characters.Hero;
+import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.locations.hub.Town;
 
 public class GameSession {

@@ -6,7 +6,7 @@ import java.util.List;
 public class Corridor {
 	Room begin;
 	Room end;
-	List<CorridorSection> sections;
+	ArrayList<CorridorSection> sections;
 
 	public Corridor() {
 		sections = new ArrayList<CorridorSection>() {
@@ -26,7 +26,7 @@ public class Corridor {
 		this.end = end;
 		// System.out.println("This Corridor unites " + this.begin.toString() + " and " + this.end.toString());
 	}
-
+	
 	private void setSections() {
 		for (int i = 0; i < sections.size(); i++) {
 			CorridorSection section = sections.get(i);
@@ -37,12 +37,9 @@ public class Corridor {
 				section.setNext(sections.get(i + 1));
 			}
 		}
-
-		// Iterator<CorridorSection> iter = sections.iterator();
-		// while(iter.hasNext()){
-		// CorridorSection section = iter.next();
-		//
-		// }
 	}
-
+	
+	public ArrayList<CorridorSection> getSections(){
+		return sections;
+	}
 }

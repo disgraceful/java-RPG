@@ -1,10 +1,9 @@
 package com.disgrace.ddripoff.locations.hub;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-import com.disgrace.ddripoff.characters.Hero;
-import com.disgrace.ddripoff.characters.HeroClass;
+import com.disgrace.ddripoff.characters.heroes.Hero;
+import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.locations.Location;
 
 public class VenturerCoach implements Location  {

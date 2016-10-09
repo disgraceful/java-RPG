@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.characters;
+package com.disgrace.ddripoff.characters.heroes;
 
 import java.util.ArrayList;
 import java.util.Random;

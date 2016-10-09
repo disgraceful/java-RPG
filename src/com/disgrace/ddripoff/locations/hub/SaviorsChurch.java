@@ -2,8 +2,8 @@ package com.disgrace.ddripoff.locations.hub;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.characters.Hero;
-import com.disgrace.ddripoff.characters.stats.Stat; 
+import com.disgrace.ddripoff.characters.heroes.Hero;
+import com.disgrace.ddripoff.characters.stats.Stat;
 import com.disgrace.ddripoff.characters.stats.StatEnumeration;
 import com.disgrace.ddripoff.characters.stats.StatWrapper;
 import com.disgrace.ddripoff.locations.Location;

@@ -49,6 +49,7 @@ public abstract class Ability {
 	 *            Character who used this ability
 	 */
 	public abstract void useAbility(StatWrapper[] targets, StatWrapper user);
+	protected abstract void initAbility();
 
 }
  

@@ -1,12 +1,13 @@
-package com.disgrace.ddripoff.characters;
+package com.disgrace.ddripoff.characters.heroes;
 
 import java.util.ArrayList;
 
+import com.disgrace.ddripoff.characters.Character;
 import com.disgrace.ddripoff.abilities.Ability;
 import com.disgrace.ddripoff.characters.stats.StatWrapper;
 import com.disgrace.ddripoff.items.Trinket;
 
-public class Hero extends Character {
+public abstract class Hero extends Character {
 
 	
 	protected HeroClass heroClass;
@@ -61,5 +62,6 @@ public class Hero extends Character {
 		
 		return null;
 	}
+	
 
 }

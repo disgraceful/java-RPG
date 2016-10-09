@@ -7,7 +7,7 @@ import com.disgrace.ddripoff.characters.stats.Stat;
 import com.disgrace.ddripoff.characters.stats.StatEnumeration;
 import com.disgrace.ddripoff.characters.stats.StatWrapper;
 
-public class MoveAbility extends Ability {
+public abstract class MoveAbility extends Ability {
 
 	public MoveAbility(String name, ArrayList<Stat> stat) {
 		//super(name, stat);

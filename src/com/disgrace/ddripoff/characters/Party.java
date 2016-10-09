@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.disgrace.ddripoff.locations.dungeons.components.Enterable;
 
-
 public class Party {
 	private ArrayList<Character> partyMembers = new ArrayList<Character>();
 
@@ -24,22 +23,22 @@ public class Party {
 		c.setParty(this);
 	}
 
-	public void addMember(Character c,int position){
-		partyMembers.add(position,c);
+	public void addMember(Character c, int position) {
+		partyMembers.add(position, c);
 		c.setParty(this);
 	}
-	
+
 	private boolean ifCharExists(Character c) {
 		return partyMembers.contains(c);
 	}
-	
-	public int getPosition(Character c){
-		
+
+	public int getPosition(Character c) {
 		return partyMembers.indexOf(c);
 	}
+
 	public void reposition(Character c, int newposition) {
 		if (ifCharExists(c)) {
-			if (partyMembers.size() >= 1&&newposition <= partyMembers.size()) {
+			if (partyMembers.size() >= 1 && newposition <= partyMembers.size()) {
 				partyMembers.remove(partyMembers.get(partyMembers.indexOf(c)));
 				addMember(c, newposition);
 			} else {
@@ -47,8 +46,18 @@ public class Party {
 			}
 		}
 	}
-	
-	public void enter(Enterable e){
-		
+
+//	public void goTo(Enterable destination, Enterable current) {
+//		if (current != null) {
+//			current.leave();
+//			System.out.println(this.toString() + " has left " + current.toString());
+//		}
+//		destination.enter();
+//		System.out.println(this.toString() + " has entered " + destination.toString());
+//	}
+
+	@Override
+	public String toString() {
+		return "Main party";
 	}
 }

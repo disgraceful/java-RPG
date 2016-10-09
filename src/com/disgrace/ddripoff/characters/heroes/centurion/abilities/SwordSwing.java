@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.characters.centurion.abilities;
+package com.disgrace.ddripoff.characters.heroes.centurion.abilities;
 
 import java.util.ArrayList;
 
@@ -13,11 +13,13 @@ public class SwordSwing extends DamageAbility {
 		initAbility();
 	}
 	
+	@Override
 	public void useAbility(StatWrapper[] targets, StatWrapper user) {
 		//super.useAbility(targets, user);
 	}
 	
-	private void initAbility(){
+	@Override
+	protected void initAbility(){
 		this.name = "Sword Swing";
 		this.description = "Cool description";
 		this.defType = StatEnumeration.PHYSPROT;

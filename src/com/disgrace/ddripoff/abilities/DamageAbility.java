@@ -12,7 +12,7 @@ import com.disgrace.ddripoff.characters.stats.StatWrapper;
  *
  *         Describes damage and heal abilities
  */
-public class DamageAbility extends Ability {
+public abstract class DamageAbility extends Ability {
 
 	protected StatEnumeration defType;// protection type
 
@@ -24,6 +24,7 @@ public class DamageAbility extends Ability {
 	 * @param user
 	 *            character who used this ability
 	 */
+	@Override
 	public void useAbility(StatWrapper[] targets, StatWrapper user) {
 		for (StatWrapper t : targets) {
 			int dmg = calculateDmg(t, user);

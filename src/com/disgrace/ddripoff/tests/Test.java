@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.utils;
+package com.disgrace.ddripoff.tests;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,8 +6,8 @@ import java.util.Iterator;
 import com.disgrace.ddripoff.abilities.Ability;
 import com.disgrace.ddripoff.abilities.ITemporaryEffect;
 import com.disgrace.ddripoff.characters.Character;
-import com.disgrace.ddripoff.characters.Hero;
 import com.disgrace.ddripoff.characters.Party;
+import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.stats.Stat;
 import com.disgrace.ddripoff.characters.stats.StatWrapper;
 import com.disgrace.ddripoff.items.Trinket;
