@@ -3,10 +3,10 @@ package com.disgrace.ddripoff.session;
 import java.util.Iterator;
 
 import com.disgrace.ddripoff.characters.Party;
-import com.disgrace.ddripoff.locations.dungeons.Dungeon;
-import com.disgrace.ddripoff.locations.dungeons.components.Corridor;
-import com.disgrace.ddripoff.locations.dungeons.components.CorridorSection;
-import com.disgrace.ddripoff.locations.dungeons.components.Room;
+import com.disgrace.ddripoff.dungeon.Corridor;
+import com.disgrace.ddripoff.dungeon.CorridorSection;
+import com.disgrace.ddripoff.dungeon.Dungeon;
+import com.disgrace.ddripoff.dungeon.Room;
 
 public final class DungeonSession {
 	static boolean active;
@@ -23,18 +23,17 @@ public final class DungeonSession {
 //		chosenParty = party;
 //	}
 	
-	public void startRoomAdventure(Room destination,Room current){
-		current.leave();
-		Corridor cor = current.getCorridor(destination);
-		Iterator iter = cor.getSections().iterator();
-		while(iter.hasNext()){
-			CorridorSection cs =  (CorridorSection) iter.next();
-			cs.enter();
-			cs.leave();
-			iter.remove();
-		}
-		destination.enter();
-	} 
-	
+//	public void startRoomAdventure(Room destination,Room current){
+//		current.leave();
+//		Corridor cor = current.getCorridor(destination);
+//		Iterator iter = cor.getSections().iterator();
+//		while(iter.hasNext()){
+//			CorridorSection cs =  (CorridorSection) iter.next();
+//			cs.enter();
+//			cs.leave();
+//			iter.remove();
+//		}
+//		destination.enter();
+//	} 
 	
 }

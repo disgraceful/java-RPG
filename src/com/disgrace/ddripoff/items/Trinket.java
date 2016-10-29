@@ -2,8 +2,8 @@ package com.disgrace.ddripoff.items;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.characters.stats.Stat;
-import com.disgrace.ddripoff.characters.stats.StatWrapper;
+import com.disgrace.ddripoff.stats.Stat;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 public class Trinket extends Item {
 	private StatWrapper affectedstats;

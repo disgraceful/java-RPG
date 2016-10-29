@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import com.disgrace.ddripoff.abilities.Ability;
 import com.disgrace.ddripoff.abilities.ITemporaryEffect;
-import com.disgrace.ddripoff.characters.stats.StatEnumeration;
-import com.disgrace.ddripoff.characters.stats.StatWrapper;
+import com.disgrace.ddripoff.stats.StatEnumeration;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 public abstract class Character implements Comparable<Character>{
 	protected String name;

@@ -1,6 +1,6 @@
 package com.disgrace.ddripoff.abilities;
 
-import com.disgrace.ddripoff.characters.stats.StatWrapper;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 /**
  * Model for Characters' Abilities

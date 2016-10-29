@@ -2,7 +2,7 @@ package com.disgrace.ddripoff.characters;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.locations.dungeons.components.Enterable;
+import com.disgrace.ddripoff.dungeon.Enterable;
 
 public class Party {
 	private ArrayList<Character> partyMembers = new ArrayList<Character>();

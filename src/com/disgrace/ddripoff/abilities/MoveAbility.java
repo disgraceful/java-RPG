@@ -3,9 +3,9 @@ package com.disgrace.ddripoff.abilities;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.disgrace.ddripoff.characters.stats.Stat;
-import com.disgrace.ddripoff.characters.stats.StatEnumeration;
-import com.disgrace.ddripoff.characters.stats.StatWrapper;
+import com.disgrace.ddripoff.stats.Stat;
+import com.disgrace.ddripoff.stats.StatEnumeration;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 public abstract class MoveAbility extends Ability {
 

@@ -1,32 +1,55 @@
 package com.disgrace.ddripoff.tests;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.disgrace.ddripoff.abilities.Ability;
 import com.disgrace.ddripoff.abilities.ITemporaryEffect;
 import com.disgrace.ddripoff.characters.Character;
 import com.disgrace.ddripoff.characters.Party;
-import com.disgrace.ddripoff.characters.heroes.Hero;
-import com.disgrace.ddripoff.characters.stats.Stat;
-import com.disgrace.ddripoff.characters.stats.StatWrapper;
+import com.disgrace.ddripoff.dungeon.Dungeon;
+import com.disgrace.ddripoff.dungeon.DungeonBuilder;
+import com.disgrace.ddripoff.dungeon.DungeonSize;
+import com.disgrace.ddripoff.dungeon.Room;
+import com.disgrace.ddripoff.heroes.Hero;
 import com.disgrace.ddripoff.items.Trinket;
-import com.disgrace.ddripoff.locations.dungeons.components.Room;
+import com.disgrace.ddripoff.stats.Stat;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 public class Test {
 
-	// private static Turn currentTurn;
 	private static int turnCount;
-	// private Battle battle;
 	private static Party currentParty;
-	private ArrayList<Room> roomlist;
-	
 
 	public static void main(String[] args) {
-		//TestTown.testCoach();
-		TestDungeon.testDung();
+		// TestTown.testCoach();
+		// TestDungeon.testDung();
+		
+		Dungeon d = new Dungeon(DungeonSize.SMALL);
+		Room room = d.rooms[0][0];
+		DungeonBuilder dbuilder = new DungeonBuilder(d);
+//		dbuilder.build();
+//		for(Room r: dbuilder.getDiagonals(room)){
+//			r.display();
+//		};
+//		System.out.println(dbuilder.oneInList(dbuilder.getDiagonals(room)));
+//		d.rooms[1][1].value = 1;
+//		System.out.println(dbuilder.oneInList(dbuilder.getDiagonals(room)));
+		
+		
+		
+		
+		
+		
 	}
+	
+	
+	
+	
+	
 
+	/**
+	 * need to test that shit
+	 */
 	private static void newTurn() {
 		turnCount++;
 		System.out.println("new turn. turncount: " + turnCount);
