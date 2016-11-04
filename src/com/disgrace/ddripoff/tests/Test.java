@@ -6,10 +6,9 @@ import com.disgrace.ddripoff.abilities.Ability;
 import com.disgrace.ddripoff.abilities.ITemporaryEffect;
 import com.disgrace.ddripoff.characters.Character;
 import com.disgrace.ddripoff.characters.Party;
-import com.disgrace.ddripoff.dungeon.Dungeon;
+import com.disgrace.ddripoff.dungeon.Desert;
 import com.disgrace.ddripoff.dungeon.DungeonBuilder;
 import com.disgrace.ddripoff.dungeon.DungeonSize;
-import com.disgrace.ddripoff.dungeon.Room;
 import com.disgrace.ddripoff.heroes.Hero;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.stats.Stat;
@@ -23,20 +22,10 @@ public class Test {
 	public static void main(String[] args) {
 		// TestTown.testCoach();
 		// TestDungeon.testDung();
-		
-		Dungeon d = new Dungeon(DungeonSize.SMALL);
-		Room room = d.rooms[0][0];
-		DungeonBuilder dbuilder = new DungeonBuilder(d);
-//		dbuilder.build();
-//		for(Room r: dbuilder.getDiagonals(room)){
-//			r.display();
-//		};
-//		System.out.println(dbuilder.oneInList(dbuilder.getDiagonals(room)));
-//		d.rooms[1][1].value = 1;
-//		System.out.println(dbuilder.oneInList(dbuilder.getDiagonals(room)));
-		
-		
-		
+		Desert d = new Desert(DungeonSize.SMALL);
+		DungeonBuilder db = new DungeonBuilder(d);
+		db.build();
+		d.displayRooms();
 		
 		
 		

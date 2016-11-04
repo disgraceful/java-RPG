@@ -1,27 +1,32 @@
 package com.disgrace.ddripoff.dungeon;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Room implements Enterable {
-	
-	public int x;
-	public int y;
-	public int value;
-
-	public boolean visited = false;
-	public boolean partyHere = false;
+	private RoomAdds adds = new RoomAdds();
+	//public boolean visited = false;
+	//public boolean partyHere = false;
 	private ArrayList<Room> neighbours = new ArrayList<Room>();
-	private ArrayList<Corridor> corridors = new ArrayList<>();
+	private ArrayList<Corridor> corridors = new ArrayList<Corridor>();
 
-	public void setNeighbour(Room r) {
+	public void setNeighbour(Room room) {
 		if (neighbours.size() < 4) {
-			this.neighbours.add(r);
+			this.neighbours.add(room);
 		}
+	}
+	
+	public RoomAdds getAdds(){
+		return adds;
 	}
 
 	public ArrayList<Room> getNeighbours() {
 		return neighbours;
+	}
+	
+	public void setCorridor(Corridor corridor){
+		if (corridors.size() < 4) {
+			this.corridors.add(corridor);
+		}
 	}
 
 //	@Override
@@ -37,9 +42,9 @@ public class Room implements Enterable {
 //		System.out.println("you have left " + this.toString());
 //	}
 
-	public Corridor getCorridor(Room r) {
+	public Corridor getCorridor(Room room ) {
 		for (Corridor c : corridors) {
-			if ((c.begin == this || c.end == this) && (c.begin == r || c.end == r)) {
+			if ((c.begin == this || c.end == this) && (c.begin == room || c.end == room)) {
 				return c;
 			}
 		}
@@ -52,13 +57,13 @@ public class Room implements Enterable {
 //		return neighbours.contains(e);// | enterables.contains(e);
 //	}
 
-	@Override
-	public String toString() {
-		return " room# " + this.hashCode() + " " + visited + " visited ";
-	}
-
-	public void display(){
-		System.out.println("Room "+ y+" "+ x );
+//	@Override
+//	public String toString() {
+//		return " room# " + this.hashCode() + " " + visited + " visited ";
+//	}
+	
+	public boolean hasEntrance(){
+		return adds.value==0;
 	}
 	
 	public boolean hasNoNeighbours() {
@@ -72,10 +77,37 @@ public class Room implements Enterable {
 		return false;
 	}
 	
+	public boolean isConnectedBy(Corridor corridor){
+		for(Corridor c:corridors){
+			if(c.isSameCorridor(corridor)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void display(){
+		System.out.println("Room "+ adds.y+" "+ adds.x );
+	}
+	
+	public void displayCorridors(){
+		System.out.println("Corridors: ");
+		if(corridors.size()<=0){
+			System.out.println("none");
+		}
+		for(Corridor c: corridors){
+			c.display();
+		}
+	}
+	
 	public void displayNeighbours(){
 		System.out.println("Neighbours: ");
+		if(neighbours.size()<=0){
+			System.out.println("none");
+		}
 		for(Room r: neighbours){
 			r.display();
 		}
 	}
 }
+

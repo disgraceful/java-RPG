@@ -1,6 +1,6 @@
 package com.disgrace.ddripoff.hub;
 
-import com.disgrace.ddripoff.locations.Location;
+import javax.xml.stream.Location;
 
 public class Town {
 	private static Blacksmith BLACKSMITH;
@@ -13,7 +13,5 @@ public class Town {
 		VENTURERS = new VenturerCoach();
 	}
 	
-	private void goTo(Location loc){
-		
-	}
+	
 }

@@ -4,9 +4,8 @@ import java.util.ArrayList;
 
 import com.disgrace.ddripoff.heroes.Hero;
 import com.disgrace.ddripoff.heroes.HeroClass;
-import com.disgrace.ddripoff.locations.Location;
 
-public class VenturerCoach implements Location  {
+public class VenturerCoach {
 	private ArrayList<Hero> avaliableVenturers = new ArrayList<Hero>();
 	static int ROSTER_CAP=8;
 	private int heroSpawnLimit = 3;
