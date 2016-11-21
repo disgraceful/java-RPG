@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class DungeonBuilder {
-	private Dungeon dungeon;
-	private Room[][] rooms;
-	private int xbound;
-	private int ybound;
-	private int minRooms;
-	private int allRooms;
+public final class DungeonBuilder {
+	private final Dungeon dungeon;
+	private final Room[][] rooms;
+	private final int xbound;
+	private final int ybound;
+	private final int minRooms;
+	private final int allRooms;
 
 	public DungeonBuilder(Dungeon dungeon) {
 		this.dungeon = dungeon;
-		rooms = dungeon.rooms;
+		rooms = dungeon.getRooms();
 		xbound = dungeon.size.xbound;
 		ybound = dungeon.size.ybound;
 		minRooms = dungeon.size.minRooms;
@@ -22,23 +22,24 @@ public class DungeonBuilder {
 	}
 
 	public void build() {
-		initRooms();
-		buildRoomRelations();
+		setRooms();
+		setRoomRelations();
+		setRoomCorridors();
 		buildLevel();
-		dungeon.displayRooms(0);
+		dungeon.displayRoomsValue();
 	}
 
-	private void initRooms() {
+	private void setRooms() {
 		for (int i = 0; i < ybound; i++) {
 			for (int j = 0; j < xbound; j++) {
 				rooms[i][j] = new Room();
-				rooms[i][j].x = j;
-				rooms[i][j].y = i;
+				rooms[i][j].getAdds().x = j;
+				rooms[i][j].getAdds().y = i;
 			}
 		}
 	}
 
-	private void buildRoomRelations() {
+	private void setRoomRelations() {
 		for (int i = 0; i < ybound; i++) {
 			for (int j = 0; j < xbound; j++) {
 				if (i + 1 < ybound) {
@@ -57,11 +58,26 @@ public class DungeonBuilder {
 		}
 	}
 
+	private void setRoomCorridors() {
+		for (Room curRoom : dungeon.getRoomsAsList()){
+			if (curRoom.hasEntrance()) {
+				for (Room neighRoom : curRoom.getNeighbours()) {
+					Corridor corridor = new Corridor(curRoom, neighRoom);
+					if (neighRoom.hasEntrance()&& !curRoom.isConnectedBy(corridor)) {		
+						curRoom.setCorridor(corridor);
+						neighRoom.setCorridor(corridor);
+					}
+				}
+			}
+	}
+
+	}
+
 	private void buildLevel() {
 		int tempRooms = allRooms;
 		while (tempRooms > minRooms) {
 			Room roomToDestroy = getRandomRoom();
-			if (roomToDestroy.value == 1) {
+			if (roomToDestroy.getAdds().value == 1) {
 				continue;
 			}
 			if (whereverOne(roomToDestroy) || hasNoNeighbours(roomToDestroy)) {
@@ -69,8 +85,9 @@ public class DungeonBuilder {
 				System.out.println("cant destroy");
 				continue;
 			} else {
-				roomToDestroy.value = 1;
+				roomToDestroy.getAdds().value = 1;
 				roomToDestroy.display();
+
 				tempRooms--;
 				System.out.println("destroyed");
 			}
@@ -85,18 +102,20 @@ public class DungeonBuilder {
 		int y = new Random().nextInt(ybound);
 		int x = new Random().nextInt(xbound);
 		return rooms[y][x];
-		//return rooms[1][1];
+		// return rooms[1][1];
 	}
 
 	private boolean whereverOne(Room room) {
-		if (oneInList(getDiagonals(room,true))||oneInList(getDiagonals(room,false)) || oneInList(getColumn(room.x)) || oneInList(getRow(room.y))) {
+		if (oneInList(getDiagonals(room, true)) || oneInList(getDiagonals(room, false))
+				|| oneInList(getColumn(room.getAdds().x)) || oneInList(getRow(room.getAdds().y))) {
 			return true;
 		}
 		return false;
 	}
 
 	// private boolean outer(Room room) {
-	// if (room.x == xbound-1 || room.x == 0 || room.y == 0 || room.y == ybound-1) {
+	// if (room.x == xbound-1 || room.x == 0 || room.y == 0 || room.y ==
+	// ybound-1) {
 	// return true;
 	// }
 	// return false;
@@ -104,11 +123,11 @@ public class DungeonBuilder {
 
 	private boolean oneInList(List<Room> list) {
 		int count = 0;
-		if(list.size()==1){
+		if (list.size() == 1) {
 			return false;
 		}
 		for (Room r : list) {
-			if (r.value == 0) {
+			if (r.getAdds().value == 0) {
 				count++;
 			}
 		}
@@ -145,16 +164,16 @@ public class DungeonBuilder {
 	private List<Room> getDiagonals(Room room, boolean side) {
 		List<Room> diagonalic = new ArrayList<>();
 		diagonalic.add(room);
-		int xcounter = room.x;
-		int ycounter = room.y;
+		int xcounter = room.getAdds().x;
+		int ycounter = room.getAdds().y;
 		if (side) {
 			while (xcounter < xbound - 1 && ycounter < ybound - 1) {
 				xcounter++;
 				ycounter++;
 				diagonalic.add(rooms[ycounter][xcounter]);
 			}
-			xcounter = room.x;
-			ycounter = room.y;
+			xcounter = room.getAdds().x;
+			ycounter = room.getAdds().y;
 			while (xcounter > 0 && ycounter > 0) {
 				xcounter--;
 				ycounter--;
@@ -168,8 +187,8 @@ public class DungeonBuilder {
 				diagonalic.add(rooms[ycounter][xcounter]);
 
 			}
-			xcounter = room.x;
-			ycounter = room.y;
+			xcounter = room.getAdds().x;
+			ycounter = room.getAdds().y;
 			while (xcounter > 0 && ycounter < ybound - 1) {
 				ycounter++;
 				xcounter--;

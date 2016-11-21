@@ -1,31 +1,39 @@
 package com.disgrace.ddripoff.dungeon;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CorridorSection implements Enterable {
-	private CorridorSection next;
-	private CorridorSection prev;
-
 	private ArrayList<Enterable> neighbours = new ArrayList<Enterable>();
 
-	public boolean visited = false;
-	public boolean partyHere = false;
-
-	public void setNext(CorridorSection section) {
-		if (next == null) {
-			next = section;
-			neighbours.add(next);
-			//System.out.println(this.hashCode() + " has next section " + next.hashCode());
+	//public boolean visited = false;
+	//public boolean partyHere = false;
+	
+	public CorridorSection(){}
+	
+	public ArrayList<Enterable> getNeighbours() {
+		return neighbours;
+	}
+	
+	public void setNeighbour(CorridorSection section){
+		if(neighbours.size()<2){
+			neighbours.add(section);
 		}
 	}
-
-	public void setPrev(CorridorSection section) {
-		if (prev == null) {
-			prev = section;
-			neighbours.add(prev);
-			//System.out.println(this.hashCode() + " has prev section " + prev.hashCode());
-		}
+	
+	public void display(){
+		System.out.println("section# " + this.hashCode());
 	}
+	
+	public void displayNeighbours(){
+		System.out.println("Neighbours: ");
+		for (Enterable section: neighbours) {
+			CorridorSection temp = (CorridorSection)section;
+			temp.display();	
+		}
+		System.out.println(" ");
+	}
+
 
 //	@Override
 //	public void enter() {
@@ -41,9 +49,7 @@ public class CorridorSection implements Enterable {
 //
 //	}
 
-	public ArrayList<Enterable> getNeighbours() {
-		return neighbours;
-	}
+	
 
 //	@Override
 //	public boolean canGoTo(Enterable e) {

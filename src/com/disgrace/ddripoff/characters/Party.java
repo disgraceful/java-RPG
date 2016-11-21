@@ -47,14 +47,6 @@ public class Party {
 		}
 	}
 
-//	public void goTo(Enterable destination, Enterable current) {
-//		if (current != null) {
-//			current.leave();
-//			System.out.println(this.toString() + " has left " + current.toString());
-//		}
-//		destination.enter();
-//		System.out.println(this.toString() + " has entered " + destination.toString());
-//	}
 
 	@Override
 	public String toString() {
