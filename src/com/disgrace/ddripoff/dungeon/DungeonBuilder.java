@@ -24,8 +24,8 @@ public final class DungeonBuilder {
 	public void build() {
 		setRooms();
 		setRoomRelations();
-		setRoomCorridors();
 		buildLevel();
+		setRoomCorridors();
 		dungeon.displayRoomsValue();
 	}
 
@@ -59,17 +59,17 @@ public final class DungeonBuilder {
 	}
 
 	private void setRoomCorridors() {
-		for (Room curRoom : dungeon.getRoomsAsList()){
+		for (Room curRoom : dungeon.getRoomsAsList()) {
 			if (curRoom.hasEntrance()) {
 				for (Room neighRoom : curRoom.getNeighbours()) {
 					Corridor corridor = new Corridor(curRoom, neighRoom);
-					if (neighRoom.hasEntrance()&& !curRoom.isConnectedBy(corridor)) {		
+					if (neighRoom.hasEntrance() && !curRoom.isConnectedBy(corridor)) {
 						curRoom.setCorridor(corridor);
 						neighRoom.setCorridor(corridor);
 					}
 				}
 			}
-	}
+		}
 
 	}
 
@@ -106,20 +106,11 @@ public final class DungeonBuilder {
 	}
 
 	private boolean whereverOne(Room room) {
-		if (oneInList(getDiagonals(room, true)) || oneInList(getDiagonals(room, false))
-				|| oneInList(getColumn(room.getAdds().x)) || oneInList(getRow(room.getAdds().y))) {
+		if (oneInList(getDiagonals(room, true)) || oneInList(getDiagonals(room, false)) || oneInList(getColumn(room.getAdds().x)) || oneInList(getRow(room.getAdds().y))) {
 			return true;
 		}
 		return false;
 	}
-
-	// private boolean outer(Room room) {
-	// if (room.x == xbound-1 || room.x == 0 || room.y == 0 || room.y ==
-	// ybound-1) {
-	// return true;
-	// }
-	// return false;
-	// }
 
 	private boolean oneInList(List<Room> list) {
 		int count = 0;
@@ -185,7 +176,6 @@ public final class DungeonBuilder {
 				xcounter++;
 				ycounter--;
 				diagonalic.add(rooms[ycounter][xcounter]);
-
 			}
 			xcounter = room.getAdds().x;
 			ycounter = room.getAdds().y;

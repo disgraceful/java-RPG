@@ -1,18 +1,27 @@
 package com.disgrace.ddripoff.tests;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 import com.disgrace.ddripoff.dungeon.Desert;
 import com.disgrace.ddripoff.dungeon.DungeonBuilder;
 import com.disgrace.ddripoff.dungeon.DungeonSize;
+import com.disgrace.ddripoff.dungeon.Enterable;
 import com.disgrace.ddripoff.dungeon.Room;
 
 public class TestDungeon {
 	// static DungeonSession sess = new DungeonSession(new Desert(3));
 	public static void testDung() {
-
-		DungeonBuilder dBuilder = new DungeonBuilder(new Desert(DungeonSize.SMALL));
+		Desert d = new Desert(DungeonSize.SMALL);
+		DungeonBuilder dBuilder = new DungeonBuilder(d);
 		dBuilder.build();
+		
+		
+		for (Iterator iterator = d.getAllEnterables().iterator(); iterator.hasNext();) {
+			Enterable type = (Enterable) iterator.next();
+			System.out.println(type.toString());
+			
+		}
 
 		// Dungeon exde = sess.dungeon;
 

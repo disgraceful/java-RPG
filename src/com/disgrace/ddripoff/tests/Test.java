@@ -21,11 +21,11 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TestTown.testCoach();
-		// TestDungeon.testDung();
-		Desert d = new Desert(DungeonSize.SMALL);
-		DungeonBuilder db = new DungeonBuilder(d);
-		db.build();
-		d.displayRooms();
+		 TestDungeon.testDung();
+		//Desert d = new Desert(DungeonSize.SMALL);
+		//DungeonBuilder db = new DungeonBuilder(d);
+		//db.build();
+		//d.displayRooms();
 		
 		
 		
