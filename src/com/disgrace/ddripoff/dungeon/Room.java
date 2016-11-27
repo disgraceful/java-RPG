@@ -3,7 +3,7 @@ package com.disgrace.ddripoff.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room implements Enterable, Neighbour {
+public class Room extends Enterable implements Neighbour {
 	private RoomAdds adds = new RoomAdds();
 	// public boolean visited = false;
 	// public boolean partyHere = false;

@@ -2,9 +2,15 @@ package com.disgrace.ddripoff.characters;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.dungeon.Enterable;
+import com.disgrace.ddripoff.enemies.EnemyClass;
+import com.disgrace.ddripoff.spawn.EnemySpawnFactory;
+import com.disgrace.ddripoff.spawn.EnemySpawnType;
+import com.disgrace.ddripoff.spawn.SpawnPattern;
+import com.disgrace.ddripoff.spawn.SpawnableEnemy;
+import com.disgrace.ddripoff.spawn.SpawnableParty;
 
-public class Party {
+public class Party implements SpawnableParty {
+
 	private ArrayList<Character> partyMembers = new ArrayList<Character>();
 
 	public Party(ArrayList<Character> members) {
@@ -47,9 +53,20 @@ public class Party {
 		}
 	}
 
-
 	@Override
 	public String toString() {
-		return "Main party";
+		return "Party members: " + partyMembers;
+	}
+	
+
+	@Override
+	public SpawnableParty spawnParty(SpawnPattern pattern) {
+		Party spawningParty = new Party();
+		for(EnemySpawnType type : pattern.getSpawnTypes()){
+			for(EnemyClass eClass: EnemyClass.getClassBySpawnType(type)){
+				spawningParty.addMember(EnemySpawnFactory.getEnemy(eClass));
+			}
+		}
+		return spawningParty;
 	}
 }

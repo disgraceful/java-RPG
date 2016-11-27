@@ -22,8 +22,6 @@ public enum HeroClass {
 		this.name = name;
 	}
 
-	
-
 	public static HeroClass getRandomValue() {
 		return VALUES.get(RANDOM.nextInt(SIZE));
 	}

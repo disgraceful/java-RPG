@@ -3,7 +3,7 @@ package com.disgrace.ddripoff.dungeon;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class CorridorSection implements Enterable, Neighbour{
+public class CorridorSection extends Enterable implements Neighbour{
 	private ArrayList<Enterable> neighbours = new ArrayList<Enterable>();
 
 	//public boolean visited = false;

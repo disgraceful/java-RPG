@@ -23,7 +23,7 @@ public class VenturerCoach {
 	public void spawnVenturers(){
 		for (int i = 0; i < ROSTER_CAP; i++) {
 			HeroClass s = HeroClass.getRandomValue();
-			Hero.generateHero(s);
+			//Hero.generateHero(s);
 		}
 	}
 	

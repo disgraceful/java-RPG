@@ -10,6 +10,7 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public abstract class Character implements Comparable<Character>{
 	protected String name;
 	protected StatWrapper stats;
+	
 	protected ArrayList<ITemporaryEffect>tempEffects= new ArrayList<ITemporaryEffect>(); 
 	protected ArrayList<Ability> allAbilities = new ArrayList<Ability>();
 	protected Party party;
@@ -37,7 +38,7 @@ public abstract class Character implements Comparable<Character>{
 	public ArrayList<Ability> getAllAbilities() {
 		return allAbilities;
 	}
-	
+
 	public int getPosition(){
 		return party.getPosition(this);
 	}
@@ -45,6 +46,7 @@ public abstract class Character implements Comparable<Character>{
 	public void Move(int newposition){
 		party.reposition(this, newposition);
 	}
+	
 	
 	@Override public int compareTo(Character c1) {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
