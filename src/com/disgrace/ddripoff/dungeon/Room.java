@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Room extends Enterable implements Neighbour {
 	private RoomAdds adds = new RoomAdds();
-	// public boolean visited = false;
-	// public boolean partyHere = false;
 	private ArrayList<Room> neighbours = new ArrayList<Room>();
 	private ArrayList<Corridor> corridors = new ArrayList<Corridor>();
 
@@ -36,19 +34,6 @@ public class Room extends Enterable implements Neighbour {
 		}
 	}
 
-	// @Override
-	// public void enter() {
-	// visited = true;
-	// partyHere = true;
-	// System.out.println("you have visited " + this.toString());
-	// }
-
-	// @Override
-	// public void leave() {
-	// partyHere = false;
-	// System.out.println("you have left " + this.toString());
-	// }
-
 	public Corridor getCorridor(Room room) {
 		for (Corridor c : corridors) {
 			if ((c.begin == this || c.end == this) && (c.begin == room || c.end == room)) {
@@ -58,16 +43,6 @@ public class Room extends Enterable implements Neighbour {
 		System.out.println("cant find that corridor");
 		return null;
 	}
-
-	// @Override
-	// public boolean canGoTo(Enterable e) {
-	// return neighbours.contains(e);// | enterables.contains(e);
-	// }
-
-	// @Override
-	// public String toString() {
-	// return " room# " + this.hashCode() + " " + visited + " visited ";
-	// }
 
 	public boolean hasEntrance() {
 		return getAdds().value == 1 ? false : true;

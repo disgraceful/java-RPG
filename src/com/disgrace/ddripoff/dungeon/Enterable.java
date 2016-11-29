@@ -4,10 +4,27 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.disgrace.ddripoff.spawn.SpawnEvent;
-import com.disgrace.ddripoff.spawn.SpawnableEventType;
 
 public class Enterable {
 	protected Set<SpawnEvent> events = new HashSet<>();
+	protected boolean partyHere = false;
+	protected boolean visited = false;
+
+	public boolean isPartyHere() {
+		return partyHere;
+	}
+
+	public void setPartyHere(boolean partyHere) {
+		this.partyHere = partyHere;
+	}
+
+	public boolean isVisited() {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
 
 	public Set<SpawnEvent> getEvents() {
 		return events;
@@ -20,12 +37,14 @@ public class Enterable {
 	}
 
 	public void enter() {
+		visited = true;
+		partyHere = true;
 		for (SpawnEvent event : events) {
 			event.trigger();
 		}
 	}
-
-	// void enter();
-	// void leave();
-	// boolean canGoTo(Enterable e);
+	
+	public void leave(){
+		partyHere = false;
+	}
 }

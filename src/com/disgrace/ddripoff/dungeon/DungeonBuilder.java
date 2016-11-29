@@ -11,7 +11,7 @@ public final class DungeonBuilder {
 	private final int ybound;
 	private final int minRooms;
 	private final int allRooms;
-	private final DungeonObjectSpawner DOS;
+	private final DungeonEventSpawner DOS;
 
 	public DungeonBuilder(Dungeon dungeon) {
 		this.dungeon = dungeon;
@@ -20,7 +20,7 @@ public final class DungeonBuilder {
 		ybound = dungeon.size.ybound;
 		minRooms = dungeon.size.minRooms;
 		allRooms = dungeon.getRoomsAsList().size();
-		DOS = new DungeonObjectSpawner(dungeon);
+		DOS = new DungeonEventSpawner(dungeon);
 	}
 
 	public void build() {

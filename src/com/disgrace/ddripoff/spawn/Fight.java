@@ -13,11 +13,6 @@ public class Fight extends SpawnEvent {
 	
 	@Override
 	public void trigger() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-
-	
-
-	
 }

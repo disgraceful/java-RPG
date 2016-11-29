@@ -6,6 +6,6 @@ public abstract class SpawnEvent {
 	public SpawnableEventType getSpawnType() {
 		return spawnType;
 	}
-
+	
 	public abstract void trigger();
 }

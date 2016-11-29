@@ -3,18 +3,18 @@ package com.disgrace.ddripoff.dungeon;
 import java.util.Random;
 import java.util.Set;
 
-import com.disgrace.ddripoff.spawn.Fight;
+import com.disgrace.ddripoff.spawn.SpawnableEventType;
 
-public class DungeonObjectSpawner {
+public class DungeonEventSpawner {
 
 	private Dungeon currentDungeon;
 	private Set<Enterable> possibleSpawnLocations;
 
-	private final int FIGHT_MAX = 20;
+	private final int EVENT_MAX = 25;
 	private final int ODDS_MAX = 100;
 	private final Random RAND = new Random();
 
-	public DungeonObjectSpawner(Dungeon dungeon) {
+	public DungeonEventSpawner(Dungeon dungeon) {
 		this.currentDungeon = dungeon;
 		possibleSpawnLocations = dungeon.getAllEnterables();
 	}
@@ -22,8 +22,8 @@ public class DungeonObjectSpawner {
 	public void generateSpawns() {
 		int chance = RAND.nextInt(ODDS_MAX + 1);
 		for (Enterable e : possibleSpawnLocations) {
-			if (chance > FIGHT_MAX) {
-				e.addEvent(new Fight());
+			if (chance > EVENT_MAX) {
+				e.addEvent(SpawnableEventType.getRandomValue().getEvent());
 			}
 		}
 	}

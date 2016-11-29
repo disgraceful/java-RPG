@@ -10,6 +10,12 @@ public class GameSession {
 	static Town town = new Town();
 	static int gold = 0;
 	
+	private final GameSession SESSION= new GameSession();
+	
+	public GameSession getInstance(){
+		return SESSION;
+	}
+	
 	private GameSession(){
 		
 	}
