@@ -1,14 +1,12 @@
 package com.disgrace.ddripoff.session;
 
-import java.util.ArrayList;
-
-import com.disgrace.ddripoff.heroes.Hero;
+import com.disgrace.ddripoff.heroes.HeroRoster;
 import com.disgrace.ddripoff.hub.Town;
 
 public class GameSession {
-	static ArrayList<Hero> currentRoster = new ArrayList<Hero>();
-	static Town town = new Town();
-	static int gold = 0;
+	private static HeroRoster heroRoster = new HeroRoster();;
+	private static Town town = new Town();
+	private static int gold = 0;
 	
 	private final GameSession SESSION= new GameSession();
 	
@@ -19,5 +17,4 @@ public class GameSession {
 	private GameSession(){
 		
 	}
-	
 }

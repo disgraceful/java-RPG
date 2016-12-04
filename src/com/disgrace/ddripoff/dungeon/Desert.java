@@ -4,6 +4,6 @@ public class Desert extends Dungeon {
 	
 	public Desert(DungeonSize size){
 		super(size);
-//		type = DungeonType.DESERT;
+		DUNG_TYPE = DungeonType.DESERT;
 	}
 }

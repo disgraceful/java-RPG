@@ -10,7 +10,6 @@ import com.disgrace.ddripoff.dungeon.Room;
 
 public final class DungeonSession {
 	static boolean active;
-	//int light = 0;
 	public Dungeon dungeon;
 	public Party chosenParty;
 		
@@ -24,7 +23,7 @@ public final class DungeonSession {
 	}
 	
 	public void startRoomAdventure(Room destination,Room current){
-//		current.leave();
+		dungeon.getSTART_ROOM().enter();
 		Corridor cor = current.getCorridor(destination);
 		Iterator iter = cor.getSections().iterator();
 		while(iter.hasNext()){
