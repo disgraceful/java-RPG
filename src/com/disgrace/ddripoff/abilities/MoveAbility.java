@@ -1,32 +1,31 @@
 package com.disgrace.ddripoff.abilities;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import com.disgrace.ddripoff.characters.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
-import com.disgrace.ddripoff.stats.StatWrapper;
 
 public abstract class MoveAbility extends Ability {
 
-	public MoveAbility(String name, ArrayList<Stat> stat) {
-		//super(name, stat);
+	public MoveAbility(String name, List<Stat> stat) {
 		newPos = affectedStats.getStatbyName(StatEnumeration.POSITION).getCurValue(); 
 	}
 	
 	private final int newPos;
 
 	@Override
-	public void useAbility(StatWrapper[] targets, StatWrapper user) {
-		for(StatWrapper t :targets){
-			if(ifMoveSuccesful(t,user)){
-				int currentPos = t.getOwner().getPosition();
-				t.getOwner().getParty().reposition(t.getOwner(), currentPos+newPos);
+	public void useAbility(Character[] targets, Character caller) {
+		for(Character t :targets){
+			if(ifMoveSuccesful(t,caller)){
+				int currentPos = t.getPosition();
+				t.getParty().reposition(t, currentPos+newPos);
 			}
 		}
 	}
 	
-	private boolean ifMoveSuccesful(StatWrapper target, StatWrapper user){
+	private boolean ifMoveSuccesful(Character target, Character caller){
 		//int targetDef = target.getStatbyName(StatEnumeration.MoveResist).getCurValue();
 		Random rand = new Random();
 		int chance = rand.nextInt(100);

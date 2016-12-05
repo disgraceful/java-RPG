@@ -1,9 +1,7 @@
-package com.disgrace.ddripoff.centurion;
+package com.disgrace.ddripoff.heroes;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.heroes.Hero;
-import com.disgrace.ddripoff.heroes.HeroClass;
 import com.disgrace.ddripoff.spawn.SpawnableEnemy;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;

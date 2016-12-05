@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.disgrace.ddripoff.heroes.Hero;
 
 public class StatWrapper {
-	private Hero owner;
 	private ArrayList<Stat> stats = new ArrayList<Stat>();
 
 	public StatWrapper(ArrayList<Stat> stats) {
@@ -35,14 +34,6 @@ public class StatWrapper {
 
 	public ArrayList<Stat> getStatsasArrayList() {
 		return stats;
-	}
-
-	public Hero getOwner() {
-		return owner;
-	}
-
-	public void setOwner(Hero owner) {
-		this.owner = owner;
 	}
 
 	public void updateStats(StatWrapper affectedstats) {

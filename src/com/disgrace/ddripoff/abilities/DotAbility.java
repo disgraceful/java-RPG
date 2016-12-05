@@ -1,27 +1,18 @@
 package com.disgrace.ddripoff.abilities;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
+import com.disgrace.ddripoff.characters.Character;
 
-/**
- * 
- * @author Kashapov
- *
- *         describes temporary abilities such as bleed, blight, stun, mindleak
- */
-public abstract class DotAbility extends Ability implements ITemporaryEffect {
-	
-	// duration of ability effect
+public abstract class DotAbility extends Ability implements TemporaryEffect {
+
 	private int abilityDuration;
-	
-	// defines ability type: bleed, blight, etc
-	private final TemporaryEffect effectType;
+	private final TemporaryEffectType effectType;
 
-	public DotAbility(String name, ArrayList<Stat> stat, int duration, TemporaryEffect effecttype) {
-		//super(name, stat);
+	public DotAbility(String name, List<Stat> stat, int duration, TemporaryEffectType effecttype) {
 		effectType = effecttype;
 		abilityDuration = duration;
 	}
@@ -37,87 +28,65 @@ public abstract class DotAbility extends Ability implements ITemporaryEffect {
 	}
 
 	@Override
-	/**
-	 * applies when character uses ability
-	 */
-	public void useAbility(StatWrapper[] targets, StatWrapper user) {
-		for (StatWrapper t : targets) {
-			if (ifDotApplies(t, user)) {
+	public void useAbility(Character[] targets, Character caller) {
+		for (Character t : targets) {
+			if (ifDotApplies(t, caller)) {
 				// add effect to characters' effect list
-				//t.getOwner().getEffectsList().add(new DotAbility(this));
-				System.out.println(t.getOwner().getName() + " has been dotted");
+				// t.getOwner().getEffectsList().add(new DotAbility(this));
+				System.out.println(t.getName() + " has been dotted");
 			}
 		}
 	}
 
-	@Override
 	public int getEffectDuration() {
 		return abilityDuration;
 	}
 
-	@Override
 	public void setEffectDuration(int duration) {
 		abilityDuration = duration;
 	}
 
-	@Override
-	public TemporaryEffect getEffectType() {
+	public TemporaryEffectType getEffectType() {
 		return effectType;
 	}
 
 	@Override
-	/**
-	 * @param t target stats which change every turn, while ability is active
-	 */
-	public void tickEffect(StatWrapper t) {
+	public void onTick(Character target) {
 		if (abilityDuration >= 0) {
 			this.abilityDuration--;
 		} else {
-			t.updateStats(affectedStats);
+			target.getStats().updateStats(affectedStats);
 		}
 	}
 
 	@Override
-	/**
-	 * works when ability duration ends
-	 */
-	public void expireEffect(StatWrapper[] targets) {
-		for (StatWrapper t : targets) {
-			if (effectType == TemporaryEffect.Stun) {
-				//boss stunlock protection
-//				BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance", new ArrayList<Stat>() {
-//					{
-//						add(new Stat(StatEnumeration.STUNRES, 60, true));
-//					}
-//				}, 1, TemporaryEffect.Buff);
-//				t.getOwner().learnAbility(stunLockAbuse);
-//				t.getOwner().useAbility(stunLockAbuse, new StatWrapper[] { t });
-			}
-			System.out.println(this.getName() + "has been expired on " + t.getOwner().getName());
+	public void onExpire(Character targets) {
+		if (effectType == TemporaryEffectType.STUN) {
+			// boss stunlock protection
+			// BuffAbility stunLockAbuse = new BuffAbility("StunLockAbuseResistance", new ArrayList<Stat>() {
+			// {
+			// add(new Stat(StatEnumeration.STUNRES, 60, true));
+			// }
+			// }, 1, TemporaryEffect.Buff);
+			// t.getOwner().learnAbility(stunLockAbuse);
+			// t.getOwner().useAbility(stunLockAbuse, new StatWrapper[] { t });
 		}
+		//System.out.println(this.getName() + "has been expired on " + t.getName());
 	}
 
-	/**
-	 * check if dot resistance>dot chance
-	 * 
-	 * @param target
-	 *            target of ability(def stats)
-	 * @param user
-	 *            caster of ability(attack stats)
-	 * @return true if target is dotted
-	 */
-	private boolean ifDotApplies(StatWrapper target, StatWrapper user) {
-		//int chance = (int)(Math.random()*100);
+
+	private boolean ifDotApplies(Character target, Character caller) {
+		// int chance = (int)(Math.random()*100);
 		int chance = 100;
 		switch (effectType) {
-		case Bleed:
-			return chance > target.getStatbyName(StatEnumeration.BLEEDRES).getCurValue();
-		case Blight:
-			return chance > target.getStatbyName(StatEnumeration.BLIGHTRES).getCurValue();
-		case MindLeak:
-			return chance > target.getStatbyName(StatEnumeration.STRESSRES).getCurValue();
-		case Stun:
-			return chance > target.getStatbyName(StatEnumeration.STUNRES).getCurValue();
+		case BLEED:
+			return chance > target.getStats().getStatbyName(StatEnumeration.BLEEDRES).getCurValue();
+		case BLIGHT:
+			return chance > target.getStats().getStatbyName(StatEnumeration.BLIGHTRES).getCurValue();
+		case MIND_LEAK:
+			return chance > target.getStats().getStatbyName(StatEnumeration.STRESSRES).getCurValue();
+		case STUN:
+			return chance > target.getStats().getStatbyName(StatEnumeration.STUNRES).getCurValue();
 		default:
 			return false;
 		}

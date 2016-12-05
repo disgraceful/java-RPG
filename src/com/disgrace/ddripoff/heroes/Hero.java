@@ -1,6 +1,7 @@
 package com.disgrace.ddripoff.heroes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.disgrace.ddripoff.abilities.Ability;
 import com.disgrace.ddripoff.characters.Character;
@@ -9,8 +10,8 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 
 public abstract class Hero extends Character{
 	protected HeroClass heroClass;
-	private ArrayList<Trinket> inventory = new ArrayList<Trinket>();
-	private ArrayList<Ability> learnedAbilities = new ArrayList<Ability>();
+	private List<Trinket> inventory = new ArrayList<Trinket>();
+	private List<Ability> learnedAbilities = new ArrayList<Ability>();
 
 	public void equip(Trinket trinket) {
 		if (trinket.tryEquip(this.getStatWrapper())) {
@@ -28,7 +29,7 @@ public abstract class Hero extends Character{
 		}
 	}
 
-	public ArrayList<Trinket> getItems() {
+	public List<Trinket> getItems() {
 		return inventory;
 	}
 
@@ -43,20 +44,9 @@ public abstract class Hero extends Character{
 		}
 	}
 
-	public void useAbility(Ability ability, StatWrapper[] targets) {
+	public void useAbility(Ability ability, Character[] targets) {
 		if (ifAbilityLearned(ability)) {
-			ability.useAbility(targets, this.getStatWrapper());
+			ability.useAbility(targets, this);
 		}
 	}
-
-//	public static Hero generateHero(HeroClass heroClass) {	
-//			try {
-//				//System.out.println("com.disgrace.ddripoff.characters." + heroClass.toString().toLowerCase()+"." + heroClass.toString());
-//				Hero h = (Hero) Class.forName("com.disgrace.ddripoff." + heroClass.toString().toLowerCase()+"." + heroClass.toString()).newInstance();
-//				return h;
-//			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-//				e.printStackTrace();
-//			}
-//		return null;
-//	}
 }

@@ -3,7 +3,7 @@ package com.disgrace.ddripoff.tests;
 import java.util.Iterator;
 
 import com.disgrace.ddripoff.abilities.Ability;
-import com.disgrace.ddripoff.abilities.ITemporaryEffect;
+import com.disgrace.ddripoff.abilities.TemporaryEffect;
 import com.disgrace.ddripoff.characters.Character;
 import com.disgrace.ddripoff.characters.Party;
 import com.disgrace.ddripoff.dungeon.Desert;
@@ -43,12 +43,12 @@ public class Test {
 		turnCount++;
 		System.out.println("new turn. turncount: " + turnCount);
 		for (Character c : currentParty.getMembers()) {
-			Iterator<ITemporaryEffect> iter = c.getEffectsList().iterator();
+			Iterator<TemporaryEffect> iter = c.getEffectsList().iterator();
 			while (iter.hasNext()) {
-				ITemporaryEffect temp = iter.next();
-				temp.tickEffect(c.getStatWrapper());
+				TemporaryEffect temp = iter.next();
+				temp.onTick(c.getStatWrapper());
 				if (temp.getEffectDuration() <= 0) {
-					temp.expireEffect(new StatWrapper[] { c.getStatWrapper() });
+					temp.onExpire(new StatWrapper[] { c.getStatWrapper() });
 					iter.remove();
 				}
 			}

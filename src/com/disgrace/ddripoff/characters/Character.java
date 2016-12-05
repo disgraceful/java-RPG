@@ -3,7 +3,7 @@ package com.disgrace.ddripoff.characters;
 import java.util.ArrayList;
 
 import com.disgrace.ddripoff.abilities.Ability;
-import com.disgrace.ddripoff.abilities.ITemporaryEffect;
+import com.disgrace.ddripoff.abilities.TemporaryEffect;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -11,7 +11,7 @@ public abstract class Character implements Comparable<Character>{
 	protected String name;
 	protected StatWrapper stats;
 	
-	protected ArrayList<ITemporaryEffect>tempEffects= new ArrayList<ITemporaryEffect>(); 
+	protected ArrayList<TemporaryEffect>tempEffects= new ArrayList<TemporaryEffect>(); 
 	protected ArrayList<Ability> allAbilities = new ArrayList<Ability>();
 	protected Party party;
 	
@@ -31,10 +31,18 @@ public abstract class Character implements Comparable<Character>{
 		this.party = party;
 	}
 	
-	public ArrayList<ITemporaryEffect> getEffectsList(){
+	public ArrayList<TemporaryEffect> getEffectsList(){
 		return tempEffects;
 	}
 	
+	public void addEffect(TemporaryEffect effect){
+		tempEffects.add(effect);
+	}
+	
+	public StatWrapper getStats() {
+		return stats;
+	}
+
 	public ArrayList<Ability> getAllAbilities() {
 		return allAbilities;
 	}

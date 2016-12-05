@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
+import com.disgrace.ddripoff.characters.Character;
+
 
 public class Trinket extends Item {
 	private StatWrapper affectedstats;
@@ -17,19 +19,19 @@ public class Trinket extends Item {
 		return affectedstats;
 	}
 
-	public boolean tryEquip(StatWrapper herostat) {
+	public boolean tryEquip(Character hero) {
 		// if(hero.class!=restriction||restriction != all)
 		// return false;
-		herostat.updateStats(affectedstats);
-		System.out.println(herostat.getOwner().getName() + " has equipped " + this.getName());
+		hero.getStats().updateStats(affectedstats);
+		System.out.println(hero.getName() + " has equipped " + this.getName());
 		return true;
 	}
 
-	public boolean tryUnEquip(StatWrapper herostat) {
-		if(herostat.getOwner()!=null){
+	public boolean tryUnEquip(Character hero) {
+		if(hero!=null){
 		StatWrapper.reverseStatsValue(affectedstats);
-		herostat.updateStats(affectedstats);
-		System.out.println(herostat.getOwner().getName() + " has unequipped " + this.getName());
+		hero.getStats().updateStats(affectedstats);
+		//System.out.println(hero.getOwner().getName() + " has unequipped " + this.getName());
 		return true;
 		}
 		else

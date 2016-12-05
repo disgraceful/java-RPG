@@ -34,5 +34,4 @@ public final class DungeonSession {
 		}
 		//destination.enter();
 	} 
-	
 }
