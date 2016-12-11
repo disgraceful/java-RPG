@@ -2,7 +2,7 @@ package com.disgrace.ddripoff.session;
 
 import java.util.Iterator;
 
-import com.disgrace.ddripoff.characters.Party;
+import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.dungeon.Corridor;
 import com.disgrace.ddripoff.dungeon.CorridorSection;
 import com.disgrace.ddripoff.dungeon.Dungeon;

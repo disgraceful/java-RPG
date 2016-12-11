@@ -1,6 +1,6 @@
 package com.disgrace.ddripoff.spawn;
 
-import com.disgrace.ddripoff.characters.Party;
+import com.disgrace.ddripoff.characters.shared.Party;
 
 public class Fight extends SpawnEvent {
 

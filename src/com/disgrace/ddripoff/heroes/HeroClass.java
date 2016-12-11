@@ -3,7 +3,9 @@ package com.disgrace.ddripoff.heroes;
 import java.util.ArrayList;
 import java.util.Random;
 
-public enum HeroClass {
+import com.disgrace.ddripoff.characters.shared.CharacterClass;
+
+public enum HeroClass implements CharacterClass{
 	CENTURION("Centurion"), DISHONORED("Dishonored"), PRIEST("Priest"), PURFIER("Purifier");
 
 	private String name;

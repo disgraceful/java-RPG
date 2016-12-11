@@ -2,10 +2,10 @@ package com.disgrace.ddripoff.abilities;
 
 import java.util.List;
 
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
-import com.disgrace.ddripoff.characters.Character;
 
 public abstract class DotAbility extends Ability implements TemporaryEffect {
 
@@ -24,7 +24,7 @@ public abstract class DotAbility extends Ability implements TemporaryEffect {
 	 *            copied object
 	 */
 	public DotAbility(DotAbility a) {
-		this(a.getName(), a.getStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
+		this(a.getName(), a.getAffectingStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
 	}
 
 	@Override
@@ -80,13 +80,13 @@ public abstract class DotAbility extends Ability implements TemporaryEffect {
 		int chance = 100;
 		switch (effectType) {
 		case BLEED:
-			return chance > target.getStats().getStatbyName(StatEnumeration.BLEEDRES).getCurValue();
+			return chance > target.getStats().getStatbyName(StatEnumeration.BLEED_RES).getCurValue();
 		case BLIGHT:
-			return chance > target.getStats().getStatbyName(StatEnumeration.BLIGHTRES).getCurValue();
+			return chance > target.getStats().getStatbyName(StatEnumeration.BLIGHT_RES).getCurValue();
 		case MIND_LEAK:
-			return chance > target.getStats().getStatbyName(StatEnumeration.STRESSRES).getCurValue();
+			return chance > target.getStats().getStatbyName(StatEnumeration.STRESS_PROT).getCurValue();
 		case STUN:
-			return chance > target.getStats().getStatbyName(StatEnumeration.STUNRES).getCurValue();
+			return chance > target.getStats().getStatbyName(StatEnumeration.STUN_RES).getCurValue();
 		default:
 			return false;
 		}

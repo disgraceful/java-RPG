@@ -3,7 +3,7 @@ package com.disgrace.ddripoff.abilities;
 import java.util.List;
 import java.util.Random;
 
-import com.disgrace.ddripoff.characters.Character;
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 

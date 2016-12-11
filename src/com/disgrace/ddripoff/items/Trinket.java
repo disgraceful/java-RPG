@@ -2,10 +2,9 @@ package com.disgrace.ddripoff.items;
 
 import java.util.ArrayList;
 
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
-import com.disgrace.ddripoff.characters.Character;
-
 
 public class Trinket extends Item {
 	private StatWrapper affectedstats;
@@ -28,14 +27,12 @@ public class Trinket extends Item {
 	}
 
 	public boolean tryUnEquip(Character hero) {
-		if(hero!=null){
-		StatWrapper.reverseStatsValue(affectedstats);
-		hero.getStats().updateStats(affectedstats);
-		//System.out.println(hero.getOwner().getName() + " has unequipped " + this.getName());
-		return true;
-		}
-		else
-			return false;
+		if (hero != null) {
+			StatWrapper.reverseStatsValue(affectedstats);
+			hero.getStats().updateStats(affectedstats);
+			// System.out.println(hero.getOwner().getName() + " has unequipped " + this.getName());
+			return true;
+		} else return false;
 
 	}
 

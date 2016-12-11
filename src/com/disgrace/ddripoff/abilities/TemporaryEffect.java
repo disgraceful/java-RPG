@@ -1,6 +1,6 @@
 package com.disgrace.ddripoff.abilities;
 
-import com.disgrace.ddripoff.characters.Character;
+import com.disgrace.ddripoff.characters.shared.Character;
 
 public interface TemporaryEffect{
 	

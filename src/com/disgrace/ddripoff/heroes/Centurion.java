@@ -20,7 +20,7 @@ public class Centurion extends Hero implements SpawnableEnemy{
 		this.stats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.HEALTH, 30,30));
-				add(new Stat(StatEnumeration.PHYSPROT, 5, 100));
+				add(new Stat(StatEnumeration.PHYS_PROT, 5, 100));
 				add(new Stat(StatEnumeration.DAMAGE, 7, 100));
 				add(new Stat(StatEnumeration.SPEED, 4, 20));
 			}

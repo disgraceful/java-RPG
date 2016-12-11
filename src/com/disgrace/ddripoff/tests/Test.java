@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 import com.disgrace.ddripoff.abilities.Ability;
 import com.disgrace.ddripoff.abilities.TemporaryEffect;
-import com.disgrace.ddripoff.characters.Character;
-import com.disgrace.ddripoff.characters.Party;
+import com.disgrace.ddripoff.characters.shared.Character;
+import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.dungeon.Desert;
 import com.disgrace.ddripoff.dungeon.DungeonBuilder;
 import com.disgrace.ddripoff.dungeon.DungeonSize;
@@ -26,34 +26,27 @@ public class Test {
 		//DungeonBuilder db = new DungeonBuilder(d);
 		//db.build();
 		//d.displayRooms();
-		
-		
-		
+	
 	}
 	
-	
-	
-	
-	
-
 	/**
 	 * need to test that shit
 	 */
-	private static void newTurn() {
-		turnCount++;
-		System.out.println("new turn. turncount: " + turnCount);
-		for (Character c : currentParty.getMembers()) {
-			Iterator<TemporaryEffect> iter = c.getEffectsList().iterator();
-			while (iter.hasNext()) {
-				TemporaryEffect temp = iter.next();
-				temp.onTick(c.getStatWrapper());
-				if (temp.getEffectDuration() <= 0) {
-					temp.onExpire(new StatWrapper[] { c.getStatWrapper() });
-					iter.remove();
-				}
-			}
-		}
-	}
+//	private static void newTurn() {
+//		turnCount++;
+//		System.out.println("new turn. turncount: " + turnCount);
+//		for (Character c : currentParty.getMembers()) {
+//			Iterator<TemporaryEffect> iter = c.getEffectsList().iterator();
+//			while (iter.hasNext()) {
+//				TemporaryEffect temp = iter.next();
+//				temp.onTick(c.getStatWrapper());
+//				if (temp.getEffectDuration() <= 0) {
+//					temp.onExpire(new StatWrapper[] { c.getStatWrapper() });
+//					iter.remove();
+//				}
+//			}
+//		}
+//	}
 
 	// private static void test() {
 	// Hero hero1 = new Hero("Hero1", new ArrayList<Stat>() {

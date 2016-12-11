@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.disgrace.ddripoff.abilities.Ability;
-import com.disgrace.ddripoff.characters.Character;
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -14,7 +14,7 @@ public abstract class Hero extends Character{
 	private List<Ability> learnedAbilities = new ArrayList<Ability>();
 
 	public void equip(Trinket trinket) {
-		if (trinket.tryEquip(this.getStatWrapper())) {
+		if (trinket.tryEquip(this)) {
 			inventory.add(trinket);
 		}
 	}
@@ -24,7 +24,7 @@ public abstract class Hero extends Character{
 	}
 
 	public void unequip(Trinket trinket) {
-		if (ifTrinketEquiped(trinket) && trinket.tryUnEquip(this.getStatWrapper())) {
+		if (ifTrinketEquiped(trinket) && trinket.tryUnEquip(this)) {
 			inventory.remove(trinket);
 		}
 	}

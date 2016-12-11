@@ -1,6 +1,11 @@
 package com.disgrace.ddripoff.abilities;
 
-import com.disgrace.ddripoff.characters.Character;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.disgrace.ddripoff.characters.shared.Character;
+import com.disgrace.ddripoff.characters.shared.CharacterClass;
+import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
 public abstract class Ability {
@@ -9,11 +14,16 @@ public abstract class Ability {
 	protected String description;
 	protected StatWrapper affectedStats;
 	
+	protected CharacterClass restrictionClass;
+	
+	protected List<Integer> callerRestrictedPos =  new ArrayList<>(); 
+	protected List<Integer> targetsRestrictedPos =  new ArrayList<>();
+
 	public String getName() {
 		return name;
 	}
 
-	public StatWrapper getStats() {
+	public StatWrapper getAffectingStats() {
 		return affectedStats;
 	}
 
@@ -21,8 +31,13 @@ public abstract class Ability {
 		return description;
 	}
 
+	public CharacterClass getRestrictionClass() {
+		return restrictionClass;
+	}
+
 	public abstract void useAbility(Character[] targets, Character caller);
 	protected abstract void initAbility();
+	
 
 }
  

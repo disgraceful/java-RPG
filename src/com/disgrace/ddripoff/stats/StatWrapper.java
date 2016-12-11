@@ -1,14 +1,15 @@
 package com.disgrace.ddripoff.stats;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.disgrace.ddripoff.heroes.Hero;
 
 public class StatWrapper {
-	private ArrayList<Stat> stats = new ArrayList<Stat>();
+	private List<Stat> stats = new ArrayList<Stat>();
 
-	public StatWrapper(ArrayList<Stat> stats) {
-		this.stats = stats;
+	public StatWrapper(List<Stat> list) {
+		this.stats = list;
 	}
 
 	private boolean checkIfStatExist(StatEnumeration type) {

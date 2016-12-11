@@ -2,7 +2,7 @@ package com.disgrace.ddripoff.abilities;
 
 import java.util.List;
 
-import com.disgrace.ddripoff.characters.Character;
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -18,7 +18,7 @@ public abstract class BuffAbility extends Ability implements TemporaryEffect {
 	}
 
 	public BuffAbility(BuffAbility a) {
-		this(a.getName(), a.getStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
+		this(a.getName(), a.getAffectingStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
 	}
 
 	@Override
