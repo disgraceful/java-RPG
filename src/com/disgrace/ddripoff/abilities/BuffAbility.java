@@ -1,91 +1,57 @@
 package com.disgrace.ddripoff.abilities;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-/**
- * Covers temporary buff and debuff abilities
- * 
- * @author Kashapov
- *
- */
-public abstract class BuffAbility extends Ability implements ITemporaryEffect {
-	/**
-	 * Constructor
-	 * 
-	 * Calls base class constructor with name and stat
-	 * 
-	 * @param name(required)
-	 *            name of ability
-	 * @param stat(required)
-	 *            stats affected by ability
-	 * @param duration(required)
-	 *            duration of ability(turns)
-	 * @param effecttype(required)buff/debuff
-	 */
-	public BuffAbility(String name, ArrayList<Stat> stat, int duration, TemporaryEffect effecttype) {
-			abilityDuration = duration;
-		effectType = effecttype;
-	}
-
-	/** duration of buff/debuff */
+public abstract class BuffAbility extends Ability implements TemporaryEffect {
 	private int abilityDuration;
-	/** effect type: buff or debuff */
-	private final TemporaryEffect effectType;
+	private int currentDuration;
+	private final TemporaryEffectType effectType;
 
-	/**
-	 * Clone constructor
-	 * 
-	 * makes a copy of object a
-	 * 
-	 * @param a
-	 */
+	public BuffAbility(String name, List<Stat> stat, int duration, TemporaryEffectType effecttype) {
+		abilityDuration = duration;
+		effectType = effecttype;
+		currentDuration = abilityDuration;
+	}
+
 	public BuffAbility(BuffAbility a) {
-		this(a.getName(), a.getStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
+		this(a.getName(), a.getAffectingStats().getStatsasArrayList(), a.getEffectDuration(), a.getEffectType());
 	}
 
 	@Override
-	public void useAbility(StatWrapper[] targets, StatWrapper user) {
-		for (StatWrapper t : targets) {
-			t.updateStats(affectedStats);
-			//t.getOwner().getEffectsList().add(new BuffAbility(this));
-			System.out.println(t.getOwner().getName() + " has been buffed");
+	public void useAbility(Character[] targets, Character user) {
+		for (Character c : targets) {
+			c.getStats().updateStats(affectedStats);
+			c.addEffect(this);
 		}
 	}
 
 	@Override
-	public void expireEffect(StatWrapper[] targets) {
+	public void onTick(Character target) {
+		if (currentDuration >= 0) {
+			currentDuration--;
+		} else {
+			onExpire(target);
+		}
+	}
+
+	@Override
+	public void onExpire(Character target) {
 		StatWrapper.reverseStatsValue(affectedStats);
-		for (StatWrapper t : targets) {
-			t.updateStats(affectedStats);
-			System.out.println(getName() + " duration has been expired on " + t.getOwner().getName());
-		}
+		target.getStats().updateStats(affectedStats);
+		// System.out.println(getName() + " duration has been expired on " + t.getOwner().getName());
+
 	}
-	@Override
+
 	public int getEffectDuration() {
 		return abilityDuration;
 	}
-	@Override
-	public void setEffectDuration(int duration) {
-		if (duration < 1) {
-			abilityDuration = 1;
-		} else {
-			abilityDuration = duration;
-		}
-	}
 
-	@Override
-	public TemporaryEffect getEffectType() {
+	public TemporaryEffectType getEffectType() {
 		return effectType;
-	}
-
-	@Override
-	public void tickEffect(StatWrapper t) {
-		if (abilityDuration >= 0) {
-			this.abilityDuration--;
-		}
 	}
 
 }

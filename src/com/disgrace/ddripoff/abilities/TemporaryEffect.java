@@ -1,11 +1,12 @@
 package com.disgrace.ddripoff.abilities;
-/**
- * 
- * @author Kashapov
- *
- * enumeration of all temporary effects
- */
-public enum TemporaryEffect {
+
+import com.disgrace.ddripoff.characters.shared.Character;
+
+public interface TemporaryEffect{
 	
-	Buff,Debuff,Stun,Blight,Bleed,MindLeak,Mark,Curse;
+//	public int getEffectDuration();
+//	public void setEffectDuration(int duration);
+//	public TemporaryEffectType getEffectType();
+	public void onTick(Character target);
+	public void onExpire(Character target);
 }

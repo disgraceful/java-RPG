@@ -1,89 +1,44 @@
 package com.disgrace.ddripoff.abilities;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-/**
- * 
- * @author Kashapov
- *
- *         Describes damage and heal abilities
- */
-public abstract class DamageAbility extends Ability {
-
-	protected StatEnumeration defType;// protection type
-
-	/**
-	 * Function called when ability is used
-	 * 
-	 * @param targets
-	 *            ability targets
-	 * @param user
-	 *            character who used this ability
-	 */
+public abstract class DamageAbility extends CombatAbility {
 	@Override
-	public void useAbility(StatWrapper[] targets, StatWrapper user) {
-		for (StatWrapper t : targets) {
-			int dmg = calculateDmg(t, user);
-			// apply dealed damage to targets
-			t.updateStats(calculateAbilityResult(dmg));
-			if (dmg > 0) {
-				System.out.println(user.getOwner().getName() + " used " + this.getName() + " and dealed " + dmg
-						+ " damage to " + t.getOwner().getName());
-			} else {
-				System.out.println(user.getOwner().getName() + " used " + this.getName() + " and restored " + -dmg
-						+ " health to " + t.getOwner().getName());
+	public void useAbility(Character[] targets, Character caller) {
+		for (Character t : targets) {
+			if (calcualteMiss(t, caller)) {
+				int dmg = calculateDmg(t, caller);
+				if(criticalStrike(t, caller))dmg*=1.5;
+				calculateAffectingStats(dmg);
+				t.getStats().updateStats(affectedStats);
 			}
 		}
 	}
 
-	/**
-	 * Calculates ability damage
-	 * 
-	 * @param target ability target(for defence stats)
-	 * @param user ability user(for offence stats)
-	 * @return damage dealed to target
-	 */
-	private int calculateDmg(StatWrapper target, StatWrapper user) {
-		int potdmg = user.getStatbyName(StatEnumeration.DAMAGE).getCurValue();
-		int realdmg;
-		// check heal or dmg
-		if (affectedStats.getStatbyName(StatEnumeration.DAMAGE).getCurValue() > 0) {
-			// dmg
-			potdmg += affectedStats.getStatbyName(StatEnumeration.DAMAGE).getCurValue();
-			int targetdef = target.getStatbyName(defType).getCurValue();
-			realdmg = potdmg - targetdef;// potdmg*(100-targetdef);
-		} else {
-			// heal for amount stated in ability description
-			realdmg = affectedStats.getStatbyName(StatEnumeration.DAMAGE).getCurValue();
-		}
-		return realdmg;
+	private int calculateDmg(Character target, Character caller) {
+		int callerDmg = caller.getStats().getStatbyName(StatEnumeration.DAMAGE).getCurValue();
+		double callerDmgMin = callerDmg * 0.75;
+		double callerDmgMax = callerDmg * 1.25;
+		int randomizedDmg = (int) (new Random().nextInt((int) ((callerDmgMax - callerDmgMin) + 1)) + callerDmgMin);
+
+		int realDmg = randomizedDmg * (100 - target.getProperDeffenceValue(dmgType)) / 100;		
+		return realDmg;
 	}
 
-	/**
-	 * transfer damage number into StatWrapper health/stress mask
-	 * 
-	 * @param damage number of real damage ready to be applied
-	 * @return StatWrapper mask to apply on target's StatWrapper
-	 */
-	private StatWrapper calculateAbilityResult(int damage) {
-		if (defType == StatEnumeration.STRESSRES) {
-			StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
-				{
-					add(new Stat(StatEnumeration.STRESS, damage, false));
-				}
-			});
-			return s;
+	private void calculateAffectingStats(int damage) {
+		List<Stat> list = new ArrayList<>();
+		if (dmgType == DamageType.STRESS) {
+			list.add(new Stat(StatEnumeration.STRESS, damage, false));
 		} else {
-			StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
-				{
-					add(new Stat(StatEnumeration.HEALTH, -damage, false));
-				}
-			});
-			return s;
+			list.add(new Stat(StatEnumeration.HEALTH, -damage, false));
 		}
+		affectedStats = new StatWrapper(list);
 	}
 }

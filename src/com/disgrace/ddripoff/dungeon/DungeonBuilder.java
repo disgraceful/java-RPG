@@ -11,7 +11,7 @@ public final class DungeonBuilder {
 	private final int ybound;
 	private final int minRooms;
 	private final int allRooms;
-	private final DungeonEventSpawner DOS;
+	//private final DungeonEventSpawner DOS;
 
 	public DungeonBuilder(Dungeon dungeon) {
 		this.dungeon = dungeon;
@@ -20,8 +20,8 @@ public final class DungeonBuilder {
 		ybound = dungeon.size.ybound;
 		minRooms = dungeon.size.minRooms;
 		allRooms = dungeon.getRoomsAsList().size();
-		List<Enterable> list = 
-		DOS = new DungeonEventSpawner
+		//List<Enterable> list = 
+		//DOS = new DungeonEventSpawner(enterables)
 	}
 
 	public void build() {
@@ -29,7 +29,7 @@ public final class DungeonBuilder {
 		setRoomRelations();
 		buildLevel();
 		setRoomCorridors();
-		DOS.generateSpawns();
+		//DOS.generateSpawns();
 		
 		dungeon.displayRoomsValue();
 	}
