@@ -33,7 +33,7 @@ public class StatWrapper {
 		return null;
 	}
 
-	public ArrayList<Stat> getStatsasArrayList() {
+	public List<Stat> getStatsasArrayList() {
 		return stats;
 	}
 

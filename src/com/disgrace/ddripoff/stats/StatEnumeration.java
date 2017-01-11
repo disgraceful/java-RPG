@@ -13,7 +13,7 @@ public enum StatEnumeration {
 	CRIT_MOD("Critical Strike Modifier",StatSpecification.STAT_MOD),
 
 	SPEED("Speed",StatSpecification.UTILITY_STAT),
-	//POSITION("Position",StatSpecification.UTILITY_STAT),
+	POSITION("Position",StatSpecification.UTILITY_STAT),
 	TRAP_DISARM_CHANCE("Trap disarm Chance",StatSpecification.UTILITY_STAT),
 	VIRTUE_CHANCE("Virtue Chance",StatSpecification.UTILITY_STAT),
 	DODGE("Dodge",StatSpecification.UTILITY_STAT),
