@@ -35,6 +35,5 @@ public class CenturionSwordSwing extends DamageSpell{
 		targetsRestrictedPos.add(new Integer(1));
 		targetsRestrictedPos.add(new Integer(2));
 		
-	
 	}
 }

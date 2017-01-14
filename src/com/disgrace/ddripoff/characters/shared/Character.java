@@ -1,8 +1,9 @@
 package com.disgrace.ddripoff.characters.shared;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import com.disgrace.ddripoff.abilities.SpellEnum;
+import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
@@ -11,8 +12,8 @@ public abstract class Character implements Comparable<Character> {
 	protected String name;
 	protected StatWrapper stats;
 
-	protected ArrayList<TemporaryEffect> tempEffects = new ArrayList<TemporaryEffect>();
-	protected ArrayList<SpellEnum> allAbilities = new ArrayList<SpellEnum>();
+	protected List<TemporaryEffect> tempEffects = new ArrayList<TemporaryEffect>();
+	protected List<SpellEnum> allAbilities = new ArrayList<SpellEnum>();
 	protected Party party;
 
 	public String getName() {
@@ -31,11 +32,14 @@ public abstract class Character implements Comparable<Character> {
 		this.party = party;
 	}
 
-	public ArrayList<TemporaryEffect> getEffectsList() {
+	public List<TemporaryEffect> getEffectsList() {
 		return tempEffects;
 	}
 
 	public void addEffect(TemporaryEffect effect) {
+		if(effect==null){
+			return;
+		}
 		tempEffects.add(effect);
 	}
 
@@ -43,7 +47,7 @@ public abstract class Character implements Comparable<Character> {
 		return stats;
 	}
 
-	public ArrayList<SpellEnum> getAllSpells() {
+	public List<SpellEnum> getAllSpells() {
 		return allAbilities;
 	}
 
@@ -54,8 +58,8 @@ public abstract class Character implements Comparable<Character> {
 	public void move(int newposition) {
 		party.reposition(this, newposition);
 	}
-
 	
+		
 	@Override
 	public int compareTo(Character c1) {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
@@ -63,4 +67,5 @@ public abstract class Character implements Comparable<Character> {
 	}
 
 	protected abstract void init();
+	public abstract void useAbility(SpellEnum ability,Character[] targets);
 }

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.CharacterClass;
+import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -15,10 +16,11 @@ public abstract class Spell {
 	protected StatWrapper affectedStats;
 	protected StatWrapper abilityStats;
 	protected RangeType range;
-	SpellEnum spellClass;
+	protected SpellEnum spellClass;
+	protected TargetType spellType;
 	protected CharacterClass restrictionClass;
-	protected List<Integer> callerRestrictedPos =  new ArrayList<>(); 
-	protected List<Integer> targetsRestrictedPos =  new ArrayList<>();
+	protected List<Integer> callerRestrictedPos = new ArrayList<>();
+	protected List<Integer> targetsRestrictedPos = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -42,7 +44,8 @@ public abstract class Spell {
 		int abilityAccMod = abilityStats.getStatbyName(StatEnumeration.ACC_MOD).getCurValue();
 		int totalAcc = callerAcc * abilityAccMod / 100;
 		int totalAccWithDodge = totalAcc - targetDodge;
-		if (totalAccWithDodge > 90) totalAccWithDodge = 90;
+		if (totalAccWithDodge > 90)
+			totalAccWithDodge = 90;
 		int hitChance = new Random().nextInt(100 + 1);
 		if (hitChance > totalAccWithDodge) {
 			return true;// missed
@@ -55,14 +58,31 @@ public abstract class Spell {
 	public boolean criticalStrike(Character target, Character caller) {
 		int callerCritChance = caller.getStatWrapper().getStatbyName(StatEnumeration.CRIT_CHANCE).getCurValue();
 		int abilityCritMod = abilityStats.getStatbyName(StatEnumeration.CRIT_MOD).getCurValue();
-		int totalCrit = callerCritChance+abilityCritMod;
+		int totalCrit = callerCritChance + abilityCritMod;
 		int critChance = new Random().nextInt(100 + 1);
-		if(critChance<totalCrit){
+		if (critChance < totalCrit) {
 			return true;
 		}
 		return false;
 	}
-	
+
+	public List<Character> getAvaliableTargets(List<Character> queue,Character caller) {
+		List<Character> list = new ArrayList<>();
+		for (Character c : queue) {
+			if (((spellType == TargetType.ENEMY&&!c.equals(caller)) || spellType == TargetType.ALLY)
+					&& targetsRestrictedPos.contains(c.getPosition())) {
+				list.add(c);
+			}
+		}
+		return list;
+	}
+
 	public abstract void useSpell(Character[] targets, Character caller);
-	public void initSpell(){}
+
+	public void initSpell() {
+	}
+}
+
+enum TargetType {
+	ENEMY, ALLY;
 }

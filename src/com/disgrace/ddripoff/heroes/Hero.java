@@ -3,10 +3,9 @@ package com.disgrace.ddripoff.heroes;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.disgrace.ddripoff.abilities.SpellEnum;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.items.Trinket;
-import com.disgrace.ddripoff.stats.StatWrapper;
+import com.disgrace.ddripoff.spells.SpellEnum;
 
 public abstract class Hero extends Character{
 	protected HeroClass heroClass;
@@ -40,13 +39,13 @@ public abstract class Hero extends Character{
 	public void learnAbility(SpellEnum ability) {
 		if (allAbilities.contains(ability)) {
 			learnedAbilities.add(ability);
-			System.out.println(this.getName() + " has learned " + ability.getName());
 		}
 	}
-
+	
+	@Override
 	public void useAbility(SpellEnum ability, Character[] targets) {
-		if (ifAbilityLearned(ability)) {
-			ability.useAbility(targets, this);
-		}
+		//if (ifAbilityLearned(ability)) {
+			ability.castSpellCombo(targets, this);
+		
 	}
 }

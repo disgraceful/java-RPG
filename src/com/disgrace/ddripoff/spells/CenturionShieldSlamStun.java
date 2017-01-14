@@ -2,6 +2,7 @@ package com.disgrace.ddripoff.spells;
 
 import java.util.ArrayList;
 
+import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.heroes.HeroClass;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
@@ -18,6 +19,8 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 		description = "Cool description";
 		restrictionClass = HeroClass.CENTURION;
 		range = RangeType.MELEE;
+		abilityDuration =1;
+		currentDuration = abilityDuration;
 
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
@@ -25,9 +28,23 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 			}
 		});
 
-		callerRestrictedPos.add(new Integer(1));
+		callerRestrictedPos.add(0);
 
-		targetsRestrictedPos.add(new Integer(1));
-		targetsRestrictedPos.add(new Integer(2));
+		targetsRestrictedPos.add(0);
+		targetsRestrictedPos.add(1);
+	}
+
+	@Override
+	public void onTick(Character target) {
+		if(currentDuration>0){
+			currentDuration--;
+		}
+		
+	}
+
+	@Override
+	public void onExpire(Character target) {
+		// TODO Auto-generated method stub
+		
 	}
 }
