@@ -3,8 +3,8 @@ package com.disgrace.ddripoff.characters.shared;
 import java.util.ArrayList;
 
 import com.disgrace.ddripoff.abilities.Ability;
-import com.disgrace.ddripoff.abilities.DamageType;
 import com.disgrace.ddripoff.abilities.TemporaryEffect;
+import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 

@@ -1,18 +1,39 @@
-package com.disgrace.ddripoff.abilities;
+package com.disgrace.ddripoff.spells;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import com.disgrace.ddripoff.characters.shared.Character;
+import com.disgrace.ddripoff.characters.shared.CharacterClass;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public abstract class CombatAbility extends Ability implements Critable{
+public abstract class Spell {
+	protected String name;
+	protected String description;
+	protected StatWrapper affectedStats;
 	protected StatWrapper abilityStats;
-	protected DamageType dmgType;
-	protected RangeType rangeType;
+	protected RangeType range;
+	SpellEnum spellClass;
+	protected CharacterClass restrictionClass;
+	protected List<Integer> callerRestrictedPos =  new ArrayList<>(); 
+	protected List<Integer> targetsRestrictedPos =  new ArrayList<>();
 
-	public StatWrapper getAbilityStats() {
-		return abilityStats;
+	public String getName() {
+		return name;
+	}
+
+	public StatWrapper getAffectingStats() {
+		return affectedStats;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public CharacterClass getRestrictionClass() {
+		return restrictionClass;
 	}
 
 	protected boolean calcualteMiss(Character target, Character caller) {
@@ -25,13 +46,12 @@ public abstract class CombatAbility extends Ability implements Critable{
 		int hitChance = new Random().nextInt(100 + 1);
 		if (hitChance > totalAccWithDodge) {
 			return true;// missed
-		} else if (hitChance < totalAccWithDodge & hitChance > totalAcc) {
+		} else if (hitChance < totalAccWithDodge && hitChance > totalAcc) {
 			return true;// doded;
 		}
 		return false;
 	}
 
-	@Override
 	public boolean criticalStrike(Character target, Character caller) {
 		int callerCritChance = caller.getStatWrapper().getStatbyName(StatEnumeration.CRIT_CHANCE).getCurValue();
 		int abilityCritMod = abilityStats.getStatbyName(StatEnumeration.CRIT_MOD).getCurValue();
@@ -41,6 +61,8 @@ public abstract class CombatAbility extends Ability implements Critable{
 			return true;
 		}
 		return false;
-		
 	}
+	
+	public abstract void useSpell(Character[] targets, Character caller);
+	public void initSpell(){}
 }
