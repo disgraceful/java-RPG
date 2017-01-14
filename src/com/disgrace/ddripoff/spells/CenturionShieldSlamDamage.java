@@ -28,10 +28,10 @@ public class CenturionShieldSlamDamage extends DamageSpell {
 			}
 		});
 
-		callerRestrictedPos.add(new Integer(1));
+		callerRestrictedPos.add(0);
 
-		targetsRestrictedPos.add(new Integer(1));
-		targetsRestrictedPos.add(new Integer(2));
+		targetsRestrictedPos.add(0);
+		targetsRestrictedPos.add(1);
 	}
 }
 

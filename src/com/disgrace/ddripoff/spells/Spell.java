@@ -66,10 +66,10 @@ public abstract class Spell {
 		return false;
 	}
 
-	public List<Character> getAvaliableTargets(List<Character> queue) {
+	public List<Character> getAvaliableTargets(List<Character> queue,Character caller) {
 		List<Character> list = new ArrayList<>();
 		for (Character c : queue) {
-			if ((spellType == TargetType.ENEMY || spellType == TargetType.HERO)
+			if (((spellType == TargetType.ENEMY&&!c.equals(caller)) || spellType == TargetType.ALLY)
 					&& targetsRestrictedPos.contains(c.getPosition())) {
 				list.add(c);
 			}
@@ -84,5 +84,5 @@ public abstract class Spell {
 }
 
 enum TargetType {
-	ENEMY, HERO;
+	ENEMY, ALLY;
 }

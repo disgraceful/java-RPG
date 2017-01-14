@@ -11,7 +11,7 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class OutcastSwordsman extends Enemy implements SpawnableEnemy {
 
 	public OutcastSwordsman() {
-		name="Outcast Swordsman";
+		name = "Outcast Swordsman";
 		init();
 	}
 
@@ -41,7 +41,6 @@ public class OutcastSwordsman extends Enemy implements SpawnableEnemy {
 				add(new Stat(StatEnumeration.DEBUFF_RES, 40, 100));
 			}
 		});
-		allAbilities.add(SpellEnum.CENTURION_SWORD_SWING);
-		allAbilities.add(SpellEnum.CENTURION_SWORD_SWING);
+		allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE);
 	}
 }

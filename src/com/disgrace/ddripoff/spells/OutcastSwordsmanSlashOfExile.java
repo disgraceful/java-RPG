@@ -20,6 +20,7 @@ public class OutcastSwordsmanSlashOfExile extends DamageSpell {
 		damageType = DamageType.PHYS;
 		range = RangeType.MELEE;
 		spellClass = SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE;
+		spellType = TargetType.ENEMY;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.ACC_MOD, 90, 100));
@@ -28,13 +29,13 @@ public class OutcastSwordsmanSlashOfExile extends DamageSpell {
 			}
 		});
 
-		callerRestrictedPos.add(new Integer(1));
-		callerRestrictedPos.add(new Integer(2));
-		callerRestrictedPos.add(new Integer(3));
+		callerRestrictedPos.add(0);
+		callerRestrictedPos.add(1);
+		callerRestrictedPos.add(2);
 
-		targetsRestrictedPos.add(new Integer(1));
-		targetsRestrictedPos.add(new Integer(2));
-		targetsRestrictedPos.add(new Integer(3));
+		targetsRestrictedPos.add(0);
+		targetsRestrictedPos.add(1);
+		targetsRestrictedPos.add(2);
 
 	}
 }

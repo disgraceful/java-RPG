@@ -36,16 +36,20 @@ public class Test {
 		Collections.sort(queue);
 		for (Character c : queue) {
 			printCharacterInfo(c);
+			for(SpellEnum spell:c.getAllSpells()){
+				System.out.print("1 - ");
+				printAbilityInfo(spell.getSpellClass());
+			}
 			int i = sc.nextInt();
 			SpellEnum s = c.getAllSpells().get(i-1);
 			
-			
-			for(Character target :s.getSpellClass().getAvaliableTargets(queue)){
+			List<Character>targets =  s.getSpellClass().getAvaliableTargets(queue,c);
+			for(Character target :targets){
 				System.out.print("1 - ");
 				printCharacterInfo(target);
 			}
-			//c.useAbility(c.getAllSpells().get(i - 1), new Character[]{});
-
+			int j = sc.nextInt();
+			c.useAbility(c.getAllSpells().get(i - 1), new Character[]{targets.get(j-1)});
 		}
 	}
 
@@ -66,10 +70,11 @@ public class Test {
 		}
 	}
 
-	// private static void printAbilityInfo(SpellEnum ability) {
-	// System.out.println(ability.getName());
-	// System.out.println(ability.getDescription());
-	// }
+	 private static void printAbilityInfo(Spell ability) {
+	 System.out.println(ability.getName());
+	 System.out.println(ability.getDescription());
+	 
+	 }
 
 	private static void printPartyInfo(Party party) {
 		for (Character c : party.getMembers()) {
