@@ -3,10 +3,12 @@ package com.disgrace.ddripoff.abilities;
 import java.util.List;
 
 import com.disgrace.ddripoff.characters.shared.Character;
+import com.disgrace.ddripoff.spells.TemporaryEffect;
+import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public abstract class BuffAbility extends Ability implements TemporaryEffect {
+public abstract class BuffAbility extends SpellEnum implements TemporaryEffect {
 	private int abilityDuration;
 	private int currentDuration;
 	private final TemporaryEffectType effectType;

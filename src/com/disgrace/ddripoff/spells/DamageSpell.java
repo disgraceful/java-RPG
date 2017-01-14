@@ -30,7 +30,7 @@ public class DamageSpell extends Spell {
 		double callerDmgMax = callerDmg * 1.25;
 		int randomizedDmg = (int) (new Random().nextInt((int) ((callerDmgMax - callerDmgMin) + 1)) + callerDmgMin);
 
-		int realDmg = randomizedDmg * (100 - target.getProperDeffenceValue(damageType)) / 100;		
+		int realDmg = randomizedDmg * (100 - target.getStats().getProperDeffenceValue(damageType)) / 100;		
 		return realDmg;
 	}
 

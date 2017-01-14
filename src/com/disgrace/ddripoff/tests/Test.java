@@ -2,8 +2,7 @@ package com.disgrace.ddripoff.tests;
 
 import java.util.Iterator;
 
-import com.disgrace.ddripoff.abilities.Ability;
-import com.disgrace.ddripoff.abilities.TemporaryEffect;
+import com.disgrace.ddripoff.abilities.SpellEnum;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.dungeon.Desert;
@@ -11,6 +10,7 @@ import com.disgrace.ddripoff.dungeon.DungeonBuilder;
 import com.disgrace.ddripoff.dungeon.DungeonSize;
 import com.disgrace.ddripoff.heroes.Hero;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -120,7 +120,7 @@ public class Test {
 		}
 	}
 
-	private static void printAbilityInfo(Ability ability) {
+	private static void printAbilityInfo(SpellEnum ability) {
 		System.out.println(ability.getName());
 		System.out.println(ability.getDescription());
 	}

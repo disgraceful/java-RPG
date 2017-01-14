@@ -2,9 +2,8 @@ package com.disgrace.ddripoff.characters.shared;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.abilities.Ability;
-import com.disgrace.ddripoff.abilities.TemporaryEffect;
-import com.disgrace.ddripoff.spells.DamageType;
+import com.disgrace.ddripoff.abilities.SpellEnum;
+import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -13,7 +12,7 @@ public abstract class Character implements Comparable<Character> {
 	protected StatWrapper stats;
 
 	protected ArrayList<TemporaryEffect> tempEffects = new ArrayList<TemporaryEffect>();
-	protected ArrayList<Ability> allAbilities = new ArrayList<Ability>();
+	protected ArrayList<SpellEnum> allAbilities = new ArrayList<SpellEnum>();
 	protected Party party;
 
 	public String getName() {
@@ -44,7 +43,7 @@ public abstract class Character implements Comparable<Character> {
 		return stats;
 	}
 
-	public ArrayList<Ability> getAllAbilities() {
+	public ArrayList<SpellEnum> getAllSpells() {
 		return allAbilities;
 	}
 
@@ -56,19 +55,7 @@ public abstract class Character implements Comparable<Character> {
 		party.reposition(this, newposition);
 	}
 
-	public int getProperDeffenceValue(DamageType dType) {
-		switch (dType) {
-		case PHYS:
-			return stats.getStatbyName(StatEnumeration.PHYS_PROT).getCurValue();
-		case MAGICAL:
-			return stats.getStatbyName(StatEnumeration.MAG_PROT).getCurValue();
-		case STRESS:
-			return stats.getStatbyName(StatEnumeration.STRESS_PROT).getCurValue();
-		default:
-			return 0;
-		}
-	}
-
+	
 	@Override
 	public int compareTo(Character c1) {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();

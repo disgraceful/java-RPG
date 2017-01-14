@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.abilities;
+package com.disgrace.ddripoff.spells;
 
 import com.disgrace.ddripoff.characters.shared.Character;
 

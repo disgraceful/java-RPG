@@ -29,8 +29,6 @@ public enum StatEnumeration {
 	DEBUFF_RES("Debuff Resistance",StatSpecification.RESIST_STAT), 
 	DEATH_RES("Deathblow Resistance",StatSpecification.RESIST_STAT),
 
-
-	
 	PHYS_PROT("Physical Protection",StatSpecification.PROT_STAT),
 	MAG_PROT("Physical Protection",StatSpecification.PROT_STAT),
 	STRESS_PROT("Stress Protection",StatSpecification.PROT_STAT);
@@ -41,6 +39,7 @@ public enum StatEnumeration {
 		this.name= name;
 		specification = spec;
 	}
+	
 }
 
 enum StatSpecification{

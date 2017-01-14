@@ -3,7 +3,7 @@ package com.disgrace.ddripoff.heroes;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.disgrace.ddripoff.abilities.Ability;
+import com.disgrace.ddripoff.abilities.SpellEnum;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.stats.StatWrapper;
@@ -11,7 +11,7 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public abstract class Hero extends Character{
 	protected HeroClass heroClass;
 	private List<Trinket> inventory = new ArrayList<Trinket>();
-	private List<Ability> learnedAbilities = new ArrayList<Ability>();
+	private List<SpellEnum> learnedAbilities = new ArrayList<SpellEnum>();
 
 	public void equip(Trinket trinket) {
 		if (trinket.tryEquip(this)) {
@@ -33,18 +33,18 @@ public abstract class Hero extends Character{
 		return inventory;
 	}
 
-	private boolean ifAbilityLearned(Ability ability) {
+	private boolean ifAbilityLearned(SpellEnum ability) {
 		return learnedAbilities.contains(ability);
 	}
 
-	public void learnAbility(Ability ability) {
+	public void learnAbility(SpellEnum ability) {
 		if (allAbilities.contains(ability)) {
 			learnedAbilities.add(ability);
 			System.out.println(this.getName() + " has learned " + ability.getName());
 		}
 	}
 
-	public void useAbility(Ability ability, Character[] targets) {
+	public void useAbility(SpellEnum ability, Character[] targets) {
 		if (ifAbilityLearned(ability)) {
 			ability.useAbility(targets, this);
 		}

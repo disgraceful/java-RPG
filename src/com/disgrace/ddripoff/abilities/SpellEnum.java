@@ -8,7 +8,7 @@ import com.disgrace.ddripoff.characters.shared.CharacterClass;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public abstract class Ability {
+public abstract class SpellEnum {
 
 	protected String name;
 	protected String description;
