@@ -15,8 +15,6 @@ public class CenturionSwordSwing extends DamageSpell{
 	
 	@Override
 	public void initSpell() {
-		name = "Sword Swing";
-		description = "Cool description";
 		restrictionClass = HeroClass.CENTURION;
 		damageType = DamageType.PHYS;
 		range = RangeType.MELEE;

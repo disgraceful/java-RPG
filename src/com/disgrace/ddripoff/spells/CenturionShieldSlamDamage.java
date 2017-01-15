@@ -14,8 +14,6 @@ public class CenturionShieldSlamDamage extends DamageSpell {
 	
 	@Override
 	public void initSpell() {
-		name = "Shield Slam";
-		description = "Cool description";
 		restrictionClass = HeroClass.CENTURION;
 		damageType = DamageType.PHYS;
 		range = RangeType.MELEE;
