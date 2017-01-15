@@ -14,12 +14,9 @@ public class OutcastSwordsmanSlashOfExile extends DamageSpell {
 
 	@Override
 	public void initSpell() {
-		name = "Slash Of Exile";
-		description = "Cool description";
 		restrictionClass = EnemyClass.OUTCAST_SWORDSMAN;
 		damageType = DamageType.PHYS;
 		range = RangeType.MELEE;
-		spellClass = SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE;
 		spellType = TargetType.ENEMY;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{

@@ -14,11 +14,8 @@ public class CenturionShieldSlamMove extends MoveSpell {
 
 	@Override
 	public void initSpell() {
-		name = "Shield Slam";
-		description = "Cool description";
 		restrictionClass = HeroClass.CENTURION;
 		range = RangeType.MELEE;
-
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.MOVE_CHANCE, 100, 220));

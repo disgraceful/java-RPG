@@ -1,26 +1,26 @@
 package com.disgrace.ddripoff.characters.shared;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.disgrace.ddripoff.enemies.EnemyClass;
 import com.disgrace.ddripoff.spawn.EnemySpawnFactory;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
 import com.disgrace.ddripoff.spawn.SpawnPattern;
-import com.disgrace.ddripoff.spawn.SpawnableEnemy;
 import com.disgrace.ddripoff.spawn.SpawnableParty;
 
 public class Party implements SpawnableParty {
 
-	private ArrayList<Character> partyMembers = new ArrayList<Character>();
+	private List<Character> partyMembers = new ArrayList<Character>();
 
-	public Party(ArrayList<Character> members) {
+	public Party(List<Character> members) {
 		partyMembers = members;
 	}
 
 	public Party() {
 	}
 
-	public ArrayList<Character> getMembers() {
+	public List<Character> getMembers() {
 		return partyMembers;
 	}
 
@@ -53,17 +53,33 @@ public class Party implements SpawnableParty {
 		}
 	}
 
+	public boolean isPartyDead() {
+		for (Character character : partyMembers) {
+			if (!character.isCharDead()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean isPartyEmpty(){
+		return partyMembers.size()<=0?true:false;
+	}
+	
+	public void removeMember(Character c){
+		partyMembers.remove(c);
+	}
+
 	@Override
 	public String toString() {
 		return "Party members: " + partyMembers;
 	}
-	
 
 	@Override
 	public SpawnableParty spawnParty(SpawnPattern pattern) {
 		Party spawningParty = new Party();
-		for(EnemySpawnType type : pattern.getSpawnTypes()){
-			for(EnemyClass eClass: EnemyClass.getClassBySpawnType(type)){
+		for (EnemySpawnType type : pattern.getSpawnTypes()) {
+			for (EnemyClass eClass : EnemyClass.getClassBySpawnType(type)) {
 				spawningParty.addMember(EnemySpawnFactory.getEnemy(eClass));
 			}
 		}

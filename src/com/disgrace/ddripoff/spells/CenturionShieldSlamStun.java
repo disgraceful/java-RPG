@@ -15,8 +15,6 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 
 	@Override
 	public void initSpell() {
-		name = "Shield Slam";
-		description = "Cool description";
 		restrictionClass = HeroClass.CENTURION;
 		range = RangeType.MELEE;
 		abilityDuration =1;

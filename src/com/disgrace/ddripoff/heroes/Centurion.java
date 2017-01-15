@@ -40,7 +40,8 @@ public class Centurion extends Hero implements SpawnableEnemy{
 				add(new Stat(StatEnumeration.TRAP_DISARM_CHANCE, 10, 100));
 			}
 		});
-		
+		allAbilities.add(SpellEnum.CENTURION_SWORD_SWING);
+		allAbilities.add(SpellEnum.CENTURION_SHIELD_SLAM);
 	}
 
 	@Override
