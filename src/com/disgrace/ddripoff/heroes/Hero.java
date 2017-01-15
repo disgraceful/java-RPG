@@ -45,7 +45,6 @@ public abstract class Hero extends Character{
 	@Override
 	public void useAbility(SpellEnum ability, Character[] targets) {
 		//if (ifAbilityLearned(ability)) {
-			ability.castSpellCombo(targets, this);
-		
+			ability.castSpell(targets, this);
 	}
 }

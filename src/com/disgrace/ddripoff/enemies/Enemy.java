@@ -10,7 +10,7 @@ public abstract class Enemy extends Character {
 	
 	@Override
 	public void useAbility(SpellEnum ability, Character[] targets) {
-		ability.castSpellCombo(targets, this);	
+		ability.castSpell(targets, this);	
 	}
 
 	public EnemyClass getEnemyClass(){

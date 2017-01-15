@@ -24,10 +24,13 @@ public class Test {
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
 		badP.addMember(new OutcastSwordsman());
-		battle(goodP, badP);
+		while(badP.isPartyDead()){
+			battleTurn(goodP, badP);
+		}
+		
 	}
 
-	public static void battle(Party good, Party bad) {
+	public static void battleTurn(Party good, Party bad) {
 		Scanner sc = new Scanner(System.in);
 		List<Character> queue = new ArrayList<>();
 		queue.addAll(good.getMembers());

@@ -20,7 +20,6 @@ public class CenturionSwordSwing extends DamageSpell{
 		restrictionClass = HeroClass.CENTURION;
 		damageType = DamageType.PHYS;
 		range = RangeType.MELEE;
-		spellClass = SpellEnum.CENTURION_SWORD_SWING;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.ACC_MOD, 70, 100));

@@ -2,6 +2,7 @@ package com.disgrace.ddripoff.stats;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
@@ -61,6 +62,16 @@ public class StatWrapper {
 		}
 	}
 	
+	public boolean isCharDead(){
+		return getStatbyName(StatEnumeration.HEALTH).getCurValue()<=0&&isDeathBlown()?true:false;
+	}
+	
+	private boolean isDeathBlown(){
+		int chance = new Random().nextInt(101);
+		int deathBlowChance = getStatbyName(StatEnumeration.DEATH_RES).getCurValue();
+		return chance>deathBlowChance?true:false;
+	}
+	
 	public int getProperDeffenceValue(DamageType dType) {
 		switch (dType) {
 		case PHYS:
@@ -96,5 +107,7 @@ public class StatWrapper {
 			return -1;
 		}
 	}
+	
+	
 
 }

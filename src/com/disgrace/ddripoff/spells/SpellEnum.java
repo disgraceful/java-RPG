@@ -12,7 +12,7 @@ public enum SpellEnum {
 		this.spells = spells;
 	}
 	
-	public void castSpellCombo(Character[] targets, Character caller){
+	public void castSpell(Character[] targets, Character caller){
 		for(Spell s : spells){
 			s.useSpell(targets, caller);
 		}
