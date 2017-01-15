@@ -61,6 +61,14 @@ public class Party implements SpawnableParty {
 		}
 		return true;
 	}
+	
+	public boolean isPartyEmpty(){
+		return partyMembers.size()<=0?true:false;
+	}
+	
+	public void removeMember(Character c){
+		partyMembers.remove(c);
+	}
 
 	@Override
 	public String toString() {

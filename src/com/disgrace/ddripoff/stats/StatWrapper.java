@@ -48,6 +48,7 @@ public class StatWrapper {
 					curStat.setMaxValue(curStat.getMaxValue() + c.getCurValue());
 				}
 				curStat.setValue(i + c.getCurValue());
+				
 			}
 		}
 	}

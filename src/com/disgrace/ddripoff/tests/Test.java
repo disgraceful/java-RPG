@@ -10,7 +10,6 @@ import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.enemies.OutcastSwordsman;
 import com.disgrace.ddripoff.heroes.Centurion;
 import com.disgrace.ddripoff.items.Trinket;
-import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.stats.Stat;
 
@@ -18,51 +17,70 @@ public class Test {
 
 	private static int turnCount;
 	private static Party currentParty;
-
+	static Scanner sc = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		Party goodP = new Party();
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
 		badP.addMember(new OutcastSwordsman());
-		while(badP.isPartyDead()){
+	
+		
+		while(!badP.isPartyDead()||!badP.isPartyEmpty()){
 			battleTurn(goodP, badP);
 		}
-		
 	}
 
 	public static void battleTurn(Party good, Party bad) {
-		Scanner sc = new Scanner(System.in);
 		List<Character> queue = new ArrayList<>();
 		queue.addAll(good.getMembers());
 		queue.addAll(bad.getMembers());
 
 		Collections.sort(queue);
 		for (Character c : queue) {
-			printCharacterInfo(c);
-			for(SpellEnum spell:c.getAllSpells()){
-				System.out.print("1 - ");
-				printAbilityInfo(spell.getSpellClass());
+			System.out.println("Turn of: ");
+			printCharacterShortInfo(c);
+			for (int i = 0; i < c.getAllSpells().size(); i++) {
+				System.out.print(i+1+" - ");
+				printAbilityInfo(c.getAllSpells().get(i));
 			}
-			int i = sc.nextInt();
-			SpellEnum s = c.getAllSpells().get(i-1);
+			//int input = sc.nextInt();
+			//SpellEnum s = c.getAllSpells().get(input-1);
+			SpellEnum s = c.getAllSpells().get(0);
 			
 			List<Character>targets =  s.getSpellClass().getAvaliableTargets(queue,c);
-			for(Character target :targets){
-				System.out.print("1 - ");
-				printCharacterInfo(target);
+			for (int i = 0; i <targets.size(); i++) {
+				System.out.print(i+1+" - ");
+				printCharacterShortInfo(targets.get(i));
 			}
-			int j = sc.nextInt();
-			c.useAbility(c.getAllSpells().get(i - 1), new Character[]{targets.get(j-1)});
+			//input= sc.nextInt();
+			//Character target = targets.get(input-1);
+			Character target = targets.get(0);
+			//c.useAbility(c.getAllSpells().get(input - 1), new Character[]{target});
+			c.useAbility(c.getAllSpells().get(0), new Character[]{target});
+			printCharacterFullInfo(target);
+			if(target.isCharDead()){
+				target.charDied();
+			}
 		}
 	}
 
-	private static void printCharacterInfo(Character character) {
+	private static void printCharacterFullInfo(Character character) {
 		System.out.println(character.getName());
 		for (Stat s : character.getStatWrapper().getStatsasArrayList()) {
 			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
 																												// "/"+s.getMaxValue());
 		}
 		System.out.println(character.getName() + "'s position: " + character.getPosition());
+	}
+	
+	private static void printCharacterShortInfo(Character character) {
+		System.out.println(character.getName());
+		for (Stat s : character.getStatWrapper().getStatsasArrayList()) {
+			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue());																								// "/"+s.getMaxValue());
+			return;
+		}
+	
 	}
 
 	private static void printTrinketInfo(Trinket trinket) {
@@ -73,9 +91,9 @@ public class Test {
 		}
 	}
 
-	 private static void printAbilityInfo(Spell ability) {
-	 System.out.println(ability.getName());
-	 System.out.println(ability.getDescription());
+	 private static void printAbilityInfo(SpellEnum spell) {
+	 System.out.println(spell.getName());
+	 System.out.println(spell.getDescription());
 	 
 	 }
 
@@ -85,3 +103,4 @@ public class Test {
 		}
 	}
 }
+

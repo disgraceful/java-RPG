@@ -18,6 +18,7 @@ public class CenturionSwordSwing extends DamageSpell{
 		restrictionClass = HeroClass.CENTURION;
 		damageType = DamageType.PHYS;
 		range = RangeType.MELEE;
+		spellType = TargetType.ENEMY;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.ACC_MOD, 70, 100));
@@ -26,11 +27,11 @@ public class CenturionSwordSwing extends DamageSpell{
 			}
 		});
 
-		callerRestrictedPos.add(new Integer(1));
-		callerRestrictedPos.add(new Integer(2));
+		callerRestrictedPos.add(0);
+		callerRestrictedPos.add(1);
 
-		targetsRestrictedPos.add(new Integer(1));
-		targetsRestrictedPos.add(new Integer(2));
+		targetsRestrictedPos.add(0);
+		targetsRestrictedPos.add(1);
 		
 	}
 }

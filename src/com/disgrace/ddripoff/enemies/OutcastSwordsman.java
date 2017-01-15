@@ -25,7 +25,7 @@ public class OutcastSwordsman extends Enemy implements SpawnableEnemy {
 		eClass = EnemyClass.OUTCAST_SWORDSMAN;
 		this.stats = new StatWrapper(new ArrayList<Stat>() {
 			{
-				add(new Stat(StatEnumeration.HEALTH, 15, 30));
+				add(new Stat(StatEnumeration.HEALTH, 15, 15));
 				add(new Stat(StatEnumeration.DODGE, 7, 50));
 				add(new Stat(StatEnumeration.MAG_PROT, 0, 100));
 				add(new Stat(StatEnumeration.PHYS_PROT, 0, 100));

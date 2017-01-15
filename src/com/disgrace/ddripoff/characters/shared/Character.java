@@ -58,8 +58,14 @@ public abstract class Character implements Comparable<Character> {
 	public void move(int newposition) {
 		party.reposition(this, newposition);
 	}
+	
 	public boolean isCharDead() {
 		return stats.isCharDead();
+	}
+	
+	public void charDied(){
+		party.removeMember(this);
+		System.out.println("RIP "+name);
 	}
 		
 	@Override

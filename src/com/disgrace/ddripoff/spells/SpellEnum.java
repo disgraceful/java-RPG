@@ -3,18 +3,18 @@ package com.disgrace.ddripoff.spells;
 import com.disgrace.ddripoff.characters.shared.Character;
 
 public enum SpellEnum {
-	CENTURION_SWORD_SWING("Sword Swing","Cool description",new CenturionSwordSwing()) {
-		
-	},
-	CENTURION_SHIELD_SLAM("Shield Slam","Cool description",new CenturionShieldSlamDamage(), new CenturionShieldSlamStun(),new CenturionShieldSlamMove()),
-	OUTCAST_SWORDSMAN_SLASH_OF_EXILE("Slash of Exile","Cool description",new OutcastSwordsmanSlashOfExile());
+	CENTURION_SWORD_SWING("Sword Swing", "Cool description", new CenturionSwordSwing()), 
+	CENTURION_SHIELD_SLAM("Shield Slam", "Cool description", new CenturionShieldSlamDamage(), new CenturionShieldSlamStun(),new CenturionShieldSlamMove()),
+	OUTCAST_SWORDSMAN_SLASH_OF_EXILE("Slash of Exile", "Cool description",new OutcastSwordsmanSlashOfExile());
 
 	private String name;
 	private String description;
 	private Spell[] spells;
 
-	private SpellEnum(String name,String description,Spell... spells) {
+	private SpellEnum(String name, String description, Spell... spells) {
 		this.spells = spells;
+		this.name = name;
+		this.description = description;
 	}
 
 	public void castSpell(Character[] targets, Character caller) {
