@@ -25,7 +25,6 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 				add(new Stat(StatEnumeration.STUN_CHANCE, 110, 220));
 			}
 		});
-
 		callerRestrictedPos.add(0);
 
 		targetsRestrictedPos.add(0);

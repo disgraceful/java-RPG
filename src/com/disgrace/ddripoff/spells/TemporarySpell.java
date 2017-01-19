@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.disgrace.ddripoff.characters.shared.Character;
 
-public abstract class TemporarySpell extends Spell implements TemporaryEffect{
+public abstract class TemporarySpell extends Spell {
 	protected int abilityDuration;
 	protected int currentDuration;
 	private TemporaryEffectType effectType;
@@ -35,4 +35,7 @@ public abstract class TemporarySpell extends Spell implements TemporaryEffect{
 		int chance = new Random().nextInt(101);
 		return chance> target.getStats().getProperResistValue(effectType);
 	}
+	
+	public abstract void onTick(Character target);
+	public abstract void onExpire(Character target);
 }

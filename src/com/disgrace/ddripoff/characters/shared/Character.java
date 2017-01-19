@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.disgrace.ddripoff.spells.SpellEnum;
-import com.disgrace.ddripoff.spells.TemporaryEffect;
+import com.disgrace.ddripoff.spells.TemporarySpell;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -12,7 +12,7 @@ public abstract class Character implements Comparable<Character> {
 	protected String name;
 	protected StatWrapper stats;
 
-	protected List<TemporaryEffect> tempEffects = new ArrayList<TemporaryEffect>();
+	protected List<TemporarySpell> tempEffects = new ArrayList<TemporarySpell>();
 	protected List<SpellEnum> allAbilities = new ArrayList<SpellEnum>();
 	protected Party party;
 
@@ -32,11 +32,11 @@ public abstract class Character implements Comparable<Character> {
 		this.party = party;
 	}
 
-	public List<TemporaryEffect> getEffectsList() {
+	public List<TemporarySpell> getEffectsList() {
 		return tempEffects;
 	}
 
-	public void addEffect(TemporaryEffect effect) {
+	public void addEffect(TemporarySpell effect) {
 		if(effect==null){
 			return;
 		}
