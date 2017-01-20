@@ -27,7 +27,7 @@ public abstract class TemporarySpell extends Spell {
 		for (Character t : targets) {
 			if (isDotApplying(t, caller)) {
 				t.addEffect(this);
-				System.out.println(t.getName() + " has been dotted");
+				//System.out.println(t.getName() + " has been dotted");
 			}
 		}
 	}
