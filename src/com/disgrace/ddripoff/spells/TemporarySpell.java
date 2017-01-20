@@ -8,7 +8,7 @@ import com.disgrace.ddripoff.stats.StatEnumeration;
 public abstract class TemporarySpell extends Spell {
 	protected int abilityDuration;
 	protected int currentDuration;
-	private TemporaryEffectType effectType;
+	protected TemporaryEffectType effectType;
 	
 	public int getEffectDuration() {
 		return abilityDuration;
@@ -35,7 +35,7 @@ public abstract class TemporarySpell extends Spell {
 	private boolean isDotApplying(Character target, Character caller) {
 		int targetResist = target.getStats().getProperResistValue(effectType);
 		int callerDotChanceMultiplier = caller.getStats().getProperMultiplierValue(effectType);
-		int abilityChance = affectedStats.getProperMultiplierValue(effectType);
+		int abilityChance = abilityStats.getProperMultiplierValue(effectType);
 		int total = abilityChance+callerDotChanceMultiplier-targetResist;
 		if(total>90){
 			total=90;

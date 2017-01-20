@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.disgrace.ddripoff.spells.SpellEnum;
+import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.spells.TemporarySpell;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
@@ -67,11 +68,29 @@ public abstract class Character implements Comparable<Character> {
 		party.removeMember(this);
 		System.out.println("RIP "+name);
 	}
+	
+	public boolean isCharStunned(){
+		System.out.println(name+"is stunned");
+		for(TemporarySpell s:tempEffects){
+			if(s.getEffectType()==TemporaryEffectType.STUN){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void cleanseTempEffect(TemporarySpell spell){
+		if(spell==null){
+			return;
+		}
+		tempEffects.remove(spell);
+		stats.cleanseEffect(spell);
+	}
 		
 	@Override
 	public int compareTo(Character c1) {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
-		return comparespeed - this.stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
+		return comparespeed - stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
 	}
 
 	protected abstract void init();

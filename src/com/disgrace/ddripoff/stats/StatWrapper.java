@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
+import com.disgrace.ddripoff.spells.TemporarySpell;
 
 public class StatWrapper {
 	private List<Stat> stats = new ArrayList<Stat>();
@@ -48,7 +49,7 @@ public class StatWrapper {
 					curStat.setMaxValue(curStat.getMaxValue() + c.getCurValue());
 				}
 				curStat.setValue(i + c.getCurValue());
-				
+
 			}
 		}
 	}
@@ -62,17 +63,17 @@ public class StatWrapper {
 			}
 		}
 	}
-	
-	public boolean isCharDead(){
-		return getStatbyName(StatEnumeration.HEALTH).getCurValue()<=0&&isDeathBlown()?true:false;
+
+	public boolean isCharDead() {
+		return getStatbyName(StatEnumeration.HEALTH).getCurValue() <= 0 && isDeathBlown() ? true : false;
 	}
-	
-	private boolean isDeathBlown(){
+
+	private boolean isDeathBlown() {
 		int chance = new Random().nextInt(101);
 		int deathBlowChance = getStatbyName(StatEnumeration.DEATH_RES).getCurValue();
-		return chance>deathBlowChance?true:false;
+		return chance > deathBlowChance ? true : false;
 	}
-	
+
 	public int getProperDeffenceValue(DamageType dType) {
 		switch (dType) {
 		case PHYS:
@@ -85,7 +86,7 @@ public class StatWrapper {
 			return 0;
 		}
 	}
-	
+
 	public int getProperResistValue(TemporaryEffectType eType) {
 		switch (eType) {
 		case STUN:
@@ -108,29 +109,34 @@ public class StatWrapper {
 			return -1;
 		}
 	}
-	
+
 	public int getProperMultiplierValue(TemporaryEffectType eType) {
 		switch (eType) {
 		case STUN:
 			return getStatbyName(StatEnumeration.STUN_CHANCE).getCurValue();
-//		case BLEED:
-//			return getStatbyName(StatEnumeration.BLEED_RES).getCurValue();
-//		case BLIGHT:
-//			return getStatbyName(StatEnumeration.BLIGHT_RES).getCurValue();
-//		case DEBUFF:
-//			return getStatbyName(StatEnumeration.DEBUFF_RES).getCurValue();
-//		case CURSE:
-//			return getStatbyName(StatEnumeration.CURSE_RES).getCurValue();
-//		case DISEASE:
-//			return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
-//		case MARK:
-//			return 0;
-//		case BUFF:
-//			return 0;
+		// case BLEED:
+		// return getStatbyName(StatEnumeration.BLEED_RES).getCurValue();
+		// case BLIGHT:
+		// return getStatbyName(StatEnumeration.BLIGHT_RES).getCurValue();
+		// case DEBUFF:
+		// return getStatbyName(StatEnumeration.DEBUFF_RES).getCurValue();
+		// case CURSE:
+		// return getStatbyName(StatEnumeration.CURSE_RES).getCurValue();
+		// case DISEASE:
+		// return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
+		// case MARK:
+		// return 0;
+		// case BUFF:
+		// return 0;
 		default:
 			return -1;
 		}
 	}
-	
+
+	public void cleanseEffect(TemporarySpell spell) {
+		StatWrapper s = spell.getAffectingStats();
+		StatWrapper.reverseStatsValue(s);
+		updateStats(s);
+	}
 
 }

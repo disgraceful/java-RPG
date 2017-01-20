@@ -17,12 +17,18 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 	public void initSpell() {
 		restrictionClass = HeroClass.CENTURION;
 		range = RangeType.MELEE;
-		abilityDuration =1;
+		abilityDuration = 1;
 		currentDuration = abilityDuration;
-
+		currentDuration = abilityDuration;
+		effectType = TemporaryEffectType.STUN;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.STUN_CHANCE, 110, 220));
+			}
+		});
+		affectedStats = new StatWrapper(new ArrayList<Stat>() {
+			{
+				add(new Stat(StatEnumeration.IS_STUNNED, -1, 1));
 			}
 		});
 		callerRestrictedPos.add(0);
@@ -33,15 +39,15 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 
 	@Override
 	public void onTick(Character target) {
-		if(currentDuration>0){
+		if (currentDuration > 0) {
 			currentDuration--;
+			return;
 		}
-		
+		onExpire(target);
 	}
 
 	@Override
 	public void onExpire(Character target) {
-		// TODO Auto-generated method stub
-		
+		target.cleanseTempEffect(this);
 	}
 }

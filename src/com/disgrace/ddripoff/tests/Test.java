@@ -2,6 +2,7 @@ package com.disgrace.ddripoff.tests;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,8 +11,11 @@ import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.enemies.OutcastSwordsman;
 import com.disgrace.ddripoff.heroes.Centurion;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
+import com.disgrace.ddripoff.spells.TemporarySpell;
 import com.disgrace.ddripoff.stats.Stat;
+import com.disgrace.ddripoff.stats.StatEnumeration;
 
 public class Test {
 
@@ -37,9 +41,17 @@ public class Test {
 		queue.addAll(bad.getMembers());
 
 		Collections.sort(queue);
+		SkipTurn:
 		for (Character c : queue) {
 			System.out.println("Turn of: ");
 			printCharacterShortInfo(c);
+			for (Iterator iterator = c.getEffectsList().iterator(); iterator.hasNext();) {
+				TemporarySpell tempS = (TemporarySpell) iterator.next();
+				tempS.onTick(c);
+				if(c.isCharStunned()){
+					continue SkipTurn;
+				}
+			}
 			for (int i = 0; i < c.getAllSpells().size(); i++) {
 				System.out.print(i+1+" - ");
 				printAbilityInfo(c.getAllSpells().get(i));
@@ -57,7 +69,8 @@ public class Test {
 			//Character target = targets.get(input-1);
 			Character target = targets.get(0);
 			//c.useAbility(c.getAllSpells().get(input - 1), new Character[]{target});
-			c.useAbility(c.getAllSpells().get(0), new Character[]{target});
+			SpellEnum chosenSpell = c.getAllSpells().get(0);
+			c.useAbility(chosenSpell, new Character[]{target});
 			printCharacterFullInfo(target);
 			if(target.isCharDead()){
 				target.charDied();
@@ -68,18 +81,14 @@ public class Test {
 	private static void printCharacterFullInfo(Character character) {
 		System.out.println(character.getName());
 		for (Stat s : character.getStatWrapper().getStatsasArrayList()) {
-			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
-																												// "/"+s.getMaxValue());
+			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // + "/"+s.getMaxValue());
 		}
 		System.out.println(character.getName() + "'s position: " + character.getPosition());
 	}
 	
 	private static void printCharacterShortInfo(Character character) {
-		System.out.println(character.getName());
-		for (Stat s : character.getStatWrapper().getStatsasArrayList()) {
-			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue());																								// "/"+s.getMaxValue());
-			return;
-		}
+		System.out.println(character.getName()+character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()+ "/"+character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
+		
 	
 	}
 
