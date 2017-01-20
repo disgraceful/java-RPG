@@ -31,7 +31,9 @@ public enum StatEnumeration {
 
 	PHYS_PROT("Physical Protection",StatSpecification.PROT_STAT),
 	MAG_PROT("Physical Protection",StatSpecification.PROT_STAT),
-	STRESS_PROT("Stress Protection",StatSpecification.PROT_STAT);
+	STRESS_PROT("Stress Protection",StatSpecification.PROT_STAT),
+	
+	IS_STUNNED("Is stunned?",StatSpecification.STATUS_STAT)	;
 	
 	private String name;
 	private StatSpecification specification;
@@ -43,5 +45,5 @@ public enum StatEnumeration {
 }
 
 enum StatSpecification{
-	DEF_STAT, DAMAGE_STAT, UTILITY_STAT, RESIST_STAT,PROT_STAT, SPELL_STAT;
+	DEF_STAT, DAMAGE_STAT, UTILITY_STAT, RESIST_STAT,PROT_STAT, STATUS_STAT,SPELL_STAT;
 }
