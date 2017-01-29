@@ -47,4 +47,6 @@ public abstract class Hero extends Character{
 		//if (ifAbilityLearned(ability)) {
 			ability.castSpell(targets, this);
 	}
+	
+	
 }

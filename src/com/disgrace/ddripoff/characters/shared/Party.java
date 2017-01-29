@@ -3,13 +3,12 @@ package com.disgrace.ddripoff.characters.shared;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.disgrace.ddripoff.enemies.Enemy;
 import com.disgrace.ddripoff.enemies.EnemyClass;
-import com.disgrace.ddripoff.spawn.EnemySpawnFactory;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
 import com.disgrace.ddripoff.spawn.SpawnPattern;
-import com.disgrace.ddripoff.spawn.SpawnableParty;
 
-public class Party implements SpawnableParty {
+public class Party {
 
 	private List<Character> partyMembers = new ArrayList<Character>();
 
@@ -75,12 +74,11 @@ public class Party implements SpawnableParty {
 		return "Party members: " + partyMembers;
 	}
 
-	@Override
-	public SpawnableParty spawnParty(SpawnPattern pattern) {
+	public static Party spawnParty(SpawnPattern pattern) {
 		Party spawningParty = new Party();
 		for (EnemySpawnType type : pattern.getSpawnTypes()) {
 			for (EnemyClass eClass : EnemyClass.getClassBySpawnType(type)) {
-				spawningParty.addMember(EnemySpawnFactory.getEnemy(eClass));
+				spawningParty.addMember(Enemy.spawn(eClass));
 			}
 		}
 		return spawningParty;

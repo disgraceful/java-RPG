@@ -2,22 +2,16 @@ package com.disgrace.ddripoff.enemies;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.spawn.SpawnableEnemy;
 import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public class OutcastSwordsman extends Enemy implements SpawnableEnemy {
+public class OutcastSwordsman extends Enemy  {
 
 	public OutcastSwordsman() {
 		name = "Outcast Swordsman";
 		init();
-	}
-
-	@Override
-	public SpawnableEnemy spawn() {
-		return new OutcastSwordsman();
 	}
 
 	@Override
@@ -39,6 +33,10 @@ public class OutcastSwordsman extends Enemy implements SpawnableEnemy {
 				add(new Stat(StatEnumeration.MOVE_RES, 10, 100));
 				add(new Stat(StatEnumeration.BLEED_RES, 30, 100));
 				add(new Stat(StatEnumeration.DEBUFF_RES, 40, 100));
+				//ability related
+				add(new Stat(StatEnumeration.STUN_CHANCE, 0, 100));
+				//status stat
+				add(new Stat(StatEnumeration.IS_STUNNED, 0, 1));
 			}
 		});
 		allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE);

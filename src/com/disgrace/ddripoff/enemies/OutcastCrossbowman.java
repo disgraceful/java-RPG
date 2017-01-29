@@ -1,13 +1,6 @@
 package com.disgrace.ddripoff.enemies;
 
-import com.disgrace.ddripoff.spawn.SpawnableEnemy;
-
-public class OutcastCrossbowman extends Enemy implements SpawnableEnemy {
-
-	@Override
-	public SpawnableEnemy spawn() {
-		return new OutcastCrossbowman();
-	}
+public class OutcastCrossbowman extends Enemy {
 
 	@Override
 	protected void init() {

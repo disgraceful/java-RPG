@@ -6,7 +6,6 @@ import java.util.Random;
 
 import com.disgrace.ddripoff.characters.shared.CharacterClass;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
-import com.disgrace.ddripoff.spawn.SpawnableEnemy;
 
 public enum EnemyClass  implements CharacterClass {
 	OUTCAST_CROSSBOWMAN("Outcast Crossbowman", new ArrayList<EnemySubType>() {
@@ -14,7 +13,8 @@ public enum EnemyClass  implements CharacterClass {
 			add(EnemySubType.HUMAN);
 		}
 	}, EnemySpawnType.BACK) {
-		public SpawnableEnemy getEnemyToSpawn() {
+		@Override
+		public Enemy getCharacterToSpawn() {
 			return new OutcastCrossbowman();
 		}
 	},
@@ -24,7 +24,8 @@ public enum EnemyClass  implements CharacterClass {
 			add(EnemySubType.HUMAN);
 		}
 	}, EnemySpawnType.MIDDLE) {
-		public SpawnableEnemy getEnemyToSpawn() {
+		@Override
+		public Enemy getCharacterToSpawn() {
 			return new OutcastSwordsman();
 		}
 	},
@@ -33,7 +34,8 @@ public enum EnemyClass  implements CharacterClass {
 			add(EnemySubType.HUMAN);
 		}
 	}, EnemySpawnType.FRONT) {
-		public SpawnableEnemy getEnemyToSpawn() {
+		@Override
+		public Enemy getCharacterToSpawn() {
 			return new OutcastKnight();
 		}
 	};
@@ -48,7 +50,7 @@ public enum EnemyClass  implements CharacterClass {
 
 	private String name;
 	private static final Random RANDOM = new Random();
-	private static final ArrayList<EnemyClass> VALUES = new ArrayList<EnemyClass>() {
+	private static final List<EnemyClass> VALUES = new ArrayList<EnemyClass>() {
 		{
 			add(EnemyClass.OUTCAST_CROSSBOWMAN);
 			add(EnemyClass.OUTCAST_SWORDSMAN);
@@ -84,5 +86,5 @@ public enum EnemyClass  implements CharacterClass {
 		return eSpawnType;
 	}
 
-	public abstract SpawnableEnemy getEnemyToSpawn();
+	
 }

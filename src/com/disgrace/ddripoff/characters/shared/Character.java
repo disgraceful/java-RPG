@@ -38,7 +38,7 @@ public abstract class Character implements Comparable<Character> {
 	}
 
 	public void addEffect(TemporarySpell effect) {
-		if(effect==null){
+		if (effect == null) {
 			return;
 		}
 		tempEffects.add(effect);
@@ -59,40 +59,42 @@ public abstract class Character implements Comparable<Character> {
 	public void move(int newposition) {
 		party.reposition(this, newposition);
 	}
-	
+
 	public boolean isCharDead() {
 		return stats.isCharDead();
 	}
-	
-	public void charDied(){
+
+	public void charDied() {
 		party.removeMember(this);
-		System.out.println("RIP "+name);
+		System.out.println("RIP " + name);
 	}
-	
-	public boolean isCharStunned(){
-		System.out.println(name+"is stunned");
-		for(TemporarySpell s:tempEffects){
-			if(s.getEffectType()==TemporaryEffectType.STUN){
-				return true;
-			}
-		}
-		return false;
+
+	public boolean isCharStunned() {
+		return stats.isCharStunned();
 	}
-	
-	public void cleanseTempEffect(TemporarySpell spell){
-		if(spell==null){
+
+	public void cleanseTempEffect(TemporarySpell spell) {
+		if (spell == null) {
 			return;
 		}
 		tempEffects.remove(spell);
 		stats.cleanseEffect(spell);
 	}
-		
+
 	@Override
 	public int compareTo(Character c1) {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
 		return comparespeed - stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
 	}
 
+	public void useAbility(SpellEnum ability, Character[] targets) {
+		ability.castSpell(targets, this);
+	}
+	
+	public static Character spawn(CharacterClass charClass){
+		return charClass.getCharacterToSpawn();
+	}
+	
 	protected abstract void init();
-	public abstract void useAbility(SpellEnum ability,Character[] targets);
+	
 }

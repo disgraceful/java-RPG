@@ -8,11 +8,6 @@ import com.disgrace.ddripoff.spells.SpellEnum;
 public abstract class Enemy extends Character {
 	protected EnemyClass eClass;
 	
-	@Override
-	public void useAbility(SpellEnum ability, Character[] targets) {
-		ability.castSpell(targets, this);	
-	}
-
 	public EnemyClass getEnemyClass(){
 		return eClass;
 	}

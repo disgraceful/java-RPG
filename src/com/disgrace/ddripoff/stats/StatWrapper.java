@@ -63,6 +63,10 @@ public class StatWrapper {
 			}
 		}
 	}
+	
+	public boolean isCharStunned(){
+		return getStatbyName(StatEnumeration.IS_STUNNED).getCurValue()==1?true:false;
+	}
 
 	public boolean isCharDead() {
 		return getStatbyName(StatEnumeration.HEALTH).getCurValue() <= 0 && isDeathBlown() ? true : false;
