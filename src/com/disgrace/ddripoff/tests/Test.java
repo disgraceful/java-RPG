@@ -49,15 +49,16 @@ public class Test {
 		queue.addAll(bad.getMembers());
 
 		Collections.sort(queue);
-		SkipTurn: for (Character c : queue) {
+		for (Character c : queue) {
 			System.out.println("Turn of: ");
 			printCharacterShortInfo(c);
 			for (Iterator iterator = c.getEffectsList().iterator(); iterator.hasNext();) {
 				TemporarySpell tempS = (TemporarySpell) iterator.next();
 				tempS.onTick(c);
-				if (c.isCharStunned()) {
-					continue SkipTurn;
-				}
+				
+			}
+			if (c.isCharStunned()) {
+				continue;
 			}
 			for (int i = 0; i < c.getAllSpells().size(); i++) {
 				System.out.print(i + 1 + " - ");
