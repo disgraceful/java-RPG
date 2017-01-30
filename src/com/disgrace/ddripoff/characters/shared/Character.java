@@ -79,12 +79,7 @@ public abstract class Character implements Comparable<Character> {
 		}
 		tempEffects.remove(spell);
 		stats.cleanseEffect(spell);
-	}
-
-	@Override
-	public int compareTo(Character c1) {
-		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
-		return comparespeed - stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
+		System.out.println(this.toString() + "get cleansed from " + spell.toString());
 	}
 
 	public void useAbility(SpellEnum ability, Character[] targets) {
@@ -97,4 +92,9 @@ public abstract class Character implements Comparable<Character> {
 	
 	protected abstract void init();
 	
+	@Override
+	public int compareTo(Character c1) {
+		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
+		return comparespeed - stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
+	}
 }

@@ -27,7 +27,7 @@ public abstract class TemporarySpell extends Spell {
 		for (Character t : targets) {
 			if (isDotApplying(t, caller)) {
 				t.addEffect(this);
-				//System.out.println(t.getName() + " has been dotted");
+				System.out.println(t.getName() + " has been dotted");
 			}
 		}
 	}
@@ -40,9 +40,14 @@ public abstract class TemporarySpell extends Spell {
 		if(total>90){
 			total=90;
 		}
-		return new Random().nextInt(101)>total; 
+		return new Random().nextInt(101)<total;
+	}
+	
+	public void onExpire(Character target) {
+		target.cleanseTempEffect(this);
 	}
 	
 	public abstract void onTick(Character target);
-	protected abstract void onExpire(Character target);
+	
+	
 }

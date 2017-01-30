@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.disgrace.ddripoff.characters.enemies.OutcastSwordsman;
+import com.disgrace.ddripoff.characters.enemies.TestingDummy;
 import com.disgrace.ddripoff.characters.heroes.Centurion;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
@@ -25,26 +26,77 @@ public class Test {
 	private static int turnCount;
 	private static Party currentParty;
 	static Scanner sc = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
+		Centurion hero1 = new Centurion();
+		TestingDummy dum = new TestingDummy();
+		hero1.useAbility(SpellEnum.CENTURION_SHIELD_SLAM, new Character[] { dum });
+		System.out.println("lul");
+		testSpawns();
+		initializeCombat();
+	}
+
+	public static void initializeCombat() {
 		Party goodP = new Party();
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
-		badP.addMember(new OutcastSwordsman());
-testSpawns();
+		badP.addMember(new TestingDummy());
 		
-		
-		
-//		while(!badP.isPartyDead()||!badP.isPartyEmpty()){
-//			battleTurn(goodP, badP);
-//		}
-		
+		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
+			battleTurn(goodP, badP);
+		}
 	}
-	
-	public static void testSpawns(){
+
+	public static void battleTurn(Party good, Party bad) {
+		List<Character> queue = new ArrayList<>();
+		queue.addAll(good.getMembers());
+		queue.addAll(bad.getMembers());
+
+		Collections.sort(queue);
+		SkipTurn: for (Character c : queue) {
+			System.out.println("Turn of: ");
+			printCharacterShortInfo(c);
+			for (Iterator iterator = c.getEffectsList().iterator(); iterator.hasNext();) {
+				TemporarySpell tempS = (TemporarySpell) iterator.next();
+				tempS.onTick(c);
+				if (c.isCharStunned()) {
+					continue SkipTurn;
+				}
+			}
+			for (int i = 0; i < c.getAllSpells().size(); i++) {
+				System.out.print(i + 1 + " - ");
+				printAbilityInfo(c.getAllSpells().get(i));
+			}
+			// System.out.println(9 + "- skip");
+			int input = sc.nextInt();
+			if (input == 9) {
+				continue;
+			}
+			SpellEnum s = c.getAllSpells().get(input - 1);
+			// SpellEnum s = c.getAllSpells().get(0);
+
+			List<Character> targets = s.getSpellClass().getAvaliableTargets(queue, c);
+			for (int i = 0; i < targets.size(); i++) {
+				System.out.print(i + 1 + " - ");
+				printCharacterShortInfo(targets.get(i));
+			}
+			// input= sc.nextInt();
+			// Character target = targets.get(input-1);
+			Character target = targets.get(0);
+			// c.useAbility(c.getAllSpells().get(input - 1), new
+			// Character[]{target});
+			c.useAbility(s, new Character[] { target });
+			printCharacterFullInfo(target);
+			if (target.isCharDead()) {
+				target.charDied();
+			}
+		}
+	}
+
+	public static void testSpawns() {
 		Party p = Party.spawnRandomParty();
-		p.getMembers().stream().forEach(c->printCharacterShortInfo(c));
-		
+		p.getMembers().stream().forEach(c -> printCharacterShortInfo(c));
+
 		Hero h1 = (Hero) Hero.spawn(HeroClass.CENTURION);
 		Hero h2 = (Hero) Hero.spawn(HeroClass.DISHONORED);
 		Hero h3 = (Hero) Hero.spawn(HeroClass.PRIEST);
@@ -55,61 +107,20 @@ testSpawns();
 		printCharacterShortInfo(h4);
 	}
 
-	public static void battleTurn(Party good, Party bad) {
-		List<Character> queue = new ArrayList<>();
-		queue.addAll(good.getMembers());
-		queue.addAll(bad.getMembers());
-
-		Collections.sort(queue);
-		SkipTurn:
-		for (Character c : queue) {
-			System.out.println("Turn of: ");
-			printCharacterShortInfo(c);
-			for (Iterator iterator = c.getEffectsList().iterator(); iterator.hasNext();) {
-				TemporarySpell tempS = (TemporarySpell) iterator.next();
-				tempS.onTick(c);
-				if(c.isCharStunned()){
-					continue SkipTurn;
-				}
-			}
-			for (int i = 0; i < c.getAllSpells().size(); i++) {
-				System.out.print(i+1+" - ");
-				printAbilityInfo(c.getAllSpells().get(i));
-			}
-			//int input = sc.nextInt();
-			//SpellEnum s = c.getAllSpells().get(input-1);
-			SpellEnum s = c.getAllSpells().get(0);
-			
-			List<Character>targets =  s.getSpellClass().getAvaliableTargets(queue,c);
-			for (int i = 0; i <targets.size(); i++) {
-				System.out.print(i+1+" - ");
-				printCharacterShortInfo(targets.get(i));
-			}
-			//input= sc.nextInt();
-			//Character target = targets.get(input-1);
-			Character target = targets.get(0);
-			//c.useAbility(c.getAllSpells().get(input - 1), new Character[]{target});
-			SpellEnum chosenSpell = c.getAllSpells().get(0);
-			c.useAbility(chosenSpell, new Character[]{target});
-			printCharacterFullInfo(target);
-			if(target.isCharDead()){
-				target.charDied();
-			}
-		}
-	}
-
 	private static void printCharacterFullInfo(Character character) {
 		System.out.println(character.getName());
 		for (Stat s : character.getStatWrapper().getStatsasArrayList()) {
-			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // + "/"+s.getMaxValue());
+			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
+																												// "/"+s.getMaxValue());
 		}
 		System.out.println(character.getName() + "'s position: " + character.getPosition());
 	}
-	
+
 	private static void printCharacterShortInfo(Character character) {
-		System.out.println(character.getName()+" "+character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()+ "/"+character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
-		
-	
+		System.out.println(
+				character.getName() + " " + character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()
+						+ "/" + character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
+
 	}
 
 	private static void printTrinketInfo(Trinket trinket) {
@@ -120,11 +131,11 @@ testSpawns();
 		}
 	}
 
-	 private static void printAbilityInfo(SpellEnum spell) {
-	 System.out.println(spell.getName());
-	 System.out.println(spell.getDescription());
-	 
-	 }
+	private static void printAbilityInfo(SpellEnum spell) {
+		System.out.println(spell.getName());
+		System.out.println(spell.getDescription());
+
+	}
 
 	private static void printPartyInfo(Party party) {
 		for (Character c : party.getMembers()) {
@@ -132,4 +143,3 @@ testSpawns();
 		}
 	}
 }
-

@@ -8,7 +8,7 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public class CenturionShieldSlamStun extends TemporarySpell {
+public class CenturionShieldSlamStun extends StunSpell {
 	public CenturionShieldSlamStun() {
 		initSpell();
 	}
@@ -16,6 +16,7 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 	@Override
 	public void initSpell() {
 		restrictionClass = HeroClass.CENTURION;
+		spellType = TargetType.ENEMY;
 		range = RangeType.MELEE;
 		abilityDuration = 1;
 		currentDuration = abilityDuration;
@@ -28,7 +29,7 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 		});
 		affectedStats = new StatWrapper(new ArrayList<Stat>() {
 			{
-				add(new Stat(StatEnumeration.IS_STUNNED, -1, 1));
+				add(new Stat(StatEnumeration.IS_STUNNED, 1, 1));
 			}
 		});
 		callerRestrictedPos.add(0);
@@ -37,17 +38,5 @@ public class CenturionShieldSlamStun extends TemporarySpell {
 		targetsRestrictedPos.add(1);
 	}
 
-	@Override
-	public void onTick(Character target) {
-		if (currentDuration > 0) {
-			currentDuration--;
-			return;
-		}
-		onExpire(target);
-	}
 
-	@Override
-	public void onExpire(Character target) {
-		target.cleanseTempEffect(this);
-	}
 }
