@@ -29,7 +29,7 @@ public class CenturionShieldSlamStun extends StunSpell {
 		});
 		affectedStats = new StatWrapper(new ArrayList<Stat>() {
 			{
-				add(new Stat(StatEnumeration.IS_STUNNED, 1, 1));
+				add(new Stat(StatEnumeration.IS_STUNNED, 1, false));
 			}
 		});
 		callerRestrictedPos.add(0);

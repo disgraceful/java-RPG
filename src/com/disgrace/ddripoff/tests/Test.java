@@ -28,11 +28,7 @@ public class Test {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		Centurion hero1 = new Centurion();
-		TestingDummy dum = new TestingDummy();
-		hero1.useAbility(SpellEnum.CENTURION_SHIELD_SLAM, new Character[] { dum });
-		System.out.println("lul");
-		testSpawns();
+		// testSpawns();
 		initializeCombat();
 	}
 
@@ -41,7 +37,7 @@ public class Test {
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
 		badP.addMember(new TestingDummy());
-		
+
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
 			battleTurn(goodP, badP);
 		}

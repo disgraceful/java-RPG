@@ -62,9 +62,6 @@ public class Stat {
 			setValue = maxValue;
 			return setValue;
 		} else if (value < 0 && isPrimordial) {
-			if (type == StatEnumeration.HEALTH) {
-				// hero rip;
-			}
 			return setValue;
 		}
 		setValue = value;
