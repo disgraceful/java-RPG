@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.enemies;
+package com.disgrace.ddripoff.characters.enemies;
 
 import java.util.ArrayList;
 
@@ -7,16 +7,16 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public class OutcastSwordsman extends Enemy  {
+public class OutcastCrossbowman extends Enemy {
 
-	public OutcastSwordsman() {
+	public OutcastCrossbowman() {
 		name = "Outcast Swordsman";
 		init();
 	}
 
 	@Override
 	protected void init() {
-		eClass = EnemyClass.OUTCAST_SWORDSMAN;
+		eClass = EnemyClass.OUTCAST_CROSSBOWMAN;
 		this.stats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.HEALTH, 15, 15));

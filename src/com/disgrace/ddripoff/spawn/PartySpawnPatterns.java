@@ -120,11 +120,11 @@ public class PartySpawnPatterns {
 				return pattern;
 			}
 		}
+		
 	}
 	
 	public static SpawnPattern getRandomPattern(){
-		SpawnPattern pattern = ALL_PATERNS.get(new Random().nextInt(ALL_PATERNS.size()));
-		return pattern;
+		return ALL_PATERNS.get(new Random().nextInt(ALL_PATERNS.size()));
 	}
 	
 	public static List<SpawnPattern>getPatternByStrength(PartyType type){

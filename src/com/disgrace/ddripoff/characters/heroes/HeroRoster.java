@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.heroes;
+package com.disgrace.ddripoff.characters.heroes;
 
 import java.util.HashSet;
 import java.util.Set;

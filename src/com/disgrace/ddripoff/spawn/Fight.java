@@ -7,7 +7,7 @@ public class Fight extends SpawnEvent {
 	private final Party ENEMY_PARTY;
 	
 	public Fight() {
-		ENEMY_PARTY = (Party) new Party().spawnParty(PartySpawnPatterns.getRandomPattern());
+		ENEMY_PARTY = Party.spawnRandomParty();
 		spawnType = SpawnableEventType.FIGHT;
 		SPAWN_CHANCE = 25;
 	}

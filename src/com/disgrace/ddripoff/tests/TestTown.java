@@ -1,6 +1,6 @@
 package com.disgrace.ddripoff.tests;
 
-import com.disgrace.ddripoff.heroes.Hero;
+import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.hub.VenturerCoach;
 
 public class TestTown {

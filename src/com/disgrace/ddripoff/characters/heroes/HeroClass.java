@@ -1,12 +1,12 @@
-package com.disgrace.ddripoff.heroes;
+package com.disgrace.ddripoff.characters.heroes;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.disgrace.ddripoff.characters.enemies.Enemy;
+import com.disgrace.ddripoff.characters.enemies.OutcastKnight;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.CharacterClass;
-import com.disgrace.ddripoff.enemies.Enemy;
-import com.disgrace.ddripoff.enemies.OutcastKnight;
 
 public enum HeroClass implements CharacterClass{
 	CENTURION("Centurion"){

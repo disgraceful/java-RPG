@@ -3,9 +3,10 @@ package com.disgrace.ddripoff.characters.shared;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.disgrace.ddripoff.enemies.Enemy;
-import com.disgrace.ddripoff.enemies.EnemyClass;
+import com.disgrace.ddripoff.characters.enemies.Enemy;
+import com.disgrace.ddripoff.characters.enemies.EnemyClass;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
+import com.disgrace.ddripoff.spawn.PartySpawnPatterns;
 import com.disgrace.ddripoff.spawn.SpawnPattern;
 
 public class Party {
@@ -74,9 +75,9 @@ public class Party {
 		return "Party members: " + partyMembers;
 	}
 
-	public static Party spawnParty(SpawnPattern pattern) {
+	public static Party spawnRandomParty() {
 		Party spawningParty = new Party();
-		for (EnemySpawnType type : pattern.getSpawnTypes()) {
+		for (EnemySpawnType type : PartySpawnPatterns.getRandomPattern().getSpawnTypes()) {
 			for (EnemyClass eClass : EnemyClass.getClassBySpawnType(type)) {
 				spawningParty.addMember(Enemy.spawn(eClass));
 			}

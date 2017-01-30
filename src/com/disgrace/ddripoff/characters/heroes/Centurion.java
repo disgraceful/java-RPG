@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.heroes;
+package com.disgrace.ddripoff.characters.heroes;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class Centurion extends Hero{
 
 	public Centurion() {
-		name = "Default";
+		name = "Centurion";
 		init();
 	}
 	

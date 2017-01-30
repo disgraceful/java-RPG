@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.enemies;
+package com.disgrace.ddripoff.characters.enemies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,16 @@ public enum EnemyClass  implements CharacterClass {
 		public Enemy getCharacterToSpawn() {
 			return new OutcastKnight();
 		}
-	};
+	},
+	TESTING_DUMMY("Dummy", new ArrayList<EnemySubType>(),EnemySpawnType.FRONT){
+		@Override
+		public Enemy getCharacterToSpawn() {
+			return new TestingDummy();
+		}
+
+	}
+	
+	;
 
 	private List<EnemySubType> eSubType;
 	private EnemySpawnType eSpawnType;

@@ -2,8 +2,8 @@ package com.disgrace.ddripoff.hub;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.heroes.Hero;
-import com.disgrace.ddripoff.heroes.HeroClass;
+import com.disgrace.ddripoff.characters.heroes.Hero;
+import com.disgrace.ddripoff.characters.heroes.HeroClass;
 
 public class VenturerCoach {
 	private ArrayList<Hero> avaliableVenturers = new ArrayList<Hero>();

@@ -6,11 +6,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import com.disgrace.ddripoff.characters.enemies.OutcastSwordsman;
+import com.disgrace.ddripoff.characters.heroes.Centurion;
+import com.disgrace.ddripoff.characters.heroes.Hero;
+import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
-import com.disgrace.ddripoff.enemies.OutcastSwordsman;
-import com.disgrace.ddripoff.heroes.Centurion;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.spawn.SpawnPattern;
 import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.spells.TemporarySpell;
@@ -28,11 +31,28 @@ public class Test {
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
 		badP.addMember(new OutcastSwordsman());
-	
+testSpawns();
 		
-		while(!badP.isPartyDead()||!badP.isPartyEmpty()){
-			battleTurn(goodP, badP);
-		}
+		
+		
+//		while(!badP.isPartyDead()||!badP.isPartyEmpty()){
+//			battleTurn(goodP, badP);
+//		}
+		
+	}
+	
+	public static void testSpawns(){
+		Party p = Party.spawnRandomParty();
+		p.getMembers().stream().forEach(c->printCharacterShortInfo(c));
+		
+		Hero h1 = (Hero) Hero.spawn(HeroClass.CENTURION);
+		Hero h2 = (Hero) Hero.spawn(HeroClass.DISHONORED);
+		Hero h3 = (Hero) Hero.spawn(HeroClass.PRIEST);
+		Hero h4 = (Hero) Hero.spawn(HeroClass.PURFIER);
+		printCharacterShortInfo(h1);
+		printCharacterShortInfo(h2);
+		printCharacterShortInfo(h3);
+		printCharacterShortInfo(h4);
 	}
 
 	public static void battleTurn(Party good, Party bad) {
@@ -87,7 +107,7 @@ public class Test {
 	}
 	
 	private static void printCharacterShortInfo(Character character) {
-		System.out.println(character.getName()+character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()+ "/"+character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
+		System.out.println(character.getName()+" "+character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()+ "/"+character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
 		
 	
 	}

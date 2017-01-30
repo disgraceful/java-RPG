@@ -1,6 +1,6 @@
 package com.disgrace.ddripoff.hub;
 
-import com.disgrace.ddripoff.heroes.Hero;
+import com.disgrace.ddripoff.characters.heroes.Hero;
 
 public class Blacksmith  {
 	int weaponSmithingLvl = 1;

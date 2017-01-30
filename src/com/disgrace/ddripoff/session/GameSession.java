@@ -1,6 +1,6 @@
 package com.disgrace.ddripoff.session;
 
-import com.disgrace.ddripoff.heroes.HeroRoster;
+import com.disgrace.ddripoff.characters.heroes.HeroRoster;
 import com.disgrace.ddripoff.hub.Town;
 
 public class GameSession {

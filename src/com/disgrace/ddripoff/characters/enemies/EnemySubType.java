@@ -1,4 +1,4 @@
-package com.disgrace.ddripoff.enemies;
+package com.disgrace.ddripoff.characters.enemies;
 
 public enum EnemySubType {
 	DARKIN,

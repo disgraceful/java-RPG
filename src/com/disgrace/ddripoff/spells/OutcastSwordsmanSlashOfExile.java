@@ -2,7 +2,7 @@ package com.disgrace.ddripoff.spells;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.enemies.EnemyClass;
+import com.disgrace.ddripoff.characters.enemies.EnemyClass;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;

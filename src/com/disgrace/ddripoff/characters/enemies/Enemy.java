@@ -1,8 +1,8 @@
-package com.disgrace.ddripoff.enemies;
+package com.disgrace.ddripoff.characters.enemies;
 
+import com.disgrace.ddripoff.characters.enemies.EnemySubType;
+import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.shared.Character;
-import com.disgrace.ddripoff.enemies.EnemySubType;
-import com.disgrace.ddripoff.heroes.Hero;
 import com.disgrace.ddripoff.spells.SpellEnum;
 
 public abstract class Enemy extends Character {
