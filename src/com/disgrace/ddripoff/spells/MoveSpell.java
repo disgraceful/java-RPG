@@ -20,10 +20,9 @@ public abstract class MoveSpell extends Spell {
 	
 	private boolean ifMoveSuccesful(Character target, Character caller){
 		int targetDef = target.getStatWrapper().getStatbyName(StatEnumeration.MOVE_RES).getCurValue();
+		int callerChanceMultiplier = caller.getStats().getStatbyName(StatEnumeration.MOVE_CHANCE).getCurValue();
 		int oddsToMove = abilityStats.getStatbyName(StatEnumeration.MOVE_CHANCE).getCurValue();
-		int sum = oddsToMove-targetDef;
-		Random rand = new Random();
-		int chance = rand.nextInt(101);
-		return chance<sum? true:false;
+		int sum = oddsToMove-targetDef+callerChanceMultiplier;
+		return new Random().nextInt(101)<sum? true:false;
 	}
 }
