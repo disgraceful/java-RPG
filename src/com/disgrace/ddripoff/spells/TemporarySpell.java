@@ -28,6 +28,8 @@ public abstract class TemporarySpell extends Spell {
 			if (isDotApplying(t, caller)) {
 				t.addEffect(this);
 				System.out.println(t.getName() + " has been dotted");
+			}else{
+				System.out.println(t.getName()+ " resisted");
 			}
 		}
 	}
@@ -40,7 +42,8 @@ public abstract class TemporarySpell extends Spell {
 		if(total>90){
 			total=90;
 		}
-		return new Random().nextInt(101)<total;
+		int chance=new Random().nextInt(101);
+		return chance<total;
 	}
 	
 	public boolean isExpired(){

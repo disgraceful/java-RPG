@@ -63,9 +63,9 @@ public class StatWrapper {
 			}
 		}
 	}
-	
-	public boolean isCharStunned(){
-		return getStatbyName(StatEnumeration.IS_STUNNED).getCurValue()==1?true:false;
+
+	public boolean isCharStunned() {
+		return getStatbyName(StatEnumeration.IS_STUNNED).getCurValue() == 1 ? true : false;
 	}
 
 	public boolean isCharDead() {
@@ -118,20 +118,20 @@ public class StatWrapper {
 		switch (eType) {
 		case STUN:
 			return getStatbyName(StatEnumeration.STUN_CHANCE).getCurValue();
-		// case BLEED:
-		// return getStatbyName(StatEnumeration.BLEED_RES).getCurValue();
-		// case BLIGHT:
-		// return getStatbyName(StatEnumeration.BLIGHT_RES).getCurValue();
-		// case DEBUFF:
-		// return getStatbyName(StatEnumeration.DEBUFF_RES).getCurValue();
-		// case CURSE:
-		// return getStatbyName(StatEnumeration.CURSE_RES).getCurValue();
-		// case DISEASE:
-		// return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
-		// case MARK:
-		// return 0;
-		// case BUFF:
-		// return 0;
+		case BLEED:
+			return getStatbyName(StatEnumeration.BLEED_CHANCE).getCurValue();
+		case BLIGHT:
+			return getStatbyName(StatEnumeration.BLIGHT_CHANCE).getCurValue();
+		case DEBUFF:
+			return getStatbyName(StatEnumeration.DEBUFF_CHANCE).getCurValue();
+//		case CURSE:
+//			return getStatbyName(StatEnumeration.CURSE_CHANCE).getCurValue();
+//		case DISEASE:
+//			return getStatbyName(StatEnumeration.DISIEASE_CHANCE).getCurValue();
+//		case MARK:
+//			return 0;
+//		case BUFF:
+//			return 0;
 		default:
 			return -1;
 		}
