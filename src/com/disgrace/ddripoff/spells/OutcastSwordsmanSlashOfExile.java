@@ -17,7 +17,7 @@ public class OutcastSwordsmanSlashOfExile extends DamageSpell {
 		restrictionClass = EnemyClass.OUTCAST_SWORDSMAN;
 		damageType = DamageType.PHYS;
 		range = RangeType.MELEE;
-		spellType = TargetType.ENEMY;
+		spellOrientation = TargetType.ENEMY;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.ACC_MOD, 90, 100));

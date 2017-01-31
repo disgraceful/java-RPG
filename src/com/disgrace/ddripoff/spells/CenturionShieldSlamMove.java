@@ -16,6 +16,7 @@ public class CenturionShieldSlamMove extends MoveSpell {
 	public void initSpell() {
 		restrictionClass = HeroClass.CENTURION;
 		range = RangeType.MELEE;
+		spellOrientation = TargetType.ENEMY;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.MOVE_CHANCE, 100, 220));

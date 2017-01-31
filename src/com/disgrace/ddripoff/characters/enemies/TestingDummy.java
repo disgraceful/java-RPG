@@ -13,6 +13,10 @@ public class TestingDummy extends Enemy {
 		init();
 	}
 
+	public TestingDummy(String name) {
+		this.name = name;
+		init();
+	}
 	@Override
 	protected void init() {
 		eClass = EnemyClass.TESTING_DUMMY;

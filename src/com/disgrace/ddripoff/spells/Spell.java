@@ -14,7 +14,7 @@ public abstract class Spell {
 	protected StatWrapper affectedStats;
 	protected StatWrapper abilityStats;
 	protected RangeType range;
-	protected TargetType spellType;
+	protected TargetType spellOrientation;
 	protected CharacterClass restrictionClass;
 	protected List<Integer> callerRestrictedPos = new ArrayList<>();
 	protected List<Integer> targetsRestrictedPos = new ArrayList<>();
@@ -59,7 +59,7 @@ public abstract class Spell {
 	public List<Character> getAvaliableTargets(List<Character> queue,Character caller) {
 		List<Character> list = new ArrayList<>();
 		for (Character c : queue) {
-			if (((spellType == TargetType.ENEMY&&!c.equals(caller)) || spellType == TargetType.ALLY)
+			if (((spellOrientation == TargetType.ENEMY&&!c.equals(caller)) || spellOrientation == TargetType.ALLY)
 					&& targetsRestrictedPos.contains(c.getPosition())) {
 				list.add(c);
 			}

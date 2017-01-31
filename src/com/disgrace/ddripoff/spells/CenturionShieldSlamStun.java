@@ -16,7 +16,7 @@ public class CenturionShieldSlamStun extends StunSpell {
 	@Override
 	public void initSpell() {
 		restrictionClass = HeroClass.CENTURION;
-		spellType = TargetType.ENEMY;
+		spellOrientation = TargetType.ENEMY;
 		range = RangeType.MELEE;
 		abilityDuration = 1;
 		currentDuration = abilityDuration;

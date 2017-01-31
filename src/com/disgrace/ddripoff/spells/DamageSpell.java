@@ -9,7 +9,7 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public class DamageSpell extends Spell {
+public abstract class DamageSpell extends Spell {
 	protected DamageType damageType;
 	
 	@Override

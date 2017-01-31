@@ -36,7 +36,10 @@ public class Test {
 		Party goodP = new Party();
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
-		badP.addMember(new TestingDummy());
+		badP.addMember(new TestingDummy("Dum1"));
+		badP.addMember(new TestingDummy("Dum2"));
+		badP.addMember(new TestingDummy("Dum3"));
+		badP.addMember(new TestingDummy("Dum4"));
 		int turnCount =1;
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
 			System.out.println("Turn #"+turnCount);
@@ -60,8 +63,6 @@ public class Test {
 					iterator.remove();
 				}
 				tempS.onTick(c);
-				
-
 			}
 			if (c.isCharStunned()) {
 				continue;
@@ -70,7 +71,7 @@ public class Test {
 				System.out.print(i + 1 + " - ");
 				printAbilityInfo(c.getAllSpells().get(i));
 			}
-			// System.out.println(9 + "- skip");
+			System.out.println(9 + "- skip");
 			int input = sc.nextInt();
 			if (input == 9) {
 				continue;
@@ -83,11 +84,9 @@ public class Test {
 				System.out.print(i + 1 + " - ");
 				printCharacterShortInfo(targets.get(i));
 			}
-			// input= sc.nextInt();
-			// Character target = targets.get(input-1);
-			Character target = targets.get(0);
-			// c.useAbility(c.getAllSpells().get(input - 1), new
-			// Character[]{target});
+			input= sc.nextInt();
+			Character target = targets.get(input-1);
+			//Character target = targets.get(0);
 			c.useAbility(s, new Character[] { target });
 			printCharacterFullInfo(target);
 			if (target.isCharDead()) {
