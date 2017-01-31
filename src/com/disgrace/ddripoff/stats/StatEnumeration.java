@@ -14,6 +14,8 @@ public enum StatEnumeration {
 	MOVE_SPELL_POSITION("Position",StatSpecification.SPELL_STAT),
 	STUN_CHANCE("Stun Chance",StatSpecification.SPELL_STAT),
 	MOVE_CHANCE("Move Chance",StatSpecification.SPELL_STAT),
+	BLEED_CHANCE("Bleed Chance",StatSpecification.SPELL_STAT),
+	BLIGHT_CHANCE("Blight Chance",StatSpecification.SPELL_STAT),
 
 	SPEED("Speed",StatSpecification.UTILITY_STAT),
 	TRAP_DISARM_CHANCE("Trap disarm Chance",StatSpecification.UTILITY_STAT),
