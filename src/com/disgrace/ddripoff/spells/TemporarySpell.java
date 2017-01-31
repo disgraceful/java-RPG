@@ -43,6 +43,10 @@ public abstract class TemporarySpell extends Spell {
 		return new Random().nextInt(101)<total;
 	}
 	
+	public boolean isExpired(){
+		return currentDuration<=0?true:false;
+	}
+	
 	public void onExpire(Character target) {
 		target.cleanseTempEffect(this);
 	}

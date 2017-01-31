@@ -37,9 +37,11 @@ public class Test {
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
 		badP.addMember(new TestingDummy());
-
+		int turnCount =1;
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
+			System.out.println("Turn #"+turnCount);
 			battleTurn(goodP, badP);
+			turnCount++;
 		}
 	}
 
@@ -47,15 +49,19 @@ public class Test {
 		List<Character> queue = new ArrayList<>();
 		queue.addAll(good.getMembers());
 		queue.addAll(bad.getMembers());
-
+		
 		Collections.sort(queue);
 		for (Character c : queue) {
 			System.out.println("Turn of: ");
 			printCharacterShortInfo(c);
 			for (Iterator iterator = c.getEffectsList().iterator(); iterator.hasNext();) {
 				TemporarySpell tempS = (TemporarySpell) iterator.next();
+				if (tempS.isExpired()) {
+					iterator.remove();
+				}
 				tempS.onTick(c);
 				
+
 			}
 			if (c.isCharStunned()) {
 				continue;

@@ -78,7 +78,6 @@ public abstract class Character implements Comparable<Character> {
 			return;
 		}
 		stats.cleanseEffect(spell);
-		tempEffects.remove(spell);
 		System.out.println(this.toString() + "get cleansed from " + spell.toString());
 	}
 
