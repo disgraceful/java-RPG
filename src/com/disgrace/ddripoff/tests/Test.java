@@ -115,7 +115,7 @@ public class Test {
 			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
 																												// "/"+s.getMaxValue());
 		}
-		System.out.println(character.getName() + "'s position: " + character.getPosition());
+		System.out.println(character.getName() + "'s position: " + (character.getPosition()+1));
 	}
 
 	private static void printCharacterShortInfo(Character character) {
