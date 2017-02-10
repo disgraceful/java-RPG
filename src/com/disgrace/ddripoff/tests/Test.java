@@ -6,16 +6,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import com.disgrace.ddripoff.characters.enemies.OutcastCrossbowman;
 import com.disgrace.ddripoff.characters.enemies.OutcastSwordsman;
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
 import com.disgrace.ddripoff.characters.heroes.Centurion;
+import com.disgrace.ddripoff.characters.heroes.Dishonored;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.items.Trinket;
-import com.disgrace.ddripoff.spawn.SpawnPattern;
-import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.spells.TemporarySpell;
 import com.disgrace.ddripoff.stats.Stat;
@@ -36,10 +36,10 @@ public class Test {
 		Party goodP = new Party();
 		goodP.addMember(new Centurion());
 		Party badP = new Party();
-		badP.addMember(new TestingDummy("Dum1"));
+		badP.addMember(new OutcastSwordsman());
 		badP.addMember(new TestingDummy("Dum2"));
 		badP.addMember(new TestingDummy("Dum3"));
-		badP.addMember(new TestingDummy("Dum4"));
+		//badP.addMember(new TestingDummy("Dum4"));
 		int turnCount =1;
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
 			System.out.println("Turn #"+turnCount);
@@ -77,7 +77,7 @@ public class Test {
 				continue;
 			}
 			SpellEnum s = c.getAllSpells().get(input - 1);
-			// SpellEnum s = c.getAllSpells().get(0);
+			//SpellEnum s = c.getAllSpells().get(1);
 
 			List<Character> targets = s.getSpellClass().getAvaliableTargets(queue, c);
 			for (int i = 0; i < targets.size(); i++) {

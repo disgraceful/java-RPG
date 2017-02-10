@@ -20,7 +20,6 @@ public class CenturionShieldSlamStun extends StunSpell {
 		range = RangeType.MELEE;
 		abilityDuration = 1;
 		currentDuration = abilityDuration;
-		currentDuration = abilityDuration;
 		effectType = TemporaryEffectType.STUN;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {
 			{
