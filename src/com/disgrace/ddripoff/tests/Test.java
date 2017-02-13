@@ -55,9 +55,9 @@ public class Test {
 		
 		Collections.sort(queue);
 		for (Character c : queue) {
-			System.out.println("Turn of: ");
+			System.out.println("Turn of: "+ c.getCharClass());
 			printCharacterShortInfo(c);
-			for (Iterator iterator = c.getEffectsList().iterator(); iterator.hasNext();) {
+			for (Iterator iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
 				TemporarySpell tempS = (TemporarySpell) iterator.next();
 				if (tempS.isExpired()) {
 					iterator.remove();

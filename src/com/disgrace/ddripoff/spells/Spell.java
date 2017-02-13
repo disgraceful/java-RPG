@@ -19,7 +19,6 @@ public abstract class Spell {
 	protected List<Integer> callerRestrictedPos = new ArrayList<>();
 	protected List<Integer> targetsRestrictedPos = new ArrayList<>();
 
-
 	public StatWrapper getAffectingStats() {
 		return affectedStats;
 	}
@@ -56,15 +55,22 @@ public abstract class Spell {
 		return false;
 	}
 
-	public List<Character> getAvaliableTargets(List<Character> queue,Character caller) {
+	public List<Character> getAvaliableTargets(List<Character> queue, Character caller) {
 		List<Character> list = new ArrayList<>();
 		for (Character c : queue) {
-			if (((spellOrientation == TargetType.ENEMY&&!c.equals(caller)) || spellOrientation == TargetType.ALLY)
-					&& targetsRestrictedPos.contains(c.getPosition())) {
+			if (isTargetAvaliable(c, caller)) {
 				list.add(c);
 			}
 		}
 		return list;
+	}
+
+	private boolean isTargetAvaliable(Character target, Character caller) {
+	System.out.println("target: "+target.getCharClass());
+	System.out.println("target: "+caller.getCharClass());
+	System.out.println("Match? " + !caller.getCharClass().equals(target.getCharClass()));
+		return ((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))
+				|| spellOrientation == TargetType.ALLY) && targetsRestrictedPos.contains(target.getPosition());
 	}
 
 	public abstract void useSpell(Character[] targets, Character caller);

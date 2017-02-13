@@ -48,5 +48,8 @@ public abstract class Hero extends Character{
 			ability.castSpell(targets, this);
 	}
 	
-	
+	@Override
+	public Class<Hero> getCharClass(){
+		return Hero.class;
+	}
 }

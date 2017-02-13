@@ -3,6 +3,7 @@ package com.disgrace.ddripoff.characters.shared;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.spells.TemporarySpell;
@@ -13,8 +14,8 @@ public abstract class Character implements Comparable<Character> {
 	protected String name;
 	protected StatWrapper stats;
 
-	protected List<TemporarySpell> tempEffects = new ArrayList<TemporarySpell>();
-	protected List<SpellEnum> allAbilities = new ArrayList<SpellEnum>();
+	protected TempEffectsWrapper tempEffects = new TempEffectsWrapper();
+	protected List<SpellEnum> allAbilities = new ArrayList<>();
 	protected Party party;
 
 	public String getName() {
@@ -33,15 +34,16 @@ public abstract class Character implements Comparable<Character> {
 		this.party = party;
 	}
 
-	public List<TemporarySpell> getEffectsList() {
+	public TempEffectsWrapper getEffectsWrapper() {
 		return tempEffects;
+	}
+	
+	public List<TemporarySpell> getTempEffects() {
+		return tempEffects.getTempEffects();
 	}
 
 	public void addEffect(TemporarySpell effect) {
-		if (effect == null) {
-			return;
-		}
-		tempEffects.add(effect);
+		tempEffects.addEffect(effect);		
 	}
 
 	public StatWrapper getStats() {
@@ -96,4 +98,8 @@ public abstract class Character implements Comparable<Character> {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
 		return comparespeed - stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
 	}
+
+	
+	public abstract Class getCharClass();
+	
 }

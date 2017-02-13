@@ -31,8 +31,10 @@ public class OutcastSwordsmanVileAttackDamage extends DamageSpell {
 		callerRestrictedPos.add(1);
 		callerRestrictedPos.add(2);
 
+		targetsRestrictedPos.add(0);
+		targetsRestrictedPos.add(1);
 		targetsRestrictedPos.add(2);
-		targetsRestrictedPos.add(3);
+		
 
 	}
 }
