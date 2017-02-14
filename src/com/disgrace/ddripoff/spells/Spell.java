@@ -66,9 +66,14 @@ public abstract class Spell {
 	}
 
 	private boolean isTargetAvaliable(Character target, Character caller) {
-	System.out.println("target: "+target.getCharClass());
-	System.out.println("target: "+caller.getCharClass());
-	System.out.println("Match? " + !caller.getCharClass().equals(target.getCharClass()));
+//	System.out.println("target class: "+target.getCharClass());
+//	System.out.println("target class: "+caller.getCharClass());
+//	System.out.println("Match1? " + (((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))
+//			|| spellOrientation == TargetType.ALLY) && targetsRestrictedPos.contains(target.getPosition())));
+//	System.out.println("Match2? " + (spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass())));
+//	System.out.println("Match3? " + ((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))|| spellOrientation == TargetType.ALLY));
+//	System.out.println("Match4? "+ targetsRestrictedPos.contains(target.getPosition()));
+//	System.out.println("requiredPos:" +targetsRestrictedPos + " targetPos "+target.getPosition());
 		return ((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))
 				|| spellOrientation == TargetType.ALLY) && targetsRestrictedPos.contains(target.getPosition());
 	}

@@ -14,6 +14,10 @@ public abstract class TemporarySpell extends Spell {
 		return abilityDuration;
 	}
 
+	public int getRemainingDuration(){
+		return currentDuration;
+	}
+	
 	public void setEffectDuration(int duration) {
 		abilityDuration = duration;
 	}

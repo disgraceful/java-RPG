@@ -20,9 +20,17 @@ public abstract class DOTSpell extends TemporarySpell {
 			});
 			target.getStats().updateStats(affectedStats);
 			currentDuration--;
+			System.out.println("Dot is ticking...");
 			return;
 		}
 		onExpire(target);
 	}
 
+	@Override
+	public void onExpire(Character target) {
+		System.out.println(this.toString()+ " has expired");
+	}
+
+	
+	
 }

@@ -55,10 +55,11 @@ public class Test {
 		
 		Collections.sort(queue);
 		for (Character c : queue) {
-			System.out.println("Turn of: "+ c.getCharClass());
-			printCharacterShortInfo(c);
+			System.out.println("Turn of: ");
+			System.out.println(c.getName());
 			for (Iterator iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
 				TemporarySpell tempS = (TemporarySpell) iterator.next();
+				System.out.println(tempS.toString()+ " time left: " + tempS.getRemainingDuration());
 				if (tempS.isExpired()) {
 					iterator.remove();
 				}
@@ -67,6 +68,7 @@ public class Test {
 			if (c.isCharStunned()) {
 				continue;
 			}
+			printCharacterShortInfo(c);
 			for (int i = 0; i < c.getAllSpells().size(); i++) {
 				System.out.print(i + 1 + " - ");
 				printAbilityInfo(c.getAllSpells().get(i));

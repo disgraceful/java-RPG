@@ -14,7 +14,7 @@ public abstract class Character implements Comparable<Character> {
 	protected String name;
 	protected StatWrapper stats;
 
-	protected TempEffectsWrapper tempEffects = new TempEffectsWrapper();
+	protected CharacterTempEffectsWrapper tempEffects = new CharacterTempEffectsWrapper();
 	protected List<SpellEnum> allAbilities = new ArrayList<>();
 	protected Party party;
 
@@ -34,7 +34,7 @@ public abstract class Character implements Comparable<Character> {
 		this.party = party;
 	}
 
-	public TempEffectsWrapper getEffectsWrapper() {
+	public CharacterTempEffectsWrapper getEffectsWrapper() {
 		return tempEffects;
 	}
 	
@@ -80,7 +80,7 @@ public abstract class Character implements Comparable<Character> {
 			return;
 		}
 		stats.cleanseEffect(spell);
-		System.out.println(this.toString() + "get cleansed from " + spell.toString());
+		System.out.println(name + "get cleansed from " + spell.toString());
 	}
 
 	public void useAbility(SpellEnum ability, Character[] targets) {
@@ -100,6 +100,6 @@ public abstract class Character implements Comparable<Character> {
 	}
 
 	
-	public abstract Class getCharClass();
+	public abstract Class<?> getCharClass();
 	
 }

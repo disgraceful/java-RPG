@@ -32,6 +32,8 @@ public class OutcastSwordsmanVileAttackBleed extends DOTSpell {
 		callerRestrictedPos.add(2);
 
 
+		targetsRestrictedPos.add(0);
+		targetsRestrictedPos.add(1);
 		targetsRestrictedPos.add(2);
 		targetsRestrictedPos.add(3);
 

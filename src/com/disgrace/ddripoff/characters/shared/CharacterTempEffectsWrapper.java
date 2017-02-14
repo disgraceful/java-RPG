@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.disgrace.ddripoff.spells.TemporarySpell;
 
-public class TempEffectsWrapper {
+public class CharacterTempEffectsWrapper {
 	protected List<TemporarySpell> tempEffects = new ArrayList<>();
 	public List<TemporarySpell> getTempEffects() {
 		return tempEffects;
@@ -25,4 +25,5 @@ public class TempEffectsWrapper {
 	private void ifEffectApplied(TemporarySpell effect){
 		tempEffects.stream().anyMatch(e->e.getEffectType().equals(effect.getEffectType()));
 	}
+	
 }

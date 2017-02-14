@@ -6,7 +6,7 @@ public enum SpellEnum {
 	CENTURION_SWORD_SWING("Sword Swing", "Cool description", new CenturionSwordSwing()), 
 	CENTURION_SHIELD_SLAM("Shield Slam", "Cool description",new CenturionShieldSlamMove(), new CenturionShieldSlamStun(), new CenturionShieldSlamDamage()),
 	OUTCAST_SWORDSMAN_SLASH_OF_EXILE("Slash of Exile", "Cool description",new OutcastSwordsmanSlashOfExile()),
-	OUTCAST_SWORDSMAN_VILE_ATTACK("Vile Attack", "Cool description", new OutcastSwordsmanVileAttackDamage(), new OutcastSwordsmanVileAttackBleed());
+	OUTCAST_SWORDSMAN_VILE_ATTACK("Vile Attack", "Cool description", new OutcastSwordsmanVileAttackBleed());// new OutcastSwordsmanVileAttackBleed());
 
 	private String name;
 	private String description;
