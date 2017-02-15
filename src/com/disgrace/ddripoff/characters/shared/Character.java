@@ -102,4 +102,11 @@ public abstract class Character implements Comparable<Character> {
 	
 	public abstract Class<?> getCharClass();
 	
+	public void updateStats(StatWrapper affectedStats){
+		if(affectedStats==null){
+			return;
+		}
+		stats.updateStats(affectedStats);
+	}
+	
 }

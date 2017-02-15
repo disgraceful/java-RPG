@@ -9,7 +9,7 @@ import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.spells.TemporarySpell;
 
 public class StatWrapper {
-	private List<Stat> stats = new ArrayList<Stat>();
+	private List<Stat> stats = new ArrayList<>();
 
 	public StatWrapper(List<Stat> list) {
 		this.stats = list;

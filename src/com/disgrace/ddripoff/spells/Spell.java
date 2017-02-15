@@ -74,8 +74,8 @@ public abstract class Spell {
 //	System.out.println("Match3? " + ((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))|| spellOrientation == TargetType.ALLY));
 //	System.out.println("Match4? "+ targetsRestrictedPos.contains(target.getPosition()));
 //	System.out.println("requiredPos:" +targetsRestrictedPos + " targetPos "+target.getPosition());
-		return ((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))
-				|| spellOrientation == TargetType.ALLY) && targetsRestrictedPos.contains(target.getPosition());
+		return (targetsRestrictedPos.contains(target.getPosition())&& (spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))
+				|| spellOrientation == TargetType.ALLY);
 	}
 
 	public abstract void useSpell(Character[] targets, Character caller);
