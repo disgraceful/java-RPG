@@ -64,10 +64,6 @@ public class StatWrapper {
 		}
 	}
 
-	public boolean isCharStunned() {
-		return getStatbyName(StatEnumeration.IS_STUNNED).getCurValue() == 1 ? true : false;
-	}
-
 	public boolean isCharDead() {
 		return getStatbyName(StatEnumeration.HEALTH).getCurValue() <= 0 && isDeathBlown() ? true : false;
 	}
@@ -137,7 +133,7 @@ public class StatWrapper {
 		}
 	}
 
-	public void cleanseEffect(TemporarySpell spell) {
+	public void rollbackTempSpellEffect(TemporarySpell spell) {
 		StatWrapper s = spell.getAffectingStats();
 		StatWrapper.reverseStatsValue(s);
 		updateStats(s);

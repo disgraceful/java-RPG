@@ -55,7 +55,7 @@ public abstract class TemporarySpell extends Spell {
 	}
 	
 	public void onExpire(Character target) {
-		target.cleanseTempEffect(this);
+		target.rollbackTempSpellEffect(this);
 	}
 	
 	public abstract void onTick(Character target);

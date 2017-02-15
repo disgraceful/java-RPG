@@ -36,8 +36,6 @@ public class TestingDummy extends Enemy {
 				add(new Stat(StatEnumeration.MOVE_RES, 0, 100));
 				add(new Stat(StatEnumeration.BLEED_RES, 0, 100));
 				add(new Stat(StatEnumeration.DEBUFF_RES, 0, 100));
-				//status stat
-				add(new Stat(StatEnumeration.IS_STUNNED, 0, 1));
 			}
 		});
 		

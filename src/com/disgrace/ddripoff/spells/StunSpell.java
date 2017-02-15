@@ -4,14 +4,7 @@ import com.disgrace.ddripoff.characters.shared.Character;
 
 public abstract class StunSpell extends TemporarySpell {
 
-	@Override
-	public void useSpell(Character[] targets, Character caller) {
-		super.useSpell(targets, caller);
-		for(Character t: targets){
-			t.getStats().updateStats(affectedStats);
-		}
-	}
-	
+
 	@Override
 	public void onTick(Character target) {
 		if (currentDuration > 0) {
@@ -21,5 +14,8 @@ public abstract class StunSpell extends TemporarySpell {
 		onExpire(target);
 	}
 
-	
+	@Override
+	public void onExpire(Character target) {
+		System.out.println(this.toString()+ " has expired");
+	}
 }

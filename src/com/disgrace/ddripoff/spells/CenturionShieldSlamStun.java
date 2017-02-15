@@ -26,11 +26,6 @@ public class CenturionShieldSlamStun extends StunSpell {
 				add(new Stat(StatEnumeration.STUN_CHANCE, 110, 220));
 			}
 		});
-		affectedStats = new StatWrapper(new ArrayList<Stat>() {
-			{
-				add(new Stat(StatEnumeration.IS_STUNNED, 1, false));
-			}
-		});
 		callerRestrictedPos.add(0);
 
 		targetsRestrictedPos.add(0);

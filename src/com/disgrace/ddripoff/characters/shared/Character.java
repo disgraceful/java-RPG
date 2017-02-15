@@ -72,14 +72,14 @@ public abstract class Character implements Comparable<Character> {
 	}
 
 	public boolean isCharStunned() {
-		return stats.isCharStunned();
+		return tempEffects.isStunned();
 	}
 
-	public void cleanseTempEffect(TemporarySpell spell) {
+	public void rollbackTempSpellEffect(TemporarySpell spell) {
 		if (spell == null) {
 			return;
 		}
-		stats.cleanseEffect(spell);
+		stats.rollbackTempSpellEffect(spell);
 		System.out.println(name + "get cleansed from " + spell.toString());
 	}
 
