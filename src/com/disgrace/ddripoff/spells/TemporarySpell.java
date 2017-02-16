@@ -60,5 +60,4 @@ public abstract class TemporarySpell extends Spell {
 	
 	public abstract void onTick(Character target);
 	
-	
 }

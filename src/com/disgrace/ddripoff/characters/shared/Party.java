@@ -6,8 +6,8 @@ import java.util.List;
 import com.disgrace.ddripoff.characters.enemies.Enemy;
 import com.disgrace.ddripoff.characters.enemies.EnemyClass;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
-import com.disgrace.ddripoff.spawn.PartySpawnPatterns;
-import com.disgrace.ddripoff.spawn.SpawnPattern;
+import com.disgrace.ddripoff.spawn.PartySpawnPatternEnueration;
+import com.disgrace.ddripoff.spawn.PartySpawnPattern;
 
 public class Party {
 
@@ -77,7 +77,7 @@ public class Party {
 
 	public static Party spawnRandomParty() {
 		Party spawningParty = new Party();
-		for (EnemySpawnType type : PartySpawnPatterns.getRandomPattern().getSpawnTypes()) {
+		for (EnemySpawnType type : PartySpawnPatternEnueration.getRandomPattern().getSpawnTypes()) {
 			for (EnemyClass eClass : EnemyClass.getClassBySpawnType(type)) {
 				spawningParty.addMember(Enemy.spawn(eClass));
 			}

@@ -3,9 +3,9 @@ package com.disgrace.ddripoff.spawn;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.disgrace.ddripoff.spawn.PartySpawnPatterns.PartyType;
+import com.disgrace.ddripoff.spawn.PartySpawnPatternEnueration.PartyType;
 
-public class SpawnPattern {
+public class PartySpawnPattern {
 	private List<EnemySpawnType> spawnTypes = new ArrayList<>();
 	private PartyType partyStrength;
 
@@ -14,7 +14,10 @@ public class SpawnPattern {
 	}
 
 	public void setSpawnTypes(List<EnemySpawnType> spawnTypes) {
-		if (spawnTypes != null) this.spawnTypes = spawnTypes;
+		if (spawnTypes == null) {
+			return;
+		}
+		this.spawnTypes = spawnTypes;
 	}
 
 	public PartyType getPartyStrength() {
@@ -22,10 +25,11 @@ public class SpawnPattern {
 	}
 
 	public void setPartyStrength(PartyType partyStrength) {
-		if (partyStrength != null) this.partyStrength = partyStrength;
+		if (partyStrength != null)
+			this.partyStrength = partyStrength;
 	}
 
-	public SpawnPattern(List<EnemySpawnType> spawns, PartyType strength) {
+	public PartySpawnPattern(List<EnemySpawnType> spawns, PartyType strength) {
 		spawnTypes = spawns;
 		partyStrength = strength;
 	}

@@ -27,7 +27,7 @@ public abstract class Spell {
 		return restrictionClass;
 	}
 
-	protected boolean calcualteMiss(Character target, Character caller) {
+	protected boolean isMiss(Character target, Character caller) {
 		int targetDodge = target.getStatWrapper().getStatbyName(StatEnumeration.DODGE).getCurValue();
 		int callerAcc = caller.getStatWrapper().getStatbyName(StatEnumeration.ACC).getCurValue();
 		int abilityAccMod = abilityStats.getStatbyName(StatEnumeration.ACC_MOD).getCurValue();
@@ -39,7 +39,7 @@ public abstract class Spell {
 		if (hitChance > totalAccWithDodge) {
 			return true;// missed
 		} else if (hitChance < totalAccWithDodge && hitChance > totalAcc) {
-			return true;// doded;
+			return true;// dodged;
 		}
 		return false;
 	}
@@ -72,8 +72,7 @@ public abstract class Spell {
 
 	public abstract void useSpell(Character[] targets, Character caller);
 
-	public void initSpell() {
-	}
+	public abstract void initSpell();
 }
 
 enum TargetType {

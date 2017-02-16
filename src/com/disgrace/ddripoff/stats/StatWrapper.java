@@ -102,7 +102,6 @@ public class StatWrapper {
 		case DISEASE:
 			return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
 		case MARK:
-			return 0;
 		case BUFF:
 			return 0;
 		default:

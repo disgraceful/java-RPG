@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class PartySpawnPatterns {
-	public static final SpawnPattern STRONG_DEFAULT = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+public class PartySpawnPatternEnueration {
+	public static final PartySpawnPattern STRONG_DEFAULT = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.FRONT);
 			add(EnemySpawnType.MIDDLE);
@@ -14,7 +14,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.STRONG);
 
-	public static final SpawnPattern STRONG_FRONT = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern STRONG_FRONT = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.FRONT);
 			add(EnemySpawnType.FRONT);
@@ -23,7 +23,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.STRONG);
 
-	public static final SpawnPattern STRONG_FULL_GLASS = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern STRONG_FULL_GLASS = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.MIDDLE);
 			add(EnemySpawnType.MIDDLE);
@@ -32,7 +32,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.STRONG);
 
-	public static final SpawnPattern STRONG_MIDDLE = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern STRONG_MIDDLE = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.MIDDLE);
 			add(EnemySpawnType.MIDDLE);
@@ -41,7 +41,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.STRONG);
 
-	public static final SpawnPattern STRONG_BACK = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern STRONG_BACK = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.FRONT);
 			add(EnemySpawnType.FRONT);
@@ -50,7 +50,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.STRONG);
 
-	public static final SpawnPattern STRONG_FULL_MIDDLE = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern STRONG_FULL_MIDDLE = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.MIDDLE);
 			add(EnemySpawnType.MIDDLE);
@@ -59,7 +59,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.STRONG);
 
-	public static final SpawnPattern MID_MIDDLE_ONLY = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern MID_MIDDLE_ONLY = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.MIDDLE);
 			add(EnemySpawnType.MIDDLE);
@@ -67,7 +67,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.MID);
 
-	public static final SpawnPattern MID_MIDDLE = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern MID_MIDDLE = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.MIDDLE);
 			add(EnemySpawnType.MIDDLE);
@@ -75,7 +75,7 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.MID);
 
-	public static final SpawnPattern MID_BALANCED = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern MID_BALANCED = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.FRONT);
 			add(EnemySpawnType.MIDDLE);
@@ -83,21 +83,21 @@ public class PartySpawnPatterns {
 		}
 	}, PartyType.MID);
 
-	public static final SpawnPattern WEAK_FRONT_ONLY = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern WEAK_FRONT_ONLY = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.FRONT);
 			add(EnemySpawnType.FRONT);
 		}
 	}, PartyType.WEAK);
 
-	public static final SpawnPattern WEAK_BALANCED = new SpawnPattern(new ArrayList<EnemySpawnType>() {
+	public static final PartySpawnPattern WEAK_BALANCED = new PartySpawnPattern(new ArrayList<EnemySpawnType>() {
 		{
 			add(EnemySpawnType.FRONT);
 			add(EnemySpawnType.MIDDLE);
 		}
 	}, PartyType.WEAK);
 
-	private static final List<SpawnPattern> ALL_PATERNS = new ArrayList<SpawnPattern>() {
+	private static final List<PartySpawnPattern> ALL_PATERNS = new ArrayList<PartySpawnPattern>() {
 		{
 			add(STRONG_DEFAULT);
 			add(STRONG_BACK);
@@ -113,9 +113,9 @@ public class PartySpawnPatterns {
 		}
 	};
 
-	public static SpawnPattern getRandomPatternByStrength(PartyType type) {
+	public static PartySpawnPattern getRandomPatternByStrength(PartyType type) {
 		while (true) {
-			SpawnPattern pattern = ALL_PATERNS.get(new Random().nextInt(ALL_PATERNS.size()));
+			PartySpawnPattern pattern = ALL_PATERNS.get(new Random().nextInt(ALL_PATERNS.size()));
 			if (pattern.getPartyStrength() == type) {
 				return pattern;
 			}
@@ -123,13 +123,13 @@ public class PartySpawnPatterns {
 		
 	}
 	
-	public static SpawnPattern getRandomPattern(){
+	public static PartySpawnPattern getRandomPattern(){
 		return ALL_PATERNS.get(new Random().nextInt(ALL_PATERNS.size()));
 	}
 	
-	public static List<SpawnPattern>getPatternByStrength(PartyType type){
-		 List<SpawnPattern> patterns = new ArrayList<>();
-		 for(SpawnPattern sp : ALL_PATERNS){
+	public static List<PartySpawnPattern>getPatternByStrength(PartyType type){
+		 List<PartySpawnPattern> patterns = new ArrayList<>();
+		 for(PartySpawnPattern sp : ALL_PATERNS){
 			 if(sp.getPartyStrength()==type){
 				 patterns.add(sp);
 			 }
