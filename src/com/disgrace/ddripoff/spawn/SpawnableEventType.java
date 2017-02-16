@@ -26,18 +26,8 @@ public enum SpawnableEventType {
 	};
 	
 	private static final Random RANDOM = new Random();
-	private static final ArrayList<SpawnableEventType> VALUES = new ArrayList<SpawnableEventType>() {
-		{
-			add(SpawnableEventType.FIGHT);
-			add(SpawnableEventType.TREASURE);
-			add(SpawnableEventType.CURIO);
-			add(SpawnableEventType.MEMEORY);
-		}
-	};
-	private static final int SIZE = VALUES.size();
-
 	public static SpawnableEventType getRandomValue() {
-		return VALUES.get(RANDOM.nextInt(SIZE));
+		return values()[(RANDOM.nextInt(values().length))];
 	}
 
 	public abstract SpawnEvent getEvent();
