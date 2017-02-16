@@ -65,17 +65,9 @@ public abstract class Spell {
 		return list;
 	}
 
-	private boolean isTargetAvaliable(Character target, Character caller) {
-//	System.out.println("target class: "+target.getCharClass());
-//	System.out.println("target class: "+caller.getCharClass());
-//	System.out.println("Match1? " + (((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))
-//			|| spellOrientation == TargetType.ALLY) && targetsRestrictedPos.contains(target.getPosition())));
-//	System.out.println("Match2? " + (spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass())));
-//	System.out.println("Match3? " + ((spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))|| spellOrientation == TargetType.ALLY));
-//	System.out.println("Match4? "+ targetsRestrictedPos.contains(target.getPosition()));
-//	System.out.println("requiredPos:" +targetsRestrictedPos + " targetPos "+target.getPosition());
+	private boolean isTargetAvaliable(Character target, Character caller) {	
 		return (targetsRestrictedPos.contains(target.getPosition())&& (spellOrientation == TargetType.ENEMY && !caller.getCharClass().equals(target.getCharClass()))
-				|| spellOrientation == TargetType.ALLY);
+				|| (spellOrientation == TargetType.ALLY&&caller.getCharClass().equals(target.getCharClass())));
 	}
 
 	public abstract void useSpell(Character[] targets, Character caller);

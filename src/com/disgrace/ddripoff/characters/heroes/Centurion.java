@@ -42,7 +42,7 @@ public class Centurion extends Hero{
 				add(new Stat(StatEnumeration.MOVE_CHANCE, 0, 100));
 			}
 		});
-		//allAbilities.add(SpellEnum.CENTURION_SWORD_SWING);
+		allAbilities.add(SpellEnum.CENTURION_SWORD_SWING);
 		allAbilities.add(SpellEnum.CENTURION_SHIELD_SLAM);
 	}
 

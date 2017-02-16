@@ -22,7 +22,6 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 
 public class Test {
-
 	private static int turnCount;
 	private static Party currentParty;
 	static Scanner sc = new Scanner(System.in);
@@ -57,8 +56,8 @@ public class Test {
 		for (Character c : queue) {
 			System.out.println("Turn of: ");
 			System.out.println(c.getName());
-			for (Iterator iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
-				TemporarySpell tempS = (TemporarySpell) iterator.next();
+			for (Iterator<TemporarySpell> iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
+				TemporarySpell tempS = iterator.next();
 				System.out.println(tempS.toString()+ " time left: " + tempS.getRemainingDuration());
 				if (tempS.isExpired()) {
 					iterator.remove();
