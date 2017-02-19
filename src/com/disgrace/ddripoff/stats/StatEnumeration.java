@@ -44,7 +44,6 @@ public enum StatEnumeration {
 		this.name= name;
 		specification = spec;
 	}
-	
 }
 
 enum StatSpecification{
