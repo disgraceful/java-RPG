@@ -15,7 +15,7 @@ public class CenturionShieldSlamDamage extends DamageSpell {
 	@Override
 	public void initSpell() {
 		restrictionClass = HeroClass.CENTURION;
-		damageType = DamageType.PHYS;
+		damageType = DamageType.PHYSICAL;
 		range = RangeType.MELEE;
 		spellOrientation = TargetType.ENEMY;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {

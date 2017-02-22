@@ -15,7 +15,7 @@ public class OutcastSwordsmanVileAttackDamage extends DamageSpell {
 	@Override
 	public void initSpell() {
 		restrictionClass = EnemyClass.OUTCAST_SWORDSMAN;
-		damageType = DamageType.PHYS;
+		damageType = DamageType.PHYSICAL;
 		range = RangeType.MELEE;
 		spellOrientation = TargetType.ENEMY;
 		abilityStats = new StatWrapper(new ArrayList<Stat>() {

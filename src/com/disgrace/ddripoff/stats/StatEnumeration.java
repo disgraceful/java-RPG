@@ -1,51 +1,58 @@
 package com.disgrace.ddripoff.stats;
 
 public enum StatEnumeration {
-	HEALTH("Health",StatSpecification.DEF_STAT),
-	STRESS("Stress",StatSpecification.DEF_STAT),
+	HEALTH("Health"),
+	STRESS("Stress"),
 	
-	DAMAGE("Damage",StatSpecification.DAMAGE_STAT),
-	ACC("Accuracy",StatSpecification.DAMAGE_STAT), //even if dodge 0 acc cant be more than 90%
-	CRIT_CHANCE("Critical Chance",StatSpecification.DAMAGE_STAT),
+	ACC("Accuracy"), //even if dodge 0 acc cant be more than 90%
+	CRIT_CHANCE("Critical Chance"),
 	
-	DAMAGE_MOD("Damage Modifier",StatSpecification.SPELL_STAT),
-	ACC_MOD("Accuracy Modifier",StatSpecification.SPELL_STAT),
-	CRIT_MOD("Critical Strike Modifier",StatSpecification.SPELL_STAT),
-	MOVE_SPELL_POSITION("Position",StatSpecification.SPELL_STAT),
-	STUN_CHANCE("Stun Chance",StatSpecification.SPELL_STAT),
-	MOVE_CHANCE("Move Chance",StatSpecification.SPELL_STAT),
-	BLEED_CHANCE("Bleed Chance",StatSpecification.SPELL_STAT),
-	BLIGHT_CHANCE("Blight Chance",StatSpecification.SPELL_STAT),
-	DEBUFF_CHANCE("Debuff Chance",StatSpecification.SPELL_STAT),
+	DAMAGE("Damage"),
+	STRENGTH("Strength"),
+	DEXTERITY("Dexterity"),
+	INTELIGENCE("Inteligence"),
+	FAITH("Faith"),
+	
+	MOVE_SPELL_POSITION("Position"),
+	STUN_CHANCE("Stun Chance"),
+	MOVE_CHANCE("Move Chance"),
+	BLEED_CHANCE("Bleed Chance"),
+	BLIGHT_CHANCE("Blight Chance"),
+	DEBUFF_CHANCE("Debuff Chance"),
+	
+	CRIT_MOD("Critical Strike Modifier"),
+	RANGE_MOD("Range Ability Damage Modifier"),
+	MELEE_MOD("Melee Ability Damage Modifier"),
+	PHYS_MOD("Physical Damage Modifier"),
+	MAG_MOD("Magical Damage Modifier"),
+	LIGHTNING_MOD("Lightning Damage Modifier"),
+	FIRE_MOD("Fire Damage Modifier"),
+	DARK_MOD("Dark Damage Modifier"),
 
-	SPEED("Speed",StatSpecification.UTILITY_STAT),
-	TRAP_DISARM_CHANCE("Trap disarm Chance",StatSpecification.UTILITY_STAT),
-	VIRTUE_CHANCE("Virtue Chance",StatSpecification.UTILITY_STAT),
-	DODGE("Dodge",StatSpecification.UTILITY_STAT),
+	SPEED("Speed"  ),
+	TRAP_DISARM_CHANCE("Trap disarm Chance"),
+	VIRTUE_CHANCE("Virtue Chance"),
+	DODGE("Dodge"),
 	
-	BLEED_RES("Bleed Resistance",StatSpecification.RESIST_STAT),
-	BLIGHT_RES("Blight Resistance",StatSpecification.RESIST_STAT),
-	STUN_RES("Stun Resistance",StatSpecification.RESIST_STAT),
-	CURSE_RES("Curse Resistance",StatSpecification.RESIST_STAT),
-	MOVE_RES("Move Resistance",StatSpecification.RESIST_STAT),
-	DISIEASE_RES("Disease Resistance",StatSpecification.RESIST_STAT),
-	DEBUFF_RES("Debuff Resistance",StatSpecification.RESIST_STAT), 
-	DEATH_RES("Deathblow Resistance",StatSpecification.RESIST_STAT),
+	BLEED_RES("Bleed Resistance"),
+	BLIGHT_RES("Blight Resistance"),
+	STUN_RES("Stun Resistance"),
+	CURSE_RES("Curse Resistance"),
+	MOVE_RES("Move Resistance"),
+	DISIEASE_RES("Disease Resistance"),
+	DEBUFF_RES("Debuff Resistance"), 
+	DEATH_RES("Deathblow Resistance"),
 
-	PHYS_PROT("Physical Protection",StatSpecification.PROT_STAT),
-	MAG_PROT("Physical Protection",StatSpecification.PROT_STAT),
-	STRESS_PROT("Stress Protection",StatSpecification.PROT_STAT),
-	
-	IS_STUNNED("Is stunned?",StatSpecification.STATUS_STAT)	;
+	PHYS_PROT("Physical Protection"),
+	MAG_PROT("Physical Protection"),
+	STRESS_PROT("Stress Protection"),
+	LIGHTNING_PROT("Lightning Protection"),
+	FIRE_PROT("Fire Protection"),
+	DARK_PROT("Dark Protection");
 	
 	private String name;
-	private StatSpecification specification;
-	private StatEnumeration(String name, StatSpecification spec){
+	private StatEnumeration(String name){
 		this.name= name;
-		specification = spec;
-	}
-}
 
-enum StatSpecification{
-	DEF_STAT, DAMAGE_STAT, UTILITY_STAT, RESIST_STAT,PROT_STAT, STATUS_STAT,SPELL_STAT;
+	}
 }

@@ -1,5 +1,5 @@
 package com.disgrace.ddripoff.spells;
 
-public class BasicSpell extends Spell {
+public abstract class BasicSpell extends Spell {
 
 }

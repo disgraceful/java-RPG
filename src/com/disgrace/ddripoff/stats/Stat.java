@@ -1,12 +1,12 @@
 package com.disgrace.ddripoff.stats;
 
 public class Stat {
-	private StatEnumeration type;
-	private int baseValue;
-	private int curValue;
-	private int maxValue;
-	private boolean isAffectingMaxValue;
-	private boolean isPrimordial;
+	 StatEnumeration type;
+	 int baseValue;
+	 int curValue;
+	 int maxValue;
+	boolean isAffectingMaxValue;
+	boolean isPrimordial;
 
 	public StatEnumeration getType() {
 		return type;
@@ -20,12 +20,10 @@ public class Stat {
 		isPrimordial = true;
 	}
 
-	public Stat(StatEnumeration type, int value, boolean istempstat) {
+	public Stat(StatEnumeration type, int value) {
 		this.type = type;
 		curValue = value;
 		baseValue= value;
-		isAffectingMaxValue = istempstat;
-		istempstat = false;
 	}
 
 	public int getBaseValue(){

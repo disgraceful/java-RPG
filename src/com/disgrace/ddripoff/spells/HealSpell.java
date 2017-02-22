@@ -16,7 +16,7 @@ public abstract class HealSpell extends Spell {
 	public void useSpell(Character[] targets, Character caller) {
 		for (Character target : targets) {
 			int healValue = calcHealValue(getProperBaseValue());
-			if (criticalStrike(target, caller)) {
+			if (isCrit(target, caller)) {
 				healValue *= 1.25;
 			}
 			target.updateStats(getProperStatWrapper(healValue));

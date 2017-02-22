@@ -16,7 +16,7 @@ public abstract class DamageSpell extends Spell {
 	public void useSpell(Character[] targets, Character caller) {
 		for (Character target : targets) {
 			int damage = calculateDmg(target, caller);
-			if (criticalStrike(target, caller))
+			if (isCrit(target, caller))
 				damage *= 1.5;
 			calculateAffectingStats(damage);
 			target.getStats().updateStats(affectedStats);

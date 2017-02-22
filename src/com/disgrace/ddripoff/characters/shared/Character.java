@@ -3,10 +3,10 @@ package com.disgrace.ddripoff.characters.shared;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.disgrace.ddripoff.characters.heroes.Hero;
+import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.SpellEnum;
-import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.spells.TemporarySpell;
+import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
@@ -37,13 +37,13 @@ public abstract class Character implements Comparable<Character> {
 	public CharacterTempEffectsWrapper getEffectsWrapper() {
 		return tempEffects;
 	}
-	
+
 	public List<TemporarySpell> getTempEffects() {
 		return tempEffects.getTempEffects();
 	}
 
 	public void addEffect(TemporarySpell effect) {
-		tempEffects.addEffect(effect);		
+		tempEffects.addEffect(effect);
 	}
 
 	public StatWrapper getStats() {
@@ -75,38 +75,56 @@ public abstract class Character implements Comparable<Character> {
 		return tempEffects.isStunned();
 	}
 
-	public void rollbackTempSpellEffect(TemporarySpell spell) {
-		if (spell == null) {
-			return;
-		}
-		stats.rollbackTempSpellEffect(spell);
-		System.out.println(name + "get cleansed from " + spell.toString());
-	}
+	// public void rollbackTempSpellEffect(TemporarySpell spell) {
+	// if (spell == null) {
+	// return;
+	// }
+	// stats.rollbackTempSpellEffect(spell);
+	// System.out.println(name + "get cleansed from " + spell.toString());
+	// }
 
 	public void useAbility(SpellEnum ability, Character[] targets) {
 		ability.castSpell(targets, this);
 	}
-	
-	public static Character spawn(CharacterClass charClass){
+
+	public static Character spawn(CharacterClass charClass) {
 		return charClass.getCharacterToSpawn();
 	}
-	
+
 	protected abstract void init();
-	
+
 	@Override
 	public int compareTo(Character c1) {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
 		return comparespeed - stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
 	}
 
-	
 	public abstract Class<?> getCharClass();
-	
-	public void updateStats(StatWrapper affectedStats){
-		if(affectedStats==null){
+
+	public void updateStats(StatWrapper affectedStats) {
+		if (affectedStats == null) {
 			return;
 		}
 		stats.updateStats(affectedStats);
 	}
+
+	public void updateStats(Stat stat) {
+		if (stat == null) {
+			return;
+		}
+		stats.updateStats(stat);
+	}
+
+	public Stat getStatbyName(StatEnumeration type) {
+		return stats.getStatbyName(type);
+	}
 	
+	public Stat getProperDeffence(DamageType type){
+		return stats.getProperDeffence(type);
+	}
+	
+	public int getProperDeffenceValue(DamageType type){
+		return stats.getProperDeffenceValue(type);
+	}
+
 }
