@@ -3,6 +3,7 @@ package com.disgrace.ddripoff.stats;
 public enum StatEnumeration {
 	HEALTH("Health"),
 	STRESS("Stress"),
+	CURSE_LEVEL("Curse Level"),
 	
 	ACC("Accuracy"), //even if dodge 0 acc cant be more than 90%
 	CRIT_CHANCE("Critical Chance"),
@@ -20,6 +21,7 @@ public enum StatEnumeration {
 	BLIGHT_CHANCE("Blight Chance"),
 	DEBUFF_CHANCE("Debuff Chance"),
 	
+	DAMAGE_MOD("Damage Modifier"),
 	CRIT_MOD("Critical Strike Modifier"),
 	RANGE_MOD("Range Ability Damage Modifier"),
 	MELEE_MOD("Melee Ability Damage Modifier"),

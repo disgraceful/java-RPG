@@ -20,8 +20,8 @@ public abstract class Spell {
 	protected StatWrapper abilityStats;
 	protected List<Effect> applyingEffects = new ArrayList<>();
 	protected List<Effect> selfApplyingEffects = new ArrayList<>();
-	protected SpellPositionHelper callerRequiredPos = new SpellPositionHelper();
-	protected SpellPositionHelper targetRequiredPos = new SpellPositionHelper();
+	protected SpellPositionWrapper callerRequiredPos = new SpellPositionWrapper();
+	protected SpellPositionWrapper targetRequiredPos = new SpellPositionWrapper();
 
 	public List<Effect> getApplyingEffects() {
 		return applyingEffects;
@@ -31,19 +31,19 @@ public abstract class Spell {
 		this.applyingEffects = applyingEffects;
 	}
 
-	public SpellPositionHelper getCallerRequiredPos() {
+	public SpellPositionWrapper getCallerRequiredPos() {
 		return callerRequiredPos;
 	}
 
-	public void setCallerRequiredPos(SpellPositionHelper callerRequiredPos) {
+	public void setCallerRequiredPos(SpellPositionWrapper callerRequiredPos) {
 		this.callerRequiredPos = callerRequiredPos;
 	}
 
-	public SpellPositionHelper getTargetRequiredPos() {
+	public SpellPositionWrapper getTargetRequiredPos() {
 		return targetRequiredPos;
 	}
 
-	public void setTargetRequiredPos(SpellPositionHelper targetRequiredPos) {
+	public void setTargetRequiredPos(SpellPositionWrapper targetRequiredPos) {
 		this.targetRequiredPos = targetRequiredPos;
 	}
 

@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SpellPositionHelper {
+public class SpellPositionWrapper {
 
 	Set<Integer>requiredPosition = new HashSet<>();
 	
-	public SpellPositionHelper(Integer... positions){
+	public SpellPositionWrapper(Integer... positions){
 		requiredPosition.addAll(Arrays.asList(positions));
 	}
 
@@ -23,5 +23,4 @@ public class SpellPositionHelper {
 	public boolean isPosRequired(Integer pos){
 		return requiredPosition.contains(pos);
 	}
-	
 }
