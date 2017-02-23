@@ -9,12 +9,9 @@ public abstract class OffensiveSpell extends Spell {
 	protected DamageType damageType;
 	protected RangeType range;
 
-	private Stat calculateDmg(Character caller, Character target) {
-		int damage = CalculationHelper.calcRandomIntWithPercent(getBaseDamage(caller, damageType),SpellConstants.CALC_DISPERSION_25);
-		damage=isCrit(caller, target)?(int)(damage*SpellConstants.CRIT_DAMAGE_MULTIPLIER):damage;
-		damage*=(100+(getRangeDmgMod(caller)+getAbilityDamageMod()))/100;
-		damage*=(100-target.getProperDeffenceValue(damageType))/100;
-		return new Stat(StatEnumeration.HEALTH, damage);
+	@Override
+	public void initSpell() {
+		orientation = SpellOrientation.OFFENSIVE;
 	}
 
 	@Override
@@ -26,6 +23,14 @@ public abstract class OffensiveSpell extends Spell {
 				selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller));
 			}
 		}
+	}
+	
+	private Stat calculateDmg(Character caller, Character target) {
+		int damage = CalculationHelper.calcRandomIntWithPercent(getBaseDamage(caller, damageType),SpellConstants.CALC_DISPERSION_25);
+		damage=isCrit(caller, target)?(int)(damage*SpellConstants.CRIT_DAMAGE_MULTIPLIER):damage;
+		damage*=(100+(getRangeDmgMod(caller)+getAbilityDamageMod()))/100;
+		damage*=(100-target.getProperDeffenceValue(damageType))/100;
+		return new Stat(StatEnumeration.HEALTH, damage);
 	}
 
 	private int getRangeDmgMod(Character caller) {

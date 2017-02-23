@@ -8,5 +8,6 @@ public class SpellConstants {
 	public static final int STRESS_THRESHOLD_100 = 100;
 	public static final int STRESS_THRESHOLD_200 = 200;
 	public static final double CRIT_DAMAGE_MULTIPLIER = 1.5;
+	public static final double CRIT_HEAL_MULTIPLIER = 1.25;
 	
 }

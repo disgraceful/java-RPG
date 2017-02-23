@@ -11,12 +11,9 @@ import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
 public abstract class Spell {
-
-	// protected StatWrapper affectedStats;
-	// protected StatWrapper abilityStats;
-	// protected RangeType range;
-	// protected TargetType spellOrientation;
-	// protected CharacterClass restrictionClass;
+	protected String name;
+	protected String description;
+	protected SpellOrientation orientation;
 	protected StatWrapper abilityStats;
 	protected List<Effect> applyingEffects = new ArrayList<>();
 	protected List<Effect> selfApplyingEffects = new ArrayList<>();
@@ -47,11 +44,7 @@ public abstract class Spell {
 		this.targetRequiredPos = targetRequiredPos;
 	}
 
-	public abstract void useSpell(Character caller, Character... targets);
-
-	public abstract void initSpell();
-
-	public boolean isMiss(Character caller,Character target) {
+	public boolean isMiss(Character caller, Character target) {
 		int targetDodge = target.getStatWrapper().getStatbyName(StatEnumeration.DODGE).getCurValue();
 		int callerAcc = caller.getStatWrapper().getStatbyName(StatEnumeration.ACC).getCurValue();
 		int totalAccWithDodge = callerAcc - targetDodge;
@@ -66,7 +59,7 @@ public abstract class Spell {
 		return false;
 	}
 
-	public boolean isCrit(Character caller,Character target) {
+	public boolean isCrit(Character caller, Character target) {
 		int callerCritChance = caller.getStatbyName(StatEnumeration.CRIT_CHANCE) == null ? 0
 				: caller.getStatbyName(StatEnumeration.CRIT_CHANCE).getCurValue();
 		int abilityCritMod = abilityStats.getStatbyName(StatEnumeration.CRIT_MOD).getCurValue();
@@ -76,28 +69,26 @@ public abstract class Spell {
 		}
 		return false;
 	}
-	//
-	// public List<Character> getAvaliableTargets(List<Character> queue,
-	// Character caller) {
-	// List<Character> list = new ArrayList<>();
-	// for (Character c : queue) {
-	// if (isTargetAvaliable(c, caller)) {
-	// list.add(c);
-	// }
-	// }
-	// return list;
-	// }
-	//
-	// private boolean isTargetAvaliable(Character target, Character caller) {
-	// return (targetsRestrictedPos.contains(target.getPosition())&&
-	// (spellOrientation == TargetType.ENEMY &&
-	// !caller.getCharClass().equals(target.getCharClass()))
-	// || (spellOrientation ==
-	// TargetType.ALLY&&caller.getCharClass().equals(target.getCharClass())));
-	// }
 
+	public List<Character> getAvaliableTargets(Character caller,List<Character> queue) {
+		List<Character> list = new ArrayList<>();
+		for (Character c : queue) {
+			if (isTargetAvaliable(c, caller)) {
+				list.add(c);
+			}
+		}
+		return list;
+	}
+
+	private boolean isTargetAvaliable(Character caller, Character target) {
+		return isTargetInPosition(target)&&orientation==SpellOrientation.OFFENSIVE?!target.getCharClass().equals(caller.getCharClass()):
+			target.getCharClass().equals(caller.getCharClass());
+	}
+	
+	private boolean isTargetInPosition(Character target){
+		return targetRequiredPos.isPosRequired(target.getPosition());
+	}
+
+	public abstract void useSpell(Character caller, Character... targets);
+	public abstract void initSpell();
 }
-
-// enum TargetType {
-// ENEMY, ALLY;
-// }
