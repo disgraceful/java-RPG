@@ -21,6 +21,7 @@ public enum StatEnumeration {
 	//BLIGHT_CHANCE("Blight Chance"),
 	//DEBUFF_CHANCE("Debuff Chance"),
 	
+	ACC_MOD("Accuracy Modifier"),
 	DAMAGE_MOD("Damage Modifier"),
 	CRIT_MOD("Critical Strike Modifier"),
 	RANGE_MOD("Range Ability Damage Modifier"),

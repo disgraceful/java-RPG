@@ -5,7 +5,14 @@ import java.util.Random;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 
-public abstract class MoveSpell extends Spell {
+public abstract class Move extends Effect {
+
+	@Override
+	public void applyEffect(Character target) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 //	@Override
 //	public void useSpell(Character[] targets, Character caller) {

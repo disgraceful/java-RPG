@@ -62,34 +62,33 @@ public abstract class Spell {
 
 	public boolean isMiss(Character caller, Character target) {
 		int targetDodge = target.getStatWrapper().getStatbyName(StatEnumeration.DODGE).getCurValue();
-		int callerAcc = caller.getStatWrapper().getStatbyName(StatEnumeration.ACC).getCurValue();
-		int totalAccWithDodge = callerAcc - targetDodge;
-		if (totalAccWithDodge > 90)
-			totalAccWithDodge = 90;
+		int callerAccMod = caller.getStatWrapper().getStatbyName(StatEnumeration.ACC_MOD).getCurValue();
+		int abilityAcc = abilityStats.getStatbyName(StatEnumeration.ACC).getCurValue();
+		int trueAcc = callerAccMod + abilityAcc - targetDodge;
+		if (trueAcc > 90)
+			trueAcc = 90;
+		System.out.println("targetDodge: " + targetDodge + " callerAccMod: " + callerAccMod + " abilityAcc: "
+				+ abilityAcc + " trueAcc: " + trueAcc);
 		int hitChance = new Random().nextInt(100 + 1);
-		if (hitChance > totalAccWithDodge) {
-			return true;// missed
-		} else if (hitChance < totalAccWithDodge && hitChance > callerAcc) {
-			return true;// dodged;
-		}
-		return false;
+		System.out.println("hitChance: " + hitChance);
+		return hitChance > trueAcc ? true : false;
 	}
 
 	public boolean isCrit(Character caller, Character target) {
 		int callerCritChance = caller.getStatbyName(StatEnumeration.CRIT_CHANCE) == null ? 0
 				: caller.getStatbyName(StatEnumeration.CRIT_CHANCE).getCurValue();
+		System.out.println("caller Crit Chance: " +callerCritChance);
 		int abilityCritMod = abilityStats.getStatbyName(StatEnumeration.CRIT_MOD).getCurValue();
+		System.out.println("ability Crit Mod " + abilityCritMod);
 		int critChance = new Random().nextInt(101);
-		if (critChance < callerCritChance + abilityCritMod) {
-			return true;
-		}
-		return false;
+		System.out.println("total Crit: "+ critChance);
+		return critChance <= callerCritChance + abilityCritMod?true: false;
 	}
 
 	public List<Character> getAvaliableTargets(Character caller, List<Character> queue) {
 		List<Character> list = new ArrayList<>();
 		for (Character c : queue) {
-			if (isTargetAvaliable(c, caller)) {
+			if (isTargetAvaliable(caller, c)) {
 				list.add(c);
 			}
 		}

@@ -34,9 +34,13 @@ public class Test {
 		goodP.addMember(new UberHeroTest());
 		Party badP = new Party();
 		badP.addMember(new TestingDummy("Dum1"));
-		int turnCount =1;
+		badP.addMember(new TestingDummy("Dum2"));
+		badP.addMember(new TestingDummy("Dum3"));
+		badP.addMember(new TestingDummy("Dum4"));
+		int turnCount = 1;
+
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
-			System.out.println("Turn #"+turnCount);
+			System.out.println("Turn #" + turnCount);
 			battleTurn(goodP, badP);
 			turnCount++;
 		}
@@ -46,22 +50,24 @@ public class Test {
 		List<Character> queue = new ArrayList<>();
 		queue.addAll(good.getMembers());
 		queue.addAll(bad.getMembers());
-		
+
 		Collections.sort(queue);
 		for (Character c : queue) {
 			System.out.println("Turn of: ");
 			System.out.println(c.getName());
-//			for (Iterator<TemporarySpell> iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
-//				TemporarySpell tempS = iterator.next();
-//				System.out.println(tempS.toString()+ " time left: " + tempS.getRemainingDuration());
-//				if (tempS.isExpired()) {
-//					iterator.remove();
-//				}
-//				tempS.onTick(c);
-//			}
-//			if (c.isCharStunned()) {
-//				continue;
-//			}
+			// for (Iterator<TemporarySpell> iterator =
+			// c.getTempEffects().iterator(); iterator.hasNext();) {
+			// TemporarySpell tempS = iterator.next();
+			// System.out.println(tempS.toString()+ " time left: " +
+			// tempS.getRemainingDuration());
+			// if (tempS.isExpired()) {
+			// iterator.remove();
+			// }
+			// tempS.onTick(c);
+			// }
+			// if (c.isCharStunned()) {
+			// continue;
+			// }
 			printCharacterShortInfo(c);
 			for (int i = 0; i < c.getAllSpells().size(); i++) {
 				System.out.print(i + 1 + " - ");
@@ -79,9 +85,9 @@ public class Test {
 				System.out.print(i + 1 + " - ");
 				printCharacterShortInfo(targets.get(i));
 			}
-			input= sc.nextInt();
-			Character target = targets.get(input-1);
-			//Character target = targets.get(0);
+			input = sc.nextInt();
+			Character target = targets.get(input - 1);
+			// Character target = targets.get(0);
 			c.useAbility(s, new Character[] { target });
 			printCharacterFullInfo(target);
 			if (target.isCharDead()) {
@@ -110,7 +116,7 @@ public class Test {
 			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
 																												// "/"+s.getMaxValue());
 		}
-		System.out.println(character.getName() + "'s position: " + (character.getPosition()+1));
+		System.out.println(character.getName() + "'s position: " + (character.getPosition() + 1));
 	}
 
 	private static void printCharacterShortInfo(Character character) {

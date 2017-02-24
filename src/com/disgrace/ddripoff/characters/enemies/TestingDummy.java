@@ -2,7 +2,7 @@ package com.disgrace.ddripoff.characters.enemies;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.spells.SpellEnum;
+import com.disgrace.ddripoff.spells.TestHeal;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
@@ -22,15 +22,15 @@ public class TestingDummy extends Enemy {
 		eClass = EnemyClass.TESTING_DUMMY;
 		this.stats = new StatWrapper(new ArrayList<Stat>() {
 			{
-				add(new Stat(StatEnumeration.HEALTH, 900, 1000));
-				add(new Stat(StatEnumeration.PHYS_PROT, 0, 100));
+				add(new Stat(StatEnumeration.HEALTH, 999, 1000));
+				add(new Stat(StatEnumeration.PHYS_PROT, 10, 100));
 				add(new Stat(StatEnumeration.SPEED, 1, 100));
 				add(new Stat(StatEnumeration.DODGE, 0, 100));
 							
 				add(new Stat(StatEnumeration.DEATH_RES, 99, 100));
 			}
 		});
-		
+		allAbilities.add(new TestHeal());
 		//allAbilities.add(SpellEnum.GENERAL_HEAL);
 	}
 }
