@@ -10,12 +10,6 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class SaviorsChurch {
 
 	public void relief(Hero hero, ChurchRelieves relief){
-		StatWrapper s = new StatWrapper(new ArrayList<Stat>() {
-			{
-				add(new Stat(StatEnumeration.STRESS, -relief.getStress(), 100));
-			}
-		});
-		hero.getStatWrapper().updateStats(s);
-		//-remove the cost 	
+	
 	}
 }

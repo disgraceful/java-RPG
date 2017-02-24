@@ -84,16 +84,16 @@ public class StatWrapper {
 		switch (dType) {
 		case PHYSICAL:
 			return getStatbyName(StatEnumeration.PHYS_PROT);
-		case MAGICAL:
-			return getStatbyName(StatEnumeration.MAG_PROT);
+//		case MAGICAL:
+//			return getStatbyName(StatEnumeration.MAG_PROT);
 //		case STRESS:
 //			return getStatbyName(StatEnumeration.STRESS_PROT);
-		case LIGHTNING:
-			return getStatbyName(StatEnumeration.LIGHTNING_PROT);
-		case DARK:
-			return getStatbyName(StatEnumeration.DARK_PROT);
-		case FIRE:
-			return getStatbyName(StatEnumeration.FIRE_PROT);
+//		case LIGHTNING:
+//			return getStatbyName(StatEnumeration.LIGHTNING_PROT);
+//		case DARK:
+//			return getStatbyName(StatEnumeration.DARK_PROT);
+//		case FIRE:
+//			return getStatbyName(StatEnumeration.FIRE_PROT);
 		default:
 			System.out.println("Compatible stat doesn't exist");
 			return null;
@@ -104,16 +104,16 @@ public class StatWrapper {
 		switch (dType) {
 		case PHYSICAL:
 			return getStatbyName(StatEnumeration.PHYS_PROT).getCurValue();
-		case MAGICAL:
-			return getStatbyName(StatEnumeration.MAG_PROT).getCurValue();
+//		case MAGICAL:
+//			return getStatbyName(StatEnumeration.MAG_PROT).getCurValue();
 //		case STRESS:
 //			return getStatbyName(StatEnumeration.STRESS_PROT).getCurValue();
-		case LIGHTNING:
-			return getStatbyName(StatEnumeration.LIGHTNING_PROT).getCurValue();
-		case DARK:
-			return getStatbyName(StatEnumeration.DARK_PROT).getCurValue();
-		case FIRE:
-			return getStatbyName(StatEnumeration.FIRE_PROT).getCurValue();
+//		case LIGHTNING:
+//			return getStatbyName(StatEnumeration.LIGHTNING_PROT).getCurValue();
+//		case DARK:
+//			return getStatbyName(StatEnumeration.DARK_PROT).getCurValue();
+//		case FIRE:
+//			return getStatbyName(StatEnumeration.FIRE_PROT).getCurValue();
 		default:
 			System.out.println("Compatible stat doesn't exist");
 			return 0;
@@ -140,38 +140,38 @@ public class StatWrapper {
 //		}
 //	}
 
-	public int getProperResistValue(TemporaryEffectType eType) {
-		switch (eType) {
-		case STUN:
-			return getStatbyName(StatEnumeration.STUN_RES).getCurValue();
-		case BLEED:
-			return getStatbyName(StatEnumeration.BLEED_RES).getCurValue();
-		case BLIGHT:
-			return getStatbyName(StatEnumeration.BLIGHT_RES).getCurValue();
-		case DEBUFF:
-			return getStatbyName(StatEnumeration.DEBUFF_RES).getCurValue();
-		case CURSE:
-			return getStatbyName(StatEnumeration.CURSE_RES).getCurValue();
-		case DISEASE:
-			return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
-		case MARK:
-		case BUFF:
-			return 0;
-		default:
-			return -1;
-		}
-	}
+//	public int getProperResistValue(TemporaryEffectType eType) {
+//		switch (eType) {
+//		case STUN:
+//			return getStatbyName(StatEnumeration.STUN_RES).getCurValue();
+//		case BLEED:
+//			return getStatbyName(StatEnumeration.BLEED_RES).getCurValue();
+//		case BLIGHT:
+//			return getStatbyName(StatEnumeration.BLIGHT_RES).getCurValue();
+//		case DEBUFF:
+//			return getStatbyName(StatEnumeration.DEBUFF_RES).getCurValue();
+//		case CURSE:
+//			return getStatbyName(StatEnumeration.CURSE_RES).getCurValue();
+//		case DISEASE:
+//			return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
+//		case MARK:
+//		case BUFF:
+//			return 0;
+//		default:
+//			return -1;
+//		}
+//	}
 
-	public int getProperMultiplierValue(TemporaryEffectType eType) {
-		switch (eType) {
-		case STUN:
-			return getStatbyName(StatEnumeration.STUN_CHANCE).getCurValue();
-		case BLEED:
-			return getStatbyName(StatEnumeration.BLEED_CHANCE).getCurValue();
-		case BLIGHT:
-			return getStatbyName(StatEnumeration.BLIGHT_CHANCE).getCurValue();
-		case DEBUFF:
-			return getStatbyName(StatEnumeration.DEBUFF_CHANCE).getCurValue();
+//	public int getProperMultiplierValue(TemporaryEffectType eType) {
+//		switch (eType) {
+//		case STUN:
+//			return getStatbyName(StatEnumeration.STUN_CHANCE).getCurValue();
+//		case BLEED:
+//			return getStatbyName(StatEnumeration.BLEED_CHANCE).getCurValue();
+//		case BLIGHT:
+//			return getStatbyName(StatEnumeration.BLIGHT_CHANCE).getCurValue();
+//		case DEBUFF:
+//			return getStatbyName(StatEnumeration.DEBUFF_CHANCE).getCurValue();
 		// case CURSE:
 		// return getStatbyName(StatEnumeration.CURSE_CHANCE).getCurValue();
 		// case DISEASE:
@@ -180,10 +180,10 @@ public class StatWrapper {
 		// return 0;
 		// case BUFF:
 		// return 0;
-		default:
-			return -1;
-		}
-	}
+//		default:
+//			return -1;
+//		}
+//	}
 
 	// public void rollbackTempSpellEffect(TemporarySpell spell) {
 	// StatWrapper s = spell.getAffectingStats();

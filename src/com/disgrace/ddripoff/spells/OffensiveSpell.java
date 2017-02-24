@@ -45,7 +45,7 @@ public abstract class OffensiveSpell extends Spell {
 	private int getBaseDamage(Character caller, DamageType damageType) {
 		switch (damageType) {
 		case PHYSICAL:
-			return 100;//caller.getStatbyName(StatEnumeration.DAMAGE).getCurValue();// +scaling
+			return 5;//caller.getStatbyName(StatEnumeration.DAMAGE).getCurValue();// +scaling
 		case MAGICAL:
 			return 100;//caller.getStatbyName(StatEnumeration.INTELIGENCE).getCurValue() * SpellConstants.DMG_PER_INT;
 		case LIGHTNING:

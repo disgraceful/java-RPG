@@ -11,6 +11,7 @@ import com.disgrace.ddripoff.characters.enemies.TestingDummy;
 import com.disgrace.ddripoff.characters.heroes.Centurion;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
+import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.items.Trinket;
@@ -21,8 +22,6 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 
 public class Test {
-	private static int turnCount;
-	private static Party currentParty;
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -32,12 +31,9 @@ public class Test {
 
 	public static void initializeCombat() {
 		Party goodP = new Party();
-		goodP.addMember(new Centurion());
+		goodP.addMember(new UberHeroTest());
 		Party badP = new Party();
-		badP.addMember(new OutcastSwordsman());
-		badP.addMember(new TestingDummy("Dum2"));
-		badP.addMember(new TestingDummy("Dum3"));
-		//badP.addMember(new TestingDummy("Dum4"));
+		badP.addMember(new TestingDummy("Dum1"));
 		int turnCount =1;
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
 			System.out.println("Turn #"+turnCount);
@@ -55,17 +51,17 @@ public class Test {
 		for (Character c : queue) {
 			System.out.println("Turn of: ");
 			System.out.println(c.getName());
-			for (Iterator<TemporarySpell> iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
-				TemporarySpell tempS = iterator.next();
-				System.out.println(tempS.toString()+ " time left: " + tempS.getRemainingDuration());
-				if (tempS.isExpired()) {
-					iterator.remove();
-				}
-				tempS.onTick(c);
-			}
-			if (c.isCharStunned()) {
-				continue;
-			}
+//			for (Iterator<TemporarySpell> iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
+//				TemporarySpell tempS = iterator.next();
+//				System.out.println(tempS.toString()+ " time left: " + tempS.getRemainingDuration());
+//				if (tempS.isExpired()) {
+//					iterator.remove();
+//				}
+//				tempS.onTick(c);
+//			}
+//			if (c.isCharStunned()) {
+//				continue;
+//			}
 			printCharacterShortInfo(c);
 			for (int i = 0; i < c.getAllSpells().size(); i++) {
 				System.out.print(i + 1 + " - ");

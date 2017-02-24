@@ -24,7 +24,9 @@ public abstract class DeffensiveSpell extends Spell {
 	private Stat calculateHeal(Character caller, Character target) {
 		int baseHeal = CalculationHelper.calcRandomIntWithPercent(
 				abilityStats.getStatbyName(StatEnumeration.HEALTH).getCurValue(), SpellConstants.CALC_DISPERSION_25);
+		System.out.println("Randomized heal value: "+ baseHeal);
 		baseHeal = isCrit(target, caller) ? (int) (baseHeal * SpellConstants.CRIT_HEAL_MULTIPLIER) : baseHeal;
+		System.out.println("Crit heal: " + baseHeal);
 		return new Stat(StatEnumeration.HEALTH, baseHeal);
 	}
 }
