@@ -38,6 +38,6 @@ public class TestingDummy extends Enemy {
 			}
 		});
 		
-		allAbilities.add(SpellEnum.GENERAL_HEAL);
+		//allAbilities.add(SpellEnum.GENERAL_HEAL);
 	}
 }

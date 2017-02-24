@@ -41,7 +41,7 @@ public class OutcastSwordsman extends Enemy  {
 
 			}
 		});
-		allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE);
-		allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_VILE_ATTACK);
+		//allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE);
+		//allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_VILE_ATTACK);
 	}
 }

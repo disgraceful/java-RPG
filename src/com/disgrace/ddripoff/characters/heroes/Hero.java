@@ -5,12 +5,13 @@ import java.util.List;
 
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
 
 public abstract class Hero extends Character{
 	protected HeroClass heroClass;
-	private List<Trinket> inventory = new ArrayList<Trinket>();
-	private List<SpellEnum> learnedAbilities = new ArrayList<SpellEnum>();
+	private List<Trinket> inventory = new ArrayList<>();
+	private List<Spell> learnedAbilities = new ArrayList<>();
 
 	public void equip(Trinket trinket) {
 		if (trinket.tryEquip(this)) {
@@ -32,20 +33,20 @@ public abstract class Hero extends Character{
 		return inventory;
 	}
 
-	private boolean ifAbilityLearned(SpellEnum ability) {
+	private boolean ifAbilityLearned(Spell ability) {
 		return learnedAbilities.contains(ability);
 	}
 
-	public void learnAbility(SpellEnum ability) {
+	public void learnAbility(Spell ability) {
 		if (allAbilities.contains(ability)) {
 			learnedAbilities.add(ability);
 		}
 	}
 	
 	@Override
-	public void useAbility(SpellEnum ability, Character[] targets) {
+	public void useAbility(Spell ability, Character... targets) {
 		//if (ifAbilityLearned(ability)) {
-			ability.castSpell(targets, this);
+			ability.useSpell(this, targets);
 	}
 	
 	@Override

@@ -20,6 +20,22 @@ public abstract class Spell {
 	protected SpellPositionWrapper callerRequiredPos = new SpellPositionWrapper();
 	protected SpellPositionWrapper targetRequiredPos = new SpellPositionWrapper();
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public List<Effect> getApplyingEffects() {
 		return applyingEffects;
 	}
@@ -70,7 +86,7 @@ public abstract class Spell {
 		return false;
 	}
 
-	public List<Character> getAvaliableTargets(Character caller,List<Character> queue) {
+	public List<Character> getAvaliableTargets(Character caller, List<Character> queue) {
 		List<Character> list = new ArrayList<>();
 		for (Character c : queue) {
 			if (isTargetAvaliable(c, caller)) {
@@ -81,14 +97,16 @@ public abstract class Spell {
 	}
 
 	private boolean isTargetAvaliable(Character caller, Character target) {
-		return isTargetInPosition(target)&&orientation==SpellOrientation.OFFENSIVE?!target.getCharClass().equals(caller.getCharClass()):
-			target.getCharClass().equals(caller.getCharClass());
+		return isTargetInPosition(target) && orientation == SpellOrientation.OFFENSIVE
+				? !target.getCharClass().equals(caller.getCharClass())
+				: target.getCharClass().equals(caller.getCharClass());
 	}
-	
-	private boolean isTargetInPosition(Character target){
+
+	private boolean isTargetInPosition(Character target) {
 		return targetRequiredPos.isPosRequired(target.getPosition());
 	}
 
 	public abstract void useSpell(Character caller, Character... targets);
+
 	public abstract void initSpell();
 }

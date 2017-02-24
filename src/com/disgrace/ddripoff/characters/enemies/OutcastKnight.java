@@ -39,6 +39,6 @@ public class OutcastKnight extends Enemy  {
 
 			}
 		});
-		allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE);
+		//allAbilities.add(SpellEnum.OUTCAST_SWORDSMAN_SLASH_OF_EXILE);
 	}
 }

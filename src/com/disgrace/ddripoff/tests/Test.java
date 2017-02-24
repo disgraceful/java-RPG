@@ -6,16 +6,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import com.disgrace.ddripoff.characters.enemies.OutcastCrossbowman;
 import com.disgrace.ddripoff.characters.enemies.OutcastSwordsman;
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
 import com.disgrace.ddripoff.characters.heroes.Centurion;
-import com.disgrace.ddripoff.characters.heroes.Dishonored;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.spells.TemporarySpell;
 import com.disgrace.ddripoff.stats.Stat;
@@ -77,10 +76,9 @@ public class Test {
 			if (input == 9) {
 				continue;
 			}
-			SpellEnum s = c.getAllSpells().get(input - 1);
-			//SpellEnum s = c.getAllSpells().get(1);
+			Spell s = c.getAllSpells().get(input - 1);
 
-			List<Character> targets = s.getSpellClass().getAvaliableTargets(queue, c);
+			List<Character> targets = s.getAvaliableTargets(c, queue);
 			for (int i = 0; i < targets.size(); i++) {
 				System.out.print(i + 1 + " - ");
 				printCharacterShortInfo(targets.get(i));
@@ -134,7 +132,7 @@ public class Test {
 		}
 	}
 
-	private static void printAbilityInfo(SpellEnum spell) {
+	private static void printAbilityInfo(Spell spell) {
 		System.out.println(spell.getName());
 		System.out.println(spell.getDescription());
 

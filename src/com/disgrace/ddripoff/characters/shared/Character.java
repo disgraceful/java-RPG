@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.disgrace.ddripoff.spells.DamageType;
+import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.spells.TemporarySpell;
 import com.disgrace.ddripoff.stats.Stat;
@@ -15,7 +16,7 @@ public abstract class Character implements Comparable<Character> {
 	protected StatWrapper stats;
 
 	protected CharacterTempEffectsWrapper tempEffects = new CharacterTempEffectsWrapper();
-	protected List<SpellEnum> allAbilities = new ArrayList<>();
+	protected List<Spell> allAbilities = new ArrayList<>();
 	protected Party party;
 
 	public String getName() {
@@ -50,7 +51,7 @@ public abstract class Character implements Comparable<Character> {
 		return stats;
 	}
 
-	public List<SpellEnum> getAllSpells() {
+	public List<Spell> getAllSpells() {
 		return allAbilities;
 	}
 
@@ -83,8 +84,8 @@ public abstract class Character implements Comparable<Character> {
 	// System.out.println(name + "get cleansed from " + spell.toString());
 	// }
 
-	public void useAbility(SpellEnum ability, Character[] targets) {
-		ability.castSpell(targets, this);
+	public void useAbility(Spell ability, Character... targets) {
+		ability.useSpell(this, targets);
 	}
 
 	public static Character spawn(CharacterClass charClass) {
