@@ -2,13 +2,10 @@ package com.disgrace.ddripoff.tests;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import com.disgrace.ddripoff.characters.enemies.OutcastSwordsman;
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
-import com.disgrace.ddripoff.characters.heroes.Centurion;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
@@ -16,8 +13,6 @@ import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.spells.Spell;
-import com.disgrace.ddripoff.spells.SpellEnum;
-import com.disgrace.ddripoff.spells.TemporarySpell;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 
@@ -88,7 +83,8 @@ public class Test {
 			input = sc.nextInt();
 			Character target = targets.get(input - 1);
 			// Character target = targets.get(0);
-			c.useAbility(s, new Character[] { target });
+			c.useAbility(s, target);
+			
 			printCharacterFullInfo(target);
 			if (target.isCharDead()) {
 				target.charDied();
@@ -116,7 +112,7 @@ public class Test {
 			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
 																												// "/"+s.getMaxValue());
 		}
-		System.out.println(character.getName() + "'s position: " + (character.getPosition() + 1));
+		System.out.println(character.getName() + "'s position: " + (character.getPosition()+1));
 	}
 
 	private static void printCharacterShortInfo(Character character) {

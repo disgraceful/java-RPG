@@ -11,26 +11,39 @@ import com.disgrace.ddripoff.spawn.PartySpawnPattern;
 
 public class Party {
 
-	private List<Character> partyMembers = new ArrayList<Character>();
+	private List<Character> partyMembers = new ArrayList<>();
 
 	public Party(List<Character> members) {
 		partyMembers = members;
 	}
 
-	public Party() {
-	}
+	public Party() {}
 
 	public List<Character> getMembers() {
 		return partyMembers;
 	}
 
 	public void addMember(Character c) {
+		if (isPartyFull()) {
+			System.err.println("Only 4 members in party");
+			return;
+		}
 		partyMembers.add(c);
 		c.setParty(this);
 	}
 
 	public void addMember(Character c, int position) {
-		partyMembers.add(position, c);
+		if (isPartyFull()) {
+			System.err.println("Only 4 members in party");
+			return;
+		}
+		if (position > 3) {
+			addMember(c, 3);
+		} else if (position < 0) {
+			addMember(c, 0);
+		} else {
+			partyMembers.add(position, c);
+		}
 		c.setParty(this);
 	}
 
@@ -44,12 +57,8 @@ public class Party {
 
 	public void reposition(Character c, int newposition) {
 		if (ifCharExists(c)) {
-			if (partyMembers.size() >= 1 && newposition <= partyMembers.size()) {
-				partyMembers.remove(partyMembers.get(partyMembers.indexOf(c)));
-				addMember(c, newposition);
-			} else {
-				addMember(c);
-			}
+			removeMember(c);
+			addMember(c, newposition);
 		}
 	}
 
@@ -61,13 +70,17 @@ public class Party {
 		}
 		return true;
 	}
-	
-	public boolean isPartyEmpty(){
-		return partyMembers.size()<=0?true:false;
+
+	public boolean isPartyEmpty() {
+		return partyMembers.isEmpty() ? true : false;
 	}
-	
-	public void removeMember(Character c){
+
+	public void removeMember(Character c) {
 		partyMembers.remove(c);
+	}
+
+	private boolean isPartyFull() {
+		return partyMembers.size() >= 4 ? true : false;
 	}
 
 	@Override
@@ -77,11 +90,12 @@ public class Party {
 
 	public static Party spawnRandomParty() {
 		Party spawningParty = new Party();
-//		for (EnemySpawnType type : PartySpawnPatternEnumeration.getRandomPattern().getSpawnTypes()) {
-//			for (EnemyClass eClass : EnemyClass.getClassBySpawnType(type)) {
-//				spawningParty.addMember(Enemy.spawn(eClass));
-//			}
-//		}
+		// for (EnemySpawnType type :
+		// PartySpawnPatternEnumeration.getRandomPattern().getSpawnTypes()) {
+		// for (EnemyClass eClass : EnemyClass.getClassBySpawnType(type)) {
+		// spawningParty.addMember(Enemy.spawn(eClass));
+		// }
+		// }
 		return spawningParty;
 	}
 }

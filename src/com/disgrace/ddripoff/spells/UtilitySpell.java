@@ -6,14 +6,14 @@ public abstract class UtilitySpell extends Spell {
 
 	@Override
 	public void initSpell() {
-orientation =SpellOrientation.UTILITY;
+		orientation = SpellOrientation.UTILITY;
 	}
 
 	@Override
 	public void useSpell(Character caller, Character... targets) {
-		for(Character target:targets){
-			applyingEffects.stream().forEach(e->e.applyEffect(target));
-			selfApplyingEffects.stream().forEach(e->e.applyEffect(caller));
+		for (Character target : targets) {
+			applyingEffects.stream().forEach(e -> e.applyEffect(caller, target));
+			selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller, caller));
 		}
 	}
 }

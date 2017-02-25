@@ -13,7 +13,7 @@ public class TestHeal extends DeffensiveSpell{
 	public void initSpell() {
 		super.initSpell();
 		name ="Just Healing Spell";
-		description="Heals for 5-10";
+		description="Description: Heals an ally";
 		abilityStats = new StatWrapper(new Stat(StatEnumeration.HEALTH,7),new Stat(StatEnumeration.CRIT_MOD,0));
 		callerRequiredPos = new SpellPositionWrapper(0,1,2,3);
 		targetRequiredPos = new SpellPositionWrapper(0,1,2,3);		

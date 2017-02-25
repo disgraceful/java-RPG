@@ -19,8 +19,8 @@ public abstract class OffensiveSpell extends Spell {
 		for (Character target : targets) {
 			if (!isMiss(caller, target)) {
 				target.updateStats(calculateDmg(caller, target));
-				applyingEffects.stream().forEach(e -> e.applyEffect(target));
-				selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller));
+				applyingEffects.stream().forEach(e -> e.applyEffect(caller,target));
+				selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller,caller));
 			}
 		}
 	}

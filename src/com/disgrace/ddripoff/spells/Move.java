@@ -8,28 +8,24 @@ import com.disgrace.ddripoff.stats.StatEnumeration;
 public abstract class Move extends Effect {
 
 	@Override
-	public void applyEffect(Character target) {
-		// TODO Auto-generated method stub
-		
+	public void applyEffect(Character caller,Character target) {
+		if(ifMoveSuccesful(caller,target)){
+			int currentPos = target.getPosition();
+			int newPos = currentPos+effectStats.getStatbyName(StatEnumeration.MOVE_SPELL_POSITION).getCurValue();
+			target.move(newPos);
+			System.out.println("Target moves from "+ currentPos + " to "+ newPos + " Current pos: " + (target.getPosition()+1));
+			return;
+		}
+		System.out.println("Resisted!");
 	}
-	
-	
-//	@Override
-//	public void useSpell(Character[] targets, Character caller) {
-//		for(Character t :targets){
-//			if(ifMoveSuccesful(t,caller)){
-//				int currentPos = t.getPosition();
-//				int newPos = currentPos+abilityStats.getStatbyName(StatEnumeration.MOVE_SPELL_POSITION).getCurValue(); 
-//				t.move(newPos);
-//			}
-//		}
-//	}
-//	
-//	private boolean ifMoveSuccesful(Character target, Character caller){
-//		int targetDef = target.getStatWrapper().getStatbyName(StatEnumeration.MOVE_RES).getCurValue();
-//		int callerChanceMultiplier = caller.getStats().getStatbyName(StatEnumeration.MOVE_CHANCE).getCurValue();
-//		int oddsToMove = abilityStats.getStatbyName(StatEnumeration.MOVE_CHANCE).getCurValue();
-//		int sum = oddsToMove-targetDef+callerChanceMultiplier;
-//		return new Random().nextInt(101)<sum? true:false;
-//	}
+
+	private boolean ifMoveSuccesful(Character caller, Character target){
+		int targetDef = target.getStatbyName(StatEnumeration.MOVE_RES).getCurValue();
+		int callerChanceMultiplier = caller.getStatbyName(StatEnumeration.MOVE_CHANCE).getCurValue();
+		int oddsToMove = effectStats.getStatbyName(StatEnumeration.MOVE_CHANCE).getCurValue();
+		int sum = oddsToMove-targetDef+callerChanceMultiplier;		
+		int randChance =new Random().nextInt(101); 
+		System.out.println("targetDef "+ targetDef + " callerMod "+ callerChanceMultiplier+ " Odds: " +oddsToMove + " randChance " + randChance);
+		return randChance <sum? true:false;
+	}
 }

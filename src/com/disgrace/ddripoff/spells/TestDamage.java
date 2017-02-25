@@ -13,11 +13,12 @@ public class TestDamage extends OffensiveSpell {
 	public void initSpell() {
 		super.initSpell();
 		name ="Just Damaging Spell";
-		description="Damages";
+		description="Description: Damages an opponent!";
 		range = RangeType.MELEE;
 		damageType = DamageType.PHYSICAL;
 		abilityStats = new StatWrapper(new Stat(StatEnumeration.DAMAGE_MOD,-60),new Stat(StatEnumeration.ACC,90),new Stat(StatEnumeration.CRIT_MOD,50));
+		applyingEffects.add(new TestMove());
 		callerRequiredPos = new SpellPositionWrapper(0,1,2,3);
-		targetRequiredPos = new SpellPositionWrapper(0,1);		
+		targetRequiredPos = new SpellPositionWrapper(0,1,2);		
 	}
 }

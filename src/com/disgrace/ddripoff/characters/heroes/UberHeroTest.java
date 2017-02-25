@@ -26,7 +26,9 @@ public class UberHeroTest extends Hero{
 				add(new Stat(StatEnumeration.SPEED, 4, 20));
 				add(new Stat(StatEnumeration.ACC_MOD, 0, 100));
 				add(new Stat(StatEnumeration.CRIT_CHANCE, 5, 100));
+				add(new Stat(StatEnumeration.MOVE_CHANCE,0,220));
 				add(new Stat(StatEnumeration.DEATH_RES, 66, 100));
+				add(new Stat(StatEnumeration.MOVE_RES,50,220));
 				
 				add(new Stat(StatEnumeration.RANGE_MOD, 0, 100));
 				add(new Stat(StatEnumeration.MELEE_MOD, 0, 100));
