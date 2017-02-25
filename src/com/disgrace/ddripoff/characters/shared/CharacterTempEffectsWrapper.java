@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
-import com.disgrace.ddripoff.spells.TemporarySpell;
+import com.disgrace.ddripoff.spells.TemporaryEffect;
 
 public class CharacterTempEffectsWrapper {
-	protected List<TemporarySpell> tempEffects = new ArrayList<>();
+	protected List<TemporaryEffect> tempEffects = new ArrayList<>();
 
-	public List<TemporarySpell> getTempEffects() {
+	public List<TemporaryEffect> getTempEffects() {
 		return tempEffects;
 	}
 
-	public void setTempEffects(List<TemporarySpell> tempEffects) {
+	public void setTempEffects(List<TemporaryEffect> tempEffects) {
 		this.tempEffects = tempEffects;
 	}
 
-	public void addEffect(TemporarySpell effect) {
+	public void addEffect(TemporaryEffect effect) {
 		if (effect == null) {
 			return;
 		}
 		tempEffects.add(effect);
 	}
 
-	private boolean isEffectApplied(TemporarySpell effect) {
+	private boolean isEffectApplied(TemporaryEffect effect) {
 		return tempEffects.stream().anyMatch(e -> e.getEffectType().equals(effect.getEffectType()));
 	}
 

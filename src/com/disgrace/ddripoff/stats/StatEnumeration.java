@@ -15,11 +15,11 @@ public enum StatEnumeration {
 	//FAITH("Faith"),
 	
 	MOVE_SPELL_POSITION("Position"),
-	//STUN_CHANCE("Stun Chance"),
+	STUN_CHANCE("Stun Chance"),
 	MOVE_CHANCE("Move Chance"),
-	//BLEED_CHANCE("Bleed Chance"),
-	//BLIGHT_CHANCE("Blight Chance"),
-	//DEBUFF_CHANCE("Debuff Chance"),
+	BLEED_CHANCE("Bleed Chance"),
+	BLIGHT_CHANCE("Blight Chance"),
+	DEBUFF_CHANCE("Debuff Chance"),
 	
 	ACC_MOD("Accuracy Modifier"),
 	DAMAGE_MOD("Damage Modifier"),
@@ -37,13 +37,13 @@ public enum StatEnumeration {
 	//VIRTUE_CHANCE("Virtue Chance"),
 	DODGE("Dodge"),
 	
-	//BLEED_RES("Bleed Resistance"),
-	//BLIGHT_RES("Blight Resistance"),
-	//STUN_RES("Stun Resistance"),
+	BLEED_RES("Bleed Resistance"),
+	BLIGHT_RES("Blight Resistance"),
+	STUN_RES("Stun Resistance"),
 	//CURSE_RES("Curse Resistance"),
 	MOVE_RES("Move Resistance"),
 	//DISIEASE_RES("Disease Resistance"),
-	//DEBUFF_RES("Debuff Resistance"), 
+	DEBUFF_RES("Debuff Resistance"), 
 	DEATH_RES("Deathblow Resistance"),
 
 	PHYS_PROT("Physical Protection");

@@ -2,6 +2,7 @@ package com.disgrace.ddripoff.tests;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +14,7 @@ import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.spells.Spell;
+import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 
@@ -53,19 +55,17 @@ public class Test {
 		for (Character c : queue) {
 			System.out.println("Turn of: ");
 			System.out.println(c.getName());
-			// for (Iterator<TemporarySpell> iterator =
-			// c.getTempEffects().iterator(); iterator.hasNext();) {
-			// TemporarySpell tempS = iterator.next();
-			// System.out.println(tempS.toString()+ " time left: " +
-			// tempS.getRemainingDuration());
-			// if (tempS.isExpired()) {
-			// iterator.remove();
-			// }
-			// tempS.onTick(c);
-			// }
-			// if (c.isCharStunned()) {
-			// continue;
-			// }
+			for (Iterator<TemporaryEffect> iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
+				TemporaryEffect tempS = iterator.next();
+				System.out.println(tempS.toString() + " time left: " + tempS.getRemainingDuration());
+				if (tempS.isExpired()) {
+					iterator.remove();
+				}
+				tempS.onTick(c);
+			}
+			if (c.isCharStunned()) {
+				continue;
+			}
 			printCharacterShortInfo(c);
 			for (int i = 0; i < c.getAllSpells().size(); i++) {
 				System.out.print(i + 1 + " - ");

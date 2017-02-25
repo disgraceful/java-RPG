@@ -13,9 +13,9 @@ public abstract class Effect {
 		this.effectStats = effectStats;
 	}
 	
-	public abstract void applyEffect(Character caller,Character target);
-	
 	public boolean isApplyingOnSelf(Character caller,Character target){
 		return caller.getCharClass().equals(target.getCharClass());
 	}
+	
+	public abstract void applyEffect(Character caller,Character target);
 }

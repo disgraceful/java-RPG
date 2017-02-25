@@ -7,7 +7,7 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public  abstract class TestBuff extends BuffSpell {
+public  abstract class TestBuff extends Buff {
 //	public TestBuff() {
 //		initSpell();
 //	}

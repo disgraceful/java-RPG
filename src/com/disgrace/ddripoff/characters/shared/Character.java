@@ -6,7 +6,8 @@ import java.util.List;
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.SpellEnum;
-import com.disgrace.ddripoff.spells.TemporarySpell;
+import com.disgrace.ddripoff.spells.TemporaryEffect;
+import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
@@ -39,11 +40,11 @@ public abstract class Character implements Comparable<Character> {
 		return tempEffects;
 	}
 
-	public List<TemporarySpell> getTempEffects() {
+	public List<TemporaryEffect> getTempEffects() {
 		return tempEffects.getTempEffects();
 	}
 
-	public void addEffect(TemporarySpell effect) {
+	public void addEffect(TemporaryEffect effect) {
 		tempEffects.addEffect(effect);
 	}
 
@@ -75,14 +76,6 @@ public abstract class Character implements Comparable<Character> {
 	public boolean isCharStunned() {
 		return tempEffects.isStunned();
 	}
-
-	// public void rollbackTempSpellEffect(TemporarySpell spell) {
-	// if (spell == null) {
-	// return;
-	// }
-	// stats.rollbackTempSpellEffect(spell);
-	// System.out.println(name + "get cleansed from " + spell.toString());
-	// }
 
 	public void useAbility(Spell ability, Character... targets) {
 		ability.useSpell(this, targets);
@@ -124,13 +117,17 @@ public abstract class Character implements Comparable<Character> {
 	public Stat getStatbyName(StatEnumeration type) {
 		return stats.getStatbyName(type);
 	}
-	
-	public Stat getProperDeffence(DamageType type){
-		return stats.getProperDeffence(type);
+
+	public int getProperResistValue(TemporaryEffectType type){
+		return stats.getProperResistValue(type);
 	}
 	
 	public int getProperDeffenceValue(DamageType type){
 		return stats.getProperDeffenceValue(type);
+	}
+	
+	public int getProperMultiplierValue(TemporaryEffectType type){
+		return stats.getProperMultiplierValue(type);
 	}
 
 }
