@@ -9,8 +9,8 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 
 public class UberHeroTest extends Hero{
 
-	public UberHeroTest() {
-		name = "Test Hero";
+	public UberHeroTest(String name) {
+		this.name = name;
 		init();
 	}
 	

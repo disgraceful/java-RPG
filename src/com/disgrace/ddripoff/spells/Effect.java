@@ -5,12 +5,17 @@ public abstract class Effect {
 
 	String description;
 	StatWrapper effectStats;
-	public abstract void applyEffect(Character caller,Character target);
-	
+		
 	public StatWrapper getEffectStats() {
 		return effectStats;
 	}
 	public void setEffectStats(StatWrapper effectStats) {
 		this.effectStats = effectStats;
+	}
+	
+	public abstract void applyEffect(Character caller,Character target);
+	
+	public boolean isApplyingOnSelf(Character caller,Character target){
+		return caller.getCharClass().equals(target.getCharClass());
 	}
 }

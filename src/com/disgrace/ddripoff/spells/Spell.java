@@ -77,12 +77,12 @@ public abstract class Spell {
 	public boolean isCrit(Character caller, Character target) {
 		int callerCritChance = caller.getStatbyName(StatEnumeration.CRIT_CHANCE) == null ? 0
 				: caller.getStatbyName(StatEnumeration.CRIT_CHANCE).getCurValue();
-		System.out.println("caller Crit Chance: " +callerCritChance);
+		System.out.println("caller Crit Chance: " + callerCritChance);
 		int abilityCritMod = abilityStats.getStatbyName(StatEnumeration.CRIT_MOD).getCurValue();
 		System.out.println("ability Crit Mod " + abilityCritMod);
 		int critChance = new Random().nextInt(101);
-		System.out.println("total Crit: "+ critChance);
-		return critChance <= callerCritChance + abilityCritMod?true: false;
+		System.out.println("total Crit: " + critChance);
+		return critChance <= callerCritChance + abilityCritMod ? true : false;
 	}
 
 	public List<Character> getAvaliableTargets(Character caller, List<Character> queue) {
@@ -96,9 +96,9 @@ public abstract class Spell {
 	}
 
 	private boolean isTargetAvaliable(Character caller, Character target) {
-		return isTargetInPosition(target) && orientation == SpellOrientation.OFFENSIVE
-				? !target.getCharClass().equals(caller.getCharClass())
-				: target.getCharClass().equals(caller.getCharClass());
+		return isTargetInPosition(target)
+				&& (orientation == SpellOrientation.OFFENSIVE ? !target.getCharClass().equals(caller.getCharClass())
+						: target.getCharClass().equals(caller.getCharClass()));
 	}
 
 	private boolean isTargetInPosition(Character target) {

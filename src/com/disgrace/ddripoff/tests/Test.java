@@ -26,7 +26,10 @@ public class Test {
 
 	public static void initializeCombat() {
 		Party goodP = new Party();
-		goodP.addMember(new UberHeroTest());
+		goodP.addMember(new UberHeroTest("Hero1"));
+		goodP.addMember(new UberHeroTest("Hero2"));
+		goodP.addMember(new UberHeroTest("Hero3"));
+		goodP.addMember(new UberHeroTest("Hero4"));
 		Party badP = new Party();
 		badP.addMember(new TestingDummy("Dum1"));
 		badP.addMember(new TestingDummy("Dum2"));
@@ -116,9 +119,10 @@ public class Test {
 	}
 
 	private static void printCharacterShortInfo(Character character) {
-		System.out.println(
+		System.out.print(
 				character.getName() + " " + character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()
 						+ "/" + character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
+		System.out.println(" position: "+(character.getPosition()+1));
 
 	}
 

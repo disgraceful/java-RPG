@@ -99,6 +99,11 @@ public abstract class Character implements Comparable<Character> {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();
 		return comparespeed - stats.getStatbyName(StatEnumeration.SPEED).getCurValue();
 	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 
 	public abstract Class<?> getCharClass();
 
