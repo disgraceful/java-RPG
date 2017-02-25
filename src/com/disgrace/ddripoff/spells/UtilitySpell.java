@@ -13,7 +13,7 @@ public abstract class UtilitySpell extends Spell {
 	public void useSpell(Character caller, Character... targets) {
 		for (Character target : targets) {
 			applyingEffects.stream().forEach(e -> e.applyEffect(caller, target));
-			selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller, caller));
 		}
+		selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller, caller));
 	}
 }

@@ -17,8 +17,8 @@ public abstract class DeffensiveSpell extends Spell {
 		for (Character target : targets) {
 			target.updateStats(calculateHeal(target, caller));
 			applyingEffects.stream().forEach(e -> e.applyEffect(caller,target));
-			selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller,caller));
 		}
+		selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller,caller));
 	}
 
 	private Stat calculateHeal(Character caller, Character target) {

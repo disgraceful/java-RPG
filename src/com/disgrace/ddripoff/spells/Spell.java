@@ -14,6 +14,7 @@ public abstract class Spell {
 	protected String name;
 	protected String description;
 	protected SpellOrientation orientation;
+	protected SpellTargetQuantity targetQuantity;
 	protected StatWrapper abilityStats;
 	protected List<Effect> applyingEffects = new ArrayList<>();
 	protected List<Effect> selfApplyingEffects = new ArrayList<>();
@@ -96,15 +97,21 @@ public abstract class Spell {
 	}
 
 	private boolean isTargetAvaliable(Character caller, Character target) {
-		return isTargetInPosition(target)
-				&& (orientation == SpellOrientation.OFFENSIVE ? !target.getCharClass().equals(caller.getCharClass())
-						: target.getCharClass().equals(caller.getCharClass()));
+		return isTargetInPosition(target) && (isSpellOffensive() ? !target.getCharClass().equals(caller.getCharClass())
+				: target.getCharClass().equals(caller.getCharClass()));
 	}
 
 	private boolean isTargetInPosition(Character target) {
 		return targetRequiredPos.isPosRequired(target.getPosition());
 	}
 
+	private boolean isSpellOffensive() {
+		return orientation == SpellOrientation.OFFENSIVE;
+	}
+	
+	public boolean isSpellAOE(){
+		return targetQuantity==SpellTargetQuantity.MULTIPLE;
+	}
 	public abstract void useSpell(Character caller, Character... targets);
 
 	public abstract void initSpell();

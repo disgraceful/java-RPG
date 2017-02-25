@@ -85,13 +85,17 @@ public class Test {
 			}
 			input = sc.nextInt();
 			Character target = targets.get(input - 1);
-			// Character target = targets.get(0);
-			c.useAbility(s, target);
-			
-			printCharacterFullInfo(target);
-			if (target.isCharDead()) {
-				target.charDied();
+			if (s.isSpellAOE()) {
+				c.useAbility(s, targets.toArray(new Character[targets.size()]));
+				targets.stream().forEach(e -> printCharacterFullInfo(e));
+			} else {
+				c.useAbility(s, target);
+				printCharacterFullInfo(target);
 			}
+			targets.stream().forEach(e -> {
+				if (e.isCharDead())
+					e.charDied();
+			});
 		}
 	}
 
@@ -115,14 +119,14 @@ public class Test {
 			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
 																												// "/"+s.getMaxValue());
 		}
-		System.out.println(character.getName() + "'s position: " + (character.getPosition()+1));
+		System.out.println(character.getName() + "'s position: " + (character.getPosition() + 1));
 	}
 
 	private static void printCharacterShortInfo(Character character) {
 		System.out.print(
 				character.getName() + " " + character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()
 						+ "/" + character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
-		System.out.println(" position: "+(character.getPosition()+1));
+		System.out.println(" position: " + (character.getPosition() + 1));
 
 	}
 
