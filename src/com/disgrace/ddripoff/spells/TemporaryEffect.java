@@ -9,12 +9,19 @@ public abstract class TemporaryEffect extends Effect{
 	protected int currentDuration;
 	protected TemporaryEffectType effectType;
 	
-	public int getEffectDuration() {
-		return abilityDuration;
+	public int getCurrentDuration(){
+		return currentDuration;
+	}
+	
+	public void setCurrentDuration(int currentDuration) {
+		if(currentDuration<0){
+			return;
+		}
+		this.currentDuration = currentDuration;
 	}
 
-	public int getRemainingDuration(){
-		return currentDuration;
+	public int getEffectDuration() {
+		return abilityDuration;
 	}
 	
 	public void setEffectDuration(int duration) {

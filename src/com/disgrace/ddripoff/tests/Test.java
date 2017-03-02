@@ -57,7 +57,7 @@ public class Test {
 			System.out.println(c.getName());
 			for (Iterator<TemporaryEffect> iterator = c.getTempEffects().iterator(); iterator.hasNext();) {
 				TemporaryEffect tempS = iterator.next();
-				System.out.println(tempS.toString() + " time left: " + tempS.getRemainingDuration());
+				System.out.println(tempS.toString() + " time left: " + tempS.getCurrentDuration());
 				if (tempS.isExpired()) {
 					iterator.remove();
 				}
