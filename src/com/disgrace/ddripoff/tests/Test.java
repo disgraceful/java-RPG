@@ -1,10 +1,13 @@
 package com.disgrace.ddripoff.tests;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+
+import org.apache.commons.lang.SerializationUtils;
 
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
 import com.disgrace.ddripoff.characters.heroes.Hero;
@@ -29,14 +32,14 @@ public class Test {
 	public static void initializeCombat() {
 		Party goodP = new Party();
 		goodP.addMember(new UberHeroTest("Hero1"));
-//		goodP.addMember(new UberHeroTest("Hero2"));
-//		goodP.addMember(new UberHeroTest("Hero3"));
-//		goodP.addMember(new UberHeroTest("Hero4"));
+		// goodP.addMember(new UberHeroTest("Hero2"));
+		// goodP.addMember(new UberHeroTest("Hero3"));
+		// goodP.addMember(new UberHeroTest("Hero4"));
 		Party badP = new Party();
 		badP.addMember(new TestingDummy("Dum1"));
-//		badP.addMember(new TestingDummy("Dum2"));
-//		badP.addMember(new TestingDummy("Dum3"));
-//		badP.addMember(new TestingDummy("Dum4"));
+		// badP.addMember(new TestingDummy("Dum2"));
+		// badP.addMember(new TestingDummy("Dum3"));
+		// badP.addMember(new TestingDummy("Dum4"));
 		int turnCount = 1;
 
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {

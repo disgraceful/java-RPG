@@ -1,6 +1,8 @@
 package com.disgrace.ddripoff.stats;
 
-public class Stat {
+import java.io.Serializable;
+
+public class Stat implements Serializable {
 	 StatEnumeration type;
 	 int baseValue;
 	 int curValue;

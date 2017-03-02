@@ -5,7 +5,11 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.utils.CalculationHelper;
 
-public abstract class OffensiveSpell extends Spell {
+import java.io.Serializable;
+
+import org.apache.commons.lang.SerializationUtils;
+
+public abstract class OffensiveSpell extends Spell implements Serializable{
 	protected DamageType damageType;
 	protected RangeType range;
 
@@ -21,7 +25,7 @@ public abstract class OffensiveSpell extends Spell {
 				Stat damage = calculateDmg(caller, target);
 				target.updateStats(damage);
 				System.out.println(caller.toString() + " deals " + (-damage.getCurValue())+ " damage to" + target.toString());
-				applyingEffects.stream().forEach(e -> e.applyEffect(caller,target));
+				applyingEffects.stream().forEach(e -> ((Effect) (SerializationUtils.clone(e))).applyEffect(caller,target));
 				
 			}
 		}

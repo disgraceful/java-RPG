@@ -1,5 +1,6 @@
 package com.disgrace.ddripoff.stats;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Random;
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
 
-public class StatWrapper {
+public class StatWrapper implements Serializable {
 	private List<Stat> stats = new ArrayList<>();
 
 	public StatWrapper(List<Stat> stats) {
