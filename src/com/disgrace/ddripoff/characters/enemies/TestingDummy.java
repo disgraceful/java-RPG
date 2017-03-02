@@ -17,6 +17,7 @@ public class TestingDummy extends Enemy {
 		this.name = name;
 		init();
 	}
+
 	@Override
 	protected void init() {
 		eClass = EnemyClass.TESTING_DUMMY;
@@ -26,12 +27,21 @@ public class TestingDummy extends Enemy {
 				add(new Stat(StatEnumeration.PHYS_PROT, 10, 100));
 				add(new Stat(StatEnumeration.SPEED, 1, 100));
 				add(new Stat(StatEnumeration.DODGE, 0, 100));
-							
-				add(new Stat(StatEnumeration.MOVE_RES,0,220));
-				add(new Stat(StatEnumeration.DEATH_RES, 99, 100));
+
+				add(new Stat(StatEnumeration.MOVE_RES, 0, 220));
+				add(new Stat(StatEnumeration.DEATH_RES, 0, 100));
+				add(new Stat(StatEnumeration.BLEED_RES, 0, 220));
+				add(new Stat(StatEnumeration.BLIGHT_RES, 0, 220));
+				add(new Stat(StatEnumeration.DEBUFF_RES, 0, 220));
+				add(new Stat(StatEnumeration.STUN_RES, 0, 220));
+
+				add(new Stat(StatEnumeration.BLIGHT_CHANCE, 0, 220));
+				add(new Stat(StatEnumeration.BLEED_CHANCE, 0, 220));
+				add(new Stat(StatEnumeration.STUN_CHANCE, 0, 220));
+				add(new Stat(StatEnumeration.DEBUFF_CHANCE, 0, 220));
+				add(new Stat(StatEnumeration.MOVE_CHANCE, 0, 220));
 			}
 		});
 		allAbilities.add(new TestHeal());
-		//allAbilities.add(SpellEnum.GENERAL_HEAL);
 	}
 }

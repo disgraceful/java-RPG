@@ -18,8 +18,11 @@ public abstract class OffensiveSpell extends Spell {
 	public void useSpell(Character caller, Character... targets) {
 		for (Character target : targets) {
 			if (!isMiss(caller, target)) {
-				target.updateStats(calculateDmg(caller, target));
+				Stat damage = calculateDmg(caller, target);
+				target.updateStats(damage);
+				System.out.println(caller.toString() + " deals " + (-damage.getCurValue())+ " damage to" + target.toString());
 				applyingEffects.stream().forEach(e -> e.applyEffect(caller,target));
+				
 			}
 		}
 		selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller,caller));
