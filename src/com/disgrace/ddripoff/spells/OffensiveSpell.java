@@ -26,10 +26,9 @@ public abstract class OffensiveSpell extends Spell implements Serializable{
 				target.updateStats(damage);
 				System.out.println(caller.toString() + " deals " + (-damage.getCurValue())+ " damage to" + target.toString());
 				applyingEffects.stream().forEach(e -> ((Effect) (SerializationUtils.clone(e))).applyEffect(caller,target));
-				
 			}
 		}
-		selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller,caller));
+		selfApplyingEffects.stream().forEach(e -> ((Effect) (SerializationUtils.clone(e))).applyEffect(caller,caller));
 	}
 	
 	private Stat calculateDmg(Character caller, Character target) {

@@ -9,7 +9,7 @@ public abstract class Stun extends TemporaryEffect {
 		if (isEffectApplying(caller, target)) {
 			target.addEffect(this);
 			System.out.println(
-					this.effectType.toString() + " was applied on " + target.toString() + " for " + abilityDuration);
+					this.effectType.toString() + " was applied on " + target.toString() + " for " + abilityDuration + " turns");
 		} else {
 			System.out.println(target.toString() + " resists!");
 		}
@@ -26,7 +26,7 @@ public abstract class Stun extends TemporaryEffect {
 
 	@Override
 	public void onExpire(Character target) {
-		new StunLockPerventingBuff().applyEffect(target, target);
+		//new StunLockPerventingBuff().applyEffect(target, target);
 		System.out.println(this.toString() + " has expired");
 	}
 }

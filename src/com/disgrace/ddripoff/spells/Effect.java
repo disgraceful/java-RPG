@@ -4,7 +4,6 @@ import java.io.Serializable;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.StatWrapper;
 public abstract class Effect implements Serializable {
-
 	String description;
 	StatWrapper effectStats;
 		

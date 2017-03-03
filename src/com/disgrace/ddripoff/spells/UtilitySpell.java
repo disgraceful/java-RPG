@@ -1,8 +1,12 @@
 package com.disgrace.ddripoff.spells;
 
+import java.io.Serializable;
+
+import org.apache.commons.lang.SerializationUtils;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 
-public abstract class UtilitySpell extends Spell {
+public abstract class UtilitySpell extends Spell implements Serializable {
 
 	@Override
 	public void initSpell() {
@@ -12,8 +16,8 @@ public abstract class UtilitySpell extends Spell {
 	@Override
 	public void useSpell(Character caller, Character... targets) {
 		for (Character target : targets) {
-			applyingEffects.stream().forEach(e -> e.applyEffect(caller, target));
+			applyingEffects.stream().forEach(e -> ((Effect) (SerializationUtils.clone(e))).applyEffect(caller,target));
 		}
-		selfApplyingEffects.stream().forEach(e -> e.applyEffect(caller, caller));
+		selfApplyingEffects.stream().forEach(e -> ((Effect) (SerializationUtils.clone(e))).applyEffect(caller, caller));
 	}
 }

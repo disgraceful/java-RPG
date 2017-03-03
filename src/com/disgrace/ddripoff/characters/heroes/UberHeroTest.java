@@ -50,5 +50,4 @@ public class UberHeroTest extends Hero {
 		allAbilities.add(new TestDamage());
 		allAbilities.add(new TestDamage2());
 	}
-
 }

@@ -112,6 +112,7 @@ public abstract class Spell {
 	public boolean isSpellAOE(){
 		return targetQuantity==SpellTargetQuantity.MULTIPLE;
 	}
+	
 	public abstract void useSpell(Character caller, Character... targets);
 
 	public abstract void initSpell();
