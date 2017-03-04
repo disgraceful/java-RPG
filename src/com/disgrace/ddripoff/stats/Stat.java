@@ -3,35 +3,38 @@ package com.disgrace.ddripoff.stats;
 import java.io.Serializable;
 
 public class Stat implements Serializable {
-	 StatEnumeration type;
-	 int baseValue;
-	 int curValue;
-	 int maxValue;
+	StatEnumeration type;
+	int baseValue;
+	int curValue;
+	int maxValue;
 	boolean isAffectingMaxValue;
-	boolean isPrimordial;
-
-	public StatEnumeration getType() {
-		return type;
-	}
+	boolean isTemporary;
 
 	public Stat(StatEnumeration type, int curvalue, int maxvalue) {
-		this.type = type;
-		curValue = curvalue;
-		baseValue = curvalue;
+		this(type,curvalue);
 		maxValue = maxvalue;
-		isPrimordial = true;
 	}
 
 	public Stat(StatEnumeration type, int value) {
 		this.type = type;
 		curValue = value;
-		baseValue= value;
-	}
-
-	public int getBaseValue(){
-		return baseValue;
+		baseValue = value;
 	}
 	
+	public Stat(StatEnumeration type, int curvalue, boolean isAffectingMaxValue) {
+		this(type,curvalue);
+		this.isAffectingMaxValue = isAffectingMaxValue;
+		isTemporary = true;
+	}
+
+	public StatEnumeration getType() {
+		return type;
+	}
+
+	public int getBaseValue() {
+		return baseValue;
+	}
+
 	public int getCurValue() {
 		return curValue;
 	}
@@ -61,7 +64,7 @@ public class Stat implements Serializable {
 		if (value > maxValue && maxValue != 0) {
 			setValue = maxValue;
 			return setValue;
-		} else if (value < 0 && isPrimordial) {
+		} else if (value < 0&&!isTemporary) {
 			return setValue;
 		}
 		setValue = value;

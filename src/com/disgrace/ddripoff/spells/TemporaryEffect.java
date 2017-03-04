@@ -37,6 +37,9 @@ public abstract class TemporaryEffect extends Effect {
 		int callerDotChanceMultiplier = caller.getStats().getProperMultiplierValue(effectType);
 		int abilityChance = effectStats.getProperMultiplierValue(effectType);
 		int total = abilityChance + callerDotChanceMultiplier - targetResist;
+		if(total>90){
+			total=90;
+		}
 		int chance = new Random().nextInt(101);
 		System.out.println(target.toString() + " resist: " + targetResist + " " + caller.toString() + " callerMod "
 				+ callerDotChanceMultiplier + " abilityChance " + abilityChance + " Chance: " + chance);

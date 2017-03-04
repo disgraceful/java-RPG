@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.disgrace.ddripoff.spells.TestDamage;
 import com.disgrace.ddripoff.spells.TestDamage2;
+import com.disgrace.ddripoff.spells.TestUtility;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
@@ -21,12 +22,12 @@ public class UberHeroTest extends Hero {
 		this.stats = new StatWrapper(new ArrayList<Stat>() {
 			{
 				add(new Stat(StatEnumeration.HEALTH, 30, 30));
-				add(new Stat(StatEnumeration.PHYS_PROT, 5, 100));
-				add(new Stat(StatEnumeration.DAMAGE, 7, 100));
+				add(new Stat(StatEnumeration.PHYS_PROT, 5, 99));
+				add(new Stat(StatEnumeration.DAMAGE, 7, 99));
 				add(new Stat(StatEnumeration.DODGE, 4, 99));
-				add(new Stat(StatEnumeration.SPEED, 4, 20));
-				add(new Stat(StatEnumeration.ACC_MOD, 0, 100));
-				add(new Stat(StatEnumeration.CRIT_CHANCE, 5, 100));
+				add(new Stat(StatEnumeration.SPEED, 4, 99));
+				add(new Stat(StatEnumeration.ACC_MOD, 0, 99));
+				add(new Stat(StatEnumeration.CRIT_CHANCE, 5, 99));
 				
 				add(new Stat(StatEnumeration.DEATH_RES, 66, 100));
 				add(new Stat(StatEnumeration.MOVE_RES, 50, 220));
@@ -44,10 +45,10 @@ public class UberHeroTest extends Hero {
 				add(new Stat(StatEnumeration.BLEED_CHANCE, 0, 220));
 				add(new Stat(StatEnumeration.STUN_CHANCE, 0, 220));
 				add(new Stat(StatEnumeration.DEBUFF_CHANCE, 0, 220));
-
 			}
 		});
 		allAbilities.add(new TestDamage());
 		allAbilities.add(new TestDamage2());
+		allAbilities.add(new TestUtility());
 	}
 }

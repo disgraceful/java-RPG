@@ -11,6 +11,7 @@ public class TestDOT extends DOT {
 		currentDuration = abilityDuration;
 		effectType =TemporaryEffectType.BLEED;
 		effectStats = new StatWrapper(new Stat(StatEnumeration.BLEED_CHANCE, 220),new Stat(StatEnumeration.HEALTH, -1));
-		currentTick = effectStats.getStatbyName(StatEnumeration.HEALTH);
+		tickDamage = effectStats.getStatbyName(StatEnumeration.HEALTH);
+		currentTick = tickDamage;
 	}
 }

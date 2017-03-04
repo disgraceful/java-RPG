@@ -28,11 +28,13 @@ public class Trinket extends Item {
 
 	public boolean tryUnEquip(Character hero) {
 		if (hero != null) {
-			StatWrapper.reverseStatsValue(affectedstats);
-			hero.getStats().updateStats(affectedstats);
-			// System.out.println(hero.getOwner().getName() + " has unequipped " + this.getName());
+
+			hero.getStats().updateStats(StatWrapper.reverseStats(affectedstats));
+			// System.out.println(hero.getOwner().getName() + " has unequipped "
+			// + this.getName());
 			return true;
-		} else return false;
+		} else
+			return false;
 
 	}
 

@@ -62,9 +62,12 @@ public class Test {
 				TemporaryEffect tempS = iterator.next();
 				System.out.println(tempS.toString() + " time left: " + tempS.getCurrentDuration());
 				if (tempS.isExpired()) {
+					tempS.onExpire(c);
 					iterator.remove();
+				}else{
+					tempS.onTick(c);	
 				}
-				tempS.onTick(c);
+				
 			}
 			if (c.isCharStunned()) {
 				continue;

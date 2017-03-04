@@ -1,6 +1,7 @@
 package com.disgrace.ddripoff.spells;
 
 import com.disgrace.ddripoff.characters.shared.Character;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 public abstract class Debuff extends TemporaryEffect {
 
@@ -9,7 +10,7 @@ public abstract class Debuff extends TemporaryEffect {
 		if (isEffectApplying(caller, target)) {
 			target.addEffect(this);
 			System.out.println(
-					this.effectType.toString() + " was applied on " + target.toString() + " for " + abilityDuration);
+					this.effectType.toString() + " was applied on " + target.toString() + " for " + abilityDuration + " turns");
 		} else {
 			System.out.println(target.toString() + " resists!");
 		}
@@ -19,15 +20,13 @@ public abstract class Debuff extends TemporaryEffect {
 	public void onTick(Character target) {
 		if (currentDuration > 0) {
 			currentDuration--;
-			return;
 		}
-		onExpire(target);
 	}
 
 	@Override
 	public void onExpire( Character target) {
-		//reverse stats
-
+		target.updateStats(StatWrapper.reverseStats(effectStats));
+		System.out.println(this.toString() + " was expired on " + target.toString());
 	}
 
 }

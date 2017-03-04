@@ -61,14 +61,18 @@ public class StatWrapper implements Serializable {
 		}
 	}
 
-	public static void reverseStatsValue(StatWrapper stat) {
+	public static StatWrapper reverseStats(StatWrapper stat) {
 		for (Stat c : stat.getStatsasArrayList()) {
+			System.out.println("before: " + c.getType() + " " + c.getCurValue());
 			if (c.getCurValue() < 0) {
 				c.setValue(Math.abs(c.getCurValue()));
+				System.out.println("after: " + c.getType() + " " + c.getCurValue());
 			} else {
 				c.setValue(-c.getCurValue());
+				System.out.println("after: " + c.getType() + " " + c.getCurValue());
 			}
 		}
+		return stat;
 	}
 
 	public boolean isCharDead() {
@@ -81,27 +85,25 @@ public class StatWrapper implements Serializable {
 		return chance > deathBlowChance ? true : false;
 	}
 
-
 	public int getProperDeffenceValue(DamageType dType) {
 		switch (dType) {
 		case PHYSICAL:
 			return getStatbyName(StatEnumeration.PHYS_PROT).getCurValue();
-//		case MAGICAL:
-//			return getStatbyName(StatEnumeration.MAG_PROT).getCurValue();
-//		case STRESS:
-//			return getStatbyName(StatEnumeration.STRESS_PROT).getCurValue();
-//		case LIGHTNING:
-//			return getStatbyName(StatEnumeration.LIGHTNING_PROT).getCurValue();
-//		case DARK:
-//			return getStatbyName(StatEnumeration.DARK_PROT).getCurValue();
-//		case FIRE:
-//			return getStatbyName(StatEnumeration.FIRE_PROT).getCurValue();
+		// case MAGICAL:
+		// return getStatbyName(StatEnumeration.MAG_PROT).getCurValue();
+		// case STRESS:
+		// return getStatbyName(StatEnumeration.STRESS_PROT).getCurValue();
+		// case LIGHTNING:
+		// return getStatbyName(StatEnumeration.LIGHTNING_PROT).getCurValue();
+		// case DARK:
+		// return getStatbyName(StatEnumeration.DARK_PROT).getCurValue();
+		// case FIRE:
+		// return getStatbyName(StatEnumeration.FIRE_PROT).getCurValue();
 		default:
 			System.out.println("Compatible stat doesn't exist");
 			return 0;
 		}
 	}
-	
 
 	public int getProperResistValue(TemporaryEffectType eType) {
 		switch (eType) {
@@ -113,11 +115,11 @@ public class StatWrapper implements Serializable {
 			return getStatbyName(StatEnumeration.BLIGHT_RES).getCurValue();
 		case DEBUFF:
 			return getStatbyName(StatEnumeration.DEBUFF_RES).getCurValue();
-//		case CURSE:
-//			return getStatbyName(StatEnumeration.CURSE_RES).getCurValue();
-//		case DISEASE:
-//			return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
-//		case MARK:
+		// case CURSE:
+		// return getStatbyName(StatEnumeration.CURSE_RES).getCurValue();
+		// case DISEASE:
+		// return getStatbyName(StatEnumeration.DISIEASE_RES).getCurValue();
+		// case MARK:
 		case BUFF:
 			return 0;
 		default:
@@ -135,14 +137,14 @@ public class StatWrapper implements Serializable {
 			return getStatbyName(StatEnumeration.BLIGHT_CHANCE).getCurValue();
 		case DEBUFF:
 			return getStatbyName(StatEnumeration.DEBUFF_CHANCE).getCurValue();
-//		 case CURSE:
-//		 return getStatbyName(StatEnumeration.CURSE_CHANCE).getCurValue();
-//		 case DISEASE:
-//		 return getStatbyName(StatEnumeration.DISIEASE_CHANCE).getCurValue();
-//		 case MARK:
-//		 return 0;
-		 case BUFF:
-		 return 0;
+		// case CURSE:
+		// return getStatbyName(StatEnumeration.CURSE_CHANCE).getCurValue();
+		// case DISEASE:
+		// return getStatbyName(StatEnumeration.DISIEASE_CHANCE).getCurValue();
+		// case MARK:
+		// return 0;
+		case BUFF:
+			return 0;
 		default:
 			return -1;
 		}

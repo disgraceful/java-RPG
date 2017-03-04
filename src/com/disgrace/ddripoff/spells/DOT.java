@@ -7,8 +7,8 @@ import com.disgrace.ddripoff.stats.StatEnumeration;
 public abstract class DOT extends TemporaryEffect {
 
 	Stat tickDamage;
-	Stat currentTick=tickDamage;
-	
+	Stat currentTick;
+
 	public Stat getCurrentTick() {
 		return currentTick;
 	}
@@ -16,14 +16,13 @@ public abstract class DOT extends TemporaryEffect {
 	public void setCurrentTick(int currentTickDamage) {
 		this.currentTick.setValue(currentTickDamage);
 	}
-	
+
 	@Override
 	public void applyEffect(Character caller, Character target) {
-		tickDamage = effectStats.getStatbyName(StatEnumeration.HEALTH);
 		if (isEffectApplying(caller, target)) {
 			target.addEffect(this);
-			System.out.println(
-					this.effectType.toString() + " was applied on " + target.toString() + " for " + currentDuration + " turns");
+			System.out.println(this.effectType.toString() + " was applied on " + target.toString() + " for "
+					+ currentDuration + " turns");
 		} else {
 			System.out.println(target.toString() + " resists!");
 		}
@@ -35,10 +34,8 @@ public abstract class DOT extends TemporaryEffect {
 		if (currentDuration > 0) {
 			currentDuration--;
 			target.updateStats(currentTick);
-			System.out.println(target.getName()+ " suffers for " + currentTick.getCurValue());
-			return;
+			System.out.println(target.getName() + " suffers for " + currentTick.getCurValue());
 		}
-		onExpire(target);
 	}
 
 	@Override

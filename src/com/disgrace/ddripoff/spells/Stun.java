@@ -19,9 +19,7 @@ public abstract class Stun extends TemporaryEffect {
 	public void onTick(Character target) {
 		if (currentDuration > 0) {
 			currentDuration--;
-			return;
 		}
-		onExpire(target);
 	}
 
 	@Override

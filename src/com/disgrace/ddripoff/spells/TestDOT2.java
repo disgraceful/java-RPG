@@ -9,8 +9,10 @@ public class TestDOT2 extends DOT {
 		description = "Description: Poisons Enemy for 2 damage for 3 turns";
 		abilityDuration = 3;
 		currentDuration = abilityDuration;
-		currentTick = new Stat(StatEnumeration.HEALTH, -2);
+		currentTick = tickDamage;
 		effectType =TemporaryEffectType.BLEED;
-		effectStats = new StatWrapper(new Stat(StatEnumeration.BLEED_CHANCE, 220));
+		effectStats = new StatWrapper(new Stat(StatEnumeration.BLEED_CHANCE, 220),new Stat(StatEnumeration.HEALTH, -2));
+		tickDamage = effectStats.getStatbyName(StatEnumeration.HEALTH);
+		currentTick = tickDamage;
 	}
 }
