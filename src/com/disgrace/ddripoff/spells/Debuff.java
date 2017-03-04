@@ -9,6 +9,7 @@ public abstract class Debuff extends TemporaryEffect {
 	public void applyEffect(Character caller, Character target) {
 		if (isEffectApplying(caller, target)) {
 			target.addEffect(this);
+			target.updateStats(effectStats);
 			System.out.println(
 					this.effectType.toString() + " was applied on " + target.toString() + " for " + abilityDuration + " turns");
 		} else {

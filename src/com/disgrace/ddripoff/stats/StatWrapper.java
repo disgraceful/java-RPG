@@ -20,6 +20,14 @@ public class StatWrapper implements Serializable {
 		this.stats.addAll(Arrays.asList(stats));
 	}
 
+	public void addStat(Stat stat){
+		stats.add(stat);
+	}
+	
+	public void addAllStats(Stat ...stats ){
+		this.stats.addAll(Arrays.asList(stats));
+	}
+	
 	private boolean checkIfStatExist(StatEnumeration type) {
 		for (Stat s : stats) {
 			if (s.getType() == type) {
@@ -62,17 +70,17 @@ public class StatWrapper implements Serializable {
 	}
 
 	public static StatWrapper reverseStats(StatWrapper stat) {
+		StatWrapper s = new StatWrapper();
+		Stat curStat;
 		for (Stat c : stat.getStatsasArrayList()) {
-			System.out.println("before: " + c.getType() + " " + c.getCurValue());
 			if (c.getCurValue() < 0) {
-				c.setValue(Math.abs(c.getCurValue()));
-				System.out.println("after: " + c.getType() + " " + c.getCurValue());
+				curStat = new Stat(c.getType(),Math.abs(c.getCurValue()));
 			} else {
-				c.setValue(-c.getCurValue());
-				System.out.println("after: " + c.getType() + " " + c.getCurValue());
+				curStat = new Stat(c.getType(),-c.getCurValue());
 			}
+			s.addStat(curStat);
 		}
-		return stat;
+		return s;
 	}
 
 	public boolean isCharDead() {

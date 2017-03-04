@@ -7,10 +7,10 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class TestDebuff extends Debuff {
 	public TestDebuff() {
 		description = "Description: Debuffs target Protection for 3 turns!";
-		abilityDuration = 3;
+		abilityDuration = 2;
 		currentDuration = abilityDuration;
-		effectType = TemporaryEffectType.BUFF;
-		effectStats = new StatWrapper(new Stat(StatEnumeration.PHYS_PROT, -10));
+		effectType = TemporaryEffectType.DEBUFF;
+		effectStats = new StatWrapper(new Stat(StatEnumeration.DEBUFF_CHANCE,220),new Stat(StatEnumeration.PHYS_PROT, -10));
 
 	}
 
