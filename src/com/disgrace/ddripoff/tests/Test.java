@@ -24,12 +24,21 @@ public class Test {
 
 	public static void main(String[] args) {
 		// testSpawns();
-		//initializeCombat();
-		testEquipping();
+		initializeCombat();
+		// testEquipping();
+		// testAvaliableMovements();
 	}
-	
-	
-	public static void testEquipping(){
+
+	public static void testAvaliableMovements() {
+		Party p = new Party();
+		p.addMember(new UberHeroTest("Henry0"));
+		p.addMember(new UberHeroTest("Henry1"));
+		p.addMember(new UberHeroTest("Henry2"));
+		p.addMember(new UberHeroTest("Henry3"));
+		p.getAvaliableMovements(p.getMemberByPos(0));
+	}
+
+	public static void testEquipping() {
 		TestTrinket tt = new TestTrinket();
 		UberHeroTest uber = new UberHeroTest("Henry");
 		uber.equip(tt);
@@ -41,9 +50,9 @@ public class Test {
 	public static void initializeCombat() {
 		Party goodP = new Party();
 		goodP.addMember(new UberHeroTest("Hero1"));
-		// goodP.addMember(new UberHeroTest("Hero2"));
-		// goodP.addMember(new UberHeroTest("Hero3"));
-		// goodP.addMember(new UberHeroTest("Hero4"));
+		goodP.addMember(new UberHeroTest("Hero2"));
+		goodP.addMember(new UberHeroTest("Hero3"));
+		goodP.addMember(new UberHeroTest("Hero4"));
 		Party badP = new Party();
 		badP.addMember(new TestingDummy("Dum1"));
 		// badP.addMember(new TestingDummy("Dum2"));
@@ -73,10 +82,10 @@ public class Test {
 				if (tempS.isExpired()) {
 					tempS.onExpire(c);
 					iterator.remove();
-				}else{
-					tempS.onTick(c);	
+				} else {
+					tempS.onTick(c);
 				}
-				
+
 			}
 			if (c.isCharStunned()) {
 				continue;
@@ -86,11 +95,19 @@ public class Test {
 				System.out.print(i + 1 + " - ");
 				printAbilityInfo(c.getAllSpells().get(i));
 			}
+			System.out.println(8 + "- move");
 			System.out.println(9 + "- skip");
 			int input = sc.nextInt();
+			if (input == 8) {
+				c.getParty().getAvaliableMovements(c).forEach(e -> System.out.println("Move to position #" + e));
+				input = sc.nextInt();
+				c.move(input);
+				continue;
+			}
 			if (input == 9) {
 				continue;
 			}
+
 			Spell s = c.getAllSpells().get(input - 1);
 
 			List<Character> targets = s.getAvaliableTargets(c, queue);
@@ -134,14 +151,14 @@ public class Test {
 			System.out.println(character.getName() + "'s " + s.getType().toString() + ": " + s.getCurValue()); // +
 																												// "/"+s.getMaxValue());
 		}
-		System.out.println(character.getName() + "'s position: " + (character.getPosition() + 1));
+		System.out.println(character.getName() + "'s position: " + (character.getPosition()));
 	}
 
 	private static void printCharacterShortInfo(Character character) {
 		System.out.print(
 				character.getName() + " " + character.getStats().getStatbyName(StatEnumeration.HEALTH).getCurValue()
 						+ "/" + character.getStats().getStatbyName(StatEnumeration.HEALTH).getMaxValue());
-		System.out.println(" position: " + (character.getPosition() + 1));
+		System.out.println(" position: " + (character.getPosition()));
 
 	}
 

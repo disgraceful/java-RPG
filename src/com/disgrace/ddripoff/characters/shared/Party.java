@@ -1,13 +1,8 @@
 package com.disgrace.ddripoff.characters.shared;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import com.disgrace.ddripoff.characters.enemies.Enemy;
-import com.disgrace.ddripoff.characters.enemies.EnemyClass;
-import com.disgrace.ddripoff.spawn.EnemySpawnType;
-import com.disgrace.ddripoff.spawn.PartySpawnPatternEnumeration;
-import com.disgrace.ddripoff.spawn.PartySpawnPattern;
 
 public class Party {
 
@@ -17,12 +12,17 @@ public class Party {
 		partyMembers = members;
 	}
 
-	public Party() {}
+	public Party() {//NOSONAR
+	}
 
 	public List<Character> getMembers() {
 		return partyMembers;
 	}
 
+	public Character getMemberByPos(int pos){
+		return partyMembers.get(pos);
+	}
+	
 	public void addMember(Character c) {
 		if (isPartyFull()) {
 			System.err.println("Only 4 members in party");
@@ -59,6 +59,7 @@ public class Party {
 		if (ifCharExists(c)) {
 			removeMember(c);
 			addMember(c, newposition);
+			System.out.println(c.getName() + " was repsoition to " + newposition);
 		}
 	}
 
@@ -83,12 +84,8 @@ public class Party {
 		return partyMembers.size() >= 4 ? true : false;
 	}
 
-	@Override
-	public String toString() {
-		return "Party members: " + partyMembers;
-	}
-
 	public static Party spawnRandomParty() {
+		//TODO implement spawn party
 		Party spawningParty = new Party();
 		// for (EnemySpawnType type :
 		// PartySpawnPatternEnumeration.getRandomPattern().getSpawnTypes()) {
@@ -97,5 +94,35 @@ public class Party {
 		// }
 		// }
 		return spawningParty;
+	}
+	
+	public List<Integer> getAvaliableMovements(Character c){
+		if(!ifCharExists(c)){
+			return Collections.emptyList();
+		}
+		int currentPos = getPosition(c);
+		List<Integer> avaliablePos = new ArrayList<>();
+		int backPos = currentPos+1;
+		if(backPos<3||currentPos!=3){
+			avaliablePos.add(backPos);	
+		}
+		int forwardPos = currentPos-1;
+		if(forwardPos>0||currentPos!=0){
+			avaliablePos.add(forwardPos);	
+		}
+
+		System.out.println(c.getName());
+		System.out.println("current Pos: " + currentPos);
+		System.out.println("back Pos: " +backPos);
+		System.out.println("forward Pos: " + forwardPos);
+		System.out.println("avaliabe positions: " + avaliablePos.size());
+		avaliablePos.forEach(e->System.out.println(e));
+		
+		return avaliablePos;
+	}
+	
+	@Override
+	public String toString() {
+		return "Party members: " + partyMembers;
 	}
 }
