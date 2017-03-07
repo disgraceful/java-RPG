@@ -96,8 +96,12 @@ public class Party {
 		return spawningParty;
 	}
 	
+	public boolean isCharAlone(){
+		return partyMembers.size()==1;
+	}
+	
 	public List<Integer> getAvaliableMovements(Character c){
-		if(!ifCharExists(c)){
+		if(!ifCharExists(c)&&isCharAlone()){
 			return Collections.emptyList();
 		}
 		int currentPos = getPosition(c);

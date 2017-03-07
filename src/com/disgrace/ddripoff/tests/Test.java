@@ -50,9 +50,9 @@ public class Test {
 	public static void initializeCombat() {
 		Party goodP = new Party();
 		goodP.addMember(new UberHeroTest("Hero1"));
-		goodP.addMember(new UberHeroTest("Hero2"));
-		goodP.addMember(new UberHeroTest("Hero3"));
-		goodP.addMember(new UberHeroTest("Hero4"));
+		// goodP.addMember(new UberHeroTest("Hero2"));
+		// goodP.addMember(new UberHeroTest("Hero3"));
+		// goodP.addMember(new UberHeroTest("Hero4"));
 		Party badP = new Party();
 		badP.addMember(new TestingDummy("Dum1"));
 		// badP.addMember(new TestingDummy("Dum2"));
@@ -90,24 +90,39 @@ public class Test {
 			if (c.isCharStunned()) {
 				continue;
 			}
-			printCharacterShortInfo(c);
-			for (int i = 0; i < c.getAllSpells().size(); i++) {
-				System.out.print(i + 1 + " - ");
-				printAbilityInfo(c.getAllSpells().get(i));
-			}
-			System.out.println(8 + "- move");
-			System.out.println(9 + "- skip");
-			int input = sc.nextInt();
-			if (input == 8) {
-				c.getParty().getAvaliableMovements(c).forEach(e -> System.out.println("Move to position #" + e));
+			int input = 0;
+			while (true) {
+				System.out.println("Choose action: ");
+				printCharacterShortInfo(c);
+				for (int i = 0; i < c.getAllSpells().size(); i++) {
+					System.out.print(i + 1 + " - ");
+					printAbilityInfo(c.getAllSpells().get(i));
+				}
+				boolean ischarAlone = c.getParty().isCharAlone();
+				int spellamount = c.getAllSpells().size();
+				if (ischarAlone) {
+					System.out.println(8 + "- move (not avaliable)");
+				} else {
+					System.out.println(8 + "- move");
+				}
+				System.out.println(9 + "- skip");
 				input = sc.nextInt();
-				c.move(input);
-				continue;
+				if (input == 8 && !ischarAlone) {
+					c.getParty().getAvaliableMovements(c).forEach(e -> System.out.println("Move to position #" + e));
+					input = sc.nextInt();
+					c.move(input);
+					continue;
+				} else if (input == 8) {
+					System.out.println("Not avaliable");
+				}else if (input == 9) {
+					continue;
+				}else if(input>spellamount){
+					System.out.println("Invalid action");
+				}else{
+					break;
+				}
 			}
-			if (input == 9) {
-				continue;
-			}
-
+			
 			Spell s = c.getAllSpells().get(input - 1);
 
 			List<Character> targets = s.getAvaliableTargets(c, queue);
@@ -130,7 +145,7 @@ public class Test {
 			});
 		}
 	}
-
+	
 	public static void testSpawns() {
 		Party p = Party.spawnRandomParty();
 		p.getMembers().stream().forEach(c -> printCharacterShortInfo(c));
