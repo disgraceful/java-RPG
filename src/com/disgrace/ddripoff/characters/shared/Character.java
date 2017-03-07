@@ -57,7 +57,7 @@ public abstract class Character implements Comparable<Character> {
 	}
 
 	public int getPosition() {
-		return party.getPosition(this);
+		return party==null?0:party.getPosition(this);
 	}
 
 	public void move(int newposition) {

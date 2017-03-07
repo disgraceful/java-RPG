@@ -1,13 +1,10 @@
 package com.disgrace.ddripoff.tests;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-
-import org.apache.commons.lang.SerializationUtils;
 
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
 import com.disgrace.ddripoff.characters.heroes.Hero;
@@ -15,6 +12,7 @@ import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
+import com.disgrace.ddripoff.items.TestTrinket;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
@@ -26,7 +24,18 @@ public class Test {
 
 	public static void main(String[] args) {
 		// testSpawns();
-		initializeCombat();
+		//initializeCombat();
+		testEquipping();
+	}
+	
+	
+	public static void testEquipping(){
+		TestTrinket tt = new TestTrinket();
+		UberHeroTest uber = new UberHeroTest("Henry");
+		uber.equip(tt);
+		printCharacterFullInfo(uber);
+		uber.unequip(tt);
+		printCharacterFullInfo(uber);
 	}
 
 	public static void initializeCombat() {

@@ -13,25 +13,36 @@ public abstract class Hero extends Character{
 	private List<Trinket> inventory = new ArrayList<>();
 	private List<Spell> learnedAbilities = new ArrayList<>();
 
+	
+	@Override
+	public Class<Hero> getCharClass(){
+		return Hero.class;
+	}
+	
+	public HeroClass getHeroClass(){
+		return heroClass;
+	}
+	
+	public List<Trinket> getItems() {
+		return inventory;
+	}
+	
 	public void equip(Trinket trinket) {
-		if (trinket.tryEquip(this)) {
+		if (trinket.tryEquipItem(this)) {
 			inventory.add(trinket);
 		}
 	}
-
+	
 	public boolean ifTrinketEquiped(Trinket trinket) {
 		return inventory.contains(trinket);
 	}
 
 	public void unequip(Trinket trinket) {
-		if (ifTrinketEquiped(trinket) && trinket.tryUnEquip(this)) {
+		if (ifTrinketEquiped(trinket))  {
+			trinket.unequipItem(this);
 			inventory.remove(trinket);
 		}
-	}
-
-	public List<Trinket> getItems() {
-		return inventory;
-	}
+	}	
 
 	private boolean ifAbilityLearned(Spell ability) {
 		return learnedAbilities.contains(ability);
@@ -49,8 +60,5 @@ public abstract class Hero extends Character{
 			ability.useSpell(this, targets);
 	}
 	
-	@Override
-	public Class<Hero> getCharClass(){
-		return Hero.class;
-	}
+	
 }

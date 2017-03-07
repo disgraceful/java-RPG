@@ -1,41 +1,32 @@
 package com.disgrace.ddripoff.items;
 
-import java.util.ArrayList;
-
-import com.disgrace.ddripoff.characters.shared.Character;
-import com.disgrace.ddripoff.stats.Stat;
+import com.disgrace.ddripoff.characters.heroes.Hero;
+import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public class Trinket extends Item {
-	private StatWrapper affectedstats;
-
-	public Trinket(String name, ArrayList<Stat> affectedstats) {
-		setName(name);
-		this.affectedstats = new StatWrapper(affectedstats);
-	}
+public abstract class Trinket extends Item {
+	protected StatWrapper affectedstats;
+	protected HeroClass restriction;
 
 	public StatWrapper getStatWrapper() {
 		return affectedstats;
 	}
 
-	public boolean tryEquip(Character hero) {
-		// if(hero.class!=restriction||restriction != all)
-		// return false;
-		hero.getStats().updateStats(affectedstats);
+	public boolean tryEquipItem(Hero hero) {
+		if (restriction != null && hero.getHeroClass() != restriction) {
+			System.out.println("Failed to equip");
+			return false;
+		}
+		hero.updateStats(affectedstats);
 		System.out.println(hero.getName() + " has equipped " + this.getName());
 		return true;
 	}
 
-	public boolean tryUnEquip(Character hero) {
-		if (hero != null) {
-
-			hero.getStats().updateStats(StatWrapper.reverseStats(affectedstats));
-			// System.out.println(hero.getOwner().getName() + " has unequipped "
-			// + this.getName());
-			return true;
-		} else
-			return false;
-
+	public void unequipItem(Hero hero) {
+		hero.updateStats(StatWrapper.reverseStats(affectedstats));
+		System.out.println(hero.getName() + " has unequipped " + this.getName());
 	}
+	
+	protected abstract void initTrinket();
 
 }

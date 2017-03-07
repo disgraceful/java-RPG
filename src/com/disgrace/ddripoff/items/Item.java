@@ -1,7 +1,8 @@
 package com.disgrace.ddripoff.items;
 
 public abstract class Item {
-	private String name;
+	protected String name;
+	protected String description;
 	
 	public String getName(){
 		return name;
@@ -9,6 +10,14 @@ public abstract class Item {
 	
 	void setName(String value){
 		name = value;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }
