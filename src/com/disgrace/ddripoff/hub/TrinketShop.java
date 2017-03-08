@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.disgrace.ddripoff.items.Trinket;
 
-public class Shop {
+public class TrinketShop {
 	List<Trinket> itemsForSale = new ArrayList<>();
 
 	private static final int ITEM_SPAWN_LIMIT = 5;

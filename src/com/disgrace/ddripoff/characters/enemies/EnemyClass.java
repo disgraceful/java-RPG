@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.disgrace.ddripoff.characters.shared.CharacterClass;
+import com.disgrace.ddripoff.characters.shared.SpawnableChar;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
 
-public enum EnemyClass  implements CharacterClass {
+public enum EnemyClass  implements SpawnableChar {
 	OUTCAST_CROSSBOWMAN("Outcast Crossbowman", new ArrayList<EnemySubType>() {
 		{
 			add(EnemySubType.HUMAN);

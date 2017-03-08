@@ -20,4 +20,7 @@ public abstract class Item {
 		this.description = description;
 	}
 	
+	public Item spawnItem(SpawnableItem item){
+		return item.getItemToSpawn();
+	}
 }

@@ -4,9 +4,10 @@ import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public abstract class Trinket extends Item {
+public abstract class Trinket extends Loot {
 	protected StatWrapper affectedstats;
 	protected HeroClass restriction;
+	protected TrinketRarity itemRarity;
 
 	public StatWrapper getStatWrapper() {
 		return affectedstats;
@@ -28,5 +29,4 @@ public abstract class Trinket extends Item {
 	}
 	
 	protected abstract void initTrinket();
-
 }

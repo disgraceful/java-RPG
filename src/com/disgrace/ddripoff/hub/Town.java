@@ -4,11 +4,11 @@ public class Town {
 	//private static Blacksmith BLACKSMITH;
 	//private static SaviorsChurch CHURCH;
 	private static final MercenaryCoach COACH;
-	private static final Shop SHOP;
+	private static final TrinketShop SHOP;
 
 	static{
 		COACH = new MercenaryCoach();
-		SHOP = new Shop();
+		SHOP = new TrinketShop();
 	}
 	
 	public void visitShop(){

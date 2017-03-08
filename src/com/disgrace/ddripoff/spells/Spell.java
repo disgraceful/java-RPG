@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.disgrace.ddripoff.characters.shared.Character;
-import com.disgrace.ddripoff.characters.shared.CharacterClass;
+import com.disgrace.ddripoff.characters.shared.SpawnableChar;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;

@@ -99,7 +99,7 @@ public abstract class Character implements Comparable<Character> {
 		ability.useSpell(this, targets);
 	}
 
-	public static Character spawn(CharacterClass charClass) {
+	public static Character spawn(SpawnableChar charClass) {
 		return charClass.getCharacterToSpawn();
 	}
 
