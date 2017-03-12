@@ -4,11 +4,21 @@ import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-public abstract class Trinket extends Loot {
+public abstract class Trinket extends Item {
 	protected StatWrapper affectedstats;
 	protected HeroClass restriction;
 	protected TrinketRarity itemRarity;
 
+	@Override
+	public int getCost() {
+		return itemRarity.getCost();
+	}
+	
+	@Override
+	public int getDropRate() {
+		return itemRarity.getDropRate();
+	}
+	
 	public StatWrapper getStatWrapper() {
 		return affectedstats;
 	}

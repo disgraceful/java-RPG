@@ -13,21 +13,11 @@ public enum SpawnableEventType {
 		public SpawnEvent getEvent() {
 			return new Treasure();
 		}
-	},
-	CURIO {
-		public SpawnEvent getEvent() {
-			return new Curio();
-		}
-	},
-	MEMEORY {
-		public SpawnEvent getEvent() {
-			return new Memory();
-		}
 	};
 	
-	private static final Random RANDOM = new Random();
+
 	public static SpawnableEventType getRandomValue() {
-		return values()[(RANDOM.nextInt(values().length))];
+		return values()[(new Random().nextInt(values().length))];
 	}
 
 	public abstract SpawnEvent getEvent();
