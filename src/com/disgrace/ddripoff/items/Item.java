@@ -4,7 +4,8 @@ public abstract class Item {
 	protected String name;
 	protected String description;
 	protected int cost;
-	protected int spawnQuanitity;
+	protected int maxSpawnQuanitity;
+	protected int quantity;
 	protected int inventoryFitQuantity;
 	protected int dropRate;
 
@@ -31,10 +32,10 @@ public abstract class Item {
 		this.cost = cost;
 	}
 	public int getSpawnQuanitity() {
-		return spawnQuanitity;
+		return maxSpawnQuanitity;
 	}
 	public void setSpawnQuanitity(int spawnQuanitity) {
-		this.spawnQuanitity = spawnQuanitity;
+		this.maxSpawnQuanitity = spawnQuanitity;
 	}
 	public int getInventoryFitQuantity() {
 		return inventoryFitQuantity;
@@ -49,7 +50,7 @@ public abstract class Item {
 		this.dropRate = dropRate;
 	}
 	
-	
+	protected abstract void initItem();
 
 }
  

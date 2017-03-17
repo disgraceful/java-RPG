@@ -1,5 +1,5 @@
 package com.disgrace.ddripoff.items;
 
-public abstract class Treasure {
+public abstract class Treasure extends Item {
 
 }

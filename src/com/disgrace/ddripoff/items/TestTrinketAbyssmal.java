@@ -7,11 +7,12 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class TestTrinketAbyssmal  extends Trinket {
 
 	public TestTrinketAbyssmal(){
-		initTrinket();
+		initItem();
 	}
 	
 	@Override
-	protected void initTrinket() {
+	protected void initItem() {
+		super.initItem();
 		name="Test Trinket Abyssmal";
 		description = "Abyssmal Buffs protection and stun Resistance";
 		restriction = null;

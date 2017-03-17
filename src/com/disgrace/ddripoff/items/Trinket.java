@@ -26,6 +26,13 @@ public abstract class Trinket extends Item {
 	public StatWrapper getStatWrapper() {
 		return affectedstats;
 	}
+	
+	@Override
+	protected void initItem() {
+		maxSpawnQuanitity = 1;
+		inventoryFitQuantity=1;
+		
+	}
 
 	public boolean tryEquipItem(Hero hero) {
 		if (restriction != null && hero.getHeroClass() != restriction) {
@@ -42,5 +49,5 @@ public abstract class Trinket extends Item {
 		System.out.println(hero.getName() + " has unequipped " + this.getName());
 	}
 	
-	protected abstract void initTrinket();
+	
 }

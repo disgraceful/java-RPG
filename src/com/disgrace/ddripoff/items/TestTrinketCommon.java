@@ -7,11 +7,12 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class TestTrinketCommon extends Trinket {
 
 	public TestTrinketCommon(){
-		initTrinket();
+		initItem();
 	}
 	
 	@Override
-	protected void initTrinket() {
+	protected void initItem() {
+		super.initItem();
 		name="Test Trinket Common";
 		description = "Common Buffs protection and stun Resistance";
 		restriction = null;

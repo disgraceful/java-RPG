@@ -7,11 +7,12 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class TestTrinketUncommon extends Trinket {
 
 	public TestTrinketUncommon(){
-		initTrinket();
+		initItem();
 	}
 	
 	@Override
-	protected void initTrinket() {
+	protected void initItem() {
+		super.initItem();
 		name="Test Trinket Uncommon";
 		description = "Uncommon Buffs protection and stun Resistance";
 		restriction = null;
