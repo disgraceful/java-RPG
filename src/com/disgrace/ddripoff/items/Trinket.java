@@ -19,6 +19,10 @@ public abstract class Trinket extends Item {
 		return itemRarity.getDropRate();
 	}
 	
+	public TrinketRarity getRarity(){
+		return itemRarity;
+	}
+	
 	public StatWrapper getStatWrapper() {
 		return affectedstats;
 	}

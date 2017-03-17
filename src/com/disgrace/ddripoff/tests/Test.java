@@ -12,7 +12,7 @@ import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
-import com.disgrace.ddripoff.items.TestTrinket;
+import com.disgrace.ddripoff.items.TestTrinketCommon;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
@@ -39,7 +39,7 @@ public class Test {
 	}
 
 	public static void testEquipping() {
-		TestTrinket tt = new TestTrinket();
+		TestTrinketCommon tt = new TestTrinketCommon();
 		UberHeroTest uber = new UberHeroTest("Henry");
 		uber.equip(tt);
 		printCharacterFullInfo(uber);

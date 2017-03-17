@@ -13,4 +13,6 @@ public class CalculationHelper {
 	public static int calcRandomIntWithPercent(int value,double percent){
 		return ThreadLocalRandom.current().nextInt((int)(value*(1-percent)), (int)(value*(1+percent)) + 1);
 	}
+	
+	
 }

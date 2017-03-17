@@ -48,6 +48,8 @@ public abstract class Item {
 	public void setDropRate(int dropRate) {
 		this.dropRate = dropRate;
 	}
+	
+	
 
 }
  
