@@ -17,20 +17,6 @@ public enum TrinketRarity {
 	public int getCost() {
 		return cost;
 	}
-	
-	public static TrinketRarity getRandomRarityItem(int randomChance){
-		if(randomChance<TrinketRarity.ABYSMAL.getDropRate()){
-			return TrinketRarity.ABYSMAL;
-		}else if(randomChance<TrinketRarity.RARE.getDropRate()){
-			return TrinketRarity.RARE;
-		}else if(randomChance<TrinketRarity.UNCOMMON.getDropRate()){
-			return TrinketRarity.UNCOMMON;
-		}else if(randomChance<TrinketRarity.COMMON.getDropRate()){
-			return TrinketRarity.COMMON;
-		}else{
-			return null;
-		}
-	}
 }
 
 
