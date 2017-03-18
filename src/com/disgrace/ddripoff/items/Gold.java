@@ -10,5 +10,9 @@ public class Gold extends Treasure {
 		inventoryFitQuantity = 1500;
 		dropRate = 75;
 	}
+	
+	public Gold() {
+		initItem();
+	}
 
 }

@@ -1,5 +1,5 @@
 package com.disgrace.ddripoff.items;
 
-public class Consumable {
+public abstract class Consumable extends Item {
 
 }

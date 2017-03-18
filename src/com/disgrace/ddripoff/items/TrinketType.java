@@ -28,8 +28,8 @@ public enum TrinketType implements SpawnableItem {
 		}
 	};
 	
-	public static Item getRandItemByRarity(TrinketRarity rarity){
-		List<Item> resultList = new ArrayList<>();
+	public static Trinket getRandItemByRarity(TrinketRarity rarity){
+		List<Trinket> resultList = new ArrayList<>();
 		List<TrinketType> list  =Arrays.asList(values()); 
 		Collections.shuffle(list);
 		for (TrinketType trinketType : list) {
@@ -41,7 +41,7 @@ public enum TrinketType implements SpawnableItem {
 		return resultList.stream().findAny().get();
 	}
 	
-	public static Item spawnTrinket(int chance) {
+	public static Trinket spawnTrinket(int chance) {
 		if (chance < TrinketRarity.ABYSMAL.getDropRate()) {
 			return TrinketType.getRandItemByRarity(TrinketRarity.ABYSMAL);
 		} else if (chance < TrinketRarity.RARE.getDropRate()) {
@@ -53,4 +53,4 @@ public enum TrinketType implements SpawnableItem {
 		}
 	}
 
-}
+} 	
