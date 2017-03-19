@@ -10,7 +10,7 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class OutcastKnight extends Enemy {
 
 	public OutcastKnight() {
-		name = "Outcast Swordsman";
+		name = "Outcast Knight";
 		init();
 	}
 

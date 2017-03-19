@@ -4,16 +4,15 @@ import com.disgrace.ddripoff.characters.shared.Party;
 
 public class Fight extends SpawnEvent {
 
-	private final Party ENEMY_PARTY;
+	private Party enemyParty;
 	
 	public Fight() {
-		ENEMY_PARTY = Party.spawnRandomParty();
+		enemyParty = CharacterFactory.spawnRandomParty();
 		spawnType = SpawnableEventType.FIGHT;
-		SPAWN_CHANCE = 25;
 	}
 	
 	@Override
 	public void trigger() {
-		// TODO Auto-generated method stub	
+		// TODO Engage in fight mode (Session)
 	}
 }

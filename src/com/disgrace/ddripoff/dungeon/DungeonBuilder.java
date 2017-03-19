@@ -11,7 +11,7 @@ public final class DungeonBuilder {
 	private final int ybound;
 	private final int minRooms;
 	private final int allRooms;
-	//private final DungeonEventSpawner DOS;
+	private final DungeonEventSpawner des;
 
 	public DungeonBuilder(Dungeon dungeon) {
 		this.dungeon = dungeon;
@@ -20,8 +20,7 @@ public final class DungeonBuilder {
 		ybound = dungeon.size.ybound;
 		minRooms = dungeon.size.minRooms;
 		allRooms = dungeon.getRoomsAsList().size();
-		//List<Enterable> list = 
-		//DOS = new DungeonEventSpawner(enterables)
+		des = new DungeonEventSpawner(dungeon.getAllEnterables());
 	}
 
 	public void build() {
@@ -29,8 +28,7 @@ public final class DungeonBuilder {
 		setRoomRelations();
 		buildLevel();
 		setRoomCorridors();
-		//DOS.generateSpawns();
-		
+		des.generateSpawns();
 		dungeon.displayRoomsValue();
 	}
 
@@ -111,7 +109,8 @@ public final class DungeonBuilder {
 	}
 
 	private boolean whereverOne(Room room) {
-		if (oneInList(getDiagonals(room, true)) || oneInList(getDiagonals(room, false)) || oneInList(getColumn(room.getAdds().x)) || oneInList(getRow(room.getAdds().y))) {
+		if (oneInList(getDiagonals(room, true)) || oneInList(getDiagonals(room, false))
+				|| oneInList(getColumn(room.getAdds().x)) || oneInList(getRow(room.getAdds().y))) {
 			return true;
 		}
 		return false;

@@ -45,7 +45,7 @@ public abstract class Dungeon {
 	}
 
 	public Set<Enterable> getAllEnterables() {
-		Set<Enterable> enterables = new HashSet<Enterable>();
+		Set<Enterable> enterables = new HashSet<>();
 		for (Room r : getRoomsAsList()) {
 			if (r.getAdds().value == 1||r==START_ROOM) {
 				continue;

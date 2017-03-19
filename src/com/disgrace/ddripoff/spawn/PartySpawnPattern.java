@@ -3,8 +3,6 @@ package com.disgrace.ddripoff.spawn;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.disgrace.ddripoff.spawn.PartySpawnPatternEnumeration.PartyType;
-
 public class PartySpawnPattern {
 	private List<EnemySpawnType> spawnTypes = new ArrayList<>();
 	private PartyType partyStrength;

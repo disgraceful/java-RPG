@@ -16,7 +16,10 @@ import com.disgrace.ddripoff.items.ConsumableType;
 import com.disgrace.ddripoff.items.Item;
 import com.disgrace.ddripoff.items.TestTrinketCommon;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.spawn.CharacterFactory;
 import com.disgrace.ddripoff.spawn.ItemFactory;
+import com.disgrace.ddripoff.spawn.PartySpawnPatternEnumeration;
+import com.disgrace.ddripoff.spawn.PartyType;
 import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.stats.Stat;
@@ -26,13 +29,27 @@ public class Test {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// testSpawns();
 		//initializeCombat();
 		// testEquipping();
 		// testAvaliableMovements();
-		testItemSpawning();
+		//testItemSpawning();
+		//testSpawns();
 	}
 
+	public static void testSpawns(){
+		Party p = CharacterFactory.spawnRandomParty();
+		System.out.println("Random Party: ");
+		printPartyInfo(p);
+		
+		Party p2 = CharacterFactory.spawnPartyByPattern(PartySpawnPatternEnumeration.getRandomPatternByStrength(PartyType.WEAK));
+		System.out.println("Weak Party: ");
+		printPartyInfo(p2);
+		Hero h = CharacterFactory.spawnRandomHero();
+		printCharacterFullInfo(h);
+		Hero h1 = (Hero)CharacterFactory.spawnConcreteCharacter(HeroClass.CENTURION);
+		printCharacterFullInfo(h1);
+	}
+	
 	public static void testItemSpawning(){
 		List<Item> result =ItemFactory.spawnLoot(3);
 		Item i = ItemFactory.spawnConcreteItem(ConsumableType.FOOD);
@@ -156,20 +173,6 @@ public class Test {
 		}
 	}
 	
-	public static void testSpawns() {
-		Party p = Party.spawnRandomParty();
-		p.getMembers().stream().forEach(c -> printCharacterShortInfo(c));
-
-		Hero h1 = (Hero) Hero.spawn(HeroClass.CENTURION);
-		Hero h2 = (Hero) Hero.spawn(HeroClass.DISHONORED);
-		Hero h3 = (Hero) Hero.spawn(HeroClass.PRIEST);
-		Hero h4 = (Hero) Hero.spawn(HeroClass.PURFIER);
-		printCharacterShortInfo(h1);
-		printCharacterShortInfo(h2);
-		printCharacterShortInfo(h3);
-		printCharacterShortInfo(h4);
-	}
-
 	private static void printCharacterFullInfo(Character character) {
 		System.out.println(character.getName());
 		for (Stat s : character.getStatWrapper().getStatsasArrayList()) {
