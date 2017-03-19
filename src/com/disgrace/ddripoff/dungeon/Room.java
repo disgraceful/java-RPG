@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Room extends Enterable implements Neighbour {
 	private RoomAdds adds = new RoomAdds();
-	private ArrayList<Room> neighbours = new ArrayList<Room>();
-	private ArrayList<Corridor> corridors = new ArrayList<Corridor>();
+	private ArrayList<Room> neighbours = new ArrayList<>();
+	private ArrayList<Corridor> corridors = new ArrayList<>();
 
 	@Override
 	public void setNeighbour(Enterable enterable) {
@@ -20,7 +20,7 @@ public class Room extends Enterable implements Neighbour {
 		return adds;
 	}
 
-	public ArrayList<Room> getNeighbours() {
+	public List<Room> getNeighbours() {
 		return neighbours;
 	}
 
@@ -68,6 +68,7 @@ public class Room extends Enterable implements Neighbour {
 		return false;
 	}
 
+	@Override
 	public void display() {
 		System.out.println("Room " + adds.y + " " + adds.x);
 	}

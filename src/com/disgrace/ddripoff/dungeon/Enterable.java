@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.disgrace.ddripoff.spawn.SpawnEvent;
 
-public class Enterable {
+public abstract class Enterable {
 	protected Set<SpawnEvent> events = new HashSet<>();
 	protected boolean partyHere = false;
 	protected boolean visited = false;
@@ -47,4 +47,6 @@ public class Enterable {
 	public void leave(){
 		partyHere = false;
 	}
+	
+	public abstract void display();
 }

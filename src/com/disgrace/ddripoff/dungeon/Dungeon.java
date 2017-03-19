@@ -3,53 +3,78 @@ package com.disgrace.ddripoff.dungeon;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 public abstract class Dungeon {
-	protected DungeonType DUNG_TYPE;
-	protected final Room START_ROOM = getStartingRoom();
+	protected DungeonType dungType;
+	protected Room startRoom;
 	private Room[][] rooms;
 	protected DungeonSize size;
 
 	public Dungeon(DungeonSize size) {
-		rooms = new Room[size.ybound][size.xbound];
 		this.size = size;
-	}
-
-	public List<Room> getRoomsAsList() {
-		List<Room> elements = new ArrayList<Room>();
-		for (Room[] array : rooms) {
-			elements.addAll(Arrays.asList(array));
-		}
-		return elements;
+		setRooms(size.xbound, size.ybound);
 	}
 	
-	public List<Room>getEnterableRoomsAsList(){
-		List<Room> elements = new ArrayList<Room>();
+	public Room[][] getRooms() {
+		return rooms;
+	}
+	
+	public Room getStartRoom() {
+		return startRoom;
+	}
+
+	public void setStartingRoom() {
+		startRoom= getOnlyEnterableRooms().get(new Random().nextInt(getOnlyEnterableRooms().size()));
+	}
+
+	private void setRooms(int xbound, int ybound) {
+		rooms = new Room[size.ybound][size.xbound];
+		for (int i = 0; i < ybound; i++) {
+			for (int j = 0; j < xbound; j++) {
+				rooms[i][j] = new Room();
+				rooms[i][j].getAdds().x = j;
+				rooms[i][j].getAdds().y = i;
+			}
+		}
+	}
+
+	public List<Room> getAllRoomsAsList() {
+		List<Room> elements = new ArrayList<>();
 		for (Room[] array : rooms) {
 			elements.addAll(Arrays.asList(array));
-		}
-		for(Room r:elements){
-			if (r.getAdds().value == 1) {
-				continue;
-			}
-			elements.add(r);
 		}
 		return elements;
 	}
 
-	public Room getSTART_ROOM() {
-		return START_ROOM;
+	public List<Room> getEnterableRoomsExcludingStarting() {
+		List<Room> elements = new ArrayList<>();
+		for (Iterator<Room> iterator = getAllRoomsAsList().iterator(); iterator.hasNext();) {
+			Room room = (Room) iterator.next();
+			if (!room.equals(startRoom)) {
+				elements.add(room);
+			}
+		}
+		return elements;
 	}
 
-	public Set<Enterable> getAllEnterables() {
-		Set<Enterable> enterables = new HashSet<>();
-		for (Room r : getRoomsAsList()) {
-			if (r.getAdds().value == 1||r==START_ROOM) {
-				continue;
+	public List<Room> getOnlyEnterableRooms() {
+		List<Room> elements = new ArrayList<>();
+		for (Iterator<Room> iterator = getAllRoomsAsList().iterator(); iterator.hasNext();) {
+			Room room = (Room) iterator.next();
+			if (room.getAdds().value != 1) {
+				elements.add(room);
 			}
+		}
+		return elements;
+	}
+
+	public List<Enterable> getAllEnterables() {
+		List<Enterable> enterables = new ArrayList<>();
+		for (Room r : getEnterableRoomsExcludingStarting()) {
 			enterables.add(r);
 			for (Corridor cor : r.getCorridors()) {
 				for (CorridorSection cs : cor.getSections()) {
@@ -57,11 +82,8 @@ public abstract class Dungeon {
 				}
 			}
 		}
-		return enterables;
-	}
 
-	public Room[][] getRooms() {
-		return rooms;
+		return enterables;
 	}
 
 	public void displayRooms() {
@@ -78,13 +100,24 @@ public abstract class Dungeon {
 	public void displayRoomsValue() {
 		for (int i = 0; i < size.ybound; i++) {
 			for (int j = 0; j < size.xbound; j++) {
-				System.out.print(rooms[i][j].getAdds().value + " ");
+				System.out.print(i + " x " + j + " value: " + rooms[i][j].getAdds().value + " ");
+				System.out.println(rooms[i][j].getEvents());
 			}
 			System.out.println("");
 		}
 	}
-	
-	private Room getStartingRoom(){
-		return getEnterableRoomsAsList().get(new Random().nextInt(getEnterableRoomsAsList().size()+1));
+
+	public void displayEnterablesValue() {
+		for (Room e : getOnlyEnterableRooms()) {
+			e.display();
+			System.out.println(e.getEvents());
+			for (Corridor c : e.getCorridors()) {
+				c.display();
+				for (CorridorSection cs : c.getSections()) {
+					System.out.println(cs.getEvents());
+				}
+			}
+		}
 	}
+
 }

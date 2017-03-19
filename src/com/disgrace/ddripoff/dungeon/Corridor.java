@@ -1,18 +1,19 @@
 package com.disgrace.ddripoff.dungeon;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Corridor {
 	Room begin;
 	Room end;
-	ArrayList<CorridorSection> sections;
+	List<CorridorSection> sections;
 
 	public Corridor(Room r1, Room r2) {
 		this(r1, r2, 5);
 	}
 	
 	public Corridor(Room r1, Room r2,int sectionCap){
-		sections = new ArrayList<CorridorSection>();
+		sections = new ArrayList<>();
 		for (int i = 0; i < sectionCap; i++) {
 			sections.add(new CorridorSection());			
 		}
@@ -32,7 +33,7 @@ public class Corridor {
 		}
 	}
 	
-	public ArrayList<CorridorSection> getSections(){
+	public List<CorridorSection> getSections(){
 		return sections;
 	}
 	

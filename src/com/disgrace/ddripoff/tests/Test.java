@@ -12,6 +12,9 @@ import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
+import com.disgrace.ddripoff.dungeon.Desert;
+import com.disgrace.ddripoff.dungeon.DungeonBuilder;
+import com.disgrace.ddripoff.dungeon.DungeonSize;
 import com.disgrace.ddripoff.items.ConsumableType;
 import com.disgrace.ddripoff.items.Item;
 import com.disgrace.ddripoff.items.TestTrinketCommon;
@@ -34,8 +37,15 @@ public class Test {
 		// testAvaliableMovements();
 		//testItemSpawning();
 		//testSpawns();
+		testDungeonBuilder();
 	}
 
+	public static void testDungeonBuilder(){
+		Desert d = new Desert(DungeonSize.SMALL);
+		DungeonBuilder dBuilder = new DungeonBuilder(d);
+		dBuilder.build();
+		
+	}
 	public static void testSpawns(){
 		Party p = CharacterFactory.spawnRandomParty();
 		System.out.println("Random Party: ");

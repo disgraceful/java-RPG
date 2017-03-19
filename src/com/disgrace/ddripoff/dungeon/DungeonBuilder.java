@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public final class DungeonBuilder {
+public class DungeonBuilder {
 	private final Dungeon dungeon;
 	private final Room[][] rooms;
 	private final int xbound;
 	private final int ybound;
 	private final int minRooms;
 	private final int allRooms;
-	private final DungeonEventSpawner des;
+	private DungeonEventSpawner des;
 
 	public DungeonBuilder(Dungeon dungeon) {
 		this.dungeon = dungeon;
@@ -19,27 +19,19 @@ public final class DungeonBuilder {
 		xbound = dungeon.size.xbound;
 		ybound = dungeon.size.ybound;
 		minRooms = dungeon.size.minRooms;
-		allRooms = dungeon.getRoomsAsList().size();
-		des = new DungeonEventSpawner(dungeon.getAllEnterables());
+		allRooms = dungeon.getAllRoomsAsList().size();
 	}
 
 	public void build() {
-		setRooms();
 		setRoomRelations();
 		buildLevel();
 		setRoomCorridors();
+		dungeon.setStartingRoom();
+		des = new DungeonEventSpawner(dungeon.getAllEnterables());
 		des.generateSpawns();
-		dungeon.displayRoomsValue();
-	}
-
-	private void setRooms() {
-		for (int i = 0; i < ybound; i++) {
-			for (int j = 0; j < xbound; j++) {
-				rooms[i][j] = new Room();
-				rooms[i][j].getAdds().x = j;
-				rooms[i][j].getAdds().y = i;
-			}
-		}
+		System.out.println("starting room: ");
+		dungeon.getStartRoom().display();
+		dungeon.displayEnterablesValue();
 	}
 
 	private void setRoomRelations() {
@@ -62,7 +54,7 @@ public final class DungeonBuilder {
 	}
 
 	private void setRoomCorridors() {
-		for (Room curRoom : dungeon.getRoomsAsList()) {
+		for (Room curRoom : dungeon.getAllRoomsAsList()) {
 			if (curRoom.hasEntrance()) {
 				for (Room neighRoom : curRoom.getNeighbours()) {
 					Corridor corridor = new Corridor(curRoom, neighRoom);

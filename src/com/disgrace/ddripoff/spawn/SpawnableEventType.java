@@ -29,7 +29,7 @@ public enum SpawnableEventType {
 	public static SpawnEvent spawnEventByChance(int chance){
 		if(chance<FIGHT.spawnRate){
 			return FIGHT.getEvent();
-		}else if(chance>=FIGHT.spawnRate&&chance<TREASURE.spawnRate){
+		}else if(chance>=FIGHT.spawnRate&&chance<TREASURE.spawnRate+FIGHT.spawnRate){
 			return TREASURE.getEvent();
 		}else{
 			return null;

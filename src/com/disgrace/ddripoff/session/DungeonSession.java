@@ -23,7 +23,7 @@ public final class DungeonSession {
 	}
 	
 	public void startRoomAdventure(Room destination,Room current){
-		dungeon.getSTART_ROOM().enter();
+		dungeon.getStartRoom().enter();
 		Corridor cor = current.getCorridor(destination);
 		Iterator iter = cor.getSections().iterator();
 		while(iter.hasNext()){

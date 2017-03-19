@@ -1,5 +1,6 @@
 package com.disgrace.ddripoff.dungeon;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -7,18 +8,26 @@ import com.disgrace.ddripoff.spawn.SpawnEvent;
 import com.disgrace.ddripoff.spawn.SpawnableEventType;
 
 public class DungeonEventSpawner {
-	private Set<Enterable> possibleSpawnLocations;
+	private List<Enterable> possibleSpawnLocations;
 
-	public DungeonEventSpawner(Set<Enterable> enterables) {
-		possibleSpawnLocations =enterables;
+	public DungeonEventSpawner(List<Enterable> enterables) {
+		possibleSpawnLocations = enterables;
 	}
 
 	public void generateSpawns() {
 		for (Enterable e : possibleSpawnLocations) {
-			SpawnEvent se = SpawnableEventType.spawnEventByChance(new Random().nextInt(101));
-			if(se!=null){
-				e.addEvent(se);
-			}
+			//e.display();
+			int chance = new Random().nextInt(101);
+			SpawnEvent se = SpawnableEventType.spawnEventByChance(chance);
+//			System.out.println("Chance: " + chance);
+//			if(se!=null){
+//			System.out.println("spawned event " + se.toString());
+//			}else{
+//				System.out.println("empty room");
+//			}
+			e.addEvent(se);
+		
+
 		}
 	}
 }

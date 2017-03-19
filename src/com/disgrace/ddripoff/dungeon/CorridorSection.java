@@ -1,12 +1,12 @@
 package com.disgrace.ddripoff.dungeon;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class CorridorSection extends Enterable implements Neighbour{
-	private ArrayList<Enterable> neighbours = new ArrayList<Enterable>();
+	private List<Enterable> neighbours = new ArrayList<>();
 	
-	public ArrayList<Enterable> getNeighbours() {
+	public List<Enterable> getNeighbours() {
 		return neighbours;
 	}
 	
@@ -18,6 +18,7 @@ public class CorridorSection extends Enterable implements Neighbour{
 		}
 	}
 	
+	@Override
 	public void display(){
 		System.out.println("section# " + this.hashCode());
 	}
