@@ -16,7 +16,7 @@ public class TestTrinketUncommon extends Trinket {
 		name="Test Trinket Uncommon";
 		description = "Uncommon Buffs protection and stun Resistance";
 		restriction = null;
-		itemRarity = TrinketRarity.COMMON;
+		itemRarity = TrinketRarity.UNCOMMON;
 		affectedstats = new StatWrapper(new Stat(StatEnumeration.PHYS_PROT,7,true),new Stat(StatEnumeration.STUN_RES,50,true));	
 	}
 }

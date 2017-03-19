@@ -12,8 +12,11 @@ import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
+import com.disgrace.ddripoff.items.ConsumableType;
+import com.disgrace.ddripoff.items.Item;
 import com.disgrace.ddripoff.items.TestTrinketCommon;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.spawn.ItemFactory;
 import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.stats.Stat;
@@ -24,11 +27,18 @@ public class Test {
 
 	public static void main(String[] args) {
 		// testSpawns();
-		initializeCombat();
+		//initializeCombat();
 		// testEquipping();
 		// testAvaliableMovements();
+		testItemSpawning();
 	}
 
+	public static void testItemSpawning(){
+		List<Item> result =ItemFactory.spawnLoot(3);
+		Item i = ItemFactory.spawnConcreteItem(ConsumableType.FOOD);
+		System.out.println(result);
+	}
+	
 	public static void testAvaliableMovements() {
 		Party p = new Party();
 		p.addMember(new UberHeroTest("Henry0"));

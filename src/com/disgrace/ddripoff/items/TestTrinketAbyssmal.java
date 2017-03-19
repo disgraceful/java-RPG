@@ -16,7 +16,7 @@ public class TestTrinketAbyssmal  extends Trinket {
 		name="Test Trinket Abyssmal";
 		description = "Abyssmal Buffs protection and stun Resistance";
 		restriction = null;
-		itemRarity = TrinketRarity.COMMON;
+		itemRarity = TrinketRarity.ABYSMAL;
 		affectedstats = new StatWrapper(new Stat(StatEnumeration.PHYS_PROT,7,true),new Stat(StatEnumeration.STUN_RES,50,true));	
 	}
 }
