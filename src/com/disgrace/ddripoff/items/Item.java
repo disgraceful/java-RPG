@@ -51,6 +51,8 @@ public abstract class Item {
 	}
 	
 	protected abstract void initItem();
+	
+	
 
 }
  
