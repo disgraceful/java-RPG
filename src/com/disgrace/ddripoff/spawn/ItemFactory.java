@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.disgrace.ddripoff.items.ConsumableType;
 import com.disgrace.ddripoff.items.Item;
 import com.disgrace.ddripoff.items.ItemDrop;
 import com.disgrace.ddripoff.items.TreasureType;
@@ -25,8 +26,8 @@ public class ItemFactory {
 		} else if (chance < ItemDrop.CONSUMABLE_DROP.getDrop()) {
 			return TreasureType.spawnTreasure(new Random().nextInt(101));
 		} else {
-				 
-			}
+			return ConsumableType.spawnConsumable();
 		}
-
 	}
+
+}
