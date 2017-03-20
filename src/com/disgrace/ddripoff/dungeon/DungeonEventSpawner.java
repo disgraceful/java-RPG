@@ -13,18 +13,18 @@ public class DungeonEventSpawner {
 		possibleSpawnLocations = enterables;
 	}
 
-	public void generateSpawns() {
-		for (Enterable e : possibleSpawnLocations) {
-			//e.display();
-			int chance = new Random().nextInt(101);
-			SpawnEvent se = SpawnableEventType.spawnEventByChance(chance);
-//			System.out.println("Chance: " + chance);
-//			if(se!=null){
-//			System.out.println("spawned event " + se.toString());
-//			}else{
-//				System.out.println("empty room");
-//			}
-			e.addEvent(se);
+	public void generateSpawns(int maxFightAmount) {
+		List<Enterable> list = possibleSpawnLocations.subList(0, possibleSpawnLocations.size() - 1);
+		int currentFightAmount = 0;
+		while (currentFightAmount < maxFightAmount) {
+			Enterable e = list.get(new Random().nextInt(list.size()));
+			SpawnEvent se = SpawnableEventType.spawnEventByChance(new Random().nextInt(101));
+			if (se != null && se.getSpawnType() == SpawnableEventType.FIGHT) {
+				currentFightAmount++;
+				e.addEvent(se);
+			} else {
+				e.addEvent(se);
+			}
 		}
 	}
 }
