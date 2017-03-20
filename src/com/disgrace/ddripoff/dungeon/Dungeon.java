@@ -10,13 +10,21 @@ import java.util.Set;
 
 public abstract class Dungeon {
 	protected DungeonType dungType;
-	protected Room startRoom;
-	private Room[][] rooms;
 	protected DungeonSize size;
-
+	protected Room startRoom;
+	protected Room[][] rooms;
+	protected boolean isCompleted;
+	
 	public Dungeon(DungeonSize size) {
 		this.size = size;
 		setRooms(size.xbound, size.ybound);
+	}
+	
+	public boolean isCompleted(){
+		return isCompleted;
+	}
+	public void setIsCompleted(boolean isCompleted){
+		this.isCompleted = isCompleted;
 	}
 
 	public Room[][] getRooms() {

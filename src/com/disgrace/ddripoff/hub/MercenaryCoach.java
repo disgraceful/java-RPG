@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
+import com.disgrace.ddripoff.session.GameSession;
+import com.disgrace.ddripoff.spawn.CharacterFactory;
 
 public class MercenaryCoach {
 	private List<Hero> avaliableVenturers = new ArrayList<>();
@@ -15,14 +17,14 @@ public class MercenaryCoach {
 	}
 	
 	public void recruit(Hero hero){
-		//TODO actually add to player's hero roster
+		GameSession.getSession().hireHero(hero);
 		avaliableVenturers.remove(hero);
 	}
 	
 	public void spawnVenturers(){
 		avaliableVenturers.clear();
 		for (int i = 0; i < heroSpawnLimit; i++) {
-			avaliableVenturers.add((Hero) Hero.spawn(HeroClass.getRandomValue()));
+			avaliableVenturers.add(CharacterFactory.spawnRandomHero());
 		}
 	}
 }

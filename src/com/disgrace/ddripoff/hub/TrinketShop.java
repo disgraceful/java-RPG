@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.session.GameSession;
+import com.disgrace.ddripoff.spawn.ItemFactory;
 
 public class TrinketShop {
 	List<Trinket> itemsForSale = new ArrayList<>();
@@ -18,14 +20,18 @@ public class TrinketShop {
 		if (!itemsForSale.contains(item)) {
 			return;
 		}
-		// TODO actually add to player's hero roster
-		itemsForSale.remove(item);
+		if (GameSession.getSession().getGold() < item.getCost()) {
+			System.out.println("Not Enough Gold!");
+		} else {
+			GameSession.getSession().addItem(item);
+			GameSession.getSession().addGold(-item.getCost());
+			GameSession.getSession().addItem(item);
+			itemsForSale.remove(item);
+		}
 	}
 
-	public void spawnVenturers() {
+	public void spawnItems() {
 		itemsForSale.clear();
-		for (int i = 0; i < ITEM_SPAWN_LIMIT; i++) {
-			//TODO implement trinket spawning;
-		}
+		ItemFactory.spawnLoot(ITEM_SPAWN_LIMIT);
 	}
 }

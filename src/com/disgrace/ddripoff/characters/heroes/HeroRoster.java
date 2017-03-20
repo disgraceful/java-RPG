@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HeroRoster {
-	private Set<Hero> heroSet = new HashSet<Hero>();
+	private Set<Hero> heroSet = new HashSet<>();
 
 	public Set<Hero> getHeroSet() {
 		return heroSet;
