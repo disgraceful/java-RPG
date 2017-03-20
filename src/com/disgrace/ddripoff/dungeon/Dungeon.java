@@ -18,17 +18,17 @@ public abstract class Dungeon {
 		this.size = size;
 		setRooms(size.xbound, size.ybound);
 	}
-	
+
 	public Room[][] getRooms() {
 		return rooms;
 	}
-	
+
 	public Room getStartRoom() {
 		return startRoom;
 	}
 
 	public void setStartingRoom() {
-		startRoom= getOnlyEnterableRooms().get(new Random().nextInt(getOnlyEnterableRooms().size()));
+		startRoom = getOnlyEnterableRooms().get(new Random().nextInt(getOnlyEnterableRooms().size()));
 	}
 
 	private void setRooms(int xbound, int ybound) {
@@ -78,11 +78,13 @@ public abstract class Dungeon {
 			enterables.add(r);
 			for (Corridor cor : r.getCorridors()) {
 				for (CorridorSection cs : cor.getSections()) {
-					enterables.add(cs);
+					if (!enterables.contains(cs)) {
+						enterables.add(cs);
+					}
 				}
 			}
 		}
-
+		System.out.println("Enterables size with dups: " + enterables.size());
 		return enterables;
 	}
 

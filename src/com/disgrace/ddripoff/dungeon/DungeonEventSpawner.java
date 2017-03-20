@@ -2,7 +2,6 @@ package com.disgrace.ddripoff.dungeon;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import com.disgrace.ddripoff.spawn.SpawnEvent;
 import com.disgrace.ddripoff.spawn.SpawnableEventType;
@@ -26,8 +25,6 @@ public class DungeonEventSpawner {
 //				System.out.println("empty room");
 //			}
 			e.addEvent(se);
-		
-
 		}
 	}
 }
