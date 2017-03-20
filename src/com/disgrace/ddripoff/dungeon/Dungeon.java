@@ -84,7 +84,6 @@ public abstract class Dungeon {
 				}
 			}
 		}
-		System.out.println("Enterables size with dups: " + enterables.size());
 		return enterables;
 	}
 

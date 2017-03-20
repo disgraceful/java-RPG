@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.disgrace.ddripoff.spawn.SpawnEvent;
+import com.disgrace.ddripoff.spawn.SpawnableEventType;
 
 public abstract class Enterable {
 	protected Set<SpawnEvent> events = new HashSet<>();
@@ -31,9 +32,11 @@ public abstract class Enterable {
 	}
 
 	public void addEvent(SpawnEvent event) {
-		if (event != null) {
+		if (event != null&&!containsSpawnType(event.getSpawnType())) {
 			events.add(event);
+			return;
 		}
+		System.out.println("This location already contains a event of this type or was null");
 	}
 
 	public void enter() {
@@ -49,4 +52,8 @@ public abstract class Enterable {
 	}
 	
 	public abstract void display();
+	
+	public boolean containsSpawnType(SpawnableEventType type){
+		return events.stream().anyMatch(e->e.getSpawnType()==type);
+	}
 }

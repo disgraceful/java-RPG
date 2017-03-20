@@ -12,7 +12,6 @@ public class DungeonBuilder {
 	private final int minRooms;
 	private final int allRooms;
 	private final int fightAmount;
-	private DungeonEventSpawner des;
 
 	public DungeonBuilder(Dungeon dungeon) {
 		this.dungeon = dungeon;
@@ -29,11 +28,8 @@ public class DungeonBuilder {
 		buildLevel();
 		setRoomCorridors();
 		dungeon.setStartingRoom();
-		des = new DungeonEventSpawner(dungeon.getAllEnterables());
-		des.generateSpawns(fightAmount);
-		System.out.println("starting room: ");
+		System.out.print("starting room: ");
 		dungeon.getStartRoom().display();
-		dungeon.displayEnterablesValue();
 	}
 
 	private void setRoomRelations() {
