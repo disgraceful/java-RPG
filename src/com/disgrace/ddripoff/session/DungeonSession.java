@@ -1,37 +1,36 @@
 package com.disgrace.ddripoff.session;
 
-import java.util.Iterator;
-
 import com.disgrace.ddripoff.characters.shared.Party;
-import com.disgrace.ddripoff.dungeon.Corridor;
-import com.disgrace.ddripoff.dungeon.CorridorSection;
 import com.disgrace.ddripoff.dungeon.Dungeon;
+import com.disgrace.ddripoff.dungeon.Enterable;
 import com.disgrace.ddripoff.dungeon.Room;
+import com.disgrace.ddripoff.spawn.SpawnEvent;
 
-public final class DungeonSession {
-	static boolean active;
-	public Dungeon dungeon;
-	public Party chosenParty;
+public class DungeonSession {
+	private boolean active;
+	private Dungeon dungeon;
+	private Party chosenParty;
+	private Room startRoom;
+	private Enterable currentRoom;
 		
-	public DungeonSession(Dungeon dungeon){
-		this.dungeon = dungeon;
-	}
-	
 	public DungeonSession(Dungeon dungeon,Party party){
 		this.dungeon = dungeon;
 		chosenParty = party;
+		startRoom = dungeon.getStartRoom();
 	}
 	
-	public void startRoomAdventure(Room destination,Room current){
-		dungeon.getStartRoom().enter();
-		Corridor cor = current.getCorridor(destination);
-		Iterator iter = cor.getSections().iterator();
-		while(iter.hasNext()){
-			CorridorSection cs =  (CorridorSection) iter.next();
-			//cs.enter();
-			//cs.leave();
-			iter.remove();
-		}
-		//destination.enter();
-	} 
+	public void startDungeon(){
+		startRoom.enter();
+		currentRoom = startRoom;
+	}
+	
+	public void goToEnterable(Enterable destination,Enterable current){
+		current.leave();
+		destination.enter();
+		currentRoom = destination;
+	}
+	
+	public void interactWith(SpawnEvent event){
+		event.trigger();
+	}
 }

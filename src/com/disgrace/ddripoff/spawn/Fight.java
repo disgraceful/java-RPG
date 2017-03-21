@@ -13,6 +13,9 @@ public class Fight extends SpawnEvent {
 	
 	@Override
 	public void trigger() {
+		if(!triggered){
+			
+		}
 		// TODO Engage in fight mode (Session)
 	}
 }

@@ -11,11 +11,14 @@ public class Treasure extends SpawnEvent {
 
 	public Treasure() {
 		spawnType = SpawnableEventType.TREASURE;
+		loot = new HashSet<>(ItemFactory.spawnLoot(CalculationHelper.getRandomIntInRange(1, 4)));
 	}
 
 	@Override
 	public void trigger() {
-		loot = new HashSet<>(ItemFactory.spawnLoot(CalculationHelper.getRandomIntInRange(1, 4)));
+		if(!triggered){
+			
+		}
 		//TODO Session inventory. 
 	}
 

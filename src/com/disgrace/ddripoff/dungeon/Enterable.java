@@ -32,7 +32,7 @@ public abstract class Enterable {
 	}
 
 	public void addEvent(SpawnEvent event) {
-		if (event != null&&!containsSpawnType(event.getSpawnType())) {
+		if (event != null && !containsSpawnType(event.getSpawnType())) {
 			events.add(event);
 			return;
 		}
@@ -42,18 +42,28 @@ public abstract class Enterable {
 	public void enter() {
 		visited = true;
 		partyHere = true;
-		for (SpawnEvent event : events) {
-			event.trigger();
-		}
+		events.stream().filter(e -> e.getSpawnType() == SpawnableEventType.FIGHT).forEach(e -> {
+			e.trigger();
+			e.setTriggered(false);
+		});
 	}
-	
-	public void leave(){
+
+	public void leave() {
 		partyHere = false;
 	}
-	
+
 	public abstract void display();
+
+	public boolean containsSpawnType(SpawnableEventType type) {
+		return events.stream().anyMatch(e -> e.getSpawnType() == type);
+	}
 	
-	public boolean containsSpawnType(SpawnableEventType type){
-		return events.stream().anyMatch(e->e.getSpawnType()==type);
+	public void displayUntriggeredEvents(){
+		if(events.stream().filter(e->!e.isTriggered()).count()>0){
+			//TODO display
+			//events.stream().filter(e->!e.isTriggered()).forEach();
+		}else{
+			System.out.println("No events in this Enterable");
+		}
 	}
 }
