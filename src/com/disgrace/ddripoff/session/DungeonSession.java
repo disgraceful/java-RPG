@@ -7,24 +7,28 @@ import com.disgrace.ddripoff.dungeon.Room;
 import com.disgrace.ddripoff.spawn.SpawnEvent;
 
 public class DungeonSession {
-	private boolean active;
-	private Dungeon dungeon;
-	private Party chosenParty;
-	private Room startRoom;
-	private Enterable currentRoom;
-		
-	public DungeonSession(Dungeon dungeon,Party party){
-		this.dungeon = dungeon;
+	private static boolean active;
+	private static Dungeon dungeon;
+	private static Party chosenParty;
+	private static Room startRoom;
+	private static Enterable currentRoom;
+	
+	private static final DungeonSession DUNGEON_SESSION_INSTANCE = new DungeonSession();
+	private DungeonSession(){
+	}
+	
+	public static void initiateSession(Dungeon dungeon,Party party){
+		DungeonSession.dungeon = dungeon;
 		chosenParty = party;
 		startRoom = dungeon.getStartRoom();
 	}
 	
-	public void startDungeon(){
+	public static void startDungeon(){
 		startRoom.enter();
 		currentRoom = startRoom;
 	}
 	
-	public void goToEnterable(Enterable destination,Enterable current){
+	public static void goToEnterable(Enterable destination,Enterable current){
 		current.leave();
 		destination.enter();
 		currentRoom = destination;

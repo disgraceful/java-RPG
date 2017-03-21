@@ -1,8 +1,10 @@
 package com.disgrace.ddripoff.hub;
 
+import com.disgrace.ddripoff.characters.shared.Party;
+import com.disgrace.ddripoff.dungeon.Dungeon;
+import com.disgrace.ddripoff.session.DungeonSession;
+
 public class Town {
-	//private static Blacksmith BLACKSMITH;
-	//private static SaviorsChurch CHURCH;
 	private static final MercenaryCoach COACH;
 	private static final TrinketShop SHOP;
 
@@ -19,8 +21,9 @@ public class Town {
 		//TODO display Coach
 	}
 	
-	public void visitDungeon(){
-		//TODO select level;
+	public void visitDungeon(Dungeon dungeon,Party party){
+		DungeonSession.initiateSession(dungeon, party);
+		DungeonSession.
 	}
 	
 }
