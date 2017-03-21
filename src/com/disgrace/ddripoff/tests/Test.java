@@ -32,16 +32,7 @@ import com.disgrace.ddripoff.stats.StatEnumeration;
 public class Test {
 	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		//initializeCombat();
-		// testEquipping();
-		// testAvaliableMovements();
-		//testItemSpawning();
-		//testSpawns();
-		testDungeonBuilder();
-	}
-
-	public static void testDungeonBuilder(){
+	public static void testDungeonBuilder() {
 		Desert d = new Desert(DungeonSize.SMALL);
 		DungeonBuilder dBuilder = new DungeonBuilder(d);
 		dBuilder.build();
@@ -49,27 +40,28 @@ public class Test {
 		dSpawner.generate();
 		d.displayEnterablesValue();
 	}
-	
-	public static void testSpawns(){
+
+	public static void testSpawns() {
 		Party p = CharacterFactory.spawnRandomParty();
 		System.out.println("Random Party: ");
 		printPartyInfo(p);
-		
-		Party p2 = CharacterFactory.spawnPartyByPattern(PartySpawnPatternEnumeration.getRandomPatternByStrength(PartyType.WEAK));
+
+		Party p2 = CharacterFactory
+				.spawnPartyByPattern(PartySpawnPatternEnumeration.getRandomPatternByStrength(PartyType.WEAK));
 		System.out.println("Weak Party: ");
 		printPartyInfo(p2);
 		Hero h = CharacterFactory.spawnRandomHero();
 		printCharacterFullInfo(h);
-		Hero h1 = (Hero)CharacterFactory.spawnConcreteCharacter(HeroClass.CENTURION);
+		Hero h1 = (Hero) CharacterFactory.spawnConcreteCharacter(HeroClass.CENTURION);
 		printCharacterFullInfo(h1);
 	}
-	
-	public static void testItemSpawning(){
-		List<Item> result =ItemFactory.spawnLoot(3);
+
+	public static void testItemSpawning() {
+		List<Item> result = ItemFactory.spawnLoot(3);
 		Item i = ItemFactory.spawnConcreteItem(ConsumableType.FOOD);
 		System.out.println(result);
 	}
-	
+
 	public static void testAvaliableMovements() {
 		Party p = new Party();
 		p.addMember(new UberHeroTest("Henry0"));
@@ -155,15 +147,15 @@ public class Test {
 					continue;
 				} else if (input == 8) {
 					System.out.println("Not avaliable");
-				}else if (input == 9) {
+				} else if (input == 9) {
 					continue;
-				}else if(input>spellamount){
+				} else if (input > spellamount) {
 					System.out.println("Invalid action");
-				}else{
+				} else {
 					break;
 				}
 			}
-			
+
 			Spell s = c.getAllSpells().get(input - 1);
 
 			List<Character> targets = s.getAvaliableTargets(c, queue);
@@ -186,7 +178,7 @@ public class Test {
 			});
 		}
 	}
-	
+
 	private static void printCharacterFullInfo(Character character) {
 		System.out.println(character.getName());
 		for (Stat s : character.getStatWrapper().getStatsasArrayList()) {

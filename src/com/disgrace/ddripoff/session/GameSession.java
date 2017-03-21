@@ -12,18 +12,21 @@ import com.disgrace.ddripoff.items.Item;
 public class GameSession {
 	private static HeroRoster heroRoster;
 	private static Town town;
-	private static int gold;
+	private int gold;
 	private static Set<Item> playerInventory;
 	private static Set<Dungeon> allLevels;
 	private static Set<Dungeon> completedLevels;
 
-	private static final GameSession SESSION_INSTANCE = new GameSession();
+	private static GameSession sessionInstance = null;
 
 	private GameSession() {
 	}
 
 	public static GameSession getSession() {
-		return SESSION_INSTANCE;
+		if(sessionInstance==null){
+			sessionInstance = new GameSession();
+		}
+		return sessionInstance;
 	}
 
 	public int getGold() {
@@ -31,7 +34,7 @@ public class GameSession {
 	}
 
 	public void addGold(int gold) {
-		GameSession.gold =- gold;
+		this.gold =- gold;
 	}
 
 	public void dismissHero(Hero hero) {

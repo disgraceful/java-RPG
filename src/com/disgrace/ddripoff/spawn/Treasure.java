@@ -19,7 +19,7 @@ public class Treasure extends SpawnEvent {
 		if(!triggered){
 			
 		}
-		//TODO Session inventory. 
+		//TODO open loot if yes add to DungSession Inventory
 	}
 
 }
