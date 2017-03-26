@@ -1,21 +1,27 @@
 package com.disgrace.ddripoff.main;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.apache.commons.io.FilenameUtils;
 
 import com.disgrace.ddripoff.session.GameSession;
 import com.disgrace.ddripoff.utils.GameTextDisplayer;
+import com.disgrace.ddripoff.utils.SaveHelper;
 
 public class GameMain {
 
 	private static GameSession session;
 	private static GameTextDisplayer displayer;
 	private static Scanner sc;
+	private static final Logger LOG = Logger.getLogger(GameMain.class.getSimpleName());
 
 	public static void main(String[] args) {
 		initGame();
 		welcome();
 		mainMenu();
-		handleMainMenu(readInput());
+		handleMainMenu(readIntInput());
 	}
 
 	private static void initGame() {
@@ -46,13 +52,23 @@ public class GameMain {
 		default:
 			inputError();
 			mainMenu();
-			handleMainMenu(input);
+			handleMainMenu(readIntInput());
 			break;
 		}
 	}
 
-	private static int readInput() {
-		return sc.nextInt();
+	private static int readIntInput() {
+		try {
+			return sc.nextInt();
+		} catch (Exception e) {
+			LOG.log(Level.SEVERE, "Wrong input", e);
+		}
+		return -1;
+	}
+
+	private static String readStringInput() {
+		sc.nextLine();
+		return sc.nextLine();
 	}
 
 	private static void inputError() {
@@ -64,10 +80,20 @@ public class GameMain {
 	}
 
 	private static void startNewGame() {
-		System.out.println("you started a new game");
+		displayer.displayNewGameStart();
+		System.out.print("My name is: ");
+		String userName = readStringInput();
+		session = GameSession.getSession();
+		SaveHelper.save(session, userName);
+		System.out.println("Game starting now!");
 	}
 
 	private static void continueNewGame() {
 		System.out.println("you continued");
+		displayer.displayActiveUsers(SaveHelper.getActiveUsersAsString());
+		int select = readIntInput();
+		String s = SaveHelper.getActiveUsersAsString().get(select - 1);
+		System.out.println(SaveHelper.load(FilenameUtils.removeExtension(s)).toString());
 	}
+
 }

@@ -1,5 +1,6 @@
 package com.disgrace.ddripoff.session;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,10 @@ import com.disgrace.ddripoff.dungeon.Dungeon;
 import com.disgrace.ddripoff.hub.Town;
 import com.disgrace.ddripoff.items.Item;
 
-public class GameSession {
+public class GameSession implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private static HeroRoster heroRoster;
 	private static Town town;
 	private int gold;
