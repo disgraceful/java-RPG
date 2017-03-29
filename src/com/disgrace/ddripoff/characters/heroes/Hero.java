@@ -6,7 +6,6 @@ import java.util.List;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.spells.Spell;
-import com.disgrace.ddripoff.spells.SpellEnum;
 
 public abstract class Hero extends Character{
 	protected HeroClass heroClass;

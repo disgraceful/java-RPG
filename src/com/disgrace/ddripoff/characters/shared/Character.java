@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.Spell;
-import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.stats.Stat;

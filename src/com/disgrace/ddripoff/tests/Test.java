@@ -6,6 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
@@ -28,9 +31,105 @@ import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
+import com.disgrace.ddripoff.utils.SaveHelper;
 
 public class Test {
 	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		TestEntityDerived e = new TestEntityDerived();
+		e.setAge(13);
+		e.setName("entity1");
+		e.setKekField("kek");
+		TestEmbededEntity eslave1 = new TestEmbededEntity();
+		eslave1.setAge(5);
+		eslave1.setName("eslave1");
+		TestEmbededEntity eslave2 = new TestEmbededEntity();
+		eslave2.setAge(99);
+		eslave2.setName("eslave2");
+		TestEmbededEntity eslave3 = new TestEmbededEntity();
+		eslave3.setAge(8);
+		eslave3.setName("eslave3");
+		List<TestEmbededEntity> list = new ArrayList<>();
+		list.add(eslave1);
+		list.add(eslave2);
+		list.add(eslave3);
+		e.setEntities(list);
+
+		SaveHelper.saveToXml(e, "test");
+	}
+
+	@XmlRootElement
+	private static abstract class TestEntity {
+		private int age;
+		private String name;
+		private List<TestEmbededEntity> entities;
+
+		@XmlElement
+		public int getAge() {
+			return age;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+
+		@XmlElement
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		@XmlElement
+		public List<TestEmbededEntity> getEntities() {
+			return entities;
+		}
+
+		public void setEntities(List<TestEmbededEntity> entities) {
+			this.entities = entities;
+		}
+	}
+	
+	@XmlRootElement
+	private static class TestEntityDerived extends TestEntity{
+		private String kekField;
+
+		public String getKekField() {
+			return kekField;
+		}
+
+		public void setKekField(String kekField) {
+			this.kekField = kekField;
+		}
+		
+	}
+
+	@XmlRootElement
+	private static class TestEmbededEntity {
+		private int age;
+		private String name;
+
+		
+		public int getAge() {
+			return age;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+	}
 
 	public static void testDungeonBuilder() {
 		Desert d = new Desert(DungeonSize.SMALL);

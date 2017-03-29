@@ -17,12 +17,12 @@ public class GameMain {
 	private static Scanner sc;
 	private static final Logger LOG = Logger.getLogger(GameMain.class.getSimpleName());
 
-	public static void main(String[] args) {
-		initGame();
-		welcome();
-		mainMenu();
-		handleMainMenu(readIntInput());
-	}
+//	public static void main(String[] args) {
+//		initGame();
+//		welcome();
+//		mainMenu();
+//		handleMainMenu(readIntInput());
+//	}
 
 	private static void initGame() {
 		session = GameSession.getSession();
@@ -84,7 +84,7 @@ public class GameMain {
 		System.out.print("My name is: ");
 		String userName = readStringInput();
 		session = GameSession.getSession();
-		SaveHelper.save(session, userName);
+		SaveHelper.saveToBin(session, userName);
 		System.out.println("Game starting now!");
 	}
 
@@ -93,7 +93,7 @@ public class GameMain {
 		displayer.displayActiveUsers(SaveHelper.getActiveUsersAsString());
 		int select = readIntInput();
 		String s = SaveHelper.getActiveUsersAsString().get(select - 1);
-		System.out.println(SaveHelper.load(FilenameUtils.removeExtension(s)).toString());
+		System.out.println(SaveHelper.loadFromBin(FilenameUtils.removeExtension(s)).toString());
 	}
 
 }

@@ -2,7 +2,6 @@ package com.disgrace.ddripoff.characters.heroes;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.spells.SpellEnum;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
