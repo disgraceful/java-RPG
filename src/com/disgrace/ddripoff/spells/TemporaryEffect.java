@@ -2,8 +2,11 @@ package com.disgrace.ddripoff.spells;
 
 import java.util.Random;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 
+@XmlRootElement
 public abstract class TemporaryEffect extends Effect {
 	protected int abilityDuration;
 	protected int currentDuration;

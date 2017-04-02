@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public enum TrinketType implements SpawnableItem {
 	TEST_TRINKET_COMMON {
 		@Override

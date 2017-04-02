@@ -2,6 +2,9 @@ package com.disgrace.ddripoff.items;
 
 import java.util.Random;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum ConsumableType implements SpawnableItem {
 	FOOD {
 		@Override

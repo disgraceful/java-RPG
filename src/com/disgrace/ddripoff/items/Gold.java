@@ -1,5 +1,8 @@
 package com.disgrace.ddripoff.items;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Gold extends Treasure {
 	public Gold() {
 		initItem();

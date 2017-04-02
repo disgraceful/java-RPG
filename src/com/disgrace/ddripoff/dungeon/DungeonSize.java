@@ -1,5 +1,8 @@
 package com.disgrace.ddripoff.dungeon;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum DungeonSize {
 	SMALL("Small",2,3,4,3),MEDIUM("Medium",3,4,9,8),LARGE("Large",3,6,13,12);
 	

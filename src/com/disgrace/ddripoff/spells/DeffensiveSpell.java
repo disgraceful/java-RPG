@@ -2,13 +2,15 @@ package com.disgrace.ddripoff.spells;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.lang.SerializationUtils;
 
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.utils.CalculationHelper;
-
+@XmlRootElement
 public abstract class DeffensiveSpell extends Spell implements Serializable{
 
 	@Override

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public abstract class Dungeon {
 	protected DungeonType dungType;
 	protected DungeonSize size;

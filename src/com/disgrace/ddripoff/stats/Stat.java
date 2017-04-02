@@ -2,6 +2,9 @@ package com.disgrace.ddripoff.stats;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Stat implements Serializable {
 	StatEnumeration type;
 	int baseValue;
@@ -11,8 +14,36 @@ public class Stat implements Serializable {
 	boolean isTemporary;
 
 	public Stat(StatEnumeration type, int curvalue, int maxvalue) {
-		this(type,curvalue);
+		this(type, curvalue);
 		maxValue = maxvalue;
+	}
+
+	public Stat() {
+
+	}
+
+	public boolean isTemporary() {
+		return isTemporary;
+	}
+
+	public void setTemporary(boolean isTemporary) {
+		this.isTemporary = isTemporary;
+	}
+
+	public void setType(StatEnumeration type) {
+		this.type = type;
+	}
+
+	public void setBaseValue(int baseValue) {
+		this.baseValue = baseValue;
+	}
+
+	public void setCurValue(int curValue) {
+		this.curValue = curValue;
+	}
+
+	public void setAffectingMaxValue(boolean isAffectingMaxValue) {
+		this.isAffectingMaxValue = isAffectingMaxValue;
 	}
 
 	public Stat(StatEnumeration type, int value) {
@@ -20,9 +51,9 @@ public class Stat implements Serializable {
 		curValue = value;
 		baseValue = value;
 	}
-	
+
 	public Stat(StatEnumeration type, int curvalue, boolean isAffectingMaxValue) {
-		this(type,curvalue);
+		this(type, curvalue);
 		this.isAffectingMaxValue = isAffectingMaxValue;
 		isTemporary = true;
 	}
@@ -64,7 +95,7 @@ public class Stat implements Serializable {
 		if (value > maxValue && maxValue != 0) {
 			setValue = maxValue;
 			return setValue;
-		} else if (value < 0&&!isTemporary) {
+		} else if (value < 0 && !isTemporary) {
 			return setValue;
 		}
 		setValue = value;

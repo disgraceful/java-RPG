@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum PartySpawnPatternEnumeration {
 
 	STRONG_DEFAULT(new PartySpawnPattern(new ArrayList<EnemySpawnType>() {

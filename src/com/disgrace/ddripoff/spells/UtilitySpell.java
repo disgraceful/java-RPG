@@ -2,10 +2,13 @@ package com.disgrace.ddripoff.spells;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.lang.SerializationUtils;
 
 import com.disgrace.ddripoff.characters.shared.Character;
 
+@XmlRootElement
 public abstract class UtilitySpell extends Spell implements Serializable {
 
 	@Override

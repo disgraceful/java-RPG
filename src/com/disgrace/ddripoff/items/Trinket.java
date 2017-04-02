@@ -1,9 +1,11 @@
 package com.disgrace.ddripoff.items;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.stats.StatWrapper;
-
+@XmlRootElement
 public abstract class Trinket extends Item {
 	protected StatWrapper affectedstats;
 	protected HeroClass restriction;

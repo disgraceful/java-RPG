@@ -7,8 +7,11 @@ import com.disgrace.ddripoff.utils.CalculationHelper;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.lang.SerializationUtils;
 
+@XmlRootElement
 public abstract class OffensiveSpell extends Spell implements Serializable{
 	protected DamageType damageType;
 	protected RangeType range;

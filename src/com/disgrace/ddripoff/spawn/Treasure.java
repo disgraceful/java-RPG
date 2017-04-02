@@ -3,9 +3,12 @@ package com.disgrace.ddripoff.spawn;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.items.Item;
 import com.disgrace.ddripoff.utils.CalculationHelper;
 
+@XmlRootElement
 public class Treasure extends SpawnEvent {
 	private Set<Item> loot = new HashSet<>();
 

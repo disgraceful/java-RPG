@@ -3,11 +3,13 @@ package com.disgrace.ddripoff.hub;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.session.GameSession;
 import com.disgrace.ddripoff.spawn.CharacterFactory;
-
+@XmlRootElement
 public class MercenaryCoach {
 	private List<Hero> avaliableVenturers = new ArrayList<>();
 	private int heroSpawnLimit = 3;
@@ -17,7 +19,7 @@ public class MercenaryCoach {
 	}
 	
 	public void recruit(Hero hero){
-		GameSession.getSession().hireHero(hero);
+		GameSession.getSessionInstance().hireHero(hero);
 		avaliableVenturers.remove(hero);
 	}
 	

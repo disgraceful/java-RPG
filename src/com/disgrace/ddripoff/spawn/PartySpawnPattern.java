@@ -3,6 +3,9 @@ package com.disgrace.ddripoff.spawn;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class PartySpawnPattern {
 	private List<EnemySpawnType> spawnTypes = new ArrayList<>();
 	private PartyType partyStrength;

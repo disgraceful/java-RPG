@@ -1,9 +1,12 @@
 package com.disgrace.ddripoff.spells;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
+@XmlRootElement
 public class TestDOT2 extends DOT {
 	public TestDOT2() {
 		description = "Description: Poisons Enemy for 2 damage for 3 turns";

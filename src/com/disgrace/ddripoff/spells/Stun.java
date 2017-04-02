@@ -1,7 +1,10 @@
 package com.disgrace.ddripoff.spells;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 
+@XmlRootElement
 public abstract class Stun extends TemporaryEffect {
 
 	@Override

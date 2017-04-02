@@ -1,5 +1,8 @@
 package com.disgrace.ddripoff.items;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum ItemDrop {
 	TRINKET_DROP(30),
 	TREASURE_DROP(100),

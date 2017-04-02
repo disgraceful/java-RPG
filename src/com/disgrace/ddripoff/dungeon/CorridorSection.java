@@ -3,6 +3,8 @@ package com.disgrace.ddripoff.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class CorridorSection extends Enterable implements Neighbour{
 	private List<Enterable> neighbours = new ArrayList<>();
 	

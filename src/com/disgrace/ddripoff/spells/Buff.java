@@ -1,8 +1,11 @@
 package com.disgrace.ddripoff.spells;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
+@XmlRootElement
 public abstract class Buff extends TemporaryEffect {
 
 	@Override

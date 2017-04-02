@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class Party {
 
 	private List<Character> partyMembers = new ArrayList<>();

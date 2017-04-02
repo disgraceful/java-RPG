@@ -3,10 +3,12 @@ package com.disgrace.ddripoff.hub;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.session.GameSession;
 import com.disgrace.ddripoff.spawn.ItemFactory;
-
+@XmlRootElement
 public class TrinketShop {
 	List<Trinket> itemsForSale = new ArrayList<>();
 
@@ -20,12 +22,12 @@ public class TrinketShop {
 		if (!itemsForSale.contains(item)) {
 			return;
 		}
-		if (GameSession.getSession().getGold() < item.getCost()) {
+		if (GameSession.getSessionInstance().getGold() < item.getCost()) {
 			System.out.println("Not Enough Gold!");
 		} else {
-			GameSession.getSession().addItem(item);
-			GameSession.getSession().addGold(-item.getCost());
-			GameSession.getSession().addItem(item);
+			GameSession.getSessionInstance().addItem(item);
+			GameSession.getSessionInstance().addGold(-item.getCost());
+			GameSession.getSessionInstance().addItem(item);
 			itemsForSale.remove(item);
 		}
 	}

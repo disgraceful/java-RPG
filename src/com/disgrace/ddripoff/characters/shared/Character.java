@@ -3,6 +3,8 @@ package com.disgrace.ddripoff.characters.shared;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.Spell;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
@@ -10,7 +12,7 @@ import com.disgrace.ddripoff.spells.TemporaryEffectType;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
-
+@XmlRootElement
 public abstract class Character implements Comparable<Character> {
 	protected String name;
 	protected StatWrapper stats;
@@ -18,6 +20,27 @@ public abstract class Character implements Comparable<Character> {
 	protected CharacterTempEffectsWrapper tempEffects = new CharacterTempEffectsWrapper();
 	protected List<Spell> allAbilities = new ArrayList<>();
 	protected Party party;
+
+	
+	public List<Spell> getAllAbilities() {
+		return allAbilities;
+	}
+
+	public void setAllAbilities(List<Spell> allAbilities) {
+		this.allAbilities = allAbilities;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setStats(StatWrapper stats) {
+		this.stats = stats;
+	}
+
+	public void setTempEffects(CharacterTempEffectsWrapper tempEffects) {
+		this.tempEffects = tempEffects;
+	}
 
 	public String getName() {
 		return name;

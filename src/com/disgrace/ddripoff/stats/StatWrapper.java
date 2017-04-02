@@ -6,11 +6,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
 
+@XmlRootElement
 public class StatWrapper implements Serializable {
 	private List<Stat> stats = new ArrayList<>();
+
+	public StatWrapper() {
+	}
 
 	public StatWrapper(List<Stat> stats) {
 		this.stats = stats;
@@ -19,15 +25,25 @@ public class StatWrapper implements Serializable {
 	public StatWrapper(Stat... stats) {
 		this.stats.addAll(Arrays.asList(stats));
 	}
+	
+	
 
-	public void addStat(Stat stat){
+	public List<Stat> getStats() {
+		return stats;
+	}
+
+	public void setStats(List<Stat> stats) {
+		this.stats = stats;
+	}
+
+	public void addStat(Stat stat) {
 		stats.add(stat);
 	}
-	
-	public void addAllStats(Stat ...stats ){
+
+	public void addAllStats(Stat... stats) {
 		this.stats.addAll(Arrays.asList(stats));
 	}
-	
+
 	private boolean checkIfStatExist(StatEnumeration type) {
 		for (Stat s : stats) {
 			if (s.getType() == type) {
@@ -74,9 +90,9 @@ public class StatWrapper implements Serializable {
 		Stat curStat;
 		for (Stat c : stat.getStatsasArrayList()) {
 			if (c.getCurValue() < 0) {
-				curStat = new Stat(c.getType(),Math.abs(c.getCurValue()));
+				curStat = new Stat(c.getType(), Math.abs(c.getCurValue()));
 			} else {
-				curStat = new Stat(c.getType(),-c.getCurValue());
+				curStat = new Stat(c.getType(), -c.getCurValue());
 			}
 			s.addStat(curStat);
 		}
@@ -157,11 +173,4 @@ public class StatWrapper implements Serializable {
 			return -1;
 		}
 	}
-
-	// public void rollbackTempSpellEffect(TemporarySpell spell) {
-	// StatWrapper s = spell.getAffectingStats();
-	// StatWrapper.reverseStatsValue(s);
-	// updateStats(s);
-	// }
-
 }

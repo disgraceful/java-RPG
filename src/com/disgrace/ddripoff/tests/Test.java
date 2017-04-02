@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
+import com.disgrace.ddripoff.characters.heroes.Centurion;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
@@ -23,6 +24,7 @@ import com.disgrace.ddripoff.items.ConsumableType;
 import com.disgrace.ddripoff.items.Item;
 import com.disgrace.ddripoff.items.TestTrinketCommon;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.session.GameSession;
 import com.disgrace.ddripoff.spawn.CharacterFactory;
 import com.disgrace.ddripoff.spawn.ItemFactory;
 import com.disgrace.ddripoff.spawn.PartySpawnPatternEnumeration;
@@ -37,26 +39,32 @@ public class Test {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		TestEntityDerived e = new TestEntityDerived();
-		e.setAge(13);
-		e.setName("entity1");
-		e.setKekField("kek");
-		TestEmbededEntity eslave1 = new TestEmbededEntity();
-		eslave1.setAge(5);
-		eslave1.setName("eslave1");
-		TestEmbededEntity eslave2 = new TestEmbededEntity();
-		eslave2.setAge(99);
-		eslave2.setName("eslave2");
-		TestEmbededEntity eslave3 = new TestEmbededEntity();
-		eslave3.setAge(8);
-		eslave3.setName("eslave3");
-		List<TestEmbededEntity> list = new ArrayList<>();
-		list.add(eslave1);
-		list.add(eslave2);
-		list.add(eslave3);
-		e.setEntities(list);
+//		TestEntityDerived e = new TestEntityDerived();
+//		e.setAge(13);
+//		e.setName("entity1");
+//		
+//		TestEmbededEntity eslave1 = new TestEmbededEntity();
+//		eslave1.setAge(5);
+//		eslave1.setName("eslave1");
+//		TestEmbededEntity eslave2 = new TestEmbededEntity();
+//		eslave2.setAge(99);
+//		eslave2.setName("eslave2");
+//		TestEmbededEntity eslave3 = new TestEmbededEntity();
+//		eslave3.setAge(8);
+//		eslave3.setName("eslave3");
+//		List<TestEmbededEntity> list = new ArrayList<>();
+//		list.add(eslave1);
+//		list.add(eslave2);
+//		list.add(eslave3);
+//		e.setEntities(list);
+//		SaveHelper.saveToXml(e, "test");
 
-		SaveHelper.saveToXml(e, "test");
+		
+		Centurion c = new Centurion();
+		GameSession s = GameSession.getSessionInstance();
+		SaveHelper.saveToXml(s, "test");
+		GameSession x = (GameSession) SaveHelper.loadFromXml("test", GameSession.class);
+		System.out.println(x.getGold());
 	}
 
 	@XmlRootElement
@@ -96,14 +104,6 @@ public class Test {
 	@XmlRootElement
 	private static class TestEntityDerived extends TestEntity{
 		private String kekField;
-
-		public String getKekField() {
-			return kekField;
-		}
-
-		public void setKekField(String kekField) {
-			this.kekField = kekField;
-		}
 		
 	}
 

@@ -1,7 +1,9 @@
 package com.disgrace.ddripoff.characters.enemies;
 
-import com.disgrace.ddripoff.characters.shared.Character;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.disgrace.ddripoff.characters.shared.Character;
+@XmlRootElement
 public abstract class Enemy extends Character {
 	protected EnemyClass eClass;
 	

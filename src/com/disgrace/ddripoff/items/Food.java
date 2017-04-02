@@ -1,10 +1,12 @@
 package com.disgrace.ddripoff.items;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.utils.CalculationHelper;
-
+@XmlRootElement
 public class Food extends Consumable {
 	public Food() {
 		initItem();

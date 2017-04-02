@@ -25,7 +25,7 @@ public class GameMain {
 //	}
 
 	private static void initGame() {
-		session = GameSession.getSession();
+		session = GameSession.getSessionInstance();
 		displayer = GameTextDisplayer.getInstance();
 		sc = new Scanner(System.in);
 	}
@@ -83,7 +83,7 @@ public class GameMain {
 		displayer.displayNewGameStart();
 		System.out.print("My name is: ");
 		String userName = readStringInput();
-		session = GameSession.getSession();
+		session = GameSession.getSessionInstance();
 		SaveHelper.saveToBin(session, userName);
 		System.out.println("Game starting now!");
 	}

@@ -1,5 +1,8 @@
 package com.disgrace.ddripoff.items;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum TrinketRarity {
 	COMMON(60,750), UNCOMMON(25,1000), RARE(13,2000), ABYSMAL(2,5000);
 	 private final int dropRate;

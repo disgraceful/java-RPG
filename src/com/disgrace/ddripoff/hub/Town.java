@@ -1,9 +1,11 @@
 package com.disgrace.ddripoff.hub;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.dungeon.Dungeon;
 import com.disgrace.ddripoff.session.DungeonSession;
-
+@XmlRootElement
 public class Town {
 	private static final MercenaryCoach COACH;
 	private static final TrinketShop SHOP;

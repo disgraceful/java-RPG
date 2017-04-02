@@ -1,5 +1,8 @@
 package com.disgrace.ddripoff.stats;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum StatEnumeration {
 	HEALTH("Health"),
 	//STRESS("Stress"),

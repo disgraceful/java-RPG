@@ -6,9 +6,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.SpawnableChar;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
-
+@XmlRootElement
 public enum EnemyClass implements SpawnableChar {
 	OUTCAST_CROSSBOWMAN(EnemySpawnType.BACK) {
 

@@ -3,10 +3,12 @@ package com.disgrace.ddripoff.characters.shared;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.spells.DOT;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
-
+@XmlRootElement
 public class CharacterTempEffectsWrapper {
 	protected List<TemporaryEffect> tempEffects = new ArrayList<>();
 

@@ -1,5 +1,8 @@
 package com.disgrace.ddripoff.spells;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class TestUtility extends UtilitySpell {
 	public TestUtility(){
 		initSpell();

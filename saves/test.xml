@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<testEntityDerived>
-    <age>13</age>
-    <entities>
-        <age>5</age>
-        <name>eslave1</name>
-    </entities>
-    <entities>
-        <age>99</age>
-        <name>eslave2</name>
-    </entities>
-    <entities>
-        <age>8</age>
-        <name>eslave3</name>
-    </entities>
-    <name>entity1</name>
-    <kekField>kek</kekField>
-</testEntityDerived>
+<gameSession>
+    <gold>0</gold>
+</gameSession>

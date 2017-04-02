@@ -2,6 +2,9 @@ package com.disgrace.ddripoff.spawn;
 
 import java.util.Random;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public enum SpawnableEventType {
 	FIGHT(20) {
 		@Override

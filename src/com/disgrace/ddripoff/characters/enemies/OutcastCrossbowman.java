@@ -2,10 +2,12 @@ package com.disgrace.ddripoff.characters.enemies;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
-
+@XmlRootElement
 public class OutcastCrossbowman extends Enemy {
 
 	public OutcastCrossbowman() {

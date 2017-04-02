@@ -1,5 +1,8 @@
 package com.disgrace.ddripoff.spawn;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public abstract class SpawnEvent {
 	protected SpawnableEventType spawnType;
 	protected boolean triggered;

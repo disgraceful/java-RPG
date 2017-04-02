@@ -3,9 +3,11 @@ package com.disgrace.ddripoff.dungeon;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.spawn.SpawnEvent;
 import com.disgrace.ddripoff.spawn.SpawnableEventType;
-
+@XmlRootElement
 public abstract class Enterable {
 	protected Set<SpawnEvent> events = new HashSet<>();
 	protected boolean partyHere = false;

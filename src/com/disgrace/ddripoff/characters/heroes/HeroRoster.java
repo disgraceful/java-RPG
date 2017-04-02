@@ -3,6 +3,8 @@ package com.disgrace.ddripoff.characters.heroes;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class HeroRoster {
 	private Set<Hero> heroSet = new HashSet<>();
 

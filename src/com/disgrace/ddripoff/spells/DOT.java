@@ -1,9 +1,11 @@
 package com.disgrace.ddripoff.spells;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
-
+@XmlRootElement
 public abstract class DOT extends TemporaryEffect {
 
 	Stat tickDamage;

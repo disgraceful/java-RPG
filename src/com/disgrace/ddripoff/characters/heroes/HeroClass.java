@@ -2,9 +2,11 @@ package com.disgrace.ddripoff.characters.heroes;
 
 import java.util.Random;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.SpawnableChar;
-
+@XmlRootElement
 public enum HeroClass implements SpawnableChar{
 	CENTURION("Centurion"){
 		@Override

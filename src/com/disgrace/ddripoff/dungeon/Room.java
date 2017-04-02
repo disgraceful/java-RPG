@@ -3,6 +3,8 @@ package com.disgrace.ddripoff.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class Room extends Enterable implements Neighbour {
 	private RoomAdds adds = new RoomAdds();
 	private ArrayList<Room> neighbours = new ArrayList<>();
