@@ -8,14 +8,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.disgrace.ddripoff.items.Trinket;
 import com.disgrace.ddripoff.session.GameSession;
 import com.disgrace.ddripoff.spawn.ItemFactory;
+
 @XmlRootElement
 public class TrinketShop {
-	List<Trinket> itemsForSale = new ArrayList<>();
-
-	private static final int ITEM_SPAWN_LIMIT = 5;
+	private List<Trinket> itemsForSale = new ArrayList<>();
+	private int itemSpawnLimit = 5;
 
 	public List<Trinket> getItemsForSale() {
 		return itemsForSale;
+	}
+
+	public int getItemSpawnLimit() {
+		return itemSpawnLimit;
+	}
+
+	public void setItemSpawnLimit(int itemSpawnLimit) {
+		this.itemSpawnLimit = itemSpawnLimit;
+	}
+
+	public void setItemsForSale(List<Trinket> itemsForSale) {
+		this.itemsForSale = itemsForSale;
 	}
 
 	public void buy(Trinket item) {
@@ -34,6 +46,6 @@ public class TrinketShop {
 
 	public void spawnItems() {
 		itemsForSale.clear();
-		ItemFactory.spawnLoot(ITEM_SPAWN_LIMIT);
+		ItemFactory.spawnLoot(itemSpawnLimit);
 	}
 }

@@ -11,6 +11,31 @@ public abstract class Trinket extends Item {
 	protected HeroClass restriction;
 	protected TrinketRarity itemRarity;
 
+	
+	public StatWrapper getAffectedstats() {
+		return affectedstats;
+	}
+
+	public void setAffectedstats(StatWrapper affectedstats) {
+		this.affectedstats = affectedstats;
+	}
+
+	public HeroClass getRestriction() {
+		return restriction;
+	}
+
+	public void setRestriction(HeroClass restriction) {
+		this.restriction = restriction;
+	}
+
+	public TrinketRarity getItemRarity() {
+		return itemRarity;
+	}
+
+	public void setItemRarity(TrinketRarity itemRarity) {
+		this.itemRarity = itemRarity;
+	}
+
 	@Override
 	public int getCost() {
 		return itemRarity.getCost();

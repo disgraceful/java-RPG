@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gameSession>
     <gold>0</gold>
+    <heroRoster/>
+    <town>
+        <coach>
+            <heroSpawnLimit>3</heroSpawnLimit>
+        </coach>
+        <shop>
+            <itemSpawnLimit>5</itemSpawnLimit>
+        </shop>
+    </town>
 </gameSession>

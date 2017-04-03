@@ -25,8 +25,6 @@ public class StatWrapper implements Serializable {
 	public StatWrapper(Stat... stats) {
 		this.stats.addAll(Arrays.asList(stats));
 	}
-	
-	
 
 	public List<Stat> getStats() {
 		return stats;

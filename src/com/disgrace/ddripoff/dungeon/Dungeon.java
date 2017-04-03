@@ -22,6 +22,10 @@ public abstract class Dungeon {
 		setRooms(size.xbound, size.ybound);
 	}
 	
+	public Dungeon(){
+		
+	}
+	
 	public boolean isCompleted(){
 		return isCompleted;
 	}
@@ -35,6 +39,35 @@ public abstract class Dungeon {
 
 	public Room getStartRoom() {
 		return startRoom;
+	}
+	
+	
+	public DungeonType getDungType() {
+		return dungType;
+	}
+
+	public void setDungType(DungeonType dungType) {
+		this.dungType = dungType;
+	}
+
+	public DungeonSize getSize() {
+		return size;
+	}
+
+	public void setSize(DungeonSize size) {
+		this.size = size;
+	}
+
+	public void setStartRoom(Room startRoom) {
+		this.startRoom = startRoom;
+	}
+
+	public void setRooms(Room[][] rooms) {
+		this.rooms = rooms;
+	}
+
+	public void setCompleted(boolean isCompleted) {
+		this.isCompleted = isCompleted;
 	}
 
 	public void setStartingRoom() {

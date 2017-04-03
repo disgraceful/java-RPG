@@ -58,6 +58,38 @@ public abstract class Spell {
 	public SpellPositionWrapper getTargetRequiredPos() {
 		return targetRequiredPos;
 	}
+	
+	public SpellOrientation getOrientation() {
+		return orientation;
+	}
+
+	public void setOrientation(SpellOrientation orientation) {
+		this.orientation = orientation;
+	}
+
+	public SpellTargetQuantity getTargetQuantity() {
+		return targetQuantity;
+	}
+
+	public void setTargetQuantity(SpellTargetQuantity targetQuantity) {
+		this.targetQuantity = targetQuantity;
+	}
+
+	public StatWrapper getAbilityStats() {
+		return abilityStats;
+	}
+
+	public void setAbilityStats(StatWrapper abilityStats) {
+		this.abilityStats = abilityStats;
+	}
+
+	public List<Effect> getSelfApplyingEffects() {
+		return selfApplyingEffects;
+	}
+
+	public void setSelfApplyingEffects(List<Effect> selfApplyingEffects) {
+		this.selfApplyingEffects = selfApplyingEffects;
+	}
 
 	public void setTargetRequiredPos(SpellPositionWrapper targetRequiredPos) {
 		this.targetRequiredPos = targetRequiredPos;

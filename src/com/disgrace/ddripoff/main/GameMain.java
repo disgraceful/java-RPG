@@ -84,7 +84,7 @@ public class GameMain {
 		System.out.print("My name is: ");
 		String userName = readStringInput();
 		session = GameSession.getSessionInstance();
-		SaveHelper.saveToBin(session, userName);
+		SaveHelper.saveUserToXml(session, userName);
 		System.out.println("Game starting now!");
 	}
 
@@ -93,7 +93,7 @@ public class GameMain {
 		displayer.displayActiveUsers(SaveHelper.getActiveUsersAsString());
 		int select = readIntInput();
 		String s = SaveHelper.getActiveUsersAsString().get(select - 1);
-		System.out.println(SaveHelper.loadFromBin(FilenameUtils.removeExtension(s)).toString());
+		session = (GameSession)SaveHelper.loadUserFromXml(FilenameUtils.removeExtension(s), GameSession.class);
 	}
 
 }

@@ -1,11 +1,13 @@
 package com.disgrace.ddripoff.spawn;
 
 import com.disgrace.ddripoff.characters.enemies.EnemyClass;
+import com.disgrace.ddripoff.characters.heroes.Centurion;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.characters.shared.SpawnableChar;
+import com.disgrace.ddripoff.main.GameLoader;
 
 public class CharacterFactory {
 
@@ -30,5 +32,9 @@ public class CharacterFactory {
 
 	public static Character spawnConcreteCharacter(SpawnableChar cClass) {
 		return Character.spawn(cClass);
+	}
+	
+	public static <T> Hero spawnConcreteHero(Class<T>clazz){
+		return (Hero) GameLoader.getDataAsOptional(clazz).get();
 	}
 }

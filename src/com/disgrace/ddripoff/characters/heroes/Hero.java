@@ -11,8 +11,8 @@ import com.disgrace.ddripoff.spells.Spell;
 @XmlRootElement
 public abstract class Hero extends Character{
 	protected HeroClass heroClass;
-	private List<Trinket> inventory = new ArrayList<>();
-	private List<Spell> learnedAbilities = new ArrayList<>();
+	protected List<Trinket> inventory = new ArrayList<>();
+	protected List<Spell> learnedAbilities = new ArrayList<>();
 	
 	public List<Trinket> getInventory() {
 		return inventory;

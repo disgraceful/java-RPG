@@ -125,8 +125,6 @@ public abstract class Character implements Comparable<Character> {
 		return charClass.getCharacterToSpawn();
 	}
 
-	protected abstract void init();
-
 	@Override
 	public int compareTo(Character c1) {
 		int comparespeed = c1.getStatWrapper().getStatbyName(StatEnumeration.SPEED).getCurValue();

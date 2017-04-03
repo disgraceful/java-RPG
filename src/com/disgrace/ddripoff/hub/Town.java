@@ -5,14 +5,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.dungeon.Dungeon;
 import com.disgrace.ddripoff.session.DungeonSession;
-@XmlRootElement
-public class Town {
-	private static final MercenaryCoach COACH;
-	private static final TrinketShop SHOP;
 
-	static {
-		COACH = new MercenaryCoach();
-		SHOP = new TrinketShop();
+public class Town {
+	private MercenaryCoach coach;
+	private TrinketShop shop;
+
+	public Town() {
+		coach = new MercenaryCoach();
+		shop = new TrinketShop();
+	}
+
+	public void setCoach(MercenaryCoach coach) {
+		this.coach = coach;
+	}
+
+	public void setShop(TrinketShop shop) {
+		this.shop = shop;
+	}
+
+	public TrinketShop getShop() {
+		return shop;
+	}
+
+	public MercenaryCoach getCoach() {
+		return coach;
 	}
 
 	public void visitShop() {

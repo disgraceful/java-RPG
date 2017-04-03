@@ -1,29 +1,30 @@
 package com.disgrace.ddripoff.session;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.disgrace.ddripoff.characters.heroes.Hero;
-import com.disgrace.ddripoff.characters.heroes.HeroRoster;
 import com.disgrace.ddripoff.dungeon.Dungeon;
+import com.disgrace.ddripoff.hub.HeroRoster;
 import com.disgrace.ddripoff.hub.Town;
 import com.disgrace.ddripoff.items.Item;
 
 @XmlRootElement
+
 public class GameSession implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static HeroRoster heroRoster;
-	private static Town town;
-	private int gold;
-	private static Set<Item> playerInventory;
-	private static Set<Dungeon> allLevels;
-	private static Set<Dungeon> completedLevels;
+	private HeroRoster heroRoster = new HeroRoster();
+	private Town town = new Town();
+	private int gold = 0;
+	private Set<Item> playerInventory = new HashSet<>();
+	private Set<Dungeon> allLevels = new HashSet<>();
+	private Set<Dungeon> completedLevels = new HashSet<>();
 
 	private static GameSession sessionInstance = null;
 
@@ -41,44 +42,44 @@ public class GameSession implements Serializable {
 		return gold;
 	}
 
-	public static HeroRoster getHeroRoster() {
+	public HeroRoster getHeroRoster() {
 		return heroRoster;
 	}
 
-	public static void setHeroRoster(HeroRoster heroRoster) {
-		GameSession.heroRoster = heroRoster;
+	public void setHeroRoster(HeroRoster heroRoster) {
+		this.heroRoster = heroRoster;
 	}
 
-	public static Town getTown() {
+	public Town getTown() {
 		return town;
 	}
 
-	public static void setTown(Town town) {
-		GameSession.town = town;
+	public void setTown(Town town) {
+		this.town = town;
 	}
 
-	public static Set<Item> getPlayerInventory() {
+	public Set<Item> getPlayerInventory() {
 		return playerInventory;
 	}
 
-	public static void setPlayerInventory(Set<Item> playerInventory) {
-		GameSession.playerInventory = playerInventory;
+	public void setPlayerInventory(Set<Item> playerInventory) {
+		this.playerInventory = playerInventory;
 	}
 
-	public static Set<Dungeon> getAllLevels() {
+	public Set<Dungeon> getAllLevels() {
 		return allLevels;
 	}
 
-	public static void setAllLevels(Set<Dungeon> allLevels) {
-		GameSession.allLevels = allLevels;
+	public void setAllLevels(Set<Dungeon> allLevels) {
+		this.allLevels = allLevels;
 	}
 
-	public static Set<Dungeon> getCompletedLevels() {
+	public Set<Dungeon> getCompletedLevels() {
 		return completedLevels;
 	}
 
-	public static void setCompletedLevels(Set<Dungeon> completedLevels) {
-		GameSession.completedLevels = completedLevels;
+	public void setCompletedLevels(Set<Dungeon> completedLevels) {
+		this.completedLevels = completedLevels;
 	}
 
 	public void setGold(int gold) {
