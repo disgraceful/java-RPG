@@ -1,12 +1,12 @@
 package com.disgrace.ddripoff.spawn;
 
+import com.disgrace.ddripoff.characters.enemies.Enemy;
 import com.disgrace.ddripoff.characters.enemies.EnemyClass;
-import com.disgrace.ddripoff.characters.heroes.Centurion;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
+import com.disgrace.ddripoff.characters.shared.CharClass;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
-import com.disgrace.ddripoff.characters.shared.SpawnableChar;
 import com.disgrace.ddripoff.main.GameLoader;
 
 public class CharacterFactory {
@@ -16,9 +16,7 @@ public class CharacterFactory {
 
 	public static Party spawnPartyByPattern(PartySpawnPattern pattern) {
 		Party p = new Party();
-		for (EnemySpawnType type : pattern.getSpawnTypes()) {
-				p.addMember(EnemyClass.getRandomEnemyBySpawnType(type));
-		}
+		pattern.getSpawnTypes().stream().forEach(e -> p.addMember((Enemy) GameLoader.getDataAsOptional(EnemyClass.getRandomEnemyBySpawnType(e)).get()));
 		return p;
 	}
 
@@ -27,14 +25,14 @@ public class CharacterFactory {
 	}
 
 	public static Hero spawnRandomHero() {
-		return (Hero) Hero.spawn(HeroClass.getRandomValue());
+		return (Hero) GameLoader.getDataAsOptional(HeroClass.getRandomValue().getClassToSpawn()).get();
 	}
 
-	public static Character spawnConcreteCharacter(SpawnableChar cClass) {
-		return Character.spawn(cClass);
+	public static Character spawnCharByType(CharClass cClass) {
+		return (Character) GameLoader.getDataAsOptional(cClass.getClassToSpawn()).get();
 	}
-	
-	public static <T> Hero spawnConcreteHero(Class<T>clazz){
-		return (Hero) GameLoader.getDataAsOptional(clazz).get();
+
+	public static <T> Character spawnCharByClass(Class<T> clazz) {
+		return (Character) GameLoader.getDataAsOptional(clazz).get();
 	}
 }

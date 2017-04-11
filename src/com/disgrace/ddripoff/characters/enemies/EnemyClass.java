@@ -1,48 +1,47 @@
 package com.disgrace.ddripoff.characters.enemies;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.disgrace.ddripoff.characters.shared.SpawnableChar;
+import com.disgrace.ddripoff.characters.shared.CharClass;
 import com.disgrace.ddripoff.spawn.EnemySpawnType;
 @XmlRootElement
-public enum EnemyClass implements SpawnableChar {
+public enum EnemyClass implements CharClass {
 	OUTCAST_CROSSBOWMAN(EnemySpawnType.BACK) {
 
 		@Override
-		public Enemy getCharacterToSpawn() {
-			return new OutcastCrossbowman();
+		public Class<OutcastCrossbowman> getClassToSpawn() {
+			return OutcastCrossbowman.class;
 		}
 	},
 
 	OUTCAST_SWORDSMAN(EnemySpawnType.MIDDLE) {
 
 		@Override
-		public Enemy getCharacterToSpawn() {
-			return new OutcastSwordsman();
+		public Class<OutcastSwordsman> getClassToSpawn() {
+			return OutcastSwordsman.class;
 		}
 	},
 	OUTCAST_KNIGHT(EnemySpawnType.FRONT) {
 
 		@Override
-		public Enemy getCharacterToSpawn() {
-			return new OutcastKnight();
+		public Class<OutcastKnight> getClassToSpawn() {
+			return OutcastKnight.class;
 		}
 	},
 
 	TESTING_DUMMY(EnemySpawnType.FRONT) {
 		@Override
-		public Enemy getCharacterToSpawn() {
-			return new TestingDummy();
+		public Class<TestingDummy> getClassToSpawn() {
+			return TestingDummy.class;
 		}
 	};
 
-	// private List<EnemySubType> eSubType;
 	private EnemySpawnType eSpawnType;
 
 	private EnemyClass(EnemySpawnType spawnType) {
@@ -50,16 +49,6 @@ public enum EnemyClass implements SpawnableChar {
 		eSpawnType = spawnType;
 	}
 	
-	// private EnemyClass(List<EnemySubType> subTypes, EnemySpawnType spawnType)
-	// {
-	// eSubType = subTypes;
-	// eSpawnType = spawnType;
-	// }
-
-	// public List<EnemySubType> getEnemySubType() {
-	// return eSubType;
-	// }
-
 	public EnemySpawnType getEnemySpawnType() {
 		return eSpawnType;
 	}
@@ -69,19 +58,13 @@ public enum EnemyClass implements SpawnableChar {
 	}
 
 	public static List<EnemyClass> getAllBySpawnType(EnemySpawnType spawnType) {
-		List<EnemyClass> classesBySpawnType = new ArrayList<>();
-		for (EnemyClass eClass : Arrays.asList(values())) {
-			if (eClass.eSpawnType == spawnType) {
-				classesBySpawnType.add(eClass);
-			}
-		}
-		return classesBySpawnType;
+		return Arrays.stream(values()).filter(e->e.getEnemySpawnType()==spawnType).collect(Collectors.toList());
 	}
 
-	public static Enemy getRandomEnemyBySpawnType(EnemySpawnType spawnType) {
-		List<EnemyClass> list = Arrays.asList(values());
-		Collections.shuffle(list);
-		return (Enemy) list.stream().filter(e -> e.eSpawnType == spawnType).findAny().get().getCharacterToSpawn();
+	public static Class<?> getRandomEnemyBySpawnType(EnemySpawnType spawnType) {
+		Collections.shuffle(Arrays.asList(values()));
+		return Arrays.stream(values()).filter(e -> e.eSpawnType == spawnType).findFirst().get().getClassToSpawn();
+		
 
 	}
 

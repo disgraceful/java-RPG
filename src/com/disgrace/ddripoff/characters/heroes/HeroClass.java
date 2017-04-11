@@ -4,50 +4,37 @@ import java.util.Random;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.disgrace.ddripoff.characters.shared.Character;
-import com.disgrace.ddripoff.characters.shared.SpawnableChar;
+import com.disgrace.ddripoff.characters.shared.CharClass;
+
 @XmlRootElement
-public enum HeroClass implements SpawnableChar{
-	CENTURION("Centurion"){
+public enum HeroClass implements CharClass {
+	CENTURION {
 		@Override
-		public Hero getCharacterToSpawn() {
-			return new Centurion();
+		public Class<Centurion> getClassToSpawn() {
+			return Centurion.class;
 		}
 	},
-	DISHONORED("Dishonored"){
+	DISHONORED {
 		@Override
-		public Hero getCharacterToSpawn() {
-			return new Dishonored();			
+		public Class<Dishonored> getClassToSpawn() {
+			return Dishonored.class;
 		}
 	},
-	PRIEST("Priest"){
+	PRIEST {
 		@Override
-		public Hero getCharacterToSpawn() {
-			return new Priest();
-		}	
-	}, 
-	PURFIER("Purifier"){
+		public Class<Priest> getClassToSpawn() {
+			return Priest.class;
+		}
+	},
+	PURFIER {
 		@Override
-		public Hero getCharacterToSpawn() {
-			return new Purifier();
-		}	
+		public Class<Purifier> getClassToSpawn() {
+			return Purifier.class;
+		}
 	};
-
-	private String name;
-
-	private HeroClass(String name) {
-		this.name = name;
-	}
 
 	public static HeroClass getRandomValue() {
 		return values()[new Random().nextInt(values().length)];
 	}
-
-	@Override
-	public String toString() {
-		return name;
-	}
-
-	
 
 }

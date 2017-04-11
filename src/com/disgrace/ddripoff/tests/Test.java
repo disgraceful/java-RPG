@@ -28,6 +28,7 @@ import com.disgrace.ddripoff.dungeon.DungeonSize;
 import com.disgrace.ddripoff.items.ConsumableType;
 import com.disgrace.ddripoff.items.Item;
 import com.disgrace.ddripoff.items.Trinket;
+import com.disgrace.ddripoff.main.GameLoader;
 import com.disgrace.ddripoff.spawn.CharacterFactory;
 import com.disgrace.ddripoff.spawn.ItemFactory;
 import com.disgrace.ddripoff.spawn.PartySpawnPatternEnumeration;
@@ -42,28 +43,26 @@ public class Test {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-//		TestEntityDerived e = new TestEntityDerived();
-//		e.setAge(13);
-//		e.setName("entity1");
-//		
-//		TestEmbededEntity eslave1 = new TestEmbededEntity();
-//		eslave1.setAge(5);
-//		eslave1.setName("eslave1");
-//		TestEmbededEntity eslave2 = new TestEmbededEntity();
-//		eslave2.setAge(99);
-//		eslave2.setName("eslave2");
-//		TestEmbededEntity eslave3 = new TestEmbededEntity();
-//		eslave3.setAge(8);
-//		eslave3.setName("eslave3");
-//		List<TestEmbededEntity> list = new ArrayList<>();
-//		list.add(eslave1);
-//		list.add(eslave2);
-//		list.add(eslave3);
-//		e.setEntities(list);
-//		SaveHelper.saveToXml(e, "test");
-		
-		
-		//GameLoader.loadHeroData();
+		// TestEntityDerived e = new TestEntityDerived();
+		// e.setAge(13);
+		// e.setName("entity1");
+		//
+		// TestEmbededEntity eslave1 = new TestEmbededEntity();
+		// eslave1.setAge(5);
+		// eslave1.setName("eslave1");
+		// TestEmbededEntity eslave2 = new TestEmbededEntity();
+		// eslave2.setAge(99);
+		// eslave2.setName("eslave2");
+		// TestEmbededEntity eslave3 = new TestEmbededEntity();
+		// eslave3.setAge(8);
+		// eslave3.setName("eslave3");
+		// List<TestEmbededEntity> list = new ArrayList<>();
+		// list.add(eslave1);
+		// list.add(eslave2);
+		// list.add(eslave3);
+		// e.setEntities(list);
+		// SaveHelper.saveToXml(e, "test");
+
 		Centurion c = new Centurion();
 		Dishonored d = new Dishonored();
 		Priest pr = new Priest();
@@ -78,8 +77,9 @@ public class Test {
 		SaveHelper.saveCharToXml(d, "dishonored");
 		SaveHelper.saveCharToXml(pr, "priest");
 		SaveHelper.saveCharToXml(p, "purifier");
-
-		
+		GameLoader.loadHeroData();
+		c = (Centurion) CharacterFactory.spawnCharByClass(Centurion.class);
+		printCharacterShortInfo(c);
 	}
 
 	@XmlRootElement
@@ -115,11 +115,11 @@ public class Test {
 			this.entities = entities;
 		}
 	}
-	
+
 	@XmlRootElement
-	private static class TestEntityDerived extends TestEntity{
+	private static class TestEntityDerived extends TestEntity {
 		private String kekField;
-		
+
 	}
 
 	@XmlRootElement
@@ -127,7 +127,6 @@ public class Test {
 		private int age;
 		private String name;
 
-		
 		public int getAge() {
 			return age;
 		}
@@ -135,7 +134,6 @@ public class Test {
 		public void setAge(int age) {
 			this.age = age;
 		}
-
 
 		public String getName() {
 			return name;
@@ -166,7 +164,7 @@ public class Test {
 		printPartyInfo(p2);
 		Hero h = CharacterFactory.spawnRandomHero();
 		printCharacterFullInfo(h);
-		Hero h1 = (Hero) CharacterFactory.spawnConcreteCharacter(HeroClass.CENTURION);
+		Hero h1 = (Hero) CharacterFactory.spawnCharByType(HeroClass.CENTURION);
 		printCharacterFullInfo(h1);
 	}
 
@@ -177,26 +175,26 @@ public class Test {
 	}
 
 	public static void testAvaliableMovements() {
-//		Party p = new Party();
-//		p.addMember(new UberHeroTest("Henry0"));
-//		p.addMember(new UberHeroTest("Henry1"));
-//		p.addMember(new UberHeroTest("Henry2"));
-//		p.addMember(new UberHeroTest("Henry3"));
-//		p.getAvaliableMovements(p.getMemberByPos(0));
+		// Party p = new Party();
+		// p.addMember(new UberHeroTest("Henry0"));
+		// p.addMember(new UberHeroTest("Henry1"));
+		// p.addMember(new UberHeroTest("Henry2"));
+		// p.addMember(new UberHeroTest("Henry3"));
+		// p.getAvaliableMovements(p.getMemberByPos(0));
 	}
 
 	public static void testEquipping() {
-//		TestTrinketCommon tt = new TestTrinketCommon();
-//		UberHeroTest uber = new UberHeroTest("Henry");
-//		uber.equip(tt);
-//		printCharacterFullInfo(uber);
-//		uber.unequip(tt);
-//		printCharacterFullInfo(uber);
+		// TestTrinketCommon tt = new TestTrinketCommon();
+		// UberHeroTest uber = new UberHeroTest("Henry");
+		// uber.equip(tt);
+		// printCharacterFullInfo(uber);
+		// uber.unequip(tt);
+		// printCharacterFullInfo(uber);
 	}
 
 	public static void initializeCombat() {
-//		Party goodP = new Party();
-//		goodP.addMember(new UberHeroTest("Hero1"));
+		// Party goodP = new Party();
+		// goodP.addMember(new UberHeroTest("Hero1"));
 		// goodP.addMember(new UberHeroTest("Hero2"));
 		// goodP.addMember(new UberHeroTest("Hero3"));
 		// goodP.addMember(new UberHeroTest("Hero4"));
@@ -209,7 +207,7 @@ public class Test {
 
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
 			System.out.println("Turn #" + turnCount);
-		//	battleTurn(goodP, badP);
+			// battleTurn(goodP, badP);
 			turnCount++;
 		}
 	}
