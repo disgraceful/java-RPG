@@ -9,13 +9,16 @@ import java.util.Scanner;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.disgrace.ddripoff.characters.enemies.OutcastCrossbowman;
+import com.disgrace.ddripoff.characters.enemies.OutcastKnight;
+import com.disgrace.ddripoff.characters.enemies.OutcastSwordsman;
 import com.disgrace.ddripoff.characters.enemies.TestingDummy;
+import com.disgrace.ddripoff.characters.heroes.Centurion;
 import com.disgrace.ddripoff.characters.heroes.Dishonored;
 import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.Priest;
 import com.disgrace.ddripoff.characters.heroes.Purifier;
-import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.dungeon.Desert;
@@ -24,9 +27,7 @@ import com.disgrace.ddripoff.dungeon.DungeonEventSpawner;
 import com.disgrace.ddripoff.dungeon.DungeonSize;
 import com.disgrace.ddripoff.items.ConsumableType;
 import com.disgrace.ddripoff.items.Item;
-import com.disgrace.ddripoff.items.TestTrinketCommon;
 import com.disgrace.ddripoff.items.Trinket;
-import com.disgrace.ddripoff.main.GameLoader;
 import com.disgrace.ddripoff.spawn.CharacterFactory;
 import com.disgrace.ddripoff.spawn.ItemFactory;
 import com.disgrace.ddripoff.spawn.PartySpawnPatternEnumeration;
@@ -63,9 +64,17 @@ public class Test {
 		
 		
 		//GameLoader.loadHeroData();
+		Centurion c = new Centurion();
 		Dishonored d = new Dishonored();
 		Priest pr = new Priest();
 		Purifier p = new Purifier();
+		OutcastCrossbowman oc = new OutcastCrossbowman();
+		OutcastKnight ok = new OutcastKnight();
+		OutcastSwordsman os = new OutcastSwordsman();
+		SaveHelper.saveCharToXml(oc, "outcast_crossbowman");
+		SaveHelper.saveCharToXml(ok, "outcast_knight");
+		SaveHelper.saveCharToXml(os, "outcast_swordsman");
+		SaveHelper.saveCharToXml(c, "centurion");
 		SaveHelper.saveCharToXml(d, "dishonored");
 		SaveHelper.saveCharToXml(pr, "priest");
 		SaveHelper.saveCharToXml(p, "purifier");

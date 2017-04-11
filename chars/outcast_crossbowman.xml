@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<purifier>
-    <name>Purifier</name>
+<outcastCrossbowman>
+    <name>Outcast Crossbowman</name>
     <stats>
         <stats>
-            <baseValue>19</baseValue>
-            <curValue>19</curValue>
-            <maxValue>19</maxValue>
+            <baseValue>10</baseValue>
+            <curValue>10</curValue>
+            <maxValue>10</maxValue>
             <temporary>false</temporary>
             <type>HEALTH</type>
         </stats>
         <stats>
-            <baseValue>5</baseValue>
-            <curValue>5</curValue>
+            <baseValue>9</baseValue>
+            <curValue>9</curValue>
             <maxValue>50</maxValue>
             <temporary>false</temporary>
             <type>DODGE</type>
         </stats>
         <stats>
-            <baseValue>5</baseValue>
-            <curValue>5</curValue>
+            <baseValue>0</baseValue>
+            <curValue>0</curValue>
             <maxValue>100</maxValue>
             <temporary>false</temporary>
             <type>PHYS_PROT</type>
@@ -38,15 +38,15 @@
             <type>SPEED</type>
         </stats>
         <stats>
-            <baseValue>5</baseValue>
-            <curValue>5</curValue>
+            <baseValue>7</baseValue>
+            <curValue>7</curValue>
             <maxValue>100</maxValue>
             <temporary>false</temporary>
             <type>ACC</type>
         </stats>
         <stats>
-            <baseValue>5</baseValue>
-            <curValue>5</curValue>
+            <baseValue>0</baseValue>
+            <curValue>0</curValue>
             <maxValue>100</maxValue>
             <temporary>false</temporary>
             <type>CRIT_CHANCE</type>
@@ -59,8 +59,8 @@
             <type>DEATH_RES</type>
         </stats>
         <stats>
-            <baseValue>30</baseValue>
-            <curValue>30</curValue>
+            <baseValue>50</baseValue>
+            <curValue>50</curValue>
             <maxValue>220</maxValue>
             <temporary>false</temporary>
             <type>MOVE_RES</type>
@@ -73,15 +73,15 @@
             <type>BLEED_RES</type>
         </stats>
         <stats>
-            <baseValue>40</baseValue>
-            <curValue>40</curValue>
+            <baseValue>30</baseValue>
+            <curValue>30</curValue>
             <maxValue>220</maxValue>
             <temporary>false</temporary>
             <type>BLIGHT_RES</type>
         </stats>
         <stats>
-            <baseValue>60</baseValue>
-            <curValue>60</curValue>
+            <baseValue>30</baseValue>
+            <curValue>30</curValue>
             <maxValue>220</maxValue>
             <temporary>false</temporary>
             <type>DEBUFF_RES</type>
@@ -150,5 +150,4 @@
             <type>DEBUFF_CHANCE</type>
         </stats>
     </stats>
-    <heroClass>PURFIER</heroClass>
-</purifier>
+</outcastCrossbowman>
