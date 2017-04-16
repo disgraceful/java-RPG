@@ -11,7 +11,7 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-@XmlRootElement
+
 public class UberHeroTest extends Hero {
 
 	public UberHeroTest() {
@@ -45,7 +45,7 @@ public class UberHeroTest extends Hero {
 				add(new Stat(StatEnumeration.DEBUFF_CHANCE, 0, 220));
 			}
 		});
-//		allAbilities.add(new TestDamage());
+		allAbilities.add(new TestDamage());
 //		allAbilities.add(new TestDamage2());
 //		allAbilities.add(new TestUtility());
 	}

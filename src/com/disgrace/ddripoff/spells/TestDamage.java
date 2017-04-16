@@ -21,8 +21,8 @@ public class TestDamage extends OffensiveSpell {
 		damageType = DamageType.PHYSICAL;
 		targetQuantity = SpellTargetQuantity.SINGLE;
 		abilityStats = new StatWrapper(new Stat(StatEnumeration.DAMAGE_MOD,-20),new Stat(StatEnumeration.ACC,90),new Stat(StatEnumeration.CRIT_MOD,50));
-		applyingEffects.add(new TestDOT());
-		applyingEffects.add(new TestStun());
+		//applyingEffects.add(new TestDOT());
+		//applyingEffects.add(new TestStun());
 		//selfApplyingEffects.add(new TestMove());
 		callerRequiredPos = new SpellPositionWrapper(0,1,2,3);
 		targetRequiredPos = new SpellPositionWrapper(0,1);		

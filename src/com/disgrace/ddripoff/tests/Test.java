@@ -6,9 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.disgrace.ddripoff.characters.enemies.OutcastCrossbowman;
 import com.disgrace.ddripoff.characters.enemies.OutcastKnight;
 import com.disgrace.ddripoff.characters.enemies.OutcastSwordsman;
@@ -19,6 +16,7 @@ import com.disgrace.ddripoff.characters.heroes.Hero;
 import com.disgrace.ddripoff.characters.heroes.HeroClass;
 import com.disgrace.ddripoff.characters.heroes.Priest;
 import com.disgrace.ddripoff.characters.heroes.Purifier;
+import com.disgrace.ddripoff.characters.heroes.UberHeroTest;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.characters.shared.Party;
 import com.disgrace.ddripoff.dungeon.Desert;
@@ -43,26 +41,10 @@ public class Test {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TestEntityDerived e = new TestEntityDerived();
-		// e.setAge(13);
-		// e.setName("entity1");
-		//
-		// TestEmbededEntity eslave1 = new TestEmbededEntity();
-		// eslave1.setAge(5);
-		// eslave1.setName("eslave1");
-		// TestEmbededEntity eslave2 = new TestEmbededEntity();
-		// eslave2.setAge(99);
-		// eslave2.setName("eslave2");
-		// TestEmbededEntity eslave3 = new TestEmbededEntity();
-		// eslave3.setAge(8);
-		// eslave3.setName("eslave3");
-		// List<TestEmbededEntity> list = new ArrayList<>();
-		// list.add(eslave1);
-		// list.add(eslave2);
-		// list.add(eslave3);
-		// e.setEntities(list);
-		// SaveHelper.saveToXml(e, "test");
+		initializeCombat();
+	}
 
+	public static void testXml() {
 		Centurion c = new Centurion();
 		Dishonored d = new Dishonored();
 		Priest pr = new Priest();
@@ -80,68 +62,6 @@ public class Test {
 		GameLoader.loadHeroData();
 		c = (Centurion) CharacterFactory.spawnCharByClass(Centurion.class);
 		printCharacterShortInfo(c);
-	}
-
-	@XmlRootElement
-	private static abstract class TestEntity {
-		private int age;
-		private String name;
-		private List<TestEmbededEntity> entities;
-
-		@XmlElement
-		public int getAge() {
-			return age;
-		}
-
-		public void setAge(int age) {
-			this.age = age;
-		}
-
-		@XmlElement
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		@XmlElement
-		public List<TestEmbededEntity> getEntities() {
-			return entities;
-		}
-
-		public void setEntities(List<TestEmbededEntity> entities) {
-			this.entities = entities;
-		}
-	}
-
-	@XmlRootElement
-	private static class TestEntityDerived extends TestEntity {
-		private String kekField;
-
-	}
-
-	@XmlRootElement
-	private static class TestEmbededEntity {
-		private int age;
-		private String name;
-
-		public int getAge() {
-			return age;
-		}
-
-		public void setAge(int age) {
-			this.age = age;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
 	}
 
 	public static void testDungeonBuilder() {
@@ -193,21 +113,41 @@ public class Test {
 	}
 
 	public static void initializeCombat() {
-		// Party goodP = new Party();
-		// goodP.addMember(new UberHeroTest("Hero1"));
-		// goodP.addMember(new UberHeroTest("Hero2"));
-		// goodP.addMember(new UberHeroTest("Hero3"));
-		// goodP.addMember(new UberHeroTest("Hero4"));
+		Party goodP = new Party();
+		goodP.addMember(new UberHeroTest() {
+			@Override
+			public String getName() {
+				return "Henry1";
+			}
+		});
+		// goodP.addMember(new UberHeroTest(){
+		// @Override
+		// public String getName() {
+		// return "Henry2";
+		// }
+		// });
+		// goodP.addMember(new UberHeroTest(){
+		// @Override
+		// public String getName() {
+		// return "Henry3";
+		// }
+		// });
+		// goodP.addMember(new UberHeroTest(){
+		// @Override
+		// public String getName() {
+		// return "Henry4";
+		// }
+		// });
 		Party badP = new Party();
 		badP.addMember(new TestingDummy("Dum1"));
-		// badP.addMember(new TestingDummy("Dum2"));
+		badP.addMember(new TestingDummy("Dum2"));
 		// badP.addMember(new TestingDummy("Dum3"));
 		// badP.addMember(new TestingDummy("Dum4"));
 		int turnCount = 1;
 
 		while (!badP.isPartyDead() || !badP.isPartyEmpty()) {
 			System.out.println("Turn #" + turnCount);
-			// battleTurn(goodP, badP);
+			battleTurn(goodP, badP);
 			turnCount++;
 		}
 	}
@@ -260,7 +200,7 @@ public class Test {
 				} else if (input == 8) {
 					System.out.println("Not avaliable");
 				} else if (input == 9) {
-					continue;
+					break;
 				} else if (input > spellamount) {
 					System.out.println("Invalid action");
 				} else {

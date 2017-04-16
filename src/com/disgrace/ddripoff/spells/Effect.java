@@ -9,8 +9,8 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 
 @XmlRootElement
 public abstract class Effect implements Serializable {
-	String description;
-	StatWrapper effectStats;
+	protected String description;
+	protected StatWrapper effectStats;
 
 	public StatWrapper getEffectStats() {
 		return effectStats;
