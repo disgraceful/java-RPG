@@ -26,7 +26,6 @@ public class CalculationHelper {
 	}
 
 	public static int getRandomInt(int bound) {
-
 		int result = ThreadLocalRandom.current().nextInt(bound);
 		LOG.info("Rand int up to  " + bound + " = " + Integer.toString(result));
 		return result;

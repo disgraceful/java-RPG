@@ -15,6 +15,8 @@ public abstract class Spell {
 	protected String description;
 	protected SpellOrientation orientation;
 	protected SpellTargetQuantity targetQuantity;
+	protected DamageType damageType;
+	protected AttackType attackType;
 	protected StatWrapper abilityStats;
 	protected List<Effect> applyingEffects = new ArrayList<>();
 	protected List<Effect> selfApplyingEffects = new ArrayList<>();
@@ -71,6 +73,22 @@ public abstract class Spell {
 
 	public void setTargetQuantity(SpellTargetQuantity targetQuantity) {
 		this.targetQuantity = targetQuantity;
+	}
+
+	public DamageType getDamageType() {
+		return damageType;
+	}
+
+	public void setDamageType(DamageType damageType) {
+		this.damageType = damageType;
+	}
+
+	public AttackType getRange() {
+		return attackType;
+	}
+
+	public void setRange(AttackType range) {
+		this.attackType = range;
 	}
 
 	public StatWrapper getAbilityStats() {

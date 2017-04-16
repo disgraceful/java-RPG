@@ -17,7 +17,7 @@ public class TestDamage extends OffensiveSpell {
 		super.initSpell();
 		name ="Just Damaging Spell";
 		description="Description: Damages an opponent! (With Weak DOT!)";
-		range = RangeType.MELEE;
+		attackType = AttackType.MELEE;
 		damageType = DamageType.PHYSICAL;
 		targetQuantity = SpellTargetQuantity.SINGLE;
 		abilityStats = new StatWrapper(new Stat(StatEnumeration.DAMAGE_MOD,-20),new Stat(StatEnumeration.ACC,90),new Stat(StatEnumeration.CRIT_MOD,50));
