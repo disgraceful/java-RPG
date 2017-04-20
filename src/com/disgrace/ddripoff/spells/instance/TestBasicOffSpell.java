@@ -1,5 +1,11 @@
-package com.disgrace.ddripoff.spells;
+package com.disgrace.ddripoff.spells.instance;
 
+import com.disgrace.ddripoff.spells.AttackType;
+import com.disgrace.ddripoff.spells.BasicSpell;
+import com.disgrace.ddripoff.spells.DamageType;
+import com.disgrace.ddripoff.spells.SpellOrientation;
+import com.disgrace.ddripoff.spells.SpellPositionWrapper;
+import com.disgrace.ddripoff.spells.SpellTargetQuantity;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;

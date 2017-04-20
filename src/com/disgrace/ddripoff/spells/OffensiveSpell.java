@@ -1,23 +1,16 @@
 package com.disgrace.ddripoff.spells;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.apache.commons.lang.SerializationUtils;
+
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.utils.CalculationHelper;
 
-import java.io.Serializable;
-
-import javax.xml.bind.annotation.XmlRootElement;
-
-import org.apache.commons.lang.SerializationUtils;
-
 @XmlRootElement
-public abstract class OffensiveSpell extends Spell implements Serializable {
-
-	@Override
-	public void initSpell() {
-		orientation = SpellOrientation.OFFENSIVE;
-	}
+public abstract class OffensiveSpell extends Spell  {
 
 	@Override
 	public void useSpell(Character caller, Character... targets) {
@@ -37,18 +30,9 @@ public abstract class OffensiveSpell extends Spell implements Serializable {
 	private Stat calculateDmg(Character caller, Character target) {
 		float damage = CalculationHelper.calcRandomIntWithPercent(getBaseDamage(caller, damageType),
 				SpellConstants.CALC_DISPERSION_25);
-		System.out.println("Randomized Damage: " + damage);
 		damage = isCrit(caller, target) ? (int) (damage * SpellConstants.CRIT_DAMAGE_MULTIPLIER) : damage;
-		System.out.println("Critical Damage: " + damage);
-		// damage*=()
 		damage *= (100 + (getRangeDmgMod(caller) + getAbilityDamageMod())) / 100.0;
-		System.out.println("Range Damage Amplifier: " + getRangeDmgMod(caller));
-		System.out.println("Ability Damage Amplifiers: " + getAbilityDamageMod());
-		System.out
-				.println("Total Damage Increase percent: " + (100 + (getRangeDmgMod(caller) + getAbilityDamageMod())));
-		System.out.println("Damage with Amplifiers: " + damage);
 		damage *= (100 - target.getProperDeffenceValue(damageType)) / 100.0;
-		System.out.println("Damage with defence: " + damage);
 		return new Stat(StatEnumeration.HEALTH, -(int) damage);
 	}
 

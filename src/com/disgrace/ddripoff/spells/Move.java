@@ -6,9 +6,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.StatEnumeration;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 @XmlRootElement
-public abstract class Move extends Effect {
+public class Move extends Effect {
+
+	public Move() {
+	}
+
+	public Move(StatWrapper stats) {
+		this.effectStats = stats;
+	}
 
 	@Override
 	public void applyEffect(Character caller, Character target) {
@@ -18,7 +26,7 @@ public abstract class Move extends Effect {
 			if (isMoveSuccesful(caller, target)) {
 				performMove(caller, target);
 			} else {
-				System.out.println("Resisted!");
+				System.out.println(target.getName() + " resisted the move!");
 			}
 		}
 	}

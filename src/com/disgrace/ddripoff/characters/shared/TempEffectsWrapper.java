@@ -9,7 +9,7 @@ import com.disgrace.ddripoff.spells.DOT;
 import com.disgrace.ddripoff.spells.TemporaryEffect;
 import com.disgrace.ddripoff.spells.TemporaryEffectType;
 @XmlRootElement
-public class CharacterTempEffectsWrapper {
+public class TempEffectsWrapper {
 	protected List<TemporaryEffect> tempEffects = new ArrayList<>();
 
 	public List<TemporaryEffect> getTempEffects() {

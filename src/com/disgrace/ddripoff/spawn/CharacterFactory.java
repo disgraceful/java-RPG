@@ -16,7 +16,8 @@ public class CharacterFactory {
 
 	public static Party spawnPartyByPattern(PartySpawnPattern pattern) {
 		Party p = new Party();
-		pattern.getSpawnTypes().stream().forEach(e -> p.addMember((Enemy) GameLoader.getDataAsOptional(EnemyClass.getRandomEnemyBySpawnType(e)).get()));
+		pattern.getSpawnTypes().stream().forEach(
+				e -> p.addMember((Enemy) GameLoader.getDataAsOptional(EnemyClass.getRandomEnemyBySpawnType(e)).get()));
 		return p;
 	}
 
@@ -32,7 +33,4 @@ public class CharacterFactory {
 		return (Character) GameLoader.getDataAsOptional(cClass.getClassToSpawn()).get();
 	}
 
-	public static <T> Character spawnCharByClass(Class<T> clazz) {
-		return (Character) GameLoader.getDataAsOptional(clazz).get();
-	}
 }

@@ -1,5 +1,6 @@
 package com.disgrace.ddripoff.spells;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,8 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
+
 @XmlRootElement
-public abstract class Spell {
+public abstract class Spell implements Serializable {
 	protected String name;
 	protected String description;
 	protected SpellOrientation orientation;
@@ -58,7 +60,7 @@ public abstract class Spell {
 	public SpellPositionWrapper getTargetRequiredPos() {
 		return targetRequiredPos;
 	}
-	
+
 	public SpellOrientation getOrientation() {
 		return orientation;
 	}
@@ -83,14 +85,6 @@ public abstract class Spell {
 		this.damageType = damageType;
 	}
 
-	public AttackType getRange() {
-		return attackType;
-	}
-
-	public void setRange(AttackType range) {
-		this.attackType = range;
-	}
-
 	public StatWrapper getAbilityStats() {
 		return abilityStats;
 	}
@@ -109,6 +103,14 @@ public abstract class Spell {
 
 	public void setTargetRequiredPos(SpellPositionWrapper targetRequiredPos) {
 		this.targetRequiredPos = targetRequiredPos;
+	}
+
+	public AttackType getAttackType() {
+		return attackType;
+	}
+
+	public void setAttackType(AttackType attackType) {
+		this.attackType = attackType;
 	}
 
 	public boolean isMiss(Character caller, Character target) {
@@ -158,11 +160,11 @@ public abstract class Spell {
 	private boolean isSpellOffensive() {
 		return orientation == SpellOrientation.OFFENSIVE;
 	}
-	
-	public boolean isSpellAOE(){
-		return targetQuantity==SpellTargetQuantity.MULTIPLE;
+
+	public boolean isSpellAOE() {
+		return targetQuantity == SpellTargetQuantity.MULTIPLE;
 	}
-	
+
 	public abstract void useSpell(Character caller, Character... targets);
 
 	public abstract void initSpell();

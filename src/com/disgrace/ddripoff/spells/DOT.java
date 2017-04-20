@@ -8,8 +8,8 @@ import com.disgrace.ddripoff.stats.StatEnumeration;
 @XmlRootElement
 public abstract class DOT extends TemporaryEffect {
 
-	Stat tickDamage;
-	Stat currentTick;
+	protected Stat tickDamage;
+	protected Stat currentTick;
 
 	public Stat getCurrentTick() {
 		return currentTick;

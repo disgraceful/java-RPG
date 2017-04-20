@@ -1,7 +1,5 @@
 package com.disgrace.ddripoff.spells;
 
-import java.io.Serializable;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.disgrace.ddripoff.characters.shared.Character;
@@ -11,7 +9,7 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 import com.disgrace.ddripoff.utils.CalculationHelper;
 
 @XmlRootElement
-public class HealEffect extends Effect implements Serializable {
+public class HealEffect extends Effect {
 
 	public HealEffect() {
 	}

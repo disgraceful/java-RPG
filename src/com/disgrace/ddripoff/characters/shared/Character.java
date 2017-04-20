@@ -17,7 +17,7 @@ public abstract class Character implements Comparable<Character> {
 	protected String name;
 	protected StatWrapper stats;
 
-	protected CharacterTempEffectsWrapper tempEffects = new CharacterTempEffectsWrapper();
+	protected TempEffectsWrapper tempEffects = new TempEffectsWrapper();
 	protected List<Spell> allAbilities = new ArrayList<>();
 	protected Party party;
 
@@ -38,7 +38,7 @@ public abstract class Character implements Comparable<Character> {
 		this.stats = stats;
 	}
 
-	public void setTempEffects(CharacterTempEffectsWrapper tempEffects) {
+	public void setTempEffects(TempEffectsWrapper tempEffects) {
 		this.tempEffects = tempEffects;
 	}
 
@@ -58,7 +58,7 @@ public abstract class Character implements Comparable<Character> {
 		this.party = party;
 	}
 
-	public CharacterTempEffectsWrapper getEffectsWrapper() {
+	public TempEffectsWrapper getEffectsWrapper() {
 		return tempEffects;
 	}
 

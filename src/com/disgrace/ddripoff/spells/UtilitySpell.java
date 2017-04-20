@@ -1,7 +1,5 @@
 package com.disgrace.ddripoff.spells;
 
-import java.io.Serializable;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.SerializationUtils;
@@ -9,12 +7,7 @@ import org.apache.commons.lang.SerializationUtils;
 import com.disgrace.ddripoff.characters.shared.Character;
 
 @XmlRootElement
-public abstract class UtilitySpell extends Spell implements Serializable {
-
-	@Override
-	public void initSpell() {
-		orientation = SpellOrientation.UTILITY;
-	}
+public abstract class UtilitySpell extends Spell {
 
 	@Override
 	public void useSpell(Character caller, Character... targets) {

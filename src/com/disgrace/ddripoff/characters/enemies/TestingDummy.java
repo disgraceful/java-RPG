@@ -2,8 +2,8 @@ package com.disgrace.ddripoff.characters.enemies;
 
 import java.util.ArrayList;
 
-import com.disgrace.ddripoff.spells.TestBasicOffSpell;
-import com.disgrace.ddripoff.spells.TestBasicSupSpell;
+import com.disgrace.ddripoff.spells.instance.TestBasicOffSpell;
+import com.disgrace.ddripoff.spells.instance.TestBasicSupSpell;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;

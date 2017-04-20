@@ -41,7 +41,8 @@ public class Test {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		initializeCombat();
+		//initializeCombat();
+		testXml();
 	}
 
 	public static void testXml() {
@@ -52,16 +53,15 @@ public class Test {
 		OutcastCrossbowman oc = new OutcastCrossbowman();
 		OutcastKnight ok = new OutcastKnight();
 		OutcastSwordsman os = new OutcastSwordsman();
-		SaveHelper.saveCharToXml(oc, "outcast_crossbowman");
-		SaveHelper.saveCharToXml(ok, "outcast_knight");
-		SaveHelper.saveCharToXml(os, "outcast_swordsman");
+		//SaveHelper.saveCharToXml(oc, "outcast_crossbowman");
+		//SaveHelper.saveCharToXml(ok, "outcast_knight");
+		//SaveHelper.saveCharToXml(os, "outcast_swordsman");
 		SaveHelper.saveCharToXml(c, "centurion");
-		SaveHelper.saveCharToXml(d, "dishonored");
-		SaveHelper.saveCharToXml(pr, "priest");
-		SaveHelper.saveCharToXml(p, "purifier");
-		GameLoader.loadHeroData();
-		c = (Centurion) CharacterFactory.spawnCharByClass(Centurion.class);
-		printCharacterShortInfo(c);
+		//SaveHelper.saveCharToXml(d, "dishonored");
+		//SaveHelper.saveCharToXml(pr, "priest");
+		//SaveHelper.saveCharToXml(p, "purifier");
+		//GameLoader.loadHeroData();
+		//c = (Centurion) CharacterFactory.spawnCharByType(HeroClass.CENTURION);
 	}
 
 	public static void testDungeonBuilder() {
