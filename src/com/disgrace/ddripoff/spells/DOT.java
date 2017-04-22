@@ -5,11 +5,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.disgrace.ddripoff.characters.shared.Character;
 import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
+import com.disgrace.ddripoff.stats.StatWrapper;
+
 @XmlRootElement
-public abstract class DOT extends TemporaryEffect {
+public class DOT extends TemporaryEffect {
 
 	protected Stat tickDamage;
 	protected Stat currentTick;
+
+	public DOT() {
+
+	}
+
+	public DOT(int duration, StatWrapper stats, TemporaryEffectType type) {
+		super(duration, stats, type);
+		tickDamage = effectStats.getStatbyName(StatEnumeration.HEALTH);
+		currentTick = tickDamage;
+	}
 
 	public Stat getCurrentTick() {
 		return currentTick;

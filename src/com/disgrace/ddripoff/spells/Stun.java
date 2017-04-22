@@ -14,10 +14,7 @@ public class Stun extends TemporaryEffect {
 	}
 
 	public Stun(StatWrapper stats) {
-		abilityDuration = 1;
-		currentDuration = abilityDuration;
-		effectType = TemporaryEffectType.STUN;
-		effectStats = stats;
+		super(1, stats, TemporaryEffectType.STUN);
 	}
 
 	@Override

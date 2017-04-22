@@ -1,7 +1,5 @@
 package com.disgrace.ddripoff.spells.instance;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.disgrace.ddripoff.spells.AttackType;
 import com.disgrace.ddripoff.spells.DamageType;
 import com.disgrace.ddripoff.spells.Move;
@@ -13,21 +11,19 @@ import com.disgrace.ddripoff.stats.Stat;
 import com.disgrace.ddripoff.stats.StatEnumeration;
 import com.disgrace.ddripoff.stats.StatWrapper;
 
-@XmlRootElement
-public class CenturionGloriousAssault extends OffensiveSpell  {
-
-	public CenturionGloriousAssault() {
-		name = "Glorious Assault";
-		description = "Centurion swiftly rushes forward, striking the enemy!";
+public class DishonoredChainedDeath extends OffensiveSpell {
+	public DishonoredChainedDeath() {
+		name = "Chained Death";
+		description = "Noone will escape the hook of the unforgiven!";
 		orientation = SpellOrientation.OFFENSIVE;
-		attackType = AttackType.MELEE;
+		attackType = AttackType.RANGE;
 		damageType = DamageType.PHYSICAL;
 		targetQuantity = SpellTargetQuantity.SINGLE;
-		abilityStats = new StatWrapper(new Stat(StatEnumeration.DAMAGE_MOD, 10), new Stat(StatEnumeration.ACC, 65),
-				new Stat(StatEnumeration.CRIT_MOD, 5));
-		selfApplyingEffects.add(new Move(new StatWrapper(new Stat(StatEnumeration.MOVE_SPELL_POSITION, 2))));
-		callerRequiredPos = new SpellPositionWrapper(0, 1,2);
-		targetRequiredPos = new SpellPositionWrapper(0, 1,2);
+		abilityStats = new StatWrapper(new Stat(StatEnumeration.DAMAGE_MOD, -55), new Stat(StatEnumeration.ACC, 80),
+				new Stat(StatEnumeration.CRIT_MOD, 0));
+		applyingEffects.add(new Move(new StatWrapper(new Stat(StatEnumeration.MOVE_CHANCE, 120),
+				new Stat(StatEnumeration.MOVE_SPELL_POSITION, 2))));
+		callerRequiredPos = new SpellPositionWrapper(1, 2);
+		targetRequiredPos = new SpellPositionWrapper(1, 2, 3);
 	}
-
 }

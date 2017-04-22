@@ -167,5 +167,4 @@ public abstract class Spell implements Serializable {
 
 	public abstract void useSpell(Character caller, Character... targets);
 
-	public abstract void initSpell();
 }

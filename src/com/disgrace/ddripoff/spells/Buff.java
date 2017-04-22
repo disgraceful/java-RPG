@@ -14,10 +14,7 @@ public class Buff extends TemporaryEffect {
 	}
 
 	public Buff(int duration, StatWrapper stats) {
-		abilityDuration = duration;
-		currentDuration = abilityDuration;
-		effectType = TemporaryEffectType.BUFF;
-		effectStats = stats;
+		super(duration, stats, TemporaryEffectType.BUFF);
 	}
 
 	@Override

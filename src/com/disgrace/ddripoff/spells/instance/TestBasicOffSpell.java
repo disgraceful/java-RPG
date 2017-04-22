@@ -13,11 +13,6 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 public class TestBasicOffSpell extends BasicSpell {
 
 	public TestBasicOffSpell() {
-		initSpell();
-	}
-
-	@Override
-	public void initSpell() {
 		name = "Just Damaging Spell for Enemies";
 		description = "Description: Damages an opponent!";
 		attackType = AttackType.MELEE;

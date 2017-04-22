@@ -33,10 +33,6 @@ public class CenturionShieldSlam extends OffensiveSpell {
 		targetRequiredPos = new SpellPositionWrapper(0, 1);
 	}
 
-	@Override
-	public void initSpell() {
-	
 
-	}
 
 }

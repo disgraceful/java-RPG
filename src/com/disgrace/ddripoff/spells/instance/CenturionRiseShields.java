@@ -14,11 +14,6 @@ import com.disgrace.ddripoff.stats.StatWrapper;
 @XmlRootElement
 public class CenturionRiseShields extends UtilitySpell {
 	public CenturionRiseShields() {
-		initSpell();
-	}
-
-	@Override
-	public void initSpell() {
 		name = "Rise Shields";
 		description = "Centurion commands his men to take deffensive formation!";
 		targetQuantity = SpellTargetQuantity.MULTIPLE;
@@ -28,4 +23,6 @@ public class CenturionRiseShields extends UtilitySpell {
 		callerRequiredPos = new SpellPositionWrapper(0);
 		targetRequiredPos = new SpellPositionWrapper(0, 1, 2, 3);
 	}
+
+	
 }

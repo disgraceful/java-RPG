@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.disgrace.ddripoff.characters.shared.Character;
+import com.disgrace.ddripoff.stats.StatWrapper;
 
 @XmlRootElement
 public abstract class TemporaryEffect extends Effect {
@@ -12,6 +13,18 @@ public abstract class TemporaryEffect extends Effect {
 	protected int currentDuration;
 	protected TemporaryEffectType effectType;
 
+	
+	public TemporaryEffect(){
+		
+	}
+	
+	public TemporaryEffect(int duration, StatWrapper stats,TemporaryEffectType type){
+		abilityDuration = duration;
+		currentDuration = abilityDuration;
+		effectType = type;
+		effectStats = stats;
+	}
+	
 	public int getCurrentDuration() {
 		return currentDuration;
 	}

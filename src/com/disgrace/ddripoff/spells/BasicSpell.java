@@ -14,7 +14,7 @@ public abstract class BasicSpell extends Spell {
 		for (Character target : targets) {
 			if (!isMiss(target)) {
 				if (attackType != AttackType.SUPPORT) {
-					Stat damage = calculateDamage(target);
+					Stat damage = calculateDamage(caller,target);
 					target.updateStats(damage);
 				}
 				applyingEffects.stream()
@@ -37,8 +37,9 @@ public abstract class BasicSpell extends Spell {
 		return hitChance > trueAcc ? true : false;
 	}
 
-	private Stat calculateDamage(Character target) {
+	private Stat calculateDamage(Character caller,Character target) {
 		double damage = abilityStats.getStatbyName(StatEnumeration.DAMAGE).getCurValue();
+		damage*=((100+caller.getStatbyName(StatEnumeration.DAMAGE_MOD).getCurValue())/100);
 		damage = CalculationHelper.calcRandomIntWithPercent((int) damage, SpellConstants.CALC_DISPERSION_25);
 		damage = calcCrit(damage);
 		damage *= (100 - target.getProperDeffenceValue(damageType)) / 100.0;

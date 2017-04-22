@@ -13,10 +13,6 @@ import com.disgrace.ddripoff.utils.CalculationHelper;
 @XmlRootElement
 public abstract class DeffensiveSpell extends Spell implements Serializable{
 
-	@Override
-	public void initSpell() {
-		orientation = SpellOrientation.DEFFENSIVE;
-	}
 
 	@Override
 	public void useSpell(Character caller, Character... targets) {
