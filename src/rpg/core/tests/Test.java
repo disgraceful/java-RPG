@@ -60,13 +60,6 @@ public final class Test {
 		coach = (MercenaryCoach) SaveHelper.loadExtraFromXml("example", MercenaryCoach.class);
 	}
 
-	public static void testDungeonBuilder() {
-		Desert d = new Desert(DungeonSize.SMALL);
-		DungeonBuilder dBuilder = new DungeonBuilder(d);
-		dBuilder.build();
-		d.displayEnterablesValue();
-	}
-
 	public static void testItemSpawning() {
 		List<Item> result = ItemFactory.spawnLoot(3);
 		Item i = ItemFactory.spawnConcreteItem(ConsumableType.FOOD);
