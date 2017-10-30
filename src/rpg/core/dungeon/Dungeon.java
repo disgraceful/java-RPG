@@ -145,7 +145,7 @@ public abstract class Dungeon {
 		}
 		return enterables;
 	}
-
+	
 	public void displayRooms() {
 		for (int i = 0; i < size.ybound; i++) {
 			for (int j = 0; j < size.xbound; j++) {

@@ -55,7 +55,7 @@ public abstract class Enterable {
 		return !containsConflictSpawnType(type) && !containsSpawnType(type);
 	}
 
-	private boolean containsSpawnType(SpawnableEventType type) {
+	public boolean containsSpawnType(SpawnableEventType type) {
 		return events.stream().anyMatch(e -> e.getSpawnType() == type);
 	}
 

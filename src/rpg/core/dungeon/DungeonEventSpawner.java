@@ -9,6 +9,7 @@ import rpg.core.utils.CalcHelper;
 
 public class DungeonEventSpawner {
 	private static List<Enterable> alldungEnterables = new ArrayList<>();
+
 	private static int maxFightAmount;
 	private static int minFightAmount;
 	private static Room startRoom;
@@ -35,14 +36,22 @@ public class DungeonEventSpawner {
 		int noFightsCounter = 0;
 		int fightChance = SpawnableEventType.FIGHT.getChance();
 		int curFightChance = fightChance;
+		int fightsInHalway = 0;
 		for (Enterable enterable : alldungEnterables) {
 			if (enterable.equals(startRoom) || startRoom.getNeighbours().contains(enterable)) {
 				continue;
 			}
 			SpawnEvent fight = spawnEventByChance(SpawnableEventType.FIGHT, curFightChance);
-			if (fight != null && enterable.canAddSpawnEvent(fight.getSpawnType())) {
+			if (fight == null) {
+				continue;
+			}
+			if (enterable.canAddSpawnEvent(fight.getSpawnType())) {
+				if (fightsInHalway >= 4) {
+					continue;
+				}
 				enterable.addEvent(fight);
 				fightsInDung++;
+				fightsInHalway++;
 				noFightsCounter = 0;
 				curFightChance = fightChance;
 			} else {
@@ -50,6 +59,9 @@ public class DungeonEventSpawner {
 				if (noFightsCounter >= 3) {
 					curFightChance += 50;
 				}
+			}
+			if (enterable instanceof Room) {
+				fightsInHalway = 0;
 			}
 			if (fightsInDung >= maxFightAmount) {
 				break;
@@ -62,7 +74,7 @@ public class DungeonEventSpawner {
 
 	private static void generateEvents(SpawnableEventType eventType, int spawnChance) {
 		for (Enterable enterable : alldungEnterables) {
-			if (enterable.equals(startRoom) || startRoom.getNeighbours().contains(enterable)) {
+			if (enterable.equals(startRoom)) {
 				continue;
 			}
 			SpawnEvent fight = spawnEventByChance(eventType, eventType.getChance());
@@ -83,4 +95,5 @@ public class DungeonEventSpawner {
 			return null;
 		}
 	}
+
 }
