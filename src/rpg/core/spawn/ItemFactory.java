@@ -29,7 +29,7 @@ public class ItemFactory {
 		List<Item> resultList = new ArrayList<>();
 		while (resultList.size() < amount) {
 			int chanceToDecideSpecificItemType = new Random().nextInt(20);
-			System.out.println("chanceToDecideSpecificItemType: " + chanceToDecideSpecificItemType);
+			//System.out.println("chanceToDecideSpecificItemType: " + chanceToDecideSpecificItemType);
 			resultList.add(spawnRandomItem(chanceToDecideSpecificItemType));
 		}
 		return resultList;
@@ -38,7 +38,7 @@ public class ItemFactory {
 	private static Item spawnRandomItem(int chance) {
 		if (chance < ItemDrop.TRINKET_DROP.getDrop()) {
 			int chanceToDecideConcreteItem = new Random().nextInt(101);
-			System.out.println("chanceToDecideConcreteItem: " + chanceToDecideConcreteItem);
+			//System.out.println("chanceToDecideConcreteItem: " + chanceToDecideConcreteItem);
 			return TrinketType.spawnTrinket(chanceToDecideConcreteItem);
 		} else if (chance < ItemDrop.CONSUMABLE_DROP.getDrop()) {
 			return ConsumableType.spawnConsumable();

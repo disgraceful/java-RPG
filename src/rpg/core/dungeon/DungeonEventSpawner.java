@@ -27,8 +27,8 @@ public class DungeonEventSpawner {
 	public static void generate(Dungeon dungeon) {
 		init(dungeon);
 		generateFights();
-		generateEvents(SpawnableEventType.CURIO, SpawnableEventType.CURIO.getChance());
-		generateEvents(SpawnableEventType.TREASURE, SpawnableEventType.TREASURE.getChance());
+		//generateEvents(SpawnableEventType.CURIO, SpawnableEventType.CURIO.getChance());
+		//generateEvents(SpawnableEventType.TREASURE, SpawnableEventType.TREASURE.getChance());
 	}
 
 	private static void generateFights() {
