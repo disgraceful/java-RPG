@@ -50,7 +50,6 @@ public class Corridor {
 		System.out.println("Corridor " + this.hashCode() + " unites ");
 		begin.display();
 		end.display();
-
 	}
 
 	public boolean isSameCorridor(Corridor corridor) {

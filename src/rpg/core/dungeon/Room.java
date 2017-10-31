@@ -72,7 +72,7 @@ public class Room extends Enterable implements Neighbour {
 
 	@Override
 	public void display() {
-		System.out.println("Room " + adds.y + " " + adds.x);
+		System.out.println("Room " + adds.x + " " + adds.y);
 	}
 
 	public void displayCorridors() {

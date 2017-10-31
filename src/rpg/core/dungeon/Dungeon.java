@@ -168,11 +168,17 @@ public abstract class Dungeon {
 	}
 
 	public void displayEnterablesValue() {
+		List<Corridor>enterables = new ArrayList<>();
 		for (Room e : getEnterableRooms()) {
 			e.display();
 			System.out.println(e.getEvents());
 			for (Corridor c : e.getCorridors()) {
-				c.display();
+				if(!enterables.contains(c)){
+					c.display();
+					enterables.add(c);
+				}else{
+					continue;
+				}
 				for (CorridorSection cs : c.getSections()) {
 					System.out.println(cs.getEvents());
 				}

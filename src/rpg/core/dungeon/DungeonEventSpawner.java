@@ -38,6 +38,7 @@ public class DungeonEventSpawner {
 		int curFightChance = fightChance;
 		int fightsInHalway = 0;
 		for (Enterable enterable : alldungEnterables) {
+			//TODO not ROOOM neighbor but corridor first section.
 			if (enterable.equals(startRoom) || startRoom.getNeighbours().contains(enterable)) {
 				continue;
 			}
@@ -77,9 +78,9 @@ public class DungeonEventSpawner {
 			if (enterable.equals(startRoom)) {
 				continue;
 			}
-			SpawnEvent fight = spawnEventByChance(eventType, eventType.getChance());
-			if (fight != null && enterable.canAddSpawnEvent(fight.getSpawnType())) {
-				enterable.addEvent(fight);
+			SpawnEvent event = spawnEventByChance(eventType, eventType.getChance());
+			if (event != null && enterable.canAddSpawnEvent(event.getSpawnType())) {
+				enterable.addEvent(event);
 			}
 		}
 	}
@@ -95,5 +96,5 @@ public class DungeonEventSpawner {
 			return null;
 		}
 	}
-
+	
 }
