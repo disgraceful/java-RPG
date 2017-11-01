@@ -27,8 +27,10 @@ public class DungeonEventSpawner {
 	public static void generate(Dungeon dungeon) {
 		init(dungeon);
 		generateFights();
-		//generateEvents(SpawnableEventType.CURIO, SpawnableEventType.CURIO.getChance());
-		//generateEvents(SpawnableEventType.TREASURE, SpawnableEventType.TREASURE.getChance());
+		// generateEvents(SpawnableEventType.CURIO,
+		// SpawnableEventType.CURIO.getChance());
+		// generateEvents(SpawnableEventType.TREASURE,
+		// SpawnableEventType.TREASURE.getChance());
 	}
 
 	private static void generateFights() {
@@ -36,23 +38,18 @@ public class DungeonEventSpawner {
 		int noFightsCounter = 0;
 		int fightChance = SpawnableEventType.FIGHT.getChance();
 		int curFightChance = fightChance;
-		int fightsInHalway = 0;
+		int fightsInHallway = 0;
 		for (Enterable enterable : alldungEnterables) {
-			//TODO not ROOOM neighbor but corridor first section.
-			if (enterable.equals(startRoom) || startRoom.getNeighbours().contains(enterable)) {
-				continue;
+			enterable.display();
+			if (enterable instanceof Room) {
+				fightsInHallway = 0;
+				curFightChance+=25;
 			}
 			SpawnEvent fight = spawnEventByChance(SpawnableEventType.FIGHT, curFightChance);
-			if (fight == null) {
-				continue;
-			}
-			if (enterable.canAddSpawnEvent(fight.getSpawnType())) {
-				if (fightsInHalway >= 4) {
-					continue;
-				}
+			if (canAddEvent(enterable, fight) && fightsInHallway < 4) {
 				enterable.addEvent(fight);
 				fightsInDung++;
-				fightsInHalway++;
+				fightsInHallway++;
 				noFightsCounter = 0;
 				curFightChance = fightChance;
 			} else {
@@ -61,16 +58,19 @@ public class DungeonEventSpawner {
 					curFightChance += 50;
 				}
 			}
-			if (enterable instanceof Room) {
-				fightsInHalway = 0;
-			}
 			if (fightsInDung >= maxFightAmount) {
 				break;
 			}
+			System.out.println(enterable.events);
 		}
 		if (fightsInDung < minFightAmount) {
 			generateFights();
 		}
+	}
+
+	private static boolean canAddEvent(Enterable enterable, SpawnEvent event) {
+		return !(enterable.equals(startRoom) || checkFirstSection(startRoom, enterable)) && event != null
+				&& enterable.canAddSpawnEvent(event.getSpawnType());
 	}
 
 	private static void generateEvents(SpawnableEventType eventType, int spawnChance) {
@@ -96,5 +96,9 @@ public class DungeonEventSpawner {
 			return null;
 		}
 	}
-	
+
+	private static boolean checkFirstSection(Room room, Enterable enterable) {
+		return room.getCorridors().stream().anyMatch(e -> e.getSections().get(0).equals(enterable));
+	}
+
 }

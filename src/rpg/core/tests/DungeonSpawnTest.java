@@ -21,7 +21,7 @@ public class DungeonSpawnTest {
 	@Test
 	public void testEventSpawner() {
 		DungeonEventSpawner.generate(dung);
-		dung.displayEnterablesValue();
+		//dung.displayEnterablesValue();
 	}
 
 	private static void testFightSpawns() {
