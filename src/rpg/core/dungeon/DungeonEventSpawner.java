@@ -9,7 +9,6 @@ import rpg.core.utils.CalcHelper;
 
 public class DungeonEventSpawner {
 	private static List<Enterable> alldungEnterables = new ArrayList<>();
-
 	private static int maxFightAmount;
 	private static int minFightAmount;
 	private static Room startRoom;
@@ -27,10 +26,8 @@ public class DungeonEventSpawner {
 	public static void generate(Dungeon dungeon) {
 		init(dungeon);
 		generateFights();
-		// generateEvents(SpawnableEventType.CURIO,
-		// SpawnableEventType.CURIO.getChance());
-		// generateEvents(SpawnableEventType.TREASURE,
-		// SpawnableEventType.TREASURE.getChance());
+		generateEvents(SpawnableEventType.TREASURE);
+		generateEvents(SpawnableEventType.CURIO);
 	}
 
 	private static void generateFights() {
@@ -40,10 +37,9 @@ public class DungeonEventSpawner {
 		int curFightChance = fightChance;
 		int fightsInHallway = 0;
 		for (Enterable enterable : alldungEnterables) {
-			enterable.display();
 			if (enterable instanceof Room) {
 				fightsInHallway = 0;
-				curFightChance+=25;
+				curFightChance += 25;
 			}
 			SpawnEvent fight = spawnEventByChance(SpawnableEventType.FIGHT, curFightChance);
 			if (canAddEvent(enterable, fight) && fightsInHallway < 4) {
@@ -61,28 +57,27 @@ public class DungeonEventSpawner {
 			if (fightsInDung >= maxFightAmount) {
 				break;
 			}
-			System.out.println(enterable.events);
 		}
 		if (fightsInDung < minFightAmount) {
 			generateFights();
 		}
 	}
 
-	private static boolean canAddEvent(Enterable enterable, SpawnEvent event) {
-		return !(enterable.equals(startRoom) || checkFirstSection(startRoom, enterable)) && event != null
-				&& enterable.canAddSpawnEvent(event.getSpawnType());
-	}
-
-	private static void generateEvents(SpawnableEventType eventType, int spawnChance) {
+	private static void generateEvents(SpawnableEventType eventType) {
 		for (Enterable enterable : alldungEnterables) {
-			if (enterable.equals(startRoom)) {
-				continue;
-			}
 			SpawnEvent event = spawnEventByChance(eventType, eventType.getChance());
-			if (event != null && enterable.canAddSpawnEvent(event.getSpawnType())) {
+			if (enterable instanceof Room) {
+				event = spawnEventByChance(eventType, eventType.getChance() + 25);
+			}
+			if (canAddEvent(enterable, event)) {
 				enterable.addEvent(event);
 			}
 		}
+	}
+
+	private static boolean canAddEvent(Enterable enterable, SpawnEvent event) {
+		return !(enterable.equals(startRoom) || checkFirstSection(startRoom, enterable)) && event != null
+				&& enterable.canAddSpawnEvent(event.getSpawnType());
 	}
 
 	private static SpawnEvent spawnEventByChance(SpawnableEventType eventType, int chance) {

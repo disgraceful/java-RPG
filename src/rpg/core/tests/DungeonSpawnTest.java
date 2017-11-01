@@ -1,13 +1,13 @@
 package rpg.core.tests;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import rpg.core.dungeon.Desert;
 import rpg.core.dungeon.DungeonBuilder;
 import rpg.core.dungeon.DungeonEventSpawner;
 import rpg.core.dungeon.DungeonSize;
 import rpg.core.spawn.CharacterFactory;
-
-import org.junit.Before;
-import org.junit.Test;
 
 
 public class DungeonSpawnTest {
@@ -21,7 +21,7 @@ public class DungeonSpawnTest {
 	@Test
 	public void testEventSpawner() {
 		DungeonEventSpawner.generate(dung);
-		//dung.displayEnterablesValue();
+		dung.displayEnterablesValue();
 	}
 
 	private static void testFightSpawns() {

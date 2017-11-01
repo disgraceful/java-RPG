@@ -61,7 +61,7 @@ public abstract class Enterable {
 
 	private boolean containsConflictSpawnType(SpawnableEventType type) {
 		return (type == SpawnableEventType.CURIO && containsSpawnType(SpawnableEventType.TREASURE))
-				|| (type == SpawnableEventType.TREASURE && containsSpawnType(SpawnableEventType.TREASURE));
+				|| (type == SpawnableEventType.TREASURE && containsSpawnType(SpawnableEventType.CURIO));
 	}
 
 	public void displayUntriggeredEvents() {
