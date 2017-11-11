@@ -23,6 +23,10 @@ public class CharacterFactory {
 	public static Party spawnRandomParty() {
 		return spawnPartyByPattern(PartySpawnPatternEnumeration.getRandomPattern());
 	}
+	
+	public static Party spawnPartyByPartyStrengh(PartyType type){
+		return spawnPartyByPattern(PartySpawnPatternEnumeration.getRandomPatternByStrength(type));
+	}
 
 	public static Hero spawnRandomHero() {
 		return (Hero) GameLoader.getInstance().getDataByClass(HeroClass.getRandomValue().getClassToSpawn());
@@ -31,5 +35,4 @@ public class CharacterFactory {
 	public static Character spawnCharByType(CharClass cClass) {
 		return (Character) GameLoader.getInstance().getDataByClass(cClass.getClassToSpawn());
 	}
-
 }

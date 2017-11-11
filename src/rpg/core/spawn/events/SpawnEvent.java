@@ -17,4 +17,5 @@ public abstract class SpawnEvent {
 	}
 
 	public abstract void trigger();
+
 }

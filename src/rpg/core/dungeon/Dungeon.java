@@ -2,14 +2,13 @@ package rpg.core.dungeon;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import rpg.core.spawn.events.Fight;
+import rpg.core.spawn.events.SpawnEvent;
+import rpg.core.spawn.events.SpawnableEventType;
 
 public abstract class Dungeon {
 	protected DungeonType dungType;
@@ -145,7 +144,7 @@ public abstract class Dungeon {
 		}
 		return enterables;
 	}
-	
+
 	public void displayRooms() {
 		for (int i = 0; i < size.ybound; i++) {
 			for (int j = 0; j < size.xbound; j++) {
@@ -168,22 +167,32 @@ public abstract class Dungeon {
 	}
 
 	public void displayEnterablesValue() {
-		List<Corridor>enterables = new ArrayList<>();
-		for (Room e : getEnterableRooms()) {
-			e.display();
-			System.out.println(e.getEvents());
-			for (Corridor c : e.getCorridors()) {
-				if(!enterables.contains(c)){
-					c.display();
+		List<Corridor> enterables = new ArrayList<>();
+		for (Room room : getEnterableRooms()) {
+			displayEnterable(room);
+			for (Corridor c : room.getCorridors()) {
+				if (!enterables.contains(c)) {
 					enterables.add(c);
-				}else{
+				} else {
 					continue;
 				}
 				for (CorridorSection cs : c.getSections()) {
-					System.out.println(cs.getEvents());
+					displayEnterable(cs);
 				}
 			}
 		}
+	}
+
+	public void displayEnterable(Enterable e) {
+		e.display();
+		System.out.println(e.getEvents());
+		for (SpawnEvent event : e.getEvents()) {
+			if (event.getSpawnType() == SpawnableEventType.FIGHT) {
+				Fight fight = (Fight) event;
+				fight.getEnemyParty();
+			}
+		}
+
 	}
 
 }

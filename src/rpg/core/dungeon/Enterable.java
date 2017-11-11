@@ -11,6 +11,7 @@ public abstract class Enterable {
 	protected List<SpawnEvent> events = new ArrayList<>();
 	protected boolean partyHere = false;
 	protected boolean visited = false;
+	protected boolean isKeyEnterable;
 
 	public boolean isPartyHere() {
 		return partyHere;
@@ -36,6 +37,9 @@ public abstract class Enterable {
 		events.add(event);
 	}
 
+	public void setKeyEnterable(boolean key){
+		isKeyEnterable = key;
+	}
 	public void enter() {
 		visited = true;
 		partyHere = true;

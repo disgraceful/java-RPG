@@ -5,19 +5,19 @@ import java.util.Random;
 public enum SpawnableEventType {
 	FIGHT(35) {
 		@Override
-		public SpawnEvent getEvent() {
+		public Fight getEvent() {
 			return new Fight();
 		}
 	},
 	TREASURE(40) {
 		@Override
-		public SpawnEvent getEvent() {
+		public Treasure getEvent() {
 			return new Treasure();
 		}
 	},
 	CURIO(45) {
 		@Override
-		public SpawnEvent getEvent() {
+		public Curio getEvent() {
 			return new Curio();
 		}
 	};
