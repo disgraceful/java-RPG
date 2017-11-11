@@ -1,24 +1,40 @@
 package rpg.core.spawn.events;
 
-import java.util.Random;
+import rpg.core.utils.CalcHelper;
 
 public enum SpawnableEventType {
 	FIGHT(35) {
 		@Override
-		public Fight getEvent() {
-			return new Fight();
+		public SpawnEvent getEvent() {
+			return FightType.getRandomFight().getConcreteEvent();
+		}
+		
+		public SpawnEvent getEvent(SpawnEventParams params){
+			return params.getConcreteEvent();
 		}
 	},
 	TREASURE(40) {
 		@Override
-		public Treasure getEvent() {
+		public SpawnEvent getEvent() {
 			return new Treasure();
+		}
+
+		@Override
+		public SpawnEvent getEvent(SpawnEventParams param) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	},
 	CURIO(45) {
 		@Override
 		public Curio getEvent() {
 			return new Curio();
+		}
+
+		@Override
+		public SpawnEvent getEvent(SpawnEventParams param) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	};
 
@@ -33,8 +49,16 @@ public enum SpawnableEventType {
 	}
 
 	public static SpawnableEventType getRandomValue() {
-		return values()[new Random().nextInt(values().length)];
+		return values()[CalcHelper.getRandomInt(values().length)];
 	}
 
 	public abstract SpawnEvent getEvent();
+	
+	public abstract SpawnEvent getEvent(SpawnEventParams param);
 }
+
+interface SpawnEventParams {
+	SpawnEvent getConcreteEvent();
+}
+
+

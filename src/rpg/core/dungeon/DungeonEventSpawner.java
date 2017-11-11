@@ -3,9 +3,7 @@ package rpg.core.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.core.spawn.CharacterFactory;
-import rpg.core.spawn.PartyType;
-import rpg.core.spawn.events.Fight;
+import rpg.core.spawn.events.FightType;
 import rpg.core.spawn.events.SpawnEvent;
 import rpg.core.spawn.events.SpawnableEventType;
 import rpg.core.utils.CalcHelper;
@@ -44,7 +42,8 @@ public class DungeonEventSpawner {
 			if (canAddEvent(enterable, fight) && fightsInHallway < 4) {
 				if (enterable instanceof Room) {
 					fightsInHallway = 0;
-					curFightChance += 25;
+					fight = SpawnableEventType.FIGHT.getEvent(FightType.TOUGH);
+
 				}
 				enterable.addEvent(fight);
 				fightsInDung++;
@@ -94,7 +93,6 @@ public class DungeonEventSpawner {
 			return null;
 		}
 	}
-
 
 	private static boolean checkFirstSection(Room room, Enterable enterable) {
 		return room.getCorridors().stream().anyMatch(e -> e.getSections().get(0).equals(enterable));

@@ -3,18 +3,14 @@ package rpg.core.spawn;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-
 public class PartySpawnPattern {
 	private List<EnemySpawnType> spawnTypes = new ArrayList<>();
-	private PartyType partyStrength;
 
-	public PartySpawnPattern(List<EnemySpawnType> spawns, PartyType strength) {
+	public PartySpawnPattern(List<EnemySpawnType> spawns) {
 		spawnTypes = spawns;
-		partyStrength = strength;
+
 	}
-	
+
 	public List<EnemySpawnType> getSpawnTypes() {
 		return spawnTypes;
 	}
@@ -25,15 +21,5 @@ public class PartySpawnPattern {
 		}
 		this.spawnTypes = spawnTypes;
 	}
-
-	public PartyType getPartyStrength() {
-		return partyStrength;
-	}
-
-	public void setPartyStrength(PartyType partyStrength) {
-		if (partyStrength != null)
-			this.partyStrength = partyStrength;
-	}
-
 
 }

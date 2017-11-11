@@ -24,9 +24,6 @@ public class CharacterFactory {
 		return spawnPartyByPattern(PartySpawnPatternEnumeration.getRandomPattern());
 	}
 	
-	public static Party spawnPartyByPartyStrengh(PartyType type){
-		return spawnPartyByPattern(PartySpawnPatternEnumeration.getRandomPatternByStrength(type));
-	}
 
 	public static Hero spawnRandomHero() {
 		return (Hero) GameLoader.getInstance().getDataByClass(HeroClass.getRandomValue().getClassToSpawn());
