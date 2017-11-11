@@ -6,7 +6,9 @@ public enum SpawnableEventType {
 	FIGHT(35) {
 		@Override
 		public SpawnEvent getEvent() {
-			return FightType.getRandomFight().getConcreteEvent();
+			Fight fight =(Fight) FightType.getRandomFight().getConcreteEvent();
+			fight.spawnEnemyParty();
+			return fight;
 		}
 		
 		public SpawnEvent getEvent(SpawnEventParams params){

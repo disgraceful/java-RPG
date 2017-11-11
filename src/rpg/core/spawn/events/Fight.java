@@ -12,15 +12,14 @@ import rpg.core.utils.CalcHelper;
 public abstract class Fight extends SpawnEvent {
 
 	protected Party enemyParty;
-	List<PartySpawnPatternEnumeration> avaliableEnumerations;
+	protected List<PartySpawnPatternEnumeration> avaliableEnumerations;
 
 	public Fight() {
 		spawnType = SpawnableEventType.FIGHT;
-		enemyParty = CharacterFactory.spawnPartyByPattern(getRandomPattern());
 	}
 
-	public void setEnemyParty(Party party) {
-		enemyParty = party;
+	public void spawnEnemyParty() {
+		enemyParty = CharacterFactory.spawnPartyByPattern(getRandomPattern());
 	}
 
 	public Party getEnemyParty() {

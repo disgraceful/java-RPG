@@ -144,6 +144,18 @@ public abstract class Dungeon {
 		}
 		return enterables;
 	}
+	
+	public List<Corridor>getAllCorridors(){
+		List<Corridor> corridors = new ArrayList<>();
+		for (Room room : getAllRoomsAsList()) {
+			for (Corridor corridor : room.getCorridors()) {
+				if(!corridors.contains(corridor)&&!corridors.stream().anyMatch(e->e.isSameCorridor(corridor))){
+					corridors.add(corridor);
+				}
+			}
+		}
+		return corridors;
+	}
 
 	public void displayRooms() {
 		for (int i = 0; i < size.ybound; i++) {

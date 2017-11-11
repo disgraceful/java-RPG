@@ -24,7 +24,4 @@ public class DungeonSpawnTest {
 		dung.displayEnterablesValue();
 	}
 
-	private static void testFightSpawns() {
-		CharacterFactory.spawnRandomParty();
-	}
 }

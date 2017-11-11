@@ -7,15 +7,18 @@ import rpg.core.spawn.CharacterFactory;
 import rpg.core.spawn.PartySpawnPatternEnumeration;
 
 public class MidFight extends Fight{
-	List<PartySpawnPatternEnumeration> avaliableEnumerations = new ArrayList<PartySpawnPatternEnumeration>() {
-		{
-			add(PartySpawnPatternEnumeration.MID_BALANCED);
-			add(PartySpawnPatternEnumeration.MID_MIDDLE);
-			add(PartySpawnPatternEnumeration.MID_MIDDLE_ONLY);
-			add(PartySpawnPatternEnumeration.MID_MIDDLE_ONLY);
-		}
-	};
+	
+	public MidFight() {
+		avaliableEnumerations = new ArrayList<PartySpawnPatternEnumeration>() {
+			{
+				add(PartySpawnPatternEnumeration.MID_BALANCED);
+				add(PartySpawnPatternEnumeration.MID_MIDDLE);
+				add(PartySpawnPatternEnumeration.MID_MIDDLE_ONLY);
+				add(PartySpawnPatternEnumeration.MID_MIDDLE_ONLY);
+			}
+		};
 
+	}
 
 }
 

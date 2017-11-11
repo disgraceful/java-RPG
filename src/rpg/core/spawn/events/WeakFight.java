@@ -6,14 +6,15 @@ import java.util.List;
 import rpg.core.spawn.CharacterFactory;
 import rpg.core.spawn.PartySpawnPatternEnumeration;
 
-public class WeakFight extends Fight{
-	List<PartySpawnPatternEnumeration> avaliableEnumerations = new ArrayList<PartySpawnPatternEnumeration>() {
-		{
-			add(PartySpawnPatternEnumeration.WEAK_BALANCED);
-			add(PartySpawnPatternEnumeration.WEAK_FRONT_ONLY);
-		}
-	};
+public class WeakFight extends Fight {
+	public WeakFight() {
+		avaliableEnumerations = new ArrayList<PartySpawnPatternEnumeration>() {
+			{
+				add(PartySpawnPatternEnumeration.WEAK_BALANCED);
+				add(PartySpawnPatternEnumeration.WEAK_FRONT_ONLY);
+			}
+		};
 
-	
+	}
 
 }

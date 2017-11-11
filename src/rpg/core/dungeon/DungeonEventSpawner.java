@@ -3,6 +3,7 @@ package rpg.core.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
+import rpg.core.spawn.events.Fight;
 import rpg.core.spawn.events.FightType;
 import rpg.core.spawn.events.SpawnEvent;
 import rpg.core.spawn.events.SpawnableEventType;
@@ -13,6 +14,8 @@ public class DungeonEventSpawner {
 	private static int maxFightAmount;
 	private static int minFightAmount;
 	private static Room startRoom;
+	private static int fightsInDung;
+	private static List<Corridor> corridors = new ArrayList<>();
 
 	private DungeonEventSpawner() {
 	}
@@ -22,32 +25,30 @@ public class DungeonEventSpawner {
 		minFightAmount = dungeon.size.minFightAmount;
 		alldungEnterables = dungeon.getAllEnterables();
 		startRoom = dungeon.getStartRoom();
+		corridors = dungeon.getAllCorridors();
 	}
 
 	public static void generate(Dungeon dungeon) {
 		init(dungeon);
 		generateFights();
-		generateEvents(SpawnableEventType.TREASURE);
-		generateEvents(SpawnableEventType.CURIO);
+		// generateEvents(SpawnableEventType.TREASURE);
+		// generateEvents(SpawnableEventType.CURIO);
 	}
 
 	private static void generateFights() {
-		int fightsInDung = 0;
 		int noFightsCounter = 0;
 		int fightChance = SpawnableEventType.FIGHT.getChance();
 		int curFightChance = fightChance;
 		int fightsInHallway = 0;
-		for (Enterable enterable : alldungEnterables) {
+			for (Enterable enterable : alldungEnterables) {
+			if(enterable instanceof Room){
+				
+			}
 			SpawnEvent fight = spawnEventByChance(SpawnableEventType.FIGHT, curFightChance);
-			if (canAddEvent(enterable, fight) && fightsInHallway < 4) {
-				if (enterable instanceof Room) {
-					fightsInHallway = 0;
-					fight = SpawnableEventType.FIGHT.getEvent(FightType.TOUGH);
-
-				}
+			if (canAddEvent(enterable, fight)) {
 				enterable.addEvent(fight);
 				fightsInDung++;
-				fightsInHallway++;
+
 				noFightsCounter = 0;
 				curFightChance = fightChance;
 			} else {
@@ -55,6 +56,10 @@ public class DungeonEventSpawner {
 				if (noFightsCounter >= 3) {
 					curFightChance += 50;
 				}
+			}
+			enterable.display();
+			if (!enterable.getEvents().isEmpty() && fight != null) {
+				System.out.println(enterable.getEvents().get(0).getClass());
 			}
 			if (fightsInDung >= maxFightAmount) {
 				break;

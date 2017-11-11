@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import rpg.core.spawn.events.SpawnableEventType;
+
 public class Corridor {
 	Room begin;
 	Room end;
@@ -57,7 +59,7 @@ public class Corridor {
 			return true;
 		}
 		return false;
-	}
+	}	
 
 	public List<Enterable> getEnterables() {
 		return new ArrayList<Enterable>() {
@@ -67,5 +69,19 @@ public class Corridor {
 				add(end);
 			}
 		};
+	}
+	
+	public int getFightAmount(){
+		int count = 0;
+		count+=countFights(begin);
+		count+=countFights(end);
+		for (CorridorSection corridorSection : sections) {
+			count+=countFights(corridorSection);
+		}
+		return count;
+	}
+	
+	private int countFights(Enterable enterable){
+		return (int) enterable.getEvents().stream().filter(e->e.getSpawnType()==SpawnableEventType.FIGHT).count();
 	}
 }
