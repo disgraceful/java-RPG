@@ -3,9 +3,9 @@ package rpg.core.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.core.spawn.events.Fight;
 import rpg.core.spawn.events.FightType;
 import rpg.core.spawn.events.SpawnEvent;
+import rpg.core.spawn.events.SpawnEventParams;
 import rpg.core.spawn.events.SpawnableEventType;
 import rpg.core.utils.CalcHelper;
 
@@ -31,38 +31,40 @@ public class DungeonEventSpawner {
 	public static void generate(Dungeon dungeon) {
 		init(dungeon);
 		generateFights();
-		// generateEvents(SpawnableEventType.TREASURE);
-		// generateEvents(SpawnableEventType.CURIO);
+		generateEvents(SpawnableEventType.TREASURE);
+		generateEvents(SpawnableEventType.CURIO);
 	}
 
 	private static void generateFights() {
 		int noFightsCounter = 0;
 		int fightChance = SpawnableEventType.FIGHT.getChance();
 		int curFightChance = fightChance;
-		int fightsInHallway = 0;
-			for (Enterable enterable : alldungEnterables) {
-			if(enterable instanceof Room){
-				
-			}
-			SpawnEvent fight = spawnEventByChance(SpawnableEventType.FIGHT, curFightChance);
-			if (canAddEvent(enterable, fight)) {
-				enterable.addEvent(fight);
-				fightsInDung++;
-
-				noFightsCounter = 0;
-				curFightChance = fightChance;
-			} else {
-				noFightsCounter++;
-				if (noFightsCounter >= 3) {
-					curFightChance += 50;
+		int fightsInHallway;
+		for (Corridor corridor : corridors) {
+			for (Enterable enterable : corridor.getEnterables()) {
+				fightsInHallway = corridor.getFightAmount();
+				SpawnEvent fight = spawnEventByChance(SpawnableEventType.FIGHT, curFightChance);
+				if (canAddEvent(enterable, fight) && fightsInHallway < 3) {
+					if (enterable instanceof Room) {
+						fight = spawnEventByParam(SpawnableEventType.FIGHT, FightType.TOUGH);
+					}
+					enterable.addEvent(fight);
+					fightsInDung++;
+					noFightsCounter = 0;
+					curFightChance = fightChance;
+				} else {
+					noFightsCounter++;
+					if (noFightsCounter >= 3) {
+						curFightChance += 50;
+					}
 				}
-			}
-			enterable.display();
-			if (!enterable.getEvents().isEmpty() && fight != null) {
-				System.out.println(enterable.getEvents().get(0).getClass());
-			}
-			if (fightsInDung >= maxFightAmount) {
-				break;
+				enterable.display();
+				if (!enterable.getEvents().isEmpty()) {
+					System.out.println(enterable.getEvents().get(0).getClass());
+				}
+				if (fightsInDung >= maxFightAmount) {
+					break;
+				}
 			}
 		}
 		if (fightsInDung < minFightAmount) {
@@ -97,6 +99,10 @@ public class DungeonEventSpawner {
 		} else {
 			return null;
 		}
+	}
+
+	private static SpawnEvent spawnEventByParam(SpawnableEventType eventType, SpawnEventParams params) {
+		return eventType.getEvent(params);
 	}
 
 	private static boolean checkFirstSection(Room room, Enterable enterable) {

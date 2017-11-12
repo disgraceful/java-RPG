@@ -59,8 +59,6 @@ public enum SpawnableEventType {
 	public abstract SpawnEvent getEvent(SpawnEventParams param);
 }
 
-interface SpawnEventParams {
-	SpawnEvent getConcreteEvent();
-}
+
 
 
