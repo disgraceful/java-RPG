@@ -1,4 +1,4 @@
-package rpg.core.items;
+package rpg.core.items.trinkets;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
+
+import rpg.core.items.SpawnableItem;
+import rpg.core.utils.CalcHelper;
 
 public enum TrinketType implements SpawnableItem {
 	TEST_TRINKET_COMMON {
@@ -43,7 +46,8 @@ public enum TrinketType implements SpawnableItem {
 		return resultList.stream().findAny().get();
 	}
 	
-	public static Trinket spawnTrinket(int chance) {
+	public static Trinket spawnTrinket() {
+		int chance = CalcHelper.getRandomInt(101);
 		if (chance < TrinketRarity.ABYSMAL.getDropRate()) {
 			return TrinketType.getRandItemByRarity(TrinketRarity.ABYSMAL);
 		} else if (chance < TrinketRarity.RARE.getDropRate()) {

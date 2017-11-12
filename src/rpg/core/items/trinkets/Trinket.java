@@ -1,8 +1,9 @@
-package rpg.core.items;
+package rpg.core.items.trinkets;
 
 import rpg.core.characters.heroes.Hero;
 import rpg.core.characters.heroes.HeroClass;
 import rpg.core.characters.shared.StatWrapper;
+import rpg.core.items.Item;
 
 public abstract class Trinket extends Item {
 	protected StatWrapper affectedstats;
@@ -55,7 +56,7 @@ public abstract class Trinket extends Item {
 	@Override
 	protected void initItem() {
 		maxSpawnQuanitity = 1;
-		inventoryFitQuantity=1;
+		stackQuantity=1;
 		
 	}
 

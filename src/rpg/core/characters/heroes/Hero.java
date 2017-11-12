@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rpg.core.characters.shared.Character;
-import rpg.core.items.Trinket;
+import rpg.core.items.trinkets.Trinket;
 import rpg.core.spells.Spell;;
 
 public abstract class Hero extends Character {

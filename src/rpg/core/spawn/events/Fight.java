@@ -3,6 +3,7 @@ package rpg.core.spawn.events;
 import java.util.List;
 
 import rpg.core.characters.shared.Party;
+import rpg.core.items.Item;
 import rpg.core.session.DungeonSession;
 import rpg.core.spawn.CharacterFactory;
 import rpg.core.spawn.PartySpawnPattern;
@@ -13,13 +14,15 @@ public abstract class Fight extends SpawnEvent {
 
 	protected Party enemyParty;
 	protected List<PartySpawnPatternEnumeration> avaliableEnumerations;
-
+	protected List<Item>loot;
+	
 	public Fight() {
 		spawnType = SpawnableEventType.FIGHT;
 	}
 
-	public void spawnEnemyParty() {
+	public void spawn() {
 		enemyParty = CharacterFactory.spawnPartyByPattern(getRandomPattern());
+		loot = ItemFactory.
 	}
 
 	public Party getEnemyParty() {

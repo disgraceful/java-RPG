@@ -8,7 +8,7 @@ public class CharacterFactoryTest {
 	@Test
 	public void testSpawns(){
 		WeakFight f = new WeakFight();
-		f.spawnEnemyParty();
+		f.spawn();
 		
 	}
 }

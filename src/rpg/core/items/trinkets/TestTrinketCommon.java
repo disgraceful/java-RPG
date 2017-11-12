@@ -1,4 +1,4 @@
-package rpg.core.items;
+package rpg.core.items.trinkets;
 
 import rpg.core.characters.shared.Stat;
 import rpg.core.characters.shared.StatAffectStrategy;

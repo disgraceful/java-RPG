@@ -3,7 +3,7 @@ package rpg.core.hub;
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.core.items.Trinket;
+import rpg.core.items.trinkets.Trinket;
 import rpg.core.session.GameSession;
 import rpg.core.spawn.ItemFactory;
 

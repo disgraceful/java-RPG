@@ -1,4 +1,4 @@
-package rpg.core.items;
+package rpg.core.items.trinkets;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

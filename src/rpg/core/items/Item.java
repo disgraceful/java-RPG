@@ -1,22 +1,18 @@
 package rpg.core.items;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-
 public abstract class Item {
 	protected String name;
 	protected String description;
 	protected int cost;
 	protected int maxSpawnQuanitity;
 	protected int quantity;
-	protected int inventoryFitQuantity;
-	protected int dropRate;
+	protected int stackQuantity;
 
-	public String getName(){
+	public String getName() {
 		return name;
 	}
-	
-	void setName(String value){
+
+	void setName(String value) {
 		name = value;
 	}
 
@@ -27,35 +23,31 @@ public abstract class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public int getCost() {
 		return cost;
 	}
+
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
+
 	public int getSpawnQuanitity() {
 		return maxSpawnQuanitity;
 	}
+
 	public void setSpawnQuanitity(int spawnQuanitity) {
 		this.maxSpawnQuanitity = spawnQuanitity;
 	}
+
 	public int getInventoryFitQuantity() {
-		return inventoryFitQuantity;
+		return stackQuantity;
 	}
+
 	public void setInventoryFitQuantity(int inventoryFitQuantity) {
-		this.inventoryFitQuantity = inventoryFitQuantity;
+		this.stackQuantity = inventoryFitQuantity;
 	}
-	public int getDropRate() {
-		return dropRate;
-	}
-	public void setDropRate(int dropRate) {
-		this.dropRate = dropRate;
-	}
-	
+
 	protected abstract void initItem();
-	
-	
 
 }
- 

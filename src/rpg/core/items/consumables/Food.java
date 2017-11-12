@@ -1,4 +1,4 @@
-package rpg.core.items;
+package rpg.core.items.consumables;
 
 import rpg.core.characters.shared.Character;
 import rpg.core.characters.shared.Stat;
@@ -16,7 +16,7 @@ public class Food extends Consumable {
 		description = "Yummy-yummy";
 		cost = 5;
 		maxSpawnQuanitity = 24;
-		inventoryFitQuantity = 24;
+		stackQuantity = 24;
 	}
 
 	@Override

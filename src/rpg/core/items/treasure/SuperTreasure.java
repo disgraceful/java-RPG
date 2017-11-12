@@ -1,4 +1,4 @@
-package rpg.core.items;
+package rpg.core.items.treasure;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -10,7 +10,7 @@ public class SuperTreasure extends Treasure{
 		description = "So uber shiny!";
 		cost = 1;
 		maxSpawnQuanitity = 5000;
-		inventoryFitQuantity = 3;
+		stackQuantity = 3;
 		dropRate = 35;
 	}
 }

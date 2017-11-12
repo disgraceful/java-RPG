@@ -1,6 +1,6 @@
-package rpg.core.items;
+package rpg.core.items.treasure;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import rpg.core.items.SpawnableItem;
 
 
 public enum TreasureType implements SpawnableItem {
@@ -10,10 +10,10 @@ public enum TreasureType implements SpawnableItem {
 			return new Gold();
 		}
 	},
-	JEWELS {
+	GEMS {
 		@Override
 		public Treasure getItemToSpawn() {
-			return new Jewels();
+			return new Gems();
 		}
 	},
 	SUPER_TREASURE {
@@ -26,8 +26,8 @@ public enum TreasureType implements SpawnableItem {
 	public static Treasure spawnTreasure(int chance){
 		if(chance<SUPER_TREASURE.getItemToSpawn().getDropRate()){
 			return (Treasure) SUPER_TREASURE.getItemToSpawn();
-		}else if(chance<JEWELS.getItemToSpawn().getDropRate()){
-			return (Treasure) JEWELS.getItemToSpawn();
+		}else if(chance<GEMS.getItemToSpawn().getDropRate()){
+			return (Treasure) GEMS.getItemToSpawn();
 		}else{
 			return (Treasure)GOLD.getItemToSpawn();
 		}

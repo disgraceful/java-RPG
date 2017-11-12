@@ -4,7 +4,7 @@ import rpg.core.characters.shared.Character;
 import rpg.core.characters.shared.Party;
 import rpg.core.characters.shared.Stat;
 import rpg.core.characters.shared.StatEnum;
-import rpg.core.items.Trinket;
+import rpg.core.items.trinkets.Trinket;
 import rpg.core.spells.Spell;
 
 public class TextUtils {

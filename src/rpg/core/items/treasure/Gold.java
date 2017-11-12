@@ -1,7 +1,4 @@
-package rpg.core.items;
-
-import javax.xml.bind.annotation.XmlRootElement;
-
+package rpg.core.items.treasure;
 
 public class Gold extends Treasure {
 	public Gold() {
@@ -13,8 +10,7 @@ public class Gold extends Treasure {
 		name = "Gold";
 		description = "Shiny!!!";
 		cost = 1;
-
-		inventoryFitQuantity = 1500;
+		stackQuantity = 1500;
 		dropRate = 75;
 	}
 

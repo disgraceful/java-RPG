@@ -1,12 +1,9 @@
 package rpg.core.items;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-
 public enum ItemDrop {
-	TRINKET_DROP(30),
+	TRINKET_DROP(20),
 	TREASURE_DROP(100),
-	CONSUMABLE_DROP(60);
+	CONSUMABLE_DROP(50);
 	
 	private int drop;
 	private ItemDrop(int drop){
