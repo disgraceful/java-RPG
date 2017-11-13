@@ -1,5 +1,8 @@
 package rpg.core.items.consumables;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rpg.core.items.Item;
 import rpg.core.items.SpawnableItem;
 import rpg.core.utils.CalcHelper;
@@ -93,7 +96,11 @@ public enum ConsumableType implements SpawnableItem {
 	};
 	
 	public static Consumable spawnConsumable() {
-		return (Consumable) values()[CalcHelper.getRandomInt(values().length)].getItemToSpawn();
+		Consumable item = (Consumable)values()[CalcHelper.getRandomInt(values().length)].getItemToSpawn();
+		List<Consumable> consumables = new ArrayList<>();
+		for (int i = 0; i < item.getInventoryFitQuantity(); i++) {
+			
+		}
 	}
 
 }

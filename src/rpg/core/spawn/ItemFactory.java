@@ -6,6 +6,7 @@ import java.util.Random;
 
 import rpg.core.items.Item;
 import rpg.core.items.ItemDrop;
+import rpg.core.items.LootType;
 import rpg.core.items.SpawnableItem;
 import rpg.core.items.consumables.ConsumableType;
 import rpg.core.items.treasure.TreasureType;
@@ -33,18 +34,22 @@ public class ItemFactory {
 		return items;
 	}
 
-	public static List<Item> spawnLoot(int amount) {
+	public static List<Item> spawnLoot(LootType loot) {
 		List<Item> resultList = new ArrayList<>();
-		while (resultList.size() < amount) {
+		int currentGold = CalcHelper.calcRandomIntWithPercent(loot.getGoldEqv(), 0.25);
+		while (currentGold > 0) {
 			int chanceToDecideSpecificItemType = CalcHelper.getRandomInt(101);
-			resultList.add(spawnRandomItem(chanceToDecideSpecificItemType));
+			List<Item> items = spawnRandomItem(chanceToDecideSpecificItemType);
+			currentGold -= item.getCost();
+			resultList.add(item);
 		}
 		return resultList;
 	}
 
-	private static Item spawnRandomItem(int chance) {
+	private static List<Item> spawnRandomItem(int chance) {
 		if (chance < ItemDrop.TRINKET_DROP.getDrop()) {
-			return TrinketType.spawnTrinket();
+			return new ArrayList<Item>() {{	add(TrinketType.spawnTrinket());}
+			};
 		} else if (chance < ItemDrop.CONSUMABLE_DROP.getDrop()) {
 			return ConsumableType.spawnConsumable();
 		} else {
