@@ -16,20 +16,44 @@ public enum TrinketType implements SpawnableItem {
 		public Trinket getItemToSpawn() {
 			return new TestTrinketCommon();
 		}
+
+		@Override
+		public int getDropRate() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 	},TEST_TRINKET_UNCOMMON {
 		@Override
 		public Trinket getItemToSpawn() {
 			return new TestTrinketUncommon();
+		}
+
+		@Override
+		public int getDropRate() {
+			// TODO Auto-generated method stub
+			return 0;
 		}
 	},TEST_TRINKET_RARE {
 		@Override
 		public Trinket getItemToSpawn() {
 			return new TestTrinketRare();
 		}
+
+		@Override
+		public int getDropRate() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 	},TEST_TRINKET_ABYSSMAL {
 		@Override
 		public Trinket getItemToSpawn() {
 			return new TestTrinketAbyssmal();
+		}
+
+		@Override
+		public int getDropRate() {
+			// TODO Auto-generated method stub
+			return 0;
 		}
 	};
 	

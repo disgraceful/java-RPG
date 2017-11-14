@@ -13,7 +13,7 @@ public class Treasure extends SpawnEvent {
 
 	public Treasure() {
 		spawnType = SpawnableEventType.TREASURE;
-		loot = ItemFactory.spawnLoot(CalcHelper.getRandomIntInRange(1, 4));
+		//loot = ItemFactory.spawnLoot(CalcHelper.getRandomIntInRange(1, 4));
 	}
 
 	@Override

@@ -40,11 +40,6 @@ public abstract class Trinket extends Item {
 		return itemRarity.getCost();
 	}
 	
-	@Override
-	public int getDropRate() {
-		return itemRarity.getDropRate();
-	}
-	
 	public TrinketRarity getRarity(){
 		return itemRarity;
 	}
@@ -55,7 +50,7 @@ public abstract class Trinket extends Item {
 	
 	@Override
 	protected void initItem() {
-		maxSpawnQuanitity = 1;
+		maxSpawnedQuantity = 1;
 		stackQuantity=1;
 		
 	}

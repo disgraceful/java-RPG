@@ -22,7 +22,7 @@ public abstract class Fight extends SpawnEvent {
 
 	public void spawn() {
 		enemyParty = CharacterFactory.spawnPartyByPattern(getRandomPattern());
-		loot = ItemFactory.
+		//loot = ItemFactory.
 	}
 
 	public Party getEnemyParty() {

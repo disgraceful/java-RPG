@@ -11,7 +11,7 @@ public class Gold extends Treasure {
 		description = "Shiny!!!";
 		cost = 1;
 		stackQuantity = 1500;
-		dropRate = 75;
+		maxSpawnedQuantity = 3500;
 	}
 
 }

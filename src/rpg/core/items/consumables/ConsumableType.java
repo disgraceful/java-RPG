@@ -2,6 +2,7 @@ package rpg.core.items.consumables;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import rpg.core.items.Item;
 import rpg.core.items.SpawnableItem;
@@ -23,36 +24,31 @@ public enum ConsumableType implements SpawnableItem {
 	KEY {
 		@Override
 		public Item getItemToSpawn() {
-			// TODO Auto-generated method stub
-			return null;
+			return new Key();
 		}
 
 		@Override
 		public int getDropRate() {
 			return 40;
 		}
-
 	},
 
 	BANDAGE {
 		@Override
 		public Item getItemToSpawn() {
-			// TODO Auto-generated method stub
-			return null;
+			return new Bandage();
 		}
 
 		@Override
 		public int getDropRate() {
 			return 50;
 		}
-
 	},
 
 	ANTI_VENOM {
 		@Override
 		public Item getItemToSpawn() {
-			// TODO Auto-generated method stub
-			return null;
+			return new AntiVenom();
 		}
 
 		@Override
@@ -64,7 +60,7 @@ public enum ConsumableType implements SpawnableItem {
 	HOLY_WATER {
 		@Override
 		public Item getItemToSpawn() {
-			return null;
+			return new HolyWater();
 		}
 
 		@Override
@@ -76,7 +72,7 @@ public enum ConsumableType implements SpawnableItem {
 	DARK_ESSENCE {
 		@Override
 		public Item getItemToSpawn() {
-			return null;
+			return new DarkEssence();
 		}
 
 		@Override
@@ -86,7 +82,7 @@ public enum ConsumableType implements SpawnableItem {
 	};
 
 	public static List<Item> spawnConsumableStack() {
-		Consumable item = (Consumable) values()[CalcHelper.getRandomInt(values().length)].getItemToSpawn();
+		Item item = chooseItemToSpawn();
 		List<Item> consumables = new ArrayList<>();
 		int randQuantity = CalcHelper.getRandomIntInRange(1, item.getMaxSpawnedQuantity())
 				* item.getQuantityMultiplier();
@@ -101,7 +97,9 @@ public enum ConsumableType implements SpawnableItem {
 	
 	private static Item chooseItemToSpawn(){
 		int chance = CalcHelper.getRandomInt(101);
-		return null;
+		List<ConsumableType> consumTypes = new ArrayList<>();
+		int approximation=CalcHelper.getIntApproximation(chance, consumTypes.stream().map(e->e.getDropRate()).collect(Collectors.toList()));
+		return consumTypes.stream().filter(e->e.getDropRate()==approximation).findAny().get().getItemToSpawn();
 	}
 
 }

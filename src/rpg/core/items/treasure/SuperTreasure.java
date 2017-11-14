@@ -9,8 +9,7 @@ public class SuperTreasure extends Treasure{
 		name = "Super Treasure";
 		description = "So uber shiny!";
 		cost = 1;
-		maxSpawnQuanitity = 5000;
+		maxSpawnedQuantity = 3;
 		stackQuantity = 3;
-		dropRate = 35;
 	}
 }

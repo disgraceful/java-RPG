@@ -44,6 +44,5 @@ public class TrinketShop {
 
 	public void spawnItems() {
 		itemsForSale.clear();
-		ItemFactory.spawnLoot(itemSpawnLimit);
 	}
 }
