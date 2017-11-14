@@ -99,7 +99,7 @@ public class StatWrapper {
 	}
 
 	private boolean isDeathBlown() {
-		int chance = CalcHelper.getRandomInt(101);
+		int chance = CalcHelper.randInt(101);
 		int deathBlowChance = getStatbyName(StatEnum.DEATH_RES).getCurValue();
 		return chance > deathBlowChance ? true : false;
 	}

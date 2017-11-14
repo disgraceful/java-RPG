@@ -93,7 +93,7 @@ public class DungeonEventSpawner {
 		if (chance > 100) {
 			chance = 100;
 		}
-		int threshold = CalcHelper.getRandomInt(101);
+		int threshold = CalcHelper.randInt(101);
 		if (threshold < chance) {
 			return eventType.getEvent();
 		} else {

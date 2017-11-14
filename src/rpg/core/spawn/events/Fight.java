@@ -38,6 +38,6 @@ public abstract class Fight extends SpawnEvent {
 	}
 
 	public PartySpawnPattern getRandomPattern() {
-		return avaliableEnumerations.get(CalcHelper.getRandomInt(avaliableEnumerations.size())).getPattern();
+		return avaliableEnumerations.get(CalcHelper.randInt(avaliableEnumerations.size())).getPattern();
 	}
 }

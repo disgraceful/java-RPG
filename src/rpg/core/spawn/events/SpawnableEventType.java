@@ -51,7 +51,7 @@ public enum SpawnableEventType {
 	}
 
 	public static SpawnableEventType getRandomValue() {
-		return values()[CalcHelper.getRandomInt(values().length)];
+		return values()[CalcHelper.randInt(values().length)];
 	}
 
 	public abstract SpawnEvent getEvent();

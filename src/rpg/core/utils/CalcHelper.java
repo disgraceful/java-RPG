@@ -26,14 +26,14 @@ public class CalcHelper {
 		return result;
 	}
 
-	public static int getRandomInt(int bound) {
+	public static int randInt(int bound) {
 		int result = ThreadLocalRandom.current().nextInt(bound);
 		// LOG.info("Rand int up to " + bound + " = " +
 		// Integer.toString(result));
 		return result;
 	}
 
-	public static int getIntApproximation(int coreElement, List<Integer> ints) {
+	public static int calcApproxInt(int coreElement, List<Integer> ints) {
 		int min = Integer.MAX_VALUE;
 		int closest = coreElement;
 

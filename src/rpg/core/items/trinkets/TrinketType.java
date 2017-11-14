@@ -71,7 +71,7 @@ public enum TrinketType implements SpawnableItem {
 	}
 	
 	public static Trinket spawnTrinket() {
-		int chance = CalcHelper.getRandomInt(101);
+		int chance = CalcHelper.randInt(101);
 		if (chance < TrinketRarity.ABYSMAL.getDropRate()) {
 			return TrinketType.getRandItemByRarity(TrinketRarity.ABYSMAL);
 		} else if (chance < TrinketRarity.RARE.getDropRate()) {

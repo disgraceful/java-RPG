@@ -121,7 +121,7 @@ public abstract class Spell implements Serializable{
 			trueAcc = 90;
 		System.out.println("targetDodge: " + targetDodge + " callerAccMod: " + callerAccMod + " abilityAcc: "
 				+ abilityAcc + " trueAcc: " + trueAcc);
-		int hitChance = CalcHelper.getRandomInt(SpellConstants.CALC_CHANCE_101);
+		int hitChance = CalcHelper.randInt(SpellConstants.CALC_CHANCE_101);
 		System.out.println("hitChance: " + hitChance);
 		return hitChance > trueAcc ? true : false;
 	}
@@ -132,7 +132,7 @@ public abstract class Spell implements Serializable{
 		System.out.println("caller Crit Chance: " + callerCritChance);
 		int abilityCritMod = abilityStats.getStatbyName(StatEnum.CRIT_MOD).getCurValue();
 		System.out.println("ability Crit Mod " + abilityCritMod);
-		int critChance = CalcHelper.getRandomInt(SpellConstants.CALC_CHANCE_101);
+		int critChance = CalcHelper.randInt(SpellConstants.CALC_CHANCE_101);
 		System.out.println("total Crit: " + critChance);
 		return critChance <= callerCritChance + abilityCritMod ? true : false;
 	}

@@ -34,7 +34,7 @@ public class ItemFactory {
 		List<Item> resultList = new ArrayList<>();
 		int currentGold = CalcHelper.calcRandomIntWithPercent(lootType.getGoldEqv(), 0.25);
 		while (currentGold > 0) {
-			int chanceToDecideSpecificItemType = CalcHelper.getRandomInt(101);
+			int chanceToDecideSpecificItemType = CalcHelper.randInt(101);
 			List<Item> items = spawnRandomItem(chanceToDecideSpecificItemType);
 			for (Item item : items) {
 				currentGold-=item.getCost();

@@ -29,7 +29,7 @@ public enum FightType implements SpawnEventParams {
 	};
 
 	public static FightType getRandomFight() {
-		return values()[CalcHelper.getRandomInt(values().length - 1)];
+		return values()[CalcHelper.randInt(values().length - 1)];
 
 	}
 

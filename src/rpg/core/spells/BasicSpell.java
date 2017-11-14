@@ -30,7 +30,7 @@ public abstract class BasicSpell extends Spell {
 		int trueAcc = abilityAcc - targetDodge;
 		if (trueAcc > 90)
 			trueAcc = 90;
-		int hitChance = CalcHelper.getRandomInt(101);
+		int hitChance = CalcHelper.randInt(101);
 		if (attackType == AttackType.SUPPORT) {
 			return false;
 		}
@@ -49,7 +49,7 @@ public abstract class BasicSpell extends Spell {
 	private double calcCrit(double damage) {
 		double dmg = damage;
 		int critChacne = abilityStats.getStatbyName(StatEnum.CRIT_CHANCE).getCurValue();
-		int odds = CalcHelper.getRandomInt(101);
+		int odds = CalcHelper.randInt(101);
 		if (odds <= critChacne) {
 			dmg *= SpellConstants.CRIT_DAMAGE_MULTIPLIER;
 		}
