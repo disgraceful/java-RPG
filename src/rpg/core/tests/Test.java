@@ -60,12 +60,6 @@ public final class Test {
 		coach = (MercenaryCoach) SaveHelper.loadExtraFromXml("example", MercenaryCoach.class);
 	}
 
-	public static void testItemSpawning() {
-		List<Item> result = ItemFactory.spawnLoot(3);
-		Item i = ItemFactory.spawnConcreteItem(ConsumableType.FOOD);
-		System.out.println(result);
-	}
-
 	public static void initializeCombat() {
 		Party goodP = new Party();
 		goodP.addMember(new UberHeroTest() {

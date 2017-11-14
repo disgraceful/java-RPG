@@ -19,8 +19,8 @@ public enum ConsumableType implements SpawnableItem {
 			return 50;
 		}
 	},
-	
-	KEY{
+
+	KEY {
 		@Override
 		public Item getItemToSpawn() {
 			// TODO Auto-generated method stub
@@ -29,13 +29,12 @@ public enum ConsumableType implements SpawnableItem {
 
 		@Override
 		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
+			return 40;
 		}
-		
+
 	},
-	
-	BANDAGE{
+
+	BANDAGE {
 		@Override
 		public Item getItemToSpawn() {
 			// TODO Auto-generated method stub
@@ -44,13 +43,12 @@ public enum ConsumableType implements SpawnableItem {
 
 		@Override
 		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
+			return 50;
 		}
-		
+
 	},
-	
-	ANTI_VENOM{
+
+	ANTI_VENOM {
 		@Override
 		public Item getItemToSpawn() {
 			// TODO Auto-generated method stub
@@ -59,48 +57,51 @@ public enum ConsumableType implements SpawnableItem {
 
 		@Override
 		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
-		}	
+			return 30;
+		}
 	},
-	
-	HOLY_WATER{
+
+	HOLY_WATER {
 		@Override
 		public Item getItemToSpawn() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
+			return 25;
 		}
-		
 	},
-	
-	DARK_ESSENCE{
 
+	DARK_ESSENCE {
 		@Override
 		public Item getItemToSpawn() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
+			return 25;
 		}
-		
 	};
-	
-	public static Consumable spawnConsumable() {
-		Consumable item = (Consumable)values()[CalcHelper.getRandomInt(values().length)].getItemToSpawn();
-		List<Consumable> consumables = new ArrayList<>();
-		for (int i = 0; i < item.getInventoryFitQuantity(); i++) {
-			
+
+	public static List<Item> spawnConsumableStack() {
+		Consumable item = (Consumable) values()[CalcHelper.getRandomInt(values().length)].getItemToSpawn();
+		List<Item> consumables = new ArrayList<>();
+		int randQuantity = CalcHelper.getRandomIntInRange(1, item.getMaxSpawnedQuantity())
+				* item.getQuantityMultiplier();
+		if (randQuantity > item.getMaxSpawnedQuantity()) {
+			randQuantity = item.getMaxSpawnedQuantity();
 		}
+		for (int i = 0; i < randQuantity; i++) {
+			consumables.add(item.getItem().getItemToSpawn());
+		}
+		return consumables;
+	}
+	
+	private static Item chooseItemToSpawn(){
+		int chance = CalcHelper.getRandomInt(101);
+		return null;
 	}
 
 }

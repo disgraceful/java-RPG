@@ -4,9 +4,10 @@ public abstract class Item {
 	protected String name;
 	protected String description;
 	protected int cost;
-	protected int maxSpawnQuanitity;
-	protected int quantity;
 	protected int stackQuantity;
+	protected int quantityMultiplier;
+	protected int maxSpawnedQuantity;
+	protected SpawnableItem itemType;
 
 	public String getName() {
 		return name;
@@ -32,20 +33,36 @@ public abstract class Item {
 		this.cost = cost;
 	}
 
-	public int getSpawnQuanitity() {
-		return maxSpawnQuanitity;
-	}
-
-	public void setSpawnQuanitity(int spawnQuanitity) {
-		this.maxSpawnQuanitity = spawnQuanitity;
-	}
-
-	public int getInventoryFitQuantity() {
+	public int getStackQuantity() {
 		return stackQuantity;
 	}
 
-	public void setInventoryFitQuantity(int inventoryFitQuantity) {
-		this.stackQuantity = inventoryFitQuantity;
+	public void setStackQuantity(int stackQuantity) {
+		this.stackQuantity = stackQuantity;
+	}
+	
+	public int getQuantityMultiplier() {
+		return quantityMultiplier;
+	}
+
+	public void setQuantityMultiplier(int quantityMultiplier) {
+		this.quantityMultiplier = quantityMultiplier;
+	}
+	
+	public int getMaxSpawnedQuantity() {
+		return maxSpawnedQuantity;
+	}
+
+	public void setMaxSpawnedQuantity(int maxSpawnedQuantity) {
+		this.maxSpawnedQuantity = maxSpawnedQuantity;
+	}
+	
+	public SpawnableItem getItem() {
+		return itemType;
+	}
+
+	public void setItem(SpawnableItem item) {
+		this.itemType = item;
 	}
 
 	protected abstract void initItem();

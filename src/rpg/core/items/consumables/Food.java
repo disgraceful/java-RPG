@@ -15,8 +15,10 @@ public class Food extends Consumable {
 		name = "Food";
 		description = "Yummy-yummy";
 		cost = 5;
-		maxSpawnQuanitity = 24;
+		quantityMultiplier = 3;
 		stackQuantity = 24;
+		maxSpawnedQuantity = 24;
+		itemType = ConsumableType.FOOD;
 	}
 
 	@Override

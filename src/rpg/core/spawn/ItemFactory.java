@@ -18,10 +18,6 @@ public class ItemFactory {
 	private ItemFactory() {
 	}
 
-	public static Item spawnItem() {
-		return spawnRandomItem(CalcHelper.getRandomInt(101));
-	}
-
 	public static Item spawnConcreteItem(SpawnableItem concreteItem) {
 		return concreteItem.getItemToSpawn();
 	}
@@ -40,20 +36,21 @@ public class ItemFactory {
 		while (currentGold > 0) {
 			int chanceToDecideSpecificItemType = CalcHelper.getRandomInt(101);
 			List<Item> items = spawnRandomItem(chanceToDecideSpecificItemType);
-			currentGold -= item.getCost();
-			resultList.add(item);
+			for (Item item : items) {
+				currentGold-=item.getCost();
+			}
+			resultList.addAll(items);
 		}
 		return resultList;
 	}
 
 	private static List<Item> spawnRandomItem(int chance) {
 		if (chance < ItemDrop.TRINKET_DROP.getDrop()) {
-			return new ArrayList<Item>() {{	add(TrinketType.spawnTrinket());}
-			};
+			return new ArrayList<Item>() {{TrinketType.spawnTrinket();}};
 		} else if (chance < ItemDrop.CONSUMABLE_DROP.getDrop()) {
-			return ConsumableType.spawnConsumable();
+			return ConsumableType.spawnConsumableStack();
 		} else {
-			return TreasureType.spawnTreasure(new Random().nextInt(101));
+			return new ArrayList<Item>(){{TreasureType.spawnTreasure(chance);}};
 		}
 	}
 
