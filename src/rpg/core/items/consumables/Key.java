@@ -11,7 +11,7 @@ public class Key extends Consumable {
 	protected void initItem() {
 		name = "Key";
 		description = "Old key that opens door";
-		cost = 250;
+		cost = 100;
 		quantityMultiplier = 1;
 		stackQuantity = 5;
 		maxSpawnedQuantity = 2;

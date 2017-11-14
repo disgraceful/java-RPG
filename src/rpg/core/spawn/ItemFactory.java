@@ -2,10 +2,10 @@ package rpg.core.spawn;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import rpg.core.items.Item;
 import rpg.core.items.ItemDrop;
+import rpg.core.items.Loot;
 import rpg.core.items.LootType;
 import rpg.core.items.SpawnableItem;
 import rpg.core.items.consumables.ConsumableType;
@@ -30,9 +30,9 @@ public class ItemFactory {
 		return items;
 	}
 
-	public static List<Item> spawnLoot(LootType loot) {
+	public static Loot spawnLoot(LootType lootType) {
 		List<Item> resultList = new ArrayList<>();
-		int currentGold = CalcHelper.calcRandomIntWithPercent(loot.getGoldEqv(), 0.25);
+		int currentGold = CalcHelper.calcRandomIntWithPercent(lootType.getGoldEqv(), 0.25);
 		while (currentGold > 0) {
 			int chanceToDecideSpecificItemType = CalcHelper.getRandomInt(101);
 			List<Item> items = spawnRandomItem(chanceToDecideSpecificItemType);
@@ -41,7 +41,9 @@ public class ItemFactory {
 			}
 			resultList.addAll(items);
 		}
-		return resultList;
+		Loot loot = new Loot();
+		loot.setLootItems(resultList);
+		return loot;
 	}
 
 	private static List<Item> spawnRandomItem(int chance) {

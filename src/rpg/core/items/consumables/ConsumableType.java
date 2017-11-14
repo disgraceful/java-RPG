@@ -1,6 +1,7 @@
 package rpg.core.items.consumables;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -97,7 +98,7 @@ public enum ConsumableType implements SpawnableItem {
 	
 	private static Item chooseItemToSpawn(){
 		int chance = CalcHelper.getRandomInt(101);
-		List<ConsumableType> consumTypes = new ArrayList<>();
+		List<ConsumableType> consumTypes = Arrays.asList(values());
 		int approximation=CalcHelper.getIntApproximation(chance, consumTypes.stream().map(e->e.getDropRate()).collect(Collectors.toList()));
 		return consumTypes.stream().filter(e->e.getDropRate()==approximation).findAny().get().getItemToSpawn();
 	}
