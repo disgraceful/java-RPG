@@ -8,6 +8,7 @@ public abstract class Item {
 	protected int quantityMultiplier;
 	protected int maxSpawnedQuantity;
 	protected SpawnableItem itemType;
+	protected ItemRarity rarity;
 
 	public String getName() {
 		return name;
@@ -63,6 +64,14 @@ public abstract class Item {
 
 	public void setItem(SpawnableItem item) {
 		this.itemType = item;
+	}
+
+	public ItemRarity getRarity() {
+		return rarity;
+	}
+
+	public void setRarity(ItemRarity rarity) {
+		this.rarity = rarity;
 	}
 
 	protected abstract void initItem();

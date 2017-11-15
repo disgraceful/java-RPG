@@ -9,8 +9,8 @@ public enum ItemType {
 	
 	private ItemType(int drop){
 		this.drop = drop;
-		
 	}
+	
 	public int getDrop(){
 		return drop;
 	}

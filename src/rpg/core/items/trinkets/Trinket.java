@@ -8,9 +8,7 @@ import rpg.core.items.Item;
 public abstract class Trinket extends Item {
 	protected StatWrapper affectedstats;
 	protected HeroClass restriction;
-	protected TrinketRarity itemRarity;
-
-	
+		
 	public StatWrapper getAffectedstats() {
 		return affectedstats;
 	}
@@ -25,23 +23,6 @@ public abstract class Trinket extends Item {
 
 	public void setRestriction(HeroClass restriction) {
 		this.restriction = restriction;
-	}
-
-	public TrinketRarity getItemRarity() {
-		return itemRarity;
-	}
-
-	public void setItemRarity(TrinketRarity itemRarity) {
-		this.itemRarity = itemRarity;
-	}
-
-	@Override
-	public int getCost() {
-		return itemRarity.getCost();
-	}
-	
-	public TrinketRarity getRarity(){
-		return itemRarity;
 	}
 	
 	public StatWrapper getStatWrapper() {

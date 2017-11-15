@@ -1,16 +1,26 @@
 package rpg.core.tests;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.junit.Test;
 
-import rpg.core.items.LootType;
-import rpg.core.spawn.ItemFactory;
+import rpg.core.factories.AbstractItemFactory;
+import rpg.core.factories.ConsumableFactory;
 
 public class ItemTest {
 
 	@Test
-	public void testSpawnConsumables(){
+	public void testSpawnConsumables() {
+		AbstractItemFactory factory = new ConsumableFactory();
 		for (int i = 0; i < 10; i++) {
-			ItemFactory.spawnLoot(LootType.SMALL_LOOT).getLootItems().forEach(e->System.out.println(e.getClass()));
+			Map<Class, Long>occurances = calcualteExactNumbers(factory.createItems());
+			occurances.forEach((k,v)->System.out.println(v + "x "+k.getSimpleName()));
 		}
+	}
+
+	private <T> Map<Class,Long> calcualteExactNumbers(List<T> items) {
+		return items.stream().collect(Collectors.groupingBy(e -> e.getClass(), Collectors.counting()));
 	}
 }

@@ -7,69 +7,27 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import rpg.core.items.Item;
 import rpg.core.items.SpawnableItem;
 import rpg.core.utils.CalcHelper;
 
 public enum TrinketType implements SpawnableItem {
-	TEST_TRINKET_COMMON {
-		@Override
-		public Trinket getItemToSpawn() {
-			return new TestTrinketCommon();
-		}
 
-		@Override
-		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-	},TEST_TRINKET_UNCOMMON {
-		@Override
-		public Trinket getItemToSpawn() {
-			return new TestTrinketUncommon();
-		}
+	TEST;
 
-		@Override
-		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-	},TEST_TRINKET_RARE {
-		@Override
-		public Trinket getItemToSpawn() {
-			return new TestTrinketRare();
-		}
-
-		@Override
-		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-	},TEST_TRINKET_ABYSSMAL {
-		@Override
-		public Trinket getItemToSpawn() {
-			return new TestTrinketAbyssmal();
-		}
-
-		@Override
-		public int getDropRate() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-	};
-	
-	public static Trinket getRandItemByRarity(TrinketRarity rarity){
+	public static Trinket getRandItemByRarity(TrinketRarity rarity) {
 		List<Trinket> resultList = new ArrayList<>();
-		List<TrinketType> list  =Arrays.asList(values()); 
+		List<TrinketType> list = Arrays.asList(values());
 		Collections.shuffle(list);
 		for (TrinketType trinketType : list) {
-			Trinket trinket = (Trinket)trinketType.getItemToSpawn();
-			if(trinket.getRarity()==rarity){
-				resultList.add(trinket);
-			}
+			Trinket trinket = (Trinket) trinketType.getItemToSpawn();
+
+			resultList.add(trinket);
+
 		}
 		return resultList.stream().findAny().get();
 	}
-	
+
 	public static Trinket spawnTrinket() {
 		int chance = CalcHelper.randInt(101);
 		if (chance < TrinketRarity.ABYSMAL.getDropRate()) {
@@ -83,4 +41,10 @@ public enum TrinketType implements SpawnableItem {
 		}
 	}
 
-} 	
+	@Override
+	public Item getItemToSpawn() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,6 +1,7 @@
 package rpg.core.items.consumables;
 
 import rpg.core.characters.shared.Character;
+import rpg.core.items.ItemRarity;
 
 public class DarkEssence extends Consumable {
 	public DarkEssence() {
@@ -16,6 +17,7 @@ public class DarkEssence extends Consumable {
 		stackQuantity = 5;
 		maxSpawnedQuantity = 1;
 		itemType = ConsumableType.DARK_ESSENCE;
+		rarity = ItemRarity.RARE;
 	}
 
 	@Override

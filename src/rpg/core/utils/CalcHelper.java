@@ -3,6 +3,7 @@ package rpg.core.utils;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class CalcHelper {
 
@@ -47,4 +48,9 @@ public class CalcHelper {
 		return closest;
 	}
 
+	public static int calcMinAfterSubstracte(int chance, List<Integer>ints){
+		System.out.println(chance);
+		
+		return ints.stream().min((i1, i2) -> Integer.compare(Math.abs(i1 - chance), Math.abs(i2 - chance))).get();
+	}
 }

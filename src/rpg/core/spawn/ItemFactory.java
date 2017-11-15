@@ -33,28 +33,10 @@ public class ItemFactory {
 		return items;
 	}
 
-	public static Loot spawnLoot(LootType lootType) {
-		List<Item> resultList = new ArrayList<>();
-		int currentGold = CalcHelper.calcRandomIntWithPercent(lootType.getGoldEqv(), 0.25);
-		while (currentGold > 0) {
-			int chanceToDecideSpecificItemType = CalcHelper.randInt(101);
-			List<Item> items = spawnRandomItem(chanceToDecideSpecificItemType);
-			for (Item item : items) {
-				currentGold -= item.getCost();
-			}
-			resultList.addAll(items);
-		}
-		Loot loot = new Loot();
-		loot.setLootItems(resultList);
-		return loot;
-	}
+	
 
-	private static List<Item> spawnRandomItem(int chance) {
-		int approx = CalcHelper.calcApproxInt(chance,
-				Arrays.asList(ItemType.values()).stream().map(e -> e.getDrop()).collect(Collectors.toList()));
 
-		return Collections.EMPTY_LIST;
 
-	}
+	
 
 }

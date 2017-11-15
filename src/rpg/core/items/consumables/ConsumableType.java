@@ -1,12 +1,9 @@
 package rpg.core.items.consumables;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import rpg.core.items.Item;
+import rpg.core.items.ItemRarity;
 import rpg.core.items.SpawnableItem;
 import rpg.core.utils.CalcHelper;
 
@@ -16,22 +13,12 @@ public enum ConsumableType implements SpawnableItem {
 		public Consumable getItemToSpawn() {
 			return new Food();
 		}
-
-		@Override
-		public int getDropRate() {
-			return 50;
-		}
 	},
 
 	KEY {
 		@Override
 		public Item getItemToSpawn() {
 			return new Key();
-		}
-
-		@Override
-		public int getDropRate() {
-			return 40;
 		}
 	},
 
@@ -40,11 +27,6 @@ public enum ConsumableType implements SpawnableItem {
 		public Item getItemToSpawn() {
 			return new Bandage();
 		}
-
-		@Override
-		public int getDropRate() {
-			return 50;
-		}
 	},
 
 	ANTI_VENOM {
@@ -52,67 +34,35 @@ public enum ConsumableType implements SpawnableItem {
 		public Item getItemToSpawn() {
 			return new AntiVenom();
 		}
-
-		@Override
-		public int getDropRate() {
-			return 30;
-		}
 	},
-	CLEANSING_BREW{
 
+	CLEANSING_BREW {
 		@Override
 		public Item getItemToSpawn() {
 			return new CleansingBrew();
 		}
-
-		@Override
-		public int getDropRate() {
-			return 30;
-		}
-		
 	},
+
 	HOLY_WATER {
 		@Override
 		public Item getItemToSpawn() {
 			return new HolyWater();
 		}
-
-		@Override
-		public int getDropRate() {
-			return 25;
-		}
 	},
 
-	DARK_ESSENCE(25) {
+	DARK_ESSENCE {
 		@Override
 		public Item getItemToSpawn() {
 			return new DarkEssence();
 		}
 	};
 
-	public static List<Item> spawnConsumableStack() {
-		Item item = chooseItemToSpawn();
-		List<Item> consumables = new ArrayList<>();
-		int randQuantity = CalcHelper.getRandomIntInRange(1, item.getMaxSpawnedQuantity())
-				* item.getQuantityMultiplier();
-		if (randQuantity > item.getMaxSpawnedQuantity()) {
-			randQuantity = item.getMaxSpawnedQuantity();
+	public static Item getConsumableByRarity(ItemRarity rarity) {
+		if (rarity == ItemRarity.EPIC) {
+			return values()[CalcHelper.randInt(values().length)].getItemToSpawn();
 		}
-		for (int i = 0; i < randQuantity; i++) {
-			consumables.add(item.getItem().getItemToSpawn());
-		}
-		return consumables;
-	}
-	
-	private static Item chooseItemToSpawn() {
-		int chance = CalcHelper.randInt(101);
-		List<ConsumableType> consumTypes = Arrays.asList(values());
-		int approximation = CalcHelper.calcApproxInt(chance,
-				consumTypes.stream().map(e -> e.getDropRate()).collect(Collectors.toList()));
-		
-		//long skip = consumTypes.stream().filter(e -> e.getDropRate() == approximation).count();
-		//int rand = CalcHelper.randInt((int)skip-1) ;
-		return consumTypes.stream().parallel().filter(e -> e.getDropRate() == approximation).findAny().get().getItemToSpawn();
+		return Arrays.asList(values()).stream().filter(e -> e.getItemToSpawn().getRarity() == rarity).findFirst().get()
+				.getItemToSpawn();
 	}
 
 }

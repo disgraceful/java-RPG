@@ -1,6 +1,7 @@
 package rpg.core.items.consumables;
 
 import rpg.core.characters.shared.Character;
+import rpg.core.items.ItemRarity;
 
 public class Bandage extends Consumable {
 	public Bandage() {
@@ -16,6 +17,7 @@ public class Bandage extends Consumable {
 		stackQuantity = 5;
 		maxSpawnedQuantity = 2;
 		itemType = ConsumableType.BANDAGE;
+		rarity = ItemRarity.COMMON;
 	}
 
 	@Override
