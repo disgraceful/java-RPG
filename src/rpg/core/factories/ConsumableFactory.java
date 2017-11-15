@@ -15,7 +15,7 @@ public class ConsumableFactory extends AbstractItemFactory{
 	public List<Item> createItems() {
 		int chance = CalcHelper.randInt(101);
 		//System.out.println(chance);
-		ItemRarity rarity = chooseRarity(chance);
+		ItemRarity rarity = ItemRarity.chooseRarity(chance);
 		//System.out.println(rarity);
 		Item item = ConsumableType.getConsumableByRarity(rarity);
 		//System.out.println(item.getClass());

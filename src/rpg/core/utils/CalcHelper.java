@@ -1,5 +1,6 @@
 package rpg.core.utils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
@@ -37,7 +38,6 @@ public class CalcHelper {
 	public static int calcApproxInt(int coreElement, List<Integer> ints) {
 		int min = Integer.MAX_VALUE;
 		int closest = coreElement;
-
 		for (int v : ints) {
 			final int diff = Math.abs(v - coreElement);
 			if (diff < min) {
@@ -48,9 +48,16 @@ public class CalcHelper {
 		return closest;
 	}
 
-	public static int calcMinAfterSubstracte(int chance, List<Integer>ints){
-		System.out.println(chance);
-		
-		return ints.stream().min((i1, i2) -> Integer.compare(Math.abs(i1 - chance), Math.abs(i2 - chance))).get();
+	public static int calcIndexBeforeSelected(int chance, List<Integer> ints) {
+		if(ints.contains(chance)){
+			chance++;
+		}
+		ints.add(chance);
+		Collections.sort(ints);
+		int index = ints.indexOf(chance);
+		if (index == 0) {
+			return ints.get(index+1);
+		}
+		return ints.get(index-1);
 	}
 }
