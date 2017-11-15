@@ -58,7 +58,19 @@ public enum ConsumableType implements SpawnableItem {
 			return 30;
 		}
 	},
+	CLEANSING_BREW{
 
+		@Override
+		public Item getItemToSpawn() {
+			return new CleansingBrew();
+		}
+
+		@Override
+		public int getDropRate() {
+			return 30;
+		}
+		
+	},
 	HOLY_WATER {
 		@Override
 		public Item getItemToSpawn() {
@@ -71,15 +83,10 @@ public enum ConsumableType implements SpawnableItem {
 		}
 	},
 
-	DARK_ESSENCE {
+	DARK_ESSENCE(25) {
 		@Override
 		public Item getItemToSpawn() {
 			return new DarkEssence();
-		}
-
-		@Override
-		public int getDropRate() {
-			return 25;
 		}
 	};
 
@@ -96,14 +103,16 @@ public enum ConsumableType implements SpawnableItem {
 		}
 		return consumables;
 	}
-
+	
 	private static Item chooseItemToSpawn() {
 		int chance = CalcHelper.randInt(101);
 		List<ConsumableType> consumTypes = Arrays.asList(values());
 		int approximation = CalcHelper.calcApproxInt(chance,
 				consumTypes.stream().map(e -> e.getDropRate()).collect(Collectors.toList()));
-		int skip = CalcHelper.randInt((int) consumTypes.stream().filter(e -> e.getDropRate() == approximation).count()-1);
-		return consumTypes.stream().filter(e -> e.getDropRate() == approximation).skip(skip).findFirst().get().getItemToSpawn();
+		
+		//long skip = consumTypes.stream().filter(e -> e.getDropRate() == approximation).count();
+		//int rand = CalcHelper.randInt((int)skip-1) ;
+		return consumTypes.stream().parallel().filter(e -> e.getDropRate() == approximation).findAny().get().getItemToSpawn();
 	}
 
 }

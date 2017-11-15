@@ -1,10 +1,13 @@
 package rpg.core.spawn;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import rpg.core.items.Item;
-import rpg.core.items.ItemDrop;
+import rpg.core.items.ItemType;
 import rpg.core.items.Loot;
 import rpg.core.items.LootType;
 import rpg.core.items.SpawnableItem;
@@ -37,7 +40,7 @@ public class ItemFactory {
 			int chanceToDecideSpecificItemType = CalcHelper.randInt(101);
 			List<Item> items = spawnRandomItem(chanceToDecideSpecificItemType);
 			for (Item item : items) {
-				currentGold-=item.getCost();
+				currentGold -= item.getCost();
 			}
 			resultList.addAll(items);
 		}
@@ -47,13 +50,11 @@ public class ItemFactory {
 	}
 
 	private static List<Item> spawnRandomItem(int chance) {
-		if (chance < ItemDrop.TRINKET_DROP.getDrop()) {
-			return new ArrayList<Item>() {{TrinketType.spawnTrinket();}};
-		} else if (chance < ItemDrop.CONSUMABLE_DROP.getDrop()) {
-			return ConsumableType.spawnConsumableStack();
-		} else {
-			return new ArrayList<Item>(){{TreasureType.spawnTreasure(chance);}};
-		}
+		int approx = CalcHelper.calcApproxInt(chance,
+				Arrays.asList(ItemType.values()).stream().map(e -> e.getDrop()).collect(Collectors.toList()));
+
+		return Collections.EMPTY_LIST;
+
 	}
 
 }

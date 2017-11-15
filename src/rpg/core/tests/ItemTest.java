@@ -11,7 +11,6 @@ public class ItemTest {
 	public void testSpawnConsumables(){
 		for (int i = 0; i < 10; i++) {
 			ItemFactory.spawnLoot(LootType.SMALL_LOOT).getLootItems().forEach(e->System.out.println(e.getClass()));
-			System.out.println("llllll");
 		}
 	}
 }
