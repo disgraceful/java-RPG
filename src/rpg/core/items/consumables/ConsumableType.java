@@ -1,6 +1,8 @@
 package rpg.core.items.consumables;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 import rpg.core.items.Item;
 import rpg.core.items.ItemRarity;
@@ -61,7 +63,14 @@ public enum ConsumableType implements SpawnableItem {
 		if (rarity == ItemRarity.EPIC) {
 			return values()[CalcHelper.randInt(values().length)].getItemToSpawn();
 		}
-		return Arrays.asList(values()).stream().filter(e -> e.getItemToSpawn().getRarity() == rarity).findFirst().get()
+		return Arrays.asList(values()).stream()
+				.filter(e -> e.getItemToSpawn().getRarity() == rarity)
+				.collect(Collectors.collectingAndThen(Collectors.toList(), collected-> {
+					Collections.shuffle(collected);
+					return collected.stream();
+				}))
+				.findAny()
+				.get()
 				.getItemToSpawn();
 	}
 
