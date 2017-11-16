@@ -1,9 +1,7 @@
 package rpg.core.items;
 
 public enum ItemType {
-	TRINKET(15),
-	TREASURE(100),
-	CONSUMABLE(60);
+	TRINKET(15), TREASURE(100), CONSUMABLE(55);
 	
 	private int drop;
 	

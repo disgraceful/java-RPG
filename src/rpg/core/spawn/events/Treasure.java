@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rpg.core.items.Item;
-import rpg.core.spawn.ItemFactory;
-import rpg.core.utils.CalcHelper;
 
 
 public class Treasure extends SpawnEvent {

@@ -8,12 +8,13 @@ import org.junit.Test;
 
 import rpg.core.factories.AbstractItemFactory;
 import rpg.core.factories.ConsumableFactory;
+import rpg.core.factories.FactoryProvider;
 
 public class ItemTest {
 
 	@Test
 	public void testSpawnConsumables() {
-		AbstractItemFactory factory = new ConsumableFactory();
+		AbstractItemFactory factory = FactoryProvider.getFactory(20);
 		for (int i = 0; i < 100; i++) {
 			Map<Class, Long>occurances = calcualteExactNumbers(factory.createItems());
 			occurances.forEach((k,v)->System.out.println(v + "x "+k.getSimpleName()));

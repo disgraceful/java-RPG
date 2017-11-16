@@ -33,8 +33,8 @@ public enum TreasureType implements SpawnableItem {
 		}
 	};
 	
-	
-	public static Item getTreasureByRarity(ItemRarity rarity) {
+	@Override
+	public Item getItemByRarity(ItemRarity rarity) {
 		return StreamUtils.getRandomItemFromStream(Arrays.asList(values())
 				.stream()
 				.filter(e -> e.getItemToSpawn().getRarity() == rarity))

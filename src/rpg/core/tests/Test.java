@@ -24,7 +24,6 @@ import rpg.core.dungeon.DungeonSize;
 import rpg.core.hub.MercenaryCoach;
 import rpg.core.items.Item;
 import rpg.core.items.consumables.ConsumableType;
-import rpg.core.spawn.ItemFactory;
 import rpg.core.spells.Spell;
 import rpg.core.spells.TemporaryEffect;
 import rpg.core.utils.SaveHelper;

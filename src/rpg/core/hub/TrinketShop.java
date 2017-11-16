@@ -5,7 +5,6 @@ import java.util.List;
 
 import rpg.core.items.trinkets.Trinket;
 import rpg.core.session.GameSession;
-import rpg.core.spawn.ItemFactory;
 
 
 public class TrinketShop {

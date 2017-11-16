@@ -58,7 +58,8 @@ public enum ConsumableType implements SpawnableItem {
 		}
 	};
 
-	public static Item getConsumableByRarity(ItemRarity rarity) {
+	@Override
+	public Item getItemByRarity(ItemRarity rarity) {
 		if (rarity == ItemRarity.EPIC) {
 			return values()[CalcHelper.randInt(values().length)].getItemToSpawn();
 		}
@@ -67,5 +68,7 @@ public enum ConsumableType implements SpawnableItem {
 				.filter(e -> e.getItemToSpawn().getRarity() == rarity))
 				.getItemToSpawn();
 	}
+	
+	
 
 }
