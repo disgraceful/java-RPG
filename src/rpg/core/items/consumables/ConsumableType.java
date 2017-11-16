@@ -1,13 +1,12 @@
 package rpg.core.items.consumables;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 import rpg.core.items.Item;
 import rpg.core.items.ItemRarity;
 import rpg.core.items.SpawnableItem;
 import rpg.core.utils.CalcHelper;
+import rpg.core.utils.StreamUtils;
 
 public enum ConsumableType implements SpawnableItem {
 	FOOD {
@@ -63,14 +62,9 @@ public enum ConsumableType implements SpawnableItem {
 		if (rarity == ItemRarity.EPIC) {
 			return values()[CalcHelper.randInt(values().length)].getItemToSpawn();
 		}
-		return Arrays.asList(values()).stream()
-				.filter(e -> e.getItemToSpawn().getRarity() == rarity)
-				.collect(Collectors.collectingAndThen(Collectors.toList(), collected-> {
-					Collections.shuffle(collected);
-					return collected.stream();
-				}))
-				.findAny()
-				.get()
+		return StreamUtils.getRandomItemFromStream(Arrays.asList(values())
+				.stream()
+				.filter(e -> e.getItemToSpawn().getRarity() == rarity))
 				.getItemToSpawn();
 	}
 
