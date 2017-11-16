@@ -8,7 +8,7 @@ import rpg.core.items.Item;
 public abstract class Trinket extends Item {
 	protected StatWrapper affectedstats;
 	protected HeroClass restriction;
-		
+
 	public StatWrapper getAffectedstats() {
 		return affectedstats;
 	}
@@ -24,16 +24,9 @@ public abstract class Trinket extends Item {
 	public void setRestriction(HeroClass restriction) {
 		this.restriction = restriction;
 	}
-	
+
 	public StatWrapper getStatWrapper() {
 		return affectedstats;
-	}
-	
-	@Override
-	protected void initItem() {
-		maxSpawnedQuantity = 1;
-		stackQuantity=1;
-		
 	}
 
 	public boolean tryEquipItem(Hero hero) {
@@ -50,6 +43,11 @@ public abstract class Trinket extends Item {
 		hero.updateStats(StatWrapper.reverseStats(affectedstats));
 		System.out.println(hero.getName() + " has unequipped " + this.getName());
 	}
-	
-	
+
+	@Override
+	protected void initItem() {
+		maxSpawnedQuantity = 1;
+		stackQuantity = 1;
+		quantityMultiplier=1;
+	}
 }

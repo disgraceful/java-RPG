@@ -14,7 +14,7 @@ public class Gold extends Treasure {
 		cost = 1;
 		stackQuantity = 1500;
 		maxSpawnedQuantity = 3500;
-		quantityMultiplier = 2;
+		quantityMultiplier = 10;
 		itemType = TreasureType.GOLD;
 		rarity= ItemRarity.COMMON;
 	}
