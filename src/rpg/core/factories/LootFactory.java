@@ -6,6 +6,7 @@ import java.util.List;
 import rpg.core.items.Item;
 import rpg.core.items.Loot;
 import rpg.core.items.LootType;
+import rpg.core.items.SpawnableItem;
 import rpg.core.utils.CalcHelper;
 
 public class LootFactory {
@@ -25,6 +26,16 @@ public class LootFactory {
 				}
 				resultList.add(item);
 			}
+		}
+		Loot loot = new Loot();
+		loot.setLootItems(resultList);
+		return loot;
+	}
+
+	public static Loot spawnSpecificLoot(SpawnableItem item, int quantity) {
+		List<Item> resultList = new ArrayList<>();
+		for (int i = 0; i < quantity; i++) {
+			resultList.add(item.getItemToSpawn());
 		}
 		Loot loot = new Loot();
 		loot.setLootItems(resultList);
