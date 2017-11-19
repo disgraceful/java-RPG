@@ -10,10 +10,13 @@ public class StreamUtils {
 
 	}
 	public static <T> T getRandomItemFromStream(Stream<T> stream) {
-		return stream.collect(Collectors.collectingAndThen(Collectors.toList(), collected -> {
-			Collections.shuffle(collected);
-			return collected.stream();
-		})).findAny().get();
-
+		return stream
+				.collect(Collectors.collectingAndThen(Collectors.toList(), 
+						collected -> {
+							Collections.shuffle(collected);
+							return collected.stream();
+						}))
+				.findAny()
+				.get();
 	}
 }

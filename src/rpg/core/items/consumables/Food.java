@@ -14,7 +14,7 @@ public class Food extends Consumable {
 	@Override
 	protected void initItem() {
 		name = "Food";
-		description = "Yummy-yummy";
+		description = "Packed products to prevent hunger";
 		cost = 5;
 		quantityMultiplier = 2;
 		stackQuantity = 24;
