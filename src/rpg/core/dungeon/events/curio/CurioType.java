@@ -2,6 +2,7 @@ package rpg.core.dungeon.events.curio;
 
 import rpg.core.dungeon.events.SpawnEvent;
 import rpg.core.dungeon.events.SpawnEventParams;
+import rpg.core.utils.CalcHelper;
 
 public enum CurioType implements SpawnEventParams {
 	CORRUPTED_FOUNTAIN {
@@ -22,4 +23,8 @@ public enum CurioType implements SpawnEventParams {
 			return new TrappedMechanism();
 		}
 	};
+
+	public static SpawnEvent getEvent() {
+		return values()[CalcHelper.randInt(values().length)].getConcreteEvent();
+	}
 }

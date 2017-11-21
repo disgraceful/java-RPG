@@ -1,6 +1,6 @@
 package rpg.core.dungeon.events;
 
-import rpg.core.dungeon.events.curio.Curio;
+import rpg.core.dungeon.events.curio.CurioType;
 import rpg.core.dungeon.events.fight.FightType;
 import rpg.core.dungeon.events.treasure.TreasureType;
 import rpg.core.utils.CalcHelper;
@@ -24,8 +24,10 @@ public enum SpawnableEventType {
 	},
 	CURIO(45) {
 		@Override
-		public Curio getEvent() {
-			return new Curio();
+		public SpawnEvent getEvent() {
+			SpawnEvent event = CurioType.getEvent();
+			event.spawn();
+			return event;
 		}
 	};
 
