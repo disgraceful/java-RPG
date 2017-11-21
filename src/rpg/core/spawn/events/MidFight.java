@@ -3,7 +3,8 @@ package rpg.core.spawn.events;
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.core.spawn.CharacterFactory;
+import rpg.core.factories.CharacterFactory;
+import rpg.core.items.LootType;
 import rpg.core.spawn.PartySpawnPatternEnumeration;
 
 public class MidFight extends Fight{
@@ -17,6 +18,7 @@ public class MidFight extends Fight{
 				add(PartySpawnPatternEnumeration.MID_MIDDLE_ONLY);
 			}
 		};
+		lootType = LootType.MEDIUM_LOOT;
 
 	}
 

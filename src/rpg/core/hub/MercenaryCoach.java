@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rpg.core.characters.heroes.Hero;
+import rpg.core.factories.CharacterFactory;
 import rpg.core.session.GameSession;
-import rpg.core.spawn.CharacterFactory;
 
 
 public class MercenaryCoach {

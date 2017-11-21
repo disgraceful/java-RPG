@@ -2,7 +2,7 @@ package rpg.core.items;
 
 public enum LootType {
 
-	SMALL_LOOT(1000), MEDIUM_LOOT(2500), LARGE_LOOT(5000);
+	SMALL_LOOT(1000), MEDIUM_LOOT(2500), LARGE_LOOT(5000),CONCRETE(-1);
 
 	private int goldEqv;
 

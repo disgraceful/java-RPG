@@ -6,13 +6,9 @@ public enum SpawnableEventType {
 	FIGHT(35) {
 		@Override
 		public SpawnEvent getEvent() {
-			Fight fight =(Fight) FightType.getRandomFight().getConcreteEvent();
+			Fight fight = (Fight) FightType.getRandomFight().getConcreteEvent();
 			fight.spawn();
 			return fight;
-		}
-		
-		public SpawnEvent getEvent(SpawnEventParams params){
-			return params.getConcreteEvent();
 		}
 	},
 	TREASURE(40) {
@@ -20,23 +16,11 @@ public enum SpawnableEventType {
 		public SpawnEvent getEvent() {
 			return new Treasure();
 		}
-
-		@Override
-		public SpawnEvent getEvent(SpawnEventParams param) {
-			// TODO Auto-generated method stub
-			return null;
-		}
 	},
 	CURIO(45) {
 		@Override
 		public Curio getEvent() {
 			return new Curio();
-		}
-
-		@Override
-		public SpawnEvent getEvent(SpawnEventParams param) {
-			// TODO Auto-generated method stub
-			return null;
 		}
 	};
 
@@ -55,10 +39,8 @@ public enum SpawnableEventType {
 	}
 
 	public abstract SpawnEvent getEvent();
-	
-	public abstract SpawnEvent getEvent(SpawnEventParams param);
+
+	public SpawnEvent getEvent(SpawnEventParams params) {
+		return params.getConcreteEvent();
+	}
 }
-
-
-
-

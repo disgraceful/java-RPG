@@ -3,7 +3,8 @@ package rpg.core.spawn.events;
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.core.spawn.CharacterFactory;
+import rpg.core.factories.CharacterFactory;
+import rpg.core.items.LootType;
 import rpg.core.spawn.PartySpawnPatternEnumeration;
 
 public class ToughFight extends Fight {
@@ -19,6 +20,7 @@ public class ToughFight extends Fight {
 				add(PartySpawnPatternEnumeration.STRONG_MIDDLE);
 			}
 		};
+		lootType = LootType.LARGE_LOOT;
 	}
 
 }

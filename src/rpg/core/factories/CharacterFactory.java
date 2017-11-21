@@ -1,4 +1,4 @@
-package rpg.core.spawn;
+package rpg.core.factories;
 
 import rpg.core.characters.enemies.EnemyClass;
 import rpg.core.characters.heroes.Hero;
@@ -7,6 +7,8 @@ import rpg.core.characters.shared.CharClass;
 import rpg.core.characters.shared.Character;
 import rpg.core.characters.shared.Party;
 import rpg.core.loader.GameLoader;
+import rpg.core.spawn.PartySpawnPattern;
+import rpg.core.spawn.PartySpawnPatternEnumeration;
 
 public class CharacterFactory {
 

@@ -1,8 +1,13 @@
 package rpg.core.spawn.events;
 
+import rpg.core.items.Loot;
+import rpg.core.items.LootType;
+
 public abstract class SpawnEvent {
 	protected SpawnableEventType spawnType;
 	protected boolean triggered;
+	protected Loot loot;
+	protected LootType lootType;
 
 	public SpawnableEventType getSpawnType() {
 		return spawnType;
@@ -17,5 +22,6 @@ public abstract class SpawnEvent {
 	}
 
 	public abstract void trigger();
+	public abstract void spawn();
 
 }

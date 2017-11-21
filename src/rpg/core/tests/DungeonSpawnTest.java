@@ -7,7 +7,7 @@ import rpg.core.dungeon.Desert;
 import rpg.core.dungeon.DungeonBuilder;
 import rpg.core.dungeon.DungeonEventSpawner;
 import rpg.core.dungeon.DungeonSize;
-import rpg.core.spawn.CharacterFactory;
+import rpg.core.factories.CharacterFactory;
 
 
 public class DungeonSpawnTest {
