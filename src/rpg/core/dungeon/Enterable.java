@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import rpg.core.spawn.events.SpawnEvent;
-import rpg.core.spawn.events.SpawnableEventType;
+import rpg.core.dungeon.events.SpawnEvent;
+import rpg.core.dungeon.events.SpawnableEventType;
 
 public abstract class Enterable {
 	protected List<SpawnEvent> events = new ArrayList<>();

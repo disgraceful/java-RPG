@@ -1,5 +1,7 @@
-package rpg.core.spawn.events;
+package rpg.core.dungeon.events.fight;
 
+import rpg.core.dungeon.events.SpawnEvent;
+import rpg.core.dungeon.events.SpawnEventParams;
 import rpg.core.utils.CalcHelper;
 
 public enum FightType implements SpawnEventParams {
@@ -28,9 +30,8 @@ public enum FightType implements SpawnEventParams {
 		}
 	};
 
-	public static FightType getRandomFight() {
-		return values()[CalcHelper.randInt(values().length - 1)];
-
+	public static SpawnEvent getEvent() {
+		return values()[CalcHelper.randInt(values().length - 1)].getConcreteEvent();
 	}
 
 }

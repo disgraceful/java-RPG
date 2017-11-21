@@ -1,8 +1,10 @@
-package rpg.core.spawn.events;
+package rpg.core.dungeon.events.fight;
 
 import java.util.List;
 
 import rpg.core.characters.shared.Party;
+import rpg.core.dungeon.events.SpawnEvent;
+import rpg.core.dungeon.events.SpawnableEventType;
 import rpg.core.factories.CharacterFactory;
 import rpg.core.factories.LootFactory;
 import rpg.core.items.Loot;

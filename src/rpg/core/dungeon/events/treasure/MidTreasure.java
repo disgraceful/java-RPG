@@ -1,4 +1,4 @@
-package rpg.core.spawn.events;
+package rpg.core.dungeon.events.treasure;
 
 import rpg.core.items.LootType;
 

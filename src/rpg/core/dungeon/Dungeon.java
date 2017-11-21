@@ -6,9 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import rpg.core.spawn.events.Fight;
-import rpg.core.spawn.events.SpawnEvent;
-import rpg.core.spawn.events.SpawnableEventType;
+import rpg.core.dungeon.events.SpawnEvent;
+import rpg.core.dungeon.events.SpawnableEventType;
+import rpg.core.dungeon.events.fight.Fight;
 
 public abstract class Dungeon {
 	protected DungeonType dungType;

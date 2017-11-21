@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import rpg.core.spawn.events.SpawnableEventType;
+import rpg.core.dungeon.events.SpawnableEventType;
 
 public class Corridor {
 	Room begin;

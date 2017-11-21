@@ -1,7 +1,8 @@
 package rpg.core.tests;
 
-import rpg.core.spawn.events.WeakFight;
 import org.junit.Test;
+
+import rpg.core.dungeon.events.fight.WeakFight;
 
 public class CharacterFactoryTest {
 

@@ -3,10 +3,10 @@ package rpg.core.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.core.spawn.events.FightType;
-import rpg.core.spawn.events.SpawnEvent;
-import rpg.core.spawn.events.SpawnEventParams;
-import rpg.core.spawn.events.SpawnableEventType;
+import rpg.core.dungeon.events.SpawnEvent;
+import rpg.core.dungeon.events.SpawnEventParams;
+import rpg.core.dungeon.events.SpawnableEventType;
+import rpg.core.dungeon.events.fight.FightType;
 import rpg.core.utils.CalcHelper;
 
 public class DungeonEventSpawner {

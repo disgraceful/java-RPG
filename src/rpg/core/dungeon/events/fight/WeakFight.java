@@ -1,4 +1,4 @@
-package rpg.core.spawn.events;
+package rpg.core.dungeon.events.fight;
 
 import java.util.ArrayList;
 import java.util.List;

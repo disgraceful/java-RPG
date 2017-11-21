@@ -7,8 +7,8 @@ import rpg.core.characters.shared.Party;
 import rpg.core.dungeon.Dungeon;
 import rpg.core.dungeon.Enterable;
 import rpg.core.dungeon.Room;
+import rpg.core.dungeon.events.SpawnEvent;
 import rpg.core.items.Item;
-import rpg.core.spawn.events.SpawnEvent;
 
 public class DungeonSession {
 	private boolean active;
