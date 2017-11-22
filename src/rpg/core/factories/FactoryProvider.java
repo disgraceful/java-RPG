@@ -1,19 +1,32 @@
 package rpg.core.factories;
 
+import rpg.core.dungeon.events.SpawnableEventType;
 import rpg.core.items.ItemType;
 
 public class FactoryProvider {
 
-	private FactoryProvider(){	
+	private FactoryProvider() {
 	}
-	
-	public static AbstractItemFactory getFactory(int chance) {
+
+	public static AbstractItemFactory getItemFactory(int chance) {
 		if (chance < ItemType.TRINKET.getDrop()) {
-			return new TrinketFactory();
+			return new TrinketItemFactory();
 		} else if (chance < ItemType.CONSUMABLE.getDrop()) {
-			return new ConsumableFactory();
+			return new ConsumableItemFactory();
 		} else {
-			return new TreasureFactory();
+			return new TreasureItemFactory();
+		}
+	}
+
+	public static AbstractEventFactory getEventFactory(SpawnableEventType event) {
+		switch (event) {
+		case CURIO:
+			return new CurioEventFactory();
+		case TREASURE:
+			return new TreasureEventFactory();
+		case FIGHT:
+		default:
+			return new FightEventFactory();
 		}
 	}
 }

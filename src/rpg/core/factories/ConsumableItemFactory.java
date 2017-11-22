@@ -2,9 +2,9 @@ package rpg.core.factories;
 
 import rpg.core.items.consumables.ConsumableType;
 
-public class ConsumableFactory extends AbstractItemFactory{
+public class ConsumableItemFactory extends AbstractItemFactory{
 
-	ConsumableFactory() {
+	ConsumableItemFactory() {
 		itemToSpawn =ConsumableType.ANTI_VENOM;
 	}
 	

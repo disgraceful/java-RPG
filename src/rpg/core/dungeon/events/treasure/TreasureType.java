@@ -40,7 +40,8 @@ public enum TreasureType implements SpawnEventParams {
 		return occurance;
 	}
 
-	public static SpawnEvent getEvent() {
+	@Override
+	public SpawnEvent getRandomizedEvent() {
 		int approxOccurance = CalcHelper.calcIndexBeforeSelected(CalcHelper.randInt(101),
 				values.stream().map(e -> e.getOccurance()).collect(Collectors.toList()));
 		return getEventByOccurance(approxOccurance);

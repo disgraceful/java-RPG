@@ -16,7 +16,7 @@ public class LootFactory {
 		int currentGold = lootType.getGoldEqv();
 		while (currentGold > 0) {
 			int chanceToDecideItemType = CalcHelper.randInt(101);
-			AbstractItemFactory factory = FactoryProvider.getFactory(chanceToDecideItemType);
+			AbstractItemFactory factory = FactoryProvider.getItemFactory(chanceToDecideItemType);
 			List<Item> items = factory.createItems();
 			for (Item item : items) {
 				currentGold -= item.getCost();

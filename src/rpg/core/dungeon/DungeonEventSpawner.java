@@ -7,6 +7,7 @@ import rpg.core.dungeon.events.SpawnEvent;
 import rpg.core.dungeon.events.SpawnEventParams;
 import rpg.core.dungeon.events.SpawnableEventType;
 import rpg.core.dungeon.events.fight.FightType;
+import rpg.core.factories.FactoryProvider;
 import rpg.core.utils.CalcHelper;
 
 public class DungeonEventSpawner {
@@ -46,7 +47,7 @@ public class DungeonEventSpawner {
 				SpawnEvent fight = spawnEventByChance(SpawnableEventType.FIGHT, curFightChance);
 				if (canAddEvent(enterable, fight) && fightsInHallway < 3) {
 					if (enterable instanceof Room) {
-						fight = spawnEventByParam(SpawnableEventType.FIGHT, FightType.TOUGH);
+						fight = spawnEventByParam(FightType.TOUGH);
 					}
 					enterable.addEvent(fight);
 					fightsInDung++;
@@ -95,14 +96,15 @@ public class DungeonEventSpawner {
 		}
 		int threshold = CalcHelper.randInt(101);
 		if (threshold < chance) {
-			return eventType.getEvent();
+			return FactoryProvider.getEventFactory(eventType).createEvent();
 		} else {
 			return null;
 		}
 	}
 
-	private static SpawnEvent spawnEventByParam(SpawnableEventType eventType, SpawnEventParams params) {
-		return eventType.getEvent(params);
+	private static SpawnEvent spawnEventByParam(SpawnEventParams params) {
+		return params.getConcreteEvent();
+		
 	}
 
 	private static boolean checkFirstSection(Room room, Enterable enterable) {

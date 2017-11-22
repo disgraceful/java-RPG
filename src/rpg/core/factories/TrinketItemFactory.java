@@ -2,9 +2,9 @@ package rpg.core.factories;
 
 import rpg.core.items.trinkets.TrinketType;
 
-public class TrinketFactory extends AbstractItemFactory {
+public class TrinketItemFactory extends AbstractItemFactory {
 
-	TrinketFactory() {
+	TrinketItemFactory() {
 		itemToSpawn = TrinketType.ETCHED_SHIELD;
 	}
 

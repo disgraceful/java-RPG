@@ -2,9 +2,9 @@ package rpg.core.factories;
 
 import rpg.core.items.treasure.TreasureType;
 
-public class TreasureFactory extends AbstractItemFactory{
+public class TreasureItemFactory extends AbstractItemFactory{
 
-	TreasureFactory() {
+	TreasureItemFactory() {
 		itemToSpawn =TreasureType.GOLD;
 	}
 

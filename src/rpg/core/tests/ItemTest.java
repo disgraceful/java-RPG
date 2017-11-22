@@ -15,7 +15,7 @@ public class ItemTest {
 
 	
 	public void testSpawnConsumables() {
-		AbstractItemFactory factory = FactoryProvider.getFactory(20);
+		AbstractItemFactory factory = FactoryProvider.getItemFactory(20);
 		for (int i = 0; i < 100; i++) {
 			Map<Class, Long>occurances = calcualteExactNumbers(factory.createItems());
 			occurances.forEach((k,v)->System.out.println(v + "x "+k.getSimpleName()));

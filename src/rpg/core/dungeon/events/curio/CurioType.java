@@ -24,7 +24,8 @@ public enum CurioType implements SpawnEventParams {
 		}
 	};
 
-	public static SpawnEvent getEvent() {
+	@Override
+	public SpawnEvent getRandomizedEvent() {
 		return values()[CalcHelper.randInt(values().length)].getConcreteEvent();
 	}
 }
