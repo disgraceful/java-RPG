@@ -19,9 +19,35 @@ public enum DungeonSize {
 		minFightAmount = minRooms+height;
 	}
 	
-	@Override public String toString(){
+	public int getXbound(){
+		return xbound;
+	}
+	
+	public int getYBound(){
+		return ybound;
+	}
+	
+	public int getMinRooms(){
+		return minRooms;
+	}
+	
+	public int getMaxFightRooms(){
+		return maxFightAmount;
+	}
+	
+	public int getMaxFightAmount() {
+		return maxFightAmount;
+	}
+	
+	public int getMinFightAmount() {
+		return minFightAmount;
+	}
+	
+	@Override
+	public String toString(){
 		return name;
 	}
+	
 	
 	
 	

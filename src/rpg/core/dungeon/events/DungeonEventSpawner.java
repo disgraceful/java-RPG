@@ -1,11 +1,13 @@
-package rpg.core.dungeon;
+package rpg.core.dungeon.events;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import rpg.core.dungeon.events.SpawnEvent;
-import rpg.core.dungeon.events.SpawnEventParams;
-import rpg.core.dungeon.events.SpawnableEventType;
+import rpg.core.dungeon.Corridor;
+import rpg.core.dungeon.Dungeon;
+import rpg.core.dungeon.DungeonType;
+import rpg.core.dungeon.Enterable;
+import rpg.core.dungeon.Room;
 import rpg.core.dungeon.events.fight.FightType;
 import rpg.core.factories.FactoryProvider;
 import rpg.core.utils.CalcHelper;
@@ -17,16 +19,18 @@ public class DungeonEventSpawner {
 	private static Room startRoom;
 	private static int fightsInDung;
 	private static List<Corridor> corridors = new ArrayList<>();
+	private static DungeonType dungeonType;
 
 	private DungeonEventSpawner() {
 	}
 
 	private static void init(Dungeon dungeon) {
-		maxFightAmount = dungeon.size.maxFightAmount;
-		minFightAmount = dungeon.size.minFightAmount;
+		maxFightAmount = dungeon.getSize().getMaxFightAmount();
+		minFightAmount = dungeon.getSize().getMinFightAmount();
 		alldungEnterables = dungeon.getAllEnterables();
 		startRoom = dungeon.getStartRoom();
 		corridors = dungeon.getAllCorridors();
+		dungeonType = dungeon.getDungType();
 	}
 
 	public static void generate(Dungeon dungeon) {
@@ -96,7 +100,7 @@ public class DungeonEventSpawner {
 		}
 		int threshold = CalcHelper.randInt(101);
 		if (threshold < chance) {
-			return FactoryProvider.getEventFactory(eventType).createEvent();
+			return FactoryProvider.getEventFactory(eventType).createEvent(dungeonType);
 		} else {
 			return null;
 		}
