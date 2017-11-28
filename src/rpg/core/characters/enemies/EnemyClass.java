@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 import rpg.core.characters.shared.CharClass;
 import rpg.core.spawn.EnemySpawnType;
+import rpg.core.utils.CalcHelper;
+import rpg.core.utils.StreamUtils;
 
 public enum EnemyClass implements CharClass {
 	OUTCAST_CROSSBOWMAN(EnemySpawnType.BACK) {
@@ -38,6 +40,8 @@ public enum EnemyClass implements CharClass {
 	};
 
 	private EnemySpawnType eSpawnType;
+	private static List<EnemyClass>values = Arrays.asList(values());
+			
 
 	private EnemyClass(EnemySpawnType spawnType) {
 
@@ -49,17 +53,19 @@ public enum EnemyClass implements CharClass {
 	}
 
 	public static EnemyClass getRandomValue() {
-		return values()[new Random().nextInt(values().length)];
+		return values.get(CalcHelper.randInt(values.size()));
 	}
 
 	public static List<EnemyClass> getAllBySpawnType(EnemySpawnType spawnType) {
-		return Arrays.stream(values()).filter(e -> e.getEnemySpawnType() == spawnType).collect(Collectors.toList());
+		return values.stream().filter(e -> e.getEnemySpawnType() == spawnType).collect(Collectors.toList());
 	}
 
 	public static Class<?> getRandomEnemyBySpawnType(EnemySpawnType spawnType) {
-		Collections.shuffle(Arrays.asList(values()));
-		return Arrays.stream(values()).filter(e -> e.eSpawnType == spawnType).findFirst().get().getClassToSpawn();
-
+		return StreamUtils.getRandomItemFromStream(values.stream().filter(e -> e.eSpawnType == spawnType)).getClassToSpawn();
+	}
+	
+	public static Class<?> getRandomEnemy(EnemySpawnType spawnType,DungeonType) {
+		return StreamUtils.getRandomItemFromStream(values.stream().filter(e -> e.eSpawnType == spawnType)).getClassToSpawn();
 	}
 
 }

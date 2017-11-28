@@ -17,8 +17,10 @@ public class CharacterFactory {
 
 	public static Party spawnPartyByPattern(PartySpawnPattern pattern) {
 		Party p = new Party();
-		pattern.getSpawnTypes().forEach(
-				e -> p.addMember(GameLoader.getInstance().getDataByClass(EnemyClass.getRandomEnemyBySpawnType(e))));
+		pattern.getSpawnTypes().
+		forEach(e -> p.addMember(
+				GameLoader.getInstance()
+				.getDataByClass(EnemyClass.getRandomEnemyBySpawnType(e))));
 		return p;
 	}
 

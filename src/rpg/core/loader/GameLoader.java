@@ -17,7 +17,8 @@ import rpg.core.characters.shared.Character;
 public class GameLoader {
 
 	private static final GameLoader INSTANCE = new GameLoader();
-	private static List<Character> gameData; 
+	private static List<Character> gameData;
+
 	private GameLoader() {
 		gameData = new ArrayList<Character>() {
 			{
@@ -40,7 +41,15 @@ public class GameLoader {
 	}
 
 	public <T> Character getDataByClass(Class<T> clazz) {
-		return gameData.stream().filter(e->e.getClass()==clazz).findAny().get();
+		try {
+			if(gameData.stream().anyMatch(e -> e.getClass() == clazz)) {
+				return (Character) clazz.newInstance(); 
+			}		
+				throw new InstantiationException();
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+			return Character.getEmptyCharacter();
+		}
 	}
 
 }

@@ -25,7 +25,7 @@ public enum TreasureType implements SpawnEventParams {
 	LARGE_TREASURE(10) {
 		@Override
 		public SpawnEvent getConcreteEvent() {
-			return null;
+			return new LargeTreasure();
 		}
 	};
 

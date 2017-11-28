@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rpg.core.characters.enemies.Enemy;
+import rpg.core.characters.heroes.classes.UberHeroTest;
 import rpg.core.spells.Spell;
 import rpg.core.spells.TemporaryEffect;
 import rpg.core.spells.TemporaryEffectType;
@@ -142,6 +143,10 @@ public abstract class Character implements Comparable<Character> {
 			return;
 		}
 		stats.updateStats(stat);
+	}
+	
+	public static Character getEmptyCharacter() {
+		return new UberHeroTest();
 	}
 
 }
