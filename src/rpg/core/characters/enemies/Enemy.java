@@ -10,7 +10,7 @@ public abstract class Enemy extends Character {
 	public EnemyClass eClass;
 	public EnemySpawnType eSpawnType;
 	public List<EnemySubType> subTypes;
-	public List<DungeonType> areaRestriction;
+	public DungeonType areaRestriction;
 
 	public EnemyClass getEnemyClass() {
 		return eClass;
@@ -31,13 +31,17 @@ public abstract class Enemy extends Character {
 	public void setSubTypes(List<EnemySubType> subTypes) {
 		this.subTypes = subTypes;
 	}
-
-	public List<DungeonType> getAreaRestriction() {
+	
+	public DungeonType getAreaRestriction() {
 		return areaRestriction;
 	}
 
-	public void setAreaRestriction(List<DungeonType> areaRestriction) {
+	public void setAreaRestriction(DungeonType areaRestriction) {
 		this.areaRestriction = areaRestriction;
+	}
+	
+	public boolean isAreaGeneric() {
+		return areaRestriction==null;
 	}
 
 	@Override

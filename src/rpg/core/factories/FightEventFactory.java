@@ -8,8 +8,9 @@ public class FightEventFactory extends AbstractEventFactory {
 	public FightEventFactory() {
 		params = FightType.MID;
 	}
+	
 	@Override
 	public SpawnEvent createEvent(DungeonType restriction) {
-		return 
+		return FightType.MID.getRandomizedEvent(restriction);
 	}
 }

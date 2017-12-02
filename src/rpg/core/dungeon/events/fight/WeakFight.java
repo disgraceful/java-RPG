@@ -1,14 +1,22 @@
 package rpg.core.dungeon.events.fight;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import rpg.core.factories.CharacterFactory;
+import rpg.core.dungeon.DungeonType;
 import rpg.core.items.LootType;
 import rpg.core.spawn.PartySpawnPatternEnumeration;
 
 public class WeakFight extends Fight {
 	public WeakFight() {
+		super();
+	}
+
+	public WeakFight(DungeonType restriction) {
+		super(restriction);
+	}
+
+	@Override
+	public void initEvent() {
 		avaliableEnumerations = new ArrayList<PartySpawnPatternEnumeration>() {
 			{
 				add(PartySpawnPatternEnumeration.WEAK_BALANCED);
@@ -16,6 +24,6 @@ public class WeakFight extends Fight {
 			}
 		};
 		lootType = LootType.SMALL_LOOT;
-	}
 
+	}
 }

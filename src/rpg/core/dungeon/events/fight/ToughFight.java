@@ -1,15 +1,23 @@
 package rpg.core.dungeon.events.fight;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import rpg.core.factories.CharacterFactory;
+import rpg.core.dungeon.DungeonType;
 import rpg.core.items.LootType;
 import rpg.core.spawn.PartySpawnPatternEnumeration;
 
 public class ToughFight extends Fight {
 
 	public ToughFight() {
+		super();
+	}
+
+	public ToughFight(DungeonType restriction) {
+		super(restriction);
+	}
+
+	@Override
+	public void initEvent() {
 		avaliableEnumerations = new ArrayList<PartySpawnPatternEnumeration>() {
 			{
 				add(PartySpawnPatternEnumeration.STRONG_BACK);
@@ -21,6 +29,7 @@ public class ToughFight extends Fight {
 			}
 		};
 		lootType = LootType.LARGE_LOOT;
+
 	}
 
 }

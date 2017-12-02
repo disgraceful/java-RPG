@@ -37,11 +37,8 @@ public enum CurioType implements SpawnEventParams {
 	}
 
 	public static SpawnEvent getRandomEventByRestriction(DungeonType restriction) {
-		return StreamUtils
-				.getRandomItemFromStream(
-						values
-						.stream()
-						.filter(e -> e.getConcreteEvent().getAreaRestriction().contains(restriction)))
+		return StreamUtils.getRandomItemFromStream(values.stream().filter(
+				e -> e.getConcreteEvent().getAreaRestriction() == restriction || e.getConcreteEvent().isAreaGeneric()))
 				.getConcreteEvent();
 	}
 }

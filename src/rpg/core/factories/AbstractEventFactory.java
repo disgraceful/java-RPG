@@ -6,6 +6,7 @@ import rpg.core.dungeon.events.SpawnEventParams;
 
 public class AbstractEventFactory { 
 	protected SpawnEventParams params;
+	
 	public SpawnEvent createEvent(DungeonType restriction) {
 		return params.getRandomizedEvent();
 	}

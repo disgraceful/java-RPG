@@ -1,15 +1,23 @@
 package rpg.core.dungeon.events.fight;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import rpg.core.factories.CharacterFactory;
+import rpg.core.dungeon.DungeonType;
 import rpg.core.items.LootType;
 import rpg.core.spawn.PartySpawnPatternEnumeration;
 
 public class MidFight extends Fight{
 	
 	public MidFight() {
+		super();
+	}
+	
+	public MidFight(DungeonType restriction) {
+		super(restriction);
+	}
+	
+	@Override
+	public void initEvent() {
 		avaliableEnumerations = new ArrayList<PartySpawnPatternEnumeration>() {
 			{
 				add(PartySpawnPatternEnumeration.MID_BALANCED);
@@ -19,7 +27,7 @@ public class MidFight extends Fight{
 			}
 		};
 		lootType = LootType.MEDIUM_LOOT;
-
+		
 	}
 
 }
