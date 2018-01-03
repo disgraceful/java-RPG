@@ -21,10 +21,10 @@ public class DungeonEventSpawner {
 	private static List<Corridor> corridors = new ArrayList<>();
 	private static DungeonType dungeonType;
 
-	private DungeonEventSpawner() {
+	protected DungeonEventSpawner() {
 	}
 
-	private static void init(Dungeon dungeon) {
+	protected static void init(Dungeon dungeon) {
 		maxFightAmount = dungeon.getSize().getMaxFightAmount();
 		minFightAmount = dungeon.getSize().getMinFightAmount();
 		alldungEnterables = dungeon.getAllEnterables();

@@ -6,18 +6,17 @@ import java.util.List;
 import java.util.Random;
 
 public class DungeonBuilder {
-	private static Dungeon dungeon;
+	protected static Dungeon dungeon;
 	private static Room[][] rooms;
 	private static int xbound;
 	private static int ybound;
 	private static int minRooms;
 	private static int allRooms;
 
-	
-	private DungeonBuilder() {
+	protected DungeonBuilder() {
 	}
 	
-	private static void init(Dungeon buildingDungeon){
+	protected static void init(Dungeon buildingDungeon){
 		dungeon = buildingDungeon;
 		rooms = buildingDungeon.getRooms();
 		xbound = buildingDungeon.size.xbound;
@@ -32,11 +31,10 @@ public class DungeonBuilder {
 		buildLevel();
 		setRoomCorridors();
 		dungeon.setStartingRoom();
-		System.out.print("starting room: ");
-		dungeon.getStartRoom().display();
+		
 	}
 
-	private static void setRoomRelations() {
+	protected static void setRoomRelations() {
 		for (int i = 0; i < ybound; i++) {
 			for (int j = 0; j < xbound; j++) {
 				if (i + 1 < ybound) {
@@ -55,7 +53,7 @@ public class DungeonBuilder {
 		}
 	}
 
-	private static void setRoomCorridors() {
+	protected static void setRoomCorridors() {
 		for (Room curRoom : dungeon.getEnterableRooms()) {
 			for (Room neighRoom : curRoom.getNeighbours()) {
 				Corridor corridor = new Corridor(curRoom, neighRoom);

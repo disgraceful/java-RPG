@@ -1,7 +1,15 @@
 package rpg.core.dungeon;
 
 public enum DungeonSize {
-	TUTORIAL("Tutorial",1,2,2,2),SMALL("Small",2,3,4,9),MEDIUM("Medium",3,4,9,8),LARGE("Large",3,6,13,12);
+	TUTORIAL("Tutorial",1,2,2,2),
+	SMALL("Small",2,3,4,9),
+	MEDIUM("Medium",3,4,9,8),
+	LARGE("Large",3,6,13,12),
+	VOID_LVL1("Void 1", 4,4,12,15),
+	VOID_LVL2("Void 2", 4,6,20,23),
+	VOID_LVL3("Void 3", 1,10,10,5);
+	
+	
 	
 	private String name; 
 	int xbound;
