@@ -1,7 +1,7 @@
 package rpg.core.dungeon;
 
 public enum DungeonSize {
-	SMALL("Small",2,3,4,9),MEDIUM("Medium",3,4,9,8),LARGE("Large",3,6,13,12);
+	TUTORIAL("Tutorial",1,2,2,2),SMALL("Small",2,3,4,9),MEDIUM("Medium",3,4,9,8),LARGE("Large",3,6,13,12);
 	
 	private String name; 
 	int xbound;

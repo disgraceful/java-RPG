@@ -108,7 +108,7 @@ public class DungeonEventSpawner {
 
 	private static SpawnEvent spawnEventByParam(SpawnEventParams params) {
 		return params.getConcreteEvent();
-		
+
 	}
 
 	private static boolean checkFirstSection(Room room, Enterable enterable) {

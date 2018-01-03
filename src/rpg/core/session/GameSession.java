@@ -1,44 +1,39 @@
 package rpg.core.session;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.xml.bind.annotation.XmlRootElement;
 
 import rpg.core.characters.heroes.Hero;
-import rpg.core.dungeon.Dungeon;
+import rpg.core.characters.heroes.HeroClass;
+import rpg.core.dungeon.DungeonBuilder;
+import rpg.core.dungeon.DungeonSize;
+import rpg.core.dungeon.Ruins;
+import rpg.core.factories.CharacterFactory;
 import rpg.core.hub.HeroRoster;
 import rpg.core.hub.Town;
 import rpg.core.items.Item;
 
-
-
-public class GameSession implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class GameSession {
 
 	private HeroRoster heroRoster = new HeroRoster();
 	private Town town = new Town();
-	private int gold = 0;
+	private long gold = 0;
 	private Set<Item> playerInventory = new HashSet<>();
-	private Set<Dungeon> allLevels = new HashSet<>();
-	private Set<Dungeon> completedLevels = new HashSet<>();
-
-	private static GameSession sessionInstance = null;
+	private ProgressionHolder progress = new ProgressionHolder();
+	
+	private static GameSession session;
 
 	private GameSession() {
 	}
 
 	public static GameSession getSessionInstance() {
-		if (sessionInstance == null) {
-			sessionInstance = new GameSession();
+		if (session == null) {
+			session = new GameSession();
 		}
-		return sessionInstance;
+		return session;
 	}
 
-	public int getGold() {
+	public long getGold() {
 		return gold;
 	}
 
@@ -66,28 +61,12 @@ public class GameSession implements Serializable {
 		this.playerInventory = playerInventory;
 	}
 
-	public Set<Dungeon> getAllLevels() {
-		return allLevels;
-	}
-
-	public void setAllLevels(Set<Dungeon> allLevels) {
-		this.allLevels = allLevels;
-	}
-
-	public Set<Dungeon> getCompletedLevels() {
-		return completedLevels;
-	}
-
-	public void setCompletedLevels(Set<Dungeon> completedLevels) {
-		this.completedLevels = completedLevels;
-	}
-
 	public void setGold(int gold) {
 		this.gold = gold;
 	}
 
 	public static void setSessionInstance(GameSession sessionInstance) {
-		GameSession.sessionInstance = sessionInstance;
+		GameSession.session = sessionInstance;
 	}
 
 	public void addGold(int gold) {
@@ -110,14 +89,7 @@ public class GameSession implements Serializable {
 		playerInventory.remove(item);
 	}
 
-	public void completeLevel(Dungeon dung) {
-		completedLevels.add(dung);
-	}
-
-	public Set<Dungeon> displayUncompletedLevels() {
-		return allLevels.stream().filter(e -> e.isCompleted()).collect(Collectors.toSet());
-	}
-
+	
 	public void restoreSession() {
 		// TODO load game
 	}
@@ -126,4 +98,6 @@ public class GameSession implements Serializable {
 		// TODO save game;
 	}
 
+	
+	
 }

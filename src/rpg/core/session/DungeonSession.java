@@ -18,19 +18,23 @@ public class DungeonSession {
 	private Enterable currentRoom;
 	private Set<Item> inventory = new HashSet<>();
 
-	private static final DungeonSession DUNGEON_SESSION_INSTANCE = new DungeonSession();
+	private static DungeonSession session = new DungeonSession();
 
 	private DungeonSession() {
 	}
 
 	public static DungeonSession getSession() {
-		return DUNGEON_SESSION_INSTANCE;
+		if (session == null) {
+			session = new DungeonSession();
+		}
+		return session;
 	}
 
 	public void initiateSession(Dungeon dungeon, Party party) {
 		this.dungeon = dungeon;
 		chosenParty = party;
 		startRoom = dungeon.getStartRoom();
+		active = true;
 	}
 
 	public void startDungeon() {
