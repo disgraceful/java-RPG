@@ -5,9 +5,10 @@ import java.util.List;
 
 public class Loot {
 
-	private List<Item> lootItems = new ArrayList<>();
+	private List<Item> lootItems;
 
 	public Loot() {
+		lootItems = new ArrayList<>();
 	}
 
 	public Loot(List<Item> lootItems) {
@@ -28,6 +29,10 @@ public class Loot {
 
 	public void addAllToLoot(List<Item> lootItems) {
 		lootItems.addAll(lootItems);
+	}
+
+	public static Loot EMPTY_LOOT() {
+		return new Loot();
 	}
 
 }

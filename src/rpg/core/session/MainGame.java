@@ -8,6 +8,7 @@ import rpg.core.dungeon.DungeonBuilder;
 import rpg.core.dungeon.DungeonSize;
 import rpg.core.dungeon.DungeonSizeEnum;
 import rpg.core.dungeon.Ruins;
+import rpg.core.dungeon.TutorialDungeon;
 import rpg.core.factories.CharacterFactory;
 
 public class MainGame {
@@ -16,10 +17,10 @@ public class MainGame {
 	private static DungeonSession currentDungeonSession;
 
 	public static void main(String[] args) {
-
+		startGame();
 	}
 
-	public void startGame() {
+	public static void startGame() {
 		gameSession = GameSession.getSessionInstance();
 		Centurion centurion = (Centurion) CharacterFactory.spawnCharByType(HeroClass.CENTURION);
 		Priest priest = (Priest) CharacterFactory.spawnCharByType(HeroClass.PRIEST);
@@ -29,10 +30,10 @@ public class MainGame {
 		party.addMember(centurion);
 		party.addMember(priest);
 
-		Ruins ruins = new Ruins(new DungeonSize(DungeonSizeEnum.SMALL, 1, 2, 2, 1));
-		DungeonBuilder.build(ruins);
+		TutorialDungeon tutorial = new TutorialDungeon();
+		DungeonBuilder.build(tutorial);
 		currentDungeonSession = DungeonSession.getSession();
-		currentDungeonSession.initiateSession(ruins, party);
+		currentDungeonSession.initiateSession(tutorial, party);
 		currentDungeonSession.startDungeon();
 
 	}
