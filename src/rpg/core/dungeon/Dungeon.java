@@ -2,15 +2,15 @@ package rpg.core.dungeon;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import rpg.core.dungeon.events.SpawnEvent;
 import rpg.core.dungeon.events.SpawnableEventType;
-import rpg.core.dungeon.events.UniqueEncounters;
 import rpg.core.dungeon.events.fight.Fight;
+import rpg.core.utils.CalcHelper;
 
 public abstract class Dungeon {
 	protected DungeonType dungType;
@@ -18,7 +18,7 @@ public abstract class Dungeon {
 	protected Room startRoom;
 	protected Room[][] rooms;
 	protected boolean isCompleted;
-	protected Map<UniqueEncounters, Enterable> uniqueEncounters;
+	protected Map<SpawnEvent, Enterable> uniqueEncounters = new HashMap<>();
 
 	public Dungeon(DungeonSize size) {
 		this.size = size;
@@ -73,8 +73,8 @@ public abstract class Dungeon {
 		this.isCompleted = isCompleted;
 	}
 
-	public void setStartingRoom() {
-		startRoom = getEnterableRooms().get(new Random().nextInt(getEnterableRooms().size()));
+	public void randomStartingRoom() {
+		startRoom = getEnterableRooms().get(CalcHelper.randInt(getEnterableRooms().size()));
 	}
 
 	private void setRooms(int xbound, int ybound) {

@@ -30,7 +30,7 @@ public class DungeonBuilder {
 		setRoomRelations();
 		buildLevel();
 		setRoomCorridors();
-		dungeon.setStartingRoom();
+		dungeon.randomStartingRoom();
 		
 	}
 

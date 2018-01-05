@@ -10,6 +10,7 @@ public class ToughFight extends Fight {
 
 	public ToughFight() {
 		super();
+		spawn();
 	}
 
 	public ToughFight(DungeonType restriction) {

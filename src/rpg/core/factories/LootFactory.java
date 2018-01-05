@@ -32,13 +32,25 @@ public class LootFactory {
 		return loot;
 	}
 
-	public static Loot spawnSpecificLoot(SpawnableItem item, int quantity) {
+	public static Loot spawnSpecificLoot(int[] quantity, SpawnableItem... items) {
 		List<Item> resultList = new ArrayList<>();
-		for (int i = 0; i < quantity; i++) {
-			resultList.add(item.getItemToSpawn());
+		for (int i = 0; i < items.length; i++) {
+			resultList.addAll(spawnSpecificLoot(quantity[i], items[i]).getLootItems());
 		}
 		Loot loot = new Loot();
 		loot.setLootItems(resultList);
 		return loot;
 	}
+
+	public static Loot spawnSpecificLoot(int quantity, SpawnableItem item) {
+		List<Item> resultList = new ArrayList<>();
+		for (int i = 0; i < quantity; i++) {
+			resultList.add(item.getItemToSpawn());
+		}
+
+		Loot loot = new Loot();
+		loot.setLootItems(resultList);
+		return loot;
+	}
+
 }

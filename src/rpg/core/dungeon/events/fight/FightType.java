@@ -41,22 +41,10 @@ public enum FightType implements SpawnEventParams {
 		public SpawnEvent getEventWithRestriction(DungeonType restriction) {
 			return new WeakFight(restriction);
 		}
-	},
-	SPECIAL {
-		@Override
-		public SpecialFight getConcreteEvent() {
-			return new SpecialFight();
-		}
-
-		@Override
-		public SpawnEvent getEventWithRestriction(DungeonType restriction) {
-			return new SpecialFight(restriction);
-		}
 	};
-	
-	
+
 	private static List<FightType> values = Arrays.asList(values());
-	
+
 	private FightType getRandomElement() {
 		return values.get(CalcHelper.randInt(values().length - 1));
 	}

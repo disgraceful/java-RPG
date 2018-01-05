@@ -17,12 +17,13 @@ public abstract class Fight extends SpawnEvent {
 
 	protected Party enemyParty;
 	protected List<PartySpawnPatternEnumeration> avaliableEnumerations;
-	
+
 	public Fight() {
 		spawnType = SpawnableEventType.FIGHT;
 		initEvent();
+		
 	}
-	
+
 	public Fight(DungeonType restriction) {
 		this();
 		areaRestriction = restriction;
@@ -35,7 +36,7 @@ public abstract class Fight extends SpawnEvent {
 	public PartySpawnPattern getRandomPattern() {
 		return avaliableEnumerations.get(CalcHelper.randInt(avaliableEnumerations.size())).getPattern();
 	}
-	
+
 	public abstract void initEvent();
 
 	@Override

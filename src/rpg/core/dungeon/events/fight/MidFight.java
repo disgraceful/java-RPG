@@ -10,6 +10,7 @@ public class MidFight extends Fight{
 	
 	public MidFight() {
 		super();
+		spawn();
 	}
 	
 	public MidFight(DungeonType restriction) {

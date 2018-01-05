@@ -9,6 +9,7 @@ import rpg.core.spawn.PartySpawnPatternEnumeration;
 public class WeakFight extends Fight {
 	public WeakFight() {
 		super();
+		spawn();
 	}
 
 	public WeakFight(DungeonType restriction) {

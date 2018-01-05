@@ -10,6 +10,7 @@ public class Treasure extends SpawnEvent {
 
 	public Treasure() {
 		spawnType = SpawnableEventType.TREASURE;
+		spawn();
 	}
 	
 	public Item getUnlocker() {
