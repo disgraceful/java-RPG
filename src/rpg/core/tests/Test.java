@@ -19,7 +19,7 @@ import rpg.core.characters.shared.Character;
 import rpg.core.characters.shared.Party;
 import rpg.core.dungeon.Desert;
 import rpg.core.dungeon.DungeonBuilder;
-import rpg.core.dungeon.DungeonSize;
+import rpg.core.dungeon.DungeonSizeEnum;
 import rpg.core.dungeon.events.DungeonEventSpawner;
 import rpg.core.hub.MercenaryCoach;
 import rpg.core.items.Item;

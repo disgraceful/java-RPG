@@ -6,7 +6,7 @@ import java.util.Set;
 import rpg.core.characters.heroes.Hero;
 import rpg.core.characters.heroes.HeroClass;
 import rpg.core.dungeon.DungeonBuilder;
-import rpg.core.dungeon.DungeonSize;
+import rpg.core.dungeon.DungeonSizeEnum;
 import rpg.core.dungeon.Ruins;
 import rpg.core.factories.CharacterFactory;
 import rpg.core.hub.HeroRoster;

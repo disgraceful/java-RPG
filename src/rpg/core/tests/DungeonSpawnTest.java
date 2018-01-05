@@ -5,11 +5,12 @@ import org.junit.Test;
 
 import rpg.core.dungeon.Desert;
 import rpg.core.dungeon.DungeonBuilder;
-import rpg.core.dungeon.DungeonSize;
+import rpg.core.dungeon.DungeonSizeEnum;
+import rpg.core.dungeon.SmallDungeonSize;
 import rpg.core.dungeon.events.DungeonEventSpawner;
 
 public class DungeonSpawnTest {
-	static Desert dung = new Desert(DungeonSize.SMALL);
+	static Desert dung = new Desert(new SmallDungeonSize());
 	
 	@Before
 	public void init(){

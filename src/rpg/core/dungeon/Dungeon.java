@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import rpg.core.dungeon.events.SpawnEvent;
 import rpg.core.dungeon.events.SpawnableEventType;
+import rpg.core.dungeon.events.UniqueEncounters;
 import rpg.core.dungeon.events.fight.Fight;
 
 public abstract class Dungeon {
@@ -16,6 +18,7 @@ public abstract class Dungeon {
 	protected Room startRoom;
 	protected Room[][] rooms;
 	protected boolean isCompleted;
+	protected Map<UniqueEncounters, Enterable> uniqueEncounters;
 
 	public Dungeon(DungeonSize size) {
 		this.size = size;
@@ -144,12 +147,12 @@ public abstract class Dungeon {
 		}
 		return enterables;
 	}
-	
-	public List<Corridor>getAllCorridors(){
+
+	public List<Corridor> getAllCorridors() {
 		List<Corridor> corridors = new ArrayList<>();
 		for (Room room : getAllRoomsAsList()) {
 			for (Corridor corridor : room.getCorridors()) {
-				if(!corridors.contains(corridor)&&!corridors.stream().anyMatch(e->e.isSameCorridor(corridor))){
+				if (!corridors.contains(corridor) && !corridors.stream().anyMatch(e -> e.isSameCorridor(corridor))) {
 					corridors.add(corridor);
 				}
 			}
