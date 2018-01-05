@@ -4,6 +4,7 @@ import rpg.core.dungeon.events.SpawnEvent;
 import rpg.core.dungeon.events.SpawnableEventType;
 import rpg.core.factories.LootFactory;
 import rpg.core.items.Item;
+import rpg.core.session.DungeonSession;
 
 public class Treasure extends SpawnEvent {
 	public Treasure() {
@@ -14,9 +15,8 @@ public class Treasure extends SpawnEvent {
 	@Override
 	public void trigger() {
 		if (!triggered) {
-
+			DungeonSession.getSession().collectLoot(loot);
 		}
-		// TODO open loot if yes add to DungSession Inventory
 	}
 
 	@Override

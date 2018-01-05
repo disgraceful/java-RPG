@@ -2,7 +2,7 @@ package rpg.core.dungeon;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import rpg.core.dungeon.events.SpawnEvent;
 import rpg.core.dungeon.events.SpawnableEventType;
@@ -37,9 +37,10 @@ public abstract class Enterable {
 		events.add(event);
 	}
 
-	public void setKeyEnterable(boolean key){
+	public void setKeyEnterable(boolean key) {
 		isKeyEnterable = key;
 	}
+
 	public void enter() {
 		visited = true;
 		partyHere = true;
@@ -68,10 +69,17 @@ public abstract class Enterable {
 				|| (type == SpawnableEventType.TREASURE && containsSpawnType(SpawnableEventType.CURIO));
 	}
 
+	public boolean hasUntriggeredEvents() {
+		return events.stream().filter(e -> !e.isTriggered()).count() > 0;
+	}
+
+	public List<SpawnEvent> getUntriggeredEvents() {
+		return events.stream().filter(e -> !e.isTriggered()).collect(Collectors.toList());
+	}
+
 	public void displayUntriggeredEvents() {
-		if (events.stream().filter(e -> !e.isTriggered()).count() > 0) {
-			// TODO display
-			// events.stream().filter(e->!e.isTriggered()).forEach();
+		if (hasUntriggeredEvents()) {
+			events.stream().filter(e -> !e.isTriggered()).forEach(e -> System.out.println(e));
 		} else {
 			System.out.println("No events in this Enterable");
 		}

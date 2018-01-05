@@ -5,9 +5,6 @@ import rpg.core.characters.heroes.classes.Centurion;
 import rpg.core.characters.heroes.classes.Priest;
 import rpg.core.characters.shared.Party;
 import rpg.core.dungeon.DungeonBuilder;
-import rpg.core.dungeon.DungeonSize;
-import rpg.core.dungeon.DungeonSizeEnum;
-import rpg.core.dungeon.Ruins;
 import rpg.core.dungeon.TutorialDungeon;
 import rpg.core.factories.CharacterFactory;
 

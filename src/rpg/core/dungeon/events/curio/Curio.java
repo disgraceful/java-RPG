@@ -9,7 +9,6 @@ public class Curio extends SpawnEvent {
 	protected Item unlocker;
 	public Curio() {
 		spawnType = SpawnableEventType.CURIO;
-		
 	}
 
 	@Override

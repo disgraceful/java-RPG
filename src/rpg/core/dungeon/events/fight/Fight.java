@@ -21,7 +21,6 @@ public abstract class Fight extends SpawnEvent {
 	public Fight() {
 		spawnType = SpawnableEventType.FIGHT;
 		initEvent();
-		
 	}
 
 	public Fight(DungeonType restriction) {
@@ -37,14 +36,12 @@ public abstract class Fight extends SpawnEvent {
 		return avaliableEnumerations.get(CalcHelper.randInt(avaliableEnumerations.size())).getPattern();
 	}
 
-	public abstract void initEvent();
-
 	@Override
 	public void trigger() {
 		if (!triggered) {
-
+			DungeonSession.getSession().engageInFight(enemyParty);
+			triggered = true;
 		}
-		DungeonSession.getSession().engageInFight(enemyParty);
 	}
 
 	@Override
@@ -52,4 +49,6 @@ public abstract class Fight extends SpawnEvent {
 		enemyParty = CharacterFactory.spawnParty(getRandomPattern(), areaRestriction);
 		loot = LootFactory.spawnLoot(lootType);
 	}
+
+	public abstract void initEvent();
 }
