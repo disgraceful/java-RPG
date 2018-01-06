@@ -1,15 +1,11 @@
 package rpg.core.session;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import rpg.core.characters.shared.Party;
 import rpg.core.dungeon.Corridor;
 import rpg.core.dungeon.CorridorSection;
 import rpg.core.dungeon.Dungeon;
 import rpg.core.dungeon.Room;
 import rpg.core.dungeon.events.SpawnEvent;
-import rpg.core.items.Item;
 import rpg.core.items.Loot;
 
 public class DungeonSession {
@@ -19,9 +15,8 @@ public class DungeonSession {
 	private Room currentRoom;
 	private SpawnEvent currentSpawnEvent;
 	private boolean userChoice;
-	private List<Item> inventory = new ArrayList<>();
-	private static final int INVENTORY_CAP = 20;
-
+	private DungeonSessionInventory inventory = new DungeonSessionInventory();
+	
 	private static DungeonSession session = new DungeonSession();
 
 	private DungeonSession() {
@@ -69,10 +64,7 @@ public class DungeonSession {
 	}
 	
 	public void collectLoot(Loot loot) {
-		
+		inventory.addLoot(loot);
 	}
 	
-	private void orderInventory() {
-		
-	}
 }

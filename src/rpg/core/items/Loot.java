@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Loot {
-
+	
+	public static final Loot EMPTY_LOOT = new Loot();
 	private List<Item> lootItems;
 
 	public Loot() {
@@ -30,9 +31,6 @@ public class Loot {
 	public void addAllToLoot(List<Item> lootItems) {
 		lootItems.addAll(lootItems);
 	}
-
-	public static Loot EMPTY_LOOT() {
-		return new Loot();
-	}
+	
 
 }

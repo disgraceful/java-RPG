@@ -6,44 +6,66 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import rpg.core.items.Item;
 import rpg.core.items.Loot;
+import rpg.core.items.SpawnableItem;
 
 public class DungeonSessionInventory {
 	private List<Item> inventory = new ArrayList<>();
-	private Map<Item, Integer> inventortMap = new HashMap<>();
-	private int inventoryCap = 20;
-
-	public void addItem(Item item) {
-		inventory.add(item);
-	}
-
-	public void addItems(List<Item> items) {
-		inventory.addAll(items);
-	}
+	private Map<Item, Integer> inventoryMap = new HashMap<>();
+	private Map<SpawnableItem, Integer> uniqueItemTypesMap = new HashMap<>();
+	private int inventoryCap = 5;
+	private int currentCap = 0;
 
 	public void addLoot(Loot loot) {
 		inventory.addAll(loot.getLootItems());
+		orderInventory();
 	}
 
 	public void orderInventory() {
-		Map<Item, Integer> counts = new HashMap<>();
-		for (Item item : inventory) {
-			if (!counts.keySet().contains(item.getItem())) {
-				counts.put(item, Collections.frequency(inventory, item.getClass()));
+		List<SpawnableItem> spawnableItemList = inventory.stream().map(e -> e.getItem()).collect(Collectors.toList());
+		for (SpawnableItem item : spawnableItemList) {
+			if (!uniqueItemTypesMap.keySet().contains(item)) {
+				uniqueItemTypesMap.put(item, Collections.frequency(spawnableItemList, item));
 			}
 		}
 
-		for (Entry<Item, Integer> item : counts.entrySet()) {
+		for (Entry<SpawnableItem, Integer> item : uniqueItemTypesMap.entrySet()) {
 			int totalItemQuantity = item.getValue();
-			while (totalItemQuantity > item.getKey().getStackQuantity()) {
-				inventortMap.put(item.getKey(), item.getKey().getStackQuantity());
-				totalItemQuantity -= item.getKey().getStackQuantity();
+			while (totalItemQuantity > item.getKey().getItemToSpawn().getStackQuantity()) {
+				inventoryMap.put(item.getKey().getItemToSpawn(), item.getKey().getItemToSpawn().getStackQuantity());
+				totalItemQuantity -= item.getKey().getItemToSpawn().getStackQuantity();
+				currentCap++;
 			}
-			inventortMap.put(item.getKey(), totalItemQuantity);
+			inventoryMap.put(item.getKey().getItemToSpawn(), totalItemQuantity);
+			currentCap++;
 		}
+	}
 
+	private int getAvaliableSpaceForItem(Item item) {
+		int stackQuantity = item.getStackQuantity();
+		int currentValue = uniqueItemTypesMap.get(item.getItem());
+		int occurances = 0;
+		for (Entry<Item, Integer> set : inventoryMap.entrySet()) {
+			if (set.getKey().getItem().equals(item.getItem())) {
+				occurances++;
+			}
+		}
+		return 0;
+
+	}
+
+	public void displayInventory() {
+		System.out.println("inventory: " + currentCap + "/" + inventoryCap);
+		for (Entry<Item, Integer> item : inventoryMap.entrySet()) {
+			System.out.println(item.getKey().getName() + " x" + item.getValue());
+		}
+	}
+
+	public boolean inventoryFull() {
+		return currentCap >= inventoryCap;
 	}
 
 }

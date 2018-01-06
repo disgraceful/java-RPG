@@ -34,7 +34,7 @@ public class TutorialDungeon extends Ruins {
 		Loot secondFightLoot = LootFactory.spawnSpecificLoot(new int[]{100,1},TreasureType.GOLD,TreasureType.BATTLE_TROPHIES);
 		Fight secondFight = new ConcreteFight(secondFightParty,secondFightLoot);
 		
-		Treasure lastRoomTreasure = new ConcreteTreasure(Loot.EMPTY_LOOT());
+		Treasure lastRoomTreasure = new ConcreteTreasure(Loot.EMPTY_LOOT);
 		
 		List<Enterable> enterables = getAllEnterables();
 		enterables.get(2).addEvent(firstFight);
