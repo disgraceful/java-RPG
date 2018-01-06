@@ -17,9 +17,8 @@ public class DungeonSessionInventoryTests {
 		inventory = new DungeonSessionInventory();
 	}
 
-	
 	public void testLootAdding() {
-		Loot loot1 = LootFactory.spawnSpecificLoot(1500, TreasureType.GOLD);
+		Loot loot1 = LootFactory.spawnSpecificLoot(1600, TreasureType.GOLD);
 		inventory.addLoot(loot1);
 		inventory.displayInventory();
 	}
@@ -33,7 +32,10 @@ public class DungeonSessionInventoryTests {
 		inventory.addLoot(loot2);
 		inventory.displayInventory();
 		Loot loot3 = LootFactory.spawnSpecificLoot(22, TreasureType.BATTLE_TROPHIES);
-		inventory.addLoot(loot2);
+		inventory.addLoot(loot3);
+		inventory.displayInventory();
+		Loot loot4 = LootFactory.spawnSpecificLoot(new int[]{5,1500}, TreasureType.BATTLE_TROPHIES,TreasureType.GOLD);
+		inventory.addLoot(loot4);
 		inventory.displayInventory();
 	}
 }
