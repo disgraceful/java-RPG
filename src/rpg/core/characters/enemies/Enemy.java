@@ -7,10 +7,10 @@ import rpg.core.dungeon.DungeonType;
 import rpg.core.spawn.EnemySpawnType;
 
 public abstract class Enemy extends Character {
-	public EnemyClass eClass;
-	public EnemySpawnType eSpawnType;
-	public List<EnemySubType> subTypes;
-	public DungeonType areaRestriction;
+	protected EnemyClass eClass;
+	protected EnemySpawnType eSpawnType;
+	protected List<EnemySubType> subTypes;
+	protected DungeonType areaRestriction;
 
 	public EnemyClass getEnemyClass() {
 		return eClass;
