@@ -15,6 +15,7 @@ public class DungeonSpawnTest {
 	@Before
 	public void init(){
 		DungeonBuilder.build(dung);
+		
 	}
 	
 	@Test

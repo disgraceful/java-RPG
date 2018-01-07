@@ -11,7 +11,8 @@ import rpg.core.session.DungeonSessionInventory;
 public class DungeonSessionInventoryTests {
 
 	private DungeonSessionInventory inventory;
-
+	
+	
 	@Before
 	public void init() {
 		inventory = new DungeonSessionInventory();
@@ -34,7 +35,8 @@ public class DungeonSessionInventoryTests {
 		Loot loot3 = LootFactory.spawnSpecificLoot(22, TreasureType.BATTLE_TROPHIES);
 		inventory.addLoot(loot3);
 		inventory.displayInventory();
-		Loot loot4 = LootFactory.spawnSpecificLoot(new int[]{5,1500}, TreasureType.BATTLE_TROPHIES,TreasureType.GOLD);
+		Loot loot4 = LootFactory.spawnSpecificLoot(new int[] { 5, 1500 }, TreasureType.BATTLE_TROPHIES,
+				TreasureType.GOLD);
 		inventory.addLoot(loot4);
 		inventory.displayInventory();
 	}

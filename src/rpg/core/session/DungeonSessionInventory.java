@@ -77,19 +77,4 @@ public class DungeonSessionInventory {
 	public boolean inventoryFull() {
 		return currentCap >= inventoryCap;
 	}
-
-	private int getSlotsOccupiedByItem(SpawnableItem item) {
-		int value = uniqueItemTypesMap.get(item);
-		int stackQuantity = item.getItemToSpawn().getStackQuantity();
-		double left = value / stackQuantity;
-		if (left < 1) {
-			return 1;
-		} else if (value % stackQuantity != 0) {
-			return (int) left + 1;
-		} else {
-			return (int) left;
-		}
-
-	}
-
 }
