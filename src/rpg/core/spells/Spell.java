@@ -160,7 +160,7 @@ public abstract class Spell implements Serializable{
 		return orientation == SpellOrientation.OFFENSIVE;
 	}
 
-	public boolean isSpellAOE() {
+	public boolean isAOE() {
 		return targetQuantity == SpellTargetQuantity.MULTIPLE;
 	}
 

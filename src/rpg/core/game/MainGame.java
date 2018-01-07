@@ -1,4 +1,4 @@
-package rpg.core.session;
+package rpg.core.game;
 
 import rpg.core.characters.heroes.HeroClass;
 import rpg.core.characters.heroes.classes.Centurion;
@@ -7,6 +7,8 @@ import rpg.core.characters.shared.Party;
 import rpg.core.dungeon.DungeonBuilder;
 import rpg.core.dungeon.TutorialDungeon;
 import rpg.core.factories.CharacterFactory;
+import rpg.core.session.DungeonSession;
+import rpg.core.session.GameSession;
 
 public class MainGame {
 

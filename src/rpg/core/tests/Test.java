@@ -117,7 +117,6 @@ public final class Test {
 				} else {
 					tempS.onTick(c);
 				}
-
 			}
 			if (c.isCharStunned()) {
 				continue;
@@ -164,7 +163,7 @@ public final class Test {
 			}
 			input = sc.nextInt();
 			Character target = targets.get(input - 1);
-			if (s.isSpellAOE()) {
+			if (s.isAOE()) {
 				c.useAbility(s, targets.toArray(new Character[targets.size()]));
 				targets.stream().forEach(e -> TextUtils.printCharacterFullInfo(e));
 			} else {
