@@ -17,17 +17,10 @@ import rpg.core.characters.heroes.classes.Purifier;
 import rpg.core.characters.heroes.classes.UberHeroTest;
 import rpg.core.characters.shared.Character;
 import rpg.core.characters.shared.Party;
-import rpg.core.dungeon.Desert;
-import rpg.core.dungeon.DungeonBuilder;
-import rpg.core.dungeon.DungeonSizeEnum;
-import rpg.core.dungeon.events.DungeonEventSpawner;
 import rpg.core.hub.MercenaryCoach;
-import rpg.core.items.Item;
-import rpg.core.items.consumables.ConsumableType;
 import rpg.core.spells.Spell;
 import rpg.core.spells.TemporaryEffect;
 import rpg.core.utils.SaveHelper;
-import rpg.core.utils.TextUtils;
 
 public final class Test {
 	static Scanner sc = new Scanner(System.in);
@@ -124,10 +117,10 @@ public final class Test {
 			int input = 0;
 			while (true) {
 				System.out.println("Choose action: ");
-				TextUtils.printCharacterShortInfo(c);
+				
 				for (int i = 0; i < c.getAllAbilities().size(); i++) {
 					System.out.print(i + 1 + " - ");
-					TextUtils.printAbilityInfo(c.getAllAbilities().get(i));
+					
 				}
 				boolean ischarAlone = c.getParty().isCharAlone();
 				int spellamount = c.getAllAbilities().size();
@@ -159,16 +152,16 @@ public final class Test {
 			List<Character> targets = s.getAvaliableTargets(c, queue);
 			for (int i = 0; i < targets.size(); i++) {
 				System.out.print(i + 1 + " - ");
-				TextUtils.printCharacterShortInfo(targets.get(i));
+				
 			}
 			input = sc.nextInt();
 			Character target = targets.get(input - 1);
 			if (s.isAOE()) {
 				c.useAbility(s, targets.toArray(new Character[targets.size()]));
-				targets.stream().forEach(e -> TextUtils.printCharacterFullInfo(e));
+				
 			} else {
 				c.useAbility(s, target);
-				TextUtils.printCharacterFullInfo(target);
+				
 			}
 			targets.stream().forEach(e -> {
 				if (e.isCharDead())

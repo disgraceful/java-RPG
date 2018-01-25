@@ -5,9 +5,9 @@ import java.util.List;
 
 import rpg.core.characters.shared.Character;
 import rpg.core.dungeon.DungeonType;
-import rpg.core.game.Pass;
-import rpg.core.game.PlayerDecision;
-import rpg.core.game.UseSpell;
+import rpg.core.game.decisions.Pass;
+import rpg.core.game.decisions.PlayerDecision;
+import rpg.core.game.decisions.UseSpell;
 import rpg.core.spawn.EnemySpawnType;
 import rpg.core.spells.Spell;
 import rpg.core.utils.CalcHelper;

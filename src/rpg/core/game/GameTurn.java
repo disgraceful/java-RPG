@@ -6,9 +6,12 @@ import java.util.List;
 
 import rpg.core.characters.enemies.Enemy;
 import rpg.core.characters.shared.Character;
+import rpg.core.game.decisions.Pass;
+import rpg.core.game.decisions.PlayerDecision;
 import rpg.core.spells.TemporaryEffect;
 
 public class GameTurn {
+	
 	private GameTurn() {
 	}
 

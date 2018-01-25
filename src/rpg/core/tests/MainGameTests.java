@@ -3,7 +3,7 @@ package rpg.core.tests;
 import org.junit.Before;
 import org.junit.Test;
 
-import rpg.core.game.MainGame;
+import rpg.core.game.GameMain;
 
 public class MainGameTests {
 		
@@ -14,7 +14,7 @@ public class MainGameTests {
 	
 	@Test
 	public void testEventSpawner() {
-		MainGame.main(null);
+		GameMain.main(null);
 		 
 	}
 }
